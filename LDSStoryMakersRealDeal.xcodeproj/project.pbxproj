@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
+		87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A091C69360300C2EAA4 /* ViewController.swift */; };
+		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
+		87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */; };
+		87F21A121C69360300C2EAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A111C69360300C2EAA4 /* Assets.xcassets */; };
+		87F21A151C69360300C2EAA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */; };
+		87F21A201C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A1F1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift */; };
+		87F21A2B1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */; };
+		87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87F21A1C1C69360300C2EAA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87F219FC1C69360200C2EAA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F21A031C69360200C2EAA4;
+			remoteInfo = LDSStoryMakersRealDeal;
+		};
+		87F21A271C69360300C2EAA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87F219FC1C69360200C2EAA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F21A031C69360200C2EAA4;
+			remoteInfo = LDSStoryMakersRealDeal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		87F21A091C69360300C2EAA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		87F21A0C1C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87F21A0F1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LDSStoryMakersRealDeal.xcdatamodel; sourceTree = "<group>"; };
+		87F21A111C69360300C2EAA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		87F21A141C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		87F21A161C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F21A1B1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LDSStoryMakersRealDealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F21A1F1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDSStoryMakersRealDealTests.swift; sourceTree = "<group>"; };
+		87F21A211C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F21A261C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LDSStoryMakersRealDealUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDSStoryMakersRealDealUITests.swift; sourceTree = "<group>"; };
+		87F21A2C1C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87F21A011C69360200C2EAA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F21A181C69360300C2EAA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F21A231C69360300C2EAA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87F219FB1C69360200C2EAA4 = {
+			isa = PBXGroup;
+			children = (
+				87F21A061C69360300C2EAA4 /* LDSStoryMakersRealDeal */,
+				87F21A1E1C69360300C2EAA4 /* LDSStoryMakersRealDealTests */,
+				87F21A291C69360300C2EAA4 /* LDSStoryMakersRealDealUITests */,
+				87F21A051C69360200C2EAA4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87F21A051C69360200C2EAA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */,
+				87F21A1B1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.xctest */,
+				87F21A261C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87F21A061C69360300C2EAA4 /* LDSStoryMakersRealDeal */ = {
+			isa = PBXGroup;
+			children = (
+				87F21A071C69360300C2EAA4 /* AppDelegate.swift */,
+				87F21A091C69360300C2EAA4 /* ViewController.swift */,
+				87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */,
+				87F21A0B1C69360300C2EAA4 /* Main.storyboard */,
+				87F21A111C69360300C2EAA4 /* Assets.xcassets */,
+				87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */,
+				87F21A161C69360300C2EAA4 /* Info.plist */,
+				87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */,
+			);
+			path = LDSStoryMakersRealDeal;
+			sourceTree = "<group>";
+		};
+		87F21A1E1C69360300C2EAA4 /* LDSStoryMakersRealDealTests */ = {
+			isa = PBXGroup;
+			children = (
+				87F21A1F1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift */,
+				87F21A211C69360300C2EAA4 /* Info.plist */,
+			);
+			path = LDSStoryMakersRealDealTests;
+			sourceTree = "<group>";
+		};
+		87F21A291C69360300C2EAA4 /* LDSStoryMakersRealDealUITests */ = {
+			isa = PBXGroup;
+			children = (
+				87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */,
+				87F21A2C1C69360300C2EAA4 /* Info.plist */,
+			);
+			path = LDSStoryMakersRealDealUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87F21A031C69360200C2EAA4 /* LDSStoryMakersRealDeal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87F21A2F1C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDeal" */;
+			buildPhases = (
+				87F21A001C69360200C2EAA4 /* Sources */,
+				87F21A011C69360200C2EAA4 /* Frameworks */,
+				87F21A021C69360200C2EAA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LDSStoryMakersRealDeal;
+			productName = LDSStoryMakersRealDeal;
+			productReference = 87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87F21A1A1C69360300C2EAA4 /* LDSStoryMakersRealDealTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87F21A321C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDealTests" */;
+			buildPhases = (
+				87F21A171C69360300C2EAA4 /* Sources */,
+				87F21A181C69360300C2EAA4 /* Frameworks */,
+				87F21A191C69360300C2EAA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87F21A1D1C69360300C2EAA4 /* PBXTargetDependency */,
+			);
+			name = LDSStoryMakersRealDealTests;
+			productName = LDSStoryMakersRealDealTests;
+			productReference = 87F21A1B1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		87F21A251C69360300C2EAA4 /* LDSStoryMakersRealDealUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87F21A351C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDealUITests" */;
+			buildPhases = (
+				87F21A221C69360300C2EAA4 /* Sources */,
+				87F21A231C69360300C2EAA4 /* Frameworks */,
+				87F21A241C69360300C2EAA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87F21A281C69360300C2EAA4 /* PBXTargetDependency */,
+			);
+			name = LDSStoryMakersRealDealUITests;
+			productName = LDSStoryMakersRealDealUITests;
+			productReference = 87F21A261C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87F219FC1C69360200C2EAA4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Gamaliel Tellez";
+				TargetAttributes = {
+					87F21A031C69360200C2EAA4 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					87F21A1A1C69360300C2EAA4 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 87F21A031C69360200C2EAA4;
+					};
+					87F21A251C69360300C2EAA4 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 87F21A031C69360200C2EAA4;
+					};
+				};
+			};
+			buildConfigurationList = 87F219FF1C69360200C2EAA4 /* Build configuration list for PBXProject "LDSStoryMakersRealDeal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 87F219FB1C69360200C2EAA4;
+			productRefGroup = 87F21A051C69360200C2EAA4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87F21A031C69360200C2EAA4 /* LDSStoryMakersRealDeal */,
+				87F21A1A1C69360300C2EAA4 /* LDSStoryMakersRealDealTests */,
+				87F21A251C69360300C2EAA4 /* LDSStoryMakersRealDealUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87F21A021C69360200C2EAA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F21A151C69360300C2EAA4 /* LaunchScreen.storyboard in Resources */,
+				87F21A121C69360300C2EAA4 /* Assets.xcassets in Resources */,
+				87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F21A191C69360300C2EAA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F21A241C69360300C2EAA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87F21A001C69360200C2EAA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */,
+				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
+				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
+				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F21A171C69360300C2EAA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F21A201C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F21A221C69360300C2EAA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F21A2B1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87F21A1D1C69360300C2EAA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F21A031C69360200C2EAA4 /* LDSStoryMakersRealDeal */;
+			targetProxy = 87F21A1C1C69360300C2EAA4 /* PBXContainerItemProxy */;
+		};
+		87F21A281C69360300C2EAA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F21A031C69360200C2EAA4 /* LDSStoryMakersRealDeal */;
+			targetProxy = 87F21A271C69360300C2EAA4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87F21A0B1C69360300C2EAA4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87F21A0C1C69360300C2EAA4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87F21A141C69360300C2EAA4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87F21A2D1C69360300C2EAA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87F21A2E1C69360300C2EAA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87F21A301C69360300C2EAA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LDSStoryMakersRealDeal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDeal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		87F21A311C69360300C2EAA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LDSStoryMakersRealDeal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDeal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		87F21A331C69360300C2EAA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LDSStoryMakersRealDealTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDealTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LDSStoryMakersRealDeal.app/LDSStoryMakersRealDeal";
+			};
+			name = Debug;
+		};
+		87F21A341C69360300C2EAA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LDSStoryMakersRealDealTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDealTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LDSStoryMakersRealDeal.app/LDSStoryMakersRealDeal";
+			};
+			name = Release;
+		};
+		87F21A361C69360300C2EAA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LDSStoryMakersRealDealUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDealUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LDSStoryMakersRealDeal;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		87F21A371C69360300C2EAA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LDSStoryMakersRealDealUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDealUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LDSStoryMakersRealDeal;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87F219FF1C69360200C2EAA4 /* Build configuration list for PBXProject "LDSStoryMakersRealDeal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F21A2D1C69360300C2EAA4 /* Debug */,
+				87F21A2E1C69360300C2EAA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87F21A2F1C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDeal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F21A301C69360300C2EAA4 /* Debug */,
+				87F21A311C69360300C2EAA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		87F21A321C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDealTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F21A331C69360300C2EAA4 /* Debug */,
+				87F21A341C69360300C2EAA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		87F21A351C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDealUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F21A361C69360300C2EAA4 /* Debug */,
+				87F21A371C69360300C2EAA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				87F21A0F1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodel */,
+			);
+			currentVersion = 87F21A0F1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodel */;
+			path = LDSStoryMakersRealDeal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 87F219FC1C69360200C2EAA4 /* Project object */;
+}
