@@ -13,7 +13,6 @@ class NSURLSessionController: NSObject {
     static let sharedInstance = NSURLSessionController()
     let generalSpreadSheetLink = "https://spreadsheets.google.com/tq?key="
 
-    
     func getLinksFromMainGoogleSpreadSheetToUserDefaults() {
         let mainSpreadSheetKey = "1Y8jMldIfTCOdiirkINlMHJNij1C_ura01Ol40AwZxHs"
 
@@ -59,16 +58,24 @@ class NSURLSessionController: NSObject {
         if let jsonDictionary = jsonObject as? NSDictionary {
             if let tableDict = jsonDictionary.objectForKey("table") {
                 if let rowsArray = tableDict.objectForKey("rows") {
-                    self.saveToUserDefaults(rowsArray)/////////
+                    self.saveToUserDefaults(rowsArray)
                 }
             }
         }
     }
     
     func saveToUserDefaults(arrayOfDictionaries:AnyObject) {
-        print(arrayOfDictionaries)
-        ///sddfsdfsdfsdf
-    }
+        let dictionariesInArray = arrayOfDictionaries as! [NSDictionary]
+        for dictionary in dictionariesInArray {
+            let dictionaryWithObject = dictionary.objectForKey("c")
+            if let dictionaryWithNameKey = dictionaryWithObject![1] {
+                print(dictionaryWithNameKey.objectForKey("v"))
+            }
+            if let dictionaryWithSpreadSheetKey = dictionaryWithObject![3] {
+                print(dictionaryWithSpreadSheetKey.objectForKey("v"))
+                }
+            }
+        }
     
 }
 
