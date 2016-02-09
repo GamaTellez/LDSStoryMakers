@@ -13,9 +13,9 @@ class NSURLSessionController: NSObject {
     static let sharedInstance = NSURLSessionController()
     let generalSpreadSheetLink = "https://spreadsheets.google.com/tq?key="
 
+    
     func getLinksFromMainGoogleSpreadSheetToUserDefaults() {
         let mainSpreadSheetKey = "1Y8jMldIfTCOdiirkINlMHJNij1C_ura01Ol40AwZxHs"
-
         let url = NSURL(string: self.generalSpreadSheetLink + mainSpreadSheetKey)
         let session = NSURLSession.sharedSession()
         let dataTask = session.dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
