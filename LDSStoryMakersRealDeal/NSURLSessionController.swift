@@ -12,9 +12,10 @@ class NSURLSessionController: NSObject {
 
     static let sharedInstance = NSURLSessionController()
     let generalSpreadSheetLink = "https://spreadsheets.google.com/tq?key="
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     
-    func getLinksFromMainGoogleSpreadSheetToUserDefaults() {
+    func getKeyLinksFromMainGoogleSpreadSheetToUserDefaults() {
         let mainSpreadSheetKey = "1Y8jMldIfTCOdiirkINlMHJNij1C_ura01Ol40AwZxHs"
         let url = NSURL(string: self.generalSpreadSheetLink + mainSpreadSheetKey)
         let session = NSURLSession.sharedSession()
@@ -66,16 +67,26 @@ class NSURLSessionController: NSObject {
     
     func saveToUserDefaults(arrayOfDictionaries:AnyObject) {
         let dictionariesInArray = arrayOfDictionaries as! [NSDictionary]
+        //print(dictionariesInArray)
         for dictionary in dictionariesInArray {
+            var nameKey:String?
             let dictionaryWithObject = dictionary.objectForKey("c")
             if let dictionaryWithNameKey = dictionaryWithObject![1] {
-                print(dictionaryWithNameKey.objectForKey("v"))
-            }
-            if let dictionaryWithSpreadSheetKey = dictionaryWithObject![3] {
-                print(dictionaryWithSpreadSheetKey.objectForKey("v"))
+                if let stringName = dictionaryWithNameKey.objectForKey("v") as? String {
+                    nameKey = stringName
                 }
             }
+            var spreadSheetKey:String?
+            if let dictionaryWithSpreadSheetKey = dictionaryWithObject![3] {
+                if let stringSpreadSheetKey = dictionaryWithSpreadSheetKey.objectForKey("v") as? String {
+                    spreadSheetKey = stringSpreadSheetKey
+                    }
+                }
+            print(nameKey)
+            print(spreadSheetKey)
+            self.defaults.setObject(spreadSheetKey, forKey: nameKey!)
+            self.defaults.synchronize()
+            }
         }
-    
-}
+     }
 

@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSURLSessionController.sharedInstance.getLinksFromMainGoogleSpreadSheetToUserDefaults()
     }
 
     override func didReceiveMemoryWarning() {

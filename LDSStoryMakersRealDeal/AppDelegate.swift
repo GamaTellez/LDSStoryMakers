@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.getKeysAvailableInUserDefaults()
         return true
     }
 
@@ -106,6 +107,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+        //checking for keys "Schedules", "Speakers", "Presentations", "Breakouts", "Notifications", if one is not available, wee need to run the method from nsurlcontroller to get them
+    func getKeysAvailableInUserDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.objectForKey("Schedules") == nil || defaults.objectForKey("Speakers") == nil || defaults.objectForKey("Presentations") == nil || defaults.objectForKey("Breakouts") == nil || defaults.objectForKey("Notifications") == nil {
+            print("no keys have been store in user defaults")
+            NSURLSessionController.sharedInstance.getKeyLinksFromMainGoogleSpreadSheetToUserDefaults()
+        } else {
+            print("all keys stored in nsuserdefaults")
+        }
+    }
+    
+    
+    
 }
 
