@@ -11,15 +11,15 @@ import UIKit
 class NSURLSessionController: NSObject {
 
     static let sharedInstance = NSURLSessionController()
-    let generalSpreadSheetLink = "https://spreadsheets.google.com/tq?key="
+    let generalSpreadSheetLink:String = "https://spreadsheets.google.com/tq?key="
     let defaults = NSUserDefaults.standardUserDefaults()
-
-    
+    let session = NSURLSession.sharedSession()
+    //getting spreadsheets keys
     func getKeyLinksFromMainGoogleSpreadSheetToUserDefaults() {
         let mainSpreadSheetKey = "1Y8jMldIfTCOdiirkINlMHJNij1C_ura01Ol40AwZxHs"
         let url = NSURL(string: self.generalSpreadSheetLink + mainSpreadSheetKey)
-        let session = NSURLSession.sharedSession()
-        let dataTask = session.dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+
+        let dataTask = self.session.dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if (error != nil) {
                 print(error?.localizedDescription)
             } else {
@@ -88,5 +88,38 @@ class NSURLSessionController: NSObject {
             self.defaults.synchronize()
             }
         }
+    
+    //getting all speakers
+    func getAllSpeakersGoogleSpreadSheet(completion:(result:[Speakers]) ->Void) {
+        var url:NSURL?
+        if let speakersKey = self.defaults.objectForKey("Speakers") as? String {
+            url = NSURL(string: self.generalSpreadSheetLink + speakersKey)
+           let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if error != nil {
+                    print(error?.localizedDescription)
+                } else {
+                    if let dataString = data {
+                        let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
+                        let jsonObjet = self.getJsonObjectFromStringFromData(stringFromData!)
+                        print(jsonObjet)
+                    }
+                }
+            })
+        dataTask.resume()
+        } else {
+            print("no spreadSheet key available for Speakers")
+        }
+    }
+    
+    
+    
+    
+    
      }
+
+
+
+
+
+
 
