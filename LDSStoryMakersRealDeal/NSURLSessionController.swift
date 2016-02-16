@@ -90,7 +90,8 @@ class NSURLSessionController: NSObject {
         }
     
     //getting all speakers
-    func getAllSpeakersGoogleSpreadSheet(completion:(result:[Speakers]) ->Void) {
+    func getAllSpeakersGoogleSpreadSheet(completion:(result:[Speaker]) ->Void) {
+        var allSpeakers:[Speaker] = []
         var url:NSURL?
         if let speakersKey = self.defaults.objectForKey("Speakers") as? String {
             url = NSURL(string: self.generalSpreadSheetLink + speakersKey)
@@ -100,10 +101,12 @@ class NSURLSessionController: NSObject {
                 } else {
                     if let dataString = data {
                         let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
-                        let jsonObjet = self.getJsonObjectFromStringFromData(stringFromData!)
-                        print(jsonObjet)
+                      if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
+                         allSpeakers = self.getSpeakersFromJson(jsonObject)
+                        }
                     }
                 }
+            completion(result: allSpeakers)
             })
         dataTask.resume()
         } else {
@@ -111,11 +114,24 @@ class NSURLSessionController: NSObject {
         }
     }
     
+    func getSpeakersFromJson(jsonDictionary:NSDictionary) -> [Speaker] {
+        var speakers:[Speaker] = []
+        if let tableDictionary = jsonDictionary.objectForKey("table") {
+            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+                for dict in rowsDictArray {
+                    if let arrayWithInfoDictionaries = dict.objectForKey("c") {
+                 //       print(arrayWithInfoDictionaries)
+                        let newSpeaker = Speaker.init(speakerArray: arrayWithInfoDictionaries as! NSArray)
+                        speakers.append(newSpeaker)
+                        print(newSpeaker.speakerName)
+                    }
+                }
+            }
+        }
+     return speakers
+    }
     
-    
-    
-    
-     }
+ }
 
 
 
