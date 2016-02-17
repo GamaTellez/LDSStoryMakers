@@ -193,8 +193,19 @@ class NSURLSessionController: NSObject {
                 for dict in rowsDictArray {
                     if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
                         //print(arrayWithInfoDictionaries)
-                        let newBreakout = BreakoutTemp.init(arrayWithInfoDictionaries: arrayWithInfoDictionaries)
+                        let newBreakout = BreakoutTemp.init(from: arrayWithInfoDictionaries)
                         breakouts.append(newBreakout)
+//                        print(newBreakout.breakoutId)
+//                        if let start = newBreakout.breakoutStartTime {
+//                            print(NSDateFormatter.localizedStringFromDate(start, dateStyle: .FullStyle, timeStyle: .FullStyle))
+//                        } else {
+//                            print("founf nil in start")
+//                        }
+//                        if let end = newBreakout.breakputEndtime {
+//                            print(NSDateFormatter.localizedStringFromDate(end, dateStyle: .FullStyle, timeStyle: .FullStyle))
+//                        } else {
+//                            print("found nil in end")
+//                        }
                     }
                 }
             }
