@@ -18,6 +18,7 @@
 		87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */; };
 		87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */; };
 		87FDA0791C73DFA600D5720F /* PresentationTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FDA0781C73DFA600D5720F /* PresentationTemp.swift */; };
+		87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FDA07A1C74087E00D5720F /* BreakoutTemp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionController.swift; sourceTree = "<group>"; };
 		87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakerTemp.swift; path = ../SpeakerTemp.swift; sourceTree = "<group>"; };
 		87FDA0781C73DFA600D5720F /* PresentationTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationTemp.swift; sourceTree = "<group>"; };
+		87FDA07A1C74087E00D5720F /* BreakoutTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreakoutTemp.swift; path = ../BreakoutTemp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */,
 				87FDA0781C73DFA600D5720F /* PresentationTemp.swift */,
+				87FDA07A1C74087E00D5720F /* BreakoutTemp.swift */,
 			);
 			name = TempObjects;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
 				87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,

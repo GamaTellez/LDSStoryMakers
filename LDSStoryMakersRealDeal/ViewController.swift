@@ -15,7 +15,10 @@ class ViewController: UIViewController {
 //        NSURLSessionController.sharedInstance.getAllSpeakersGoogleSpreadSheet { (result) -> Void in
 //            print(result)
 //        }
-        NSURLSessionController.sharedInstance.getAllPresentationsFromGoogleSpreadSheet { (result) -> Void in
+//        NSURLSessionController.sharedInstance.getAllPresentationsFromGoogleSpreadSheet { (result) -> Void in
+//            print(result.count)
+//        }
+         NSURLSessionController.sharedInstance.getAllBreakoutsFromGoogleSpreadSheet { (result) -> Void in
             print(result.count)
         }
     }

@@ -130,7 +130,7 @@ class NSURLSessionController: NSObject {
         }
      return speakers
     }
-    
+    //speakers
     func getAllPresentationsFromGoogleSpreadSheet(completion:(result:[PresentationTemp]) -> Void) {
         if let presentationsKey = self.defaults.objectForKey("Presentations") as? String {
             var allPresentations:[PresentationTemp] = []
@@ -164,6 +164,42 @@ class NSURLSessionController: NSObject {
             }
         }
         return presentations
+    }
+    //breakouts
+    func getAllBreakoutsFromGoogleSpreadSheet(completion:(result:[SpeakerTemp]) -> Void) {
+        if let breakOutsKey = self.defaults.objectForKey("Breakouts") as? String {
+            let url = NSURL(string: self.generalSpreadSheetLink + breakOutsKey)
+          let urlDataTaks = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if error ==  nil {
+                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
+                         if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
+                            self.getAllBreakoutsFromJson(jsonObject)
+                        }
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+            })
+            urlDataTaks.resume()
+        } else {
+            print("no key for breakouts")
+        }
+    }
+    
+    func getAllBreakoutsFromJson(jsonDictionary:NSDictionary) -> [BreakoutTemp] {
+        var breakouts:[BreakoutTemp] = []
+        if let tableDictionary = jsonDictionary.objectForKey("table") {
+            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+                for dict in rowsDictArray {
+                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                        //print(arrayWithInfoDictionaries)
+                        let newBreakout = BreakoutTemp.init(arrayWithInfoDictionaries: arrayWithInfoDictionaries)
+                        breakouts.append(newBreakout)
+                    }
+                }
+            }
+        }
+        return breakouts
     }
 
     
