@@ -28,7 +28,7 @@ class BreakoutTemp: NSObject {
         if let breakoutDayDate = arrayWithInfoDictionaries[3] as? NSDictionary {
             if let dayDate = breakoutDayDate.objectForKey("f") as? String {
                 dDay = dayDate
-                print(dayDate)
+                //print(dayDate)
             }
         }
         
@@ -40,7 +40,7 @@ class BreakoutTemp: NSObject {
             if let startDate = dateFormatter.dateFromString(fullStartTimeString) {
                 self.breakoutStartTime = startDate
                 //print(startDate)
-                print(NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .FullStyle, timeStyle: .FullStyle))
+               // print(NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .FullStyle, timeStyle: .FullStyle))
             } else {
                 print("no startDate")
                 }
@@ -55,7 +55,7 @@ class BreakoutTemp: NSObject {
                 if let endDate = dateFormatter.dateFromString(fullEndTimeString) {
                     self.breakputEndtime = endDate
                     //print(endDate)
-                   print(NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .FullStyle, timeStyle: .FullStyle))
+                 //  print(NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .FullStyle, timeStyle: .FullStyle))
                 } else {
                     print("no end date")
                 }
