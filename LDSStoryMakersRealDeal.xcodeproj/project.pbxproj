@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8758DB081C6C294800C5A458 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758DB071C6C294800C5A458 /* Speaker.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A091C69360300C2EAA4 /* ViewController.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
@@ -17,6 +16,8 @@
 		87F21A201C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A1F1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift */; };
 		87F21A2B1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */; };
 		87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */; };
+		87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */; };
+		87FDA0791C73DFA600D5720F /* PresentationTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FDA0781C73DFA600D5720F /* PresentationTemp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8758DB071C6C294800C5A458 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Speaker.swift; path = ../Speaker.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87F21A091C69360300C2EAA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDSStoryMakersRealDealUITests.swift; sourceTree = "<group>"; };
 		87F21A2C1C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionController.swift; sourceTree = "<group>"; };
+		87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakerTemp.swift; path = ../SpeakerTemp.swift; sourceTree = "<group>"; };
+		87FDA0781C73DFA600D5720F /* PresentationTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationTemp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,7 @@
 				87F21A071C69360300C2EAA4 /* AppDelegate.swift */,
 				87F21A091C69360300C2EAA4 /* ViewController.swift */,
 				87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */,
-				8758DB071C6C294800C5A458 /* Speaker.swift */,
+				87FDA0751C73DF2B00D5720F /* TempObjects */,
 				878153911C6C0D380042F4EB /* DataModel */,
 				87F21A0B1C69360300C2EAA4 /* Main.storyboard */,
 				87F21A111C69360300C2EAA4 /* Assets.xcassets */,
@@ -140,6 +142,15 @@
 				87F21A2C1C69360300C2EAA4 /* Info.plist */,
 			);
 			path = LDSStoryMakersRealDealUITests;
+			sourceTree = "<group>";
+		};
+		87FDA0751C73DF2B00D5720F /* TempObjects */ = {
+			isa = PBXGroup;
+			children = (
+				87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */,
+				87FDA0781C73DFA600D5720F /* PresentationTemp.swift */,
+			);
+			name = TempObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,11 +284,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
 				87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
-				8758DB081C6C294800C5A458 /* Speaker.swift in Sources */,
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
+				87FDA0791C73DFA600D5720F /* PresentationTemp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@ class NSURLSessionController: NSObject {
     let generalSpreadSheetLink:String = "https://spreadsheets.google.com/tq?key="
     let defaults = NSUserDefaults.standardUserDefaults()
     let session = NSURLSession.sharedSession()
+    
     //getting spreadsheets keys
     func getKeyLinksFromMainGoogleSpreadSheetToUserDefaults() {
         let mainSpreadSheetKey = "1Y8jMldIfTCOdiirkINlMHJNij1C_ura01Ol40AwZxHs"
@@ -89,9 +90,9 @@ class NSURLSessionController: NSObject {
             }
         }
     
-    //getting all speakers
-    func getAllSpeakersGoogleSpreadSheet(completion:(result:[Speaker]) ->Void) {
-        var allSpeakers:[Speaker] = []
+    ////////getting all speakers
+    func getAllSpeakersGoogleSpreadSheet(completion:(result:[SpeakerTemp]) -> Void) {
+        var allSpeakers:[SpeakerTemp] = []
         var url:NSURL?
         if let speakersKey = self.defaults.objectForKey("Speakers") as? String {
             url = NSURL(string: self.generalSpreadSheetLink + speakersKey)
@@ -114,22 +115,57 @@ class NSURLSessionController: NSObject {
         }
     }
     
-    func getSpeakersFromJson(jsonDictionary:NSDictionary) -> [Speaker] {
-        var speakers:[Speaker] = []
+    func getSpeakersFromJson(jsonDictionary:NSDictionary) -> [SpeakerTemp] {
+        var speakers:[SpeakerTemp] = []
         if let tableDictionary = jsonDictionary.objectForKey("table") {
             if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
                 for dict in rowsDictArray {
-                    if let arrayWithInfoDictionaries = dict.objectForKey("c") {
-                 //       print(arrayWithInfoDictionaries)
-                        let newSpeaker = Speaker.init(speakerArray: arrayWithInfoDictionaries as! NSArray)
+                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                        let newSpeaker = SpeakerTemp.init(speakerArray: arrayWithInfoDictionaries)
                         speakers.append(newSpeaker)
-                        print(newSpeaker.speakerName)
+                        //print(newSpeaker.speakerName)
                     }
                 }
             }
         }
      return speakers
     }
+    
+    func getAllPresentationsFromGoogleSpreadSheet(completion:(result:[PresentationTemp]) -> Void) {
+        if let presentationsKey = self.defaults.objectForKey("Presentations") as? String {
+            var allPresentations:[PresentationTemp] = []
+            let url = NSURL(string:self.generalSpreadSheetLink + presentationsKey)
+            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+                if error == nil {
+                    let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
+                       // print(jsonObject)
+                        allPresentations = self.getPresentationsFromJson(jsonObject)
+                    }
+                } else {
+                    print(error?.localizedDescription)
+                }
+                completion(result: allPresentations)
+            })
+         dataTask.resume()
+        }
+    }
+    
+    func getPresentationsFromJson(jsonDictionary:NSDictionary) -> [PresentationTemp] {
+        var presentations:[PresentationTemp] = []
+        if let tableDictionary = jsonDictionary.objectForKey("table") {
+            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+                for dict in rowsDictArray {
+                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                        let newPresentation = PresentationTemp.init(presentationInfoArray: arrayWithInfoDictionaries)
+                        presentations.append(newPresentation)
+                    }
+                }
+            }
+        }
+        return presentations
+    }
+
     
  }
 
