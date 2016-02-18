@@ -23,7 +23,6 @@ class PresentationTemp: NSObject {
             if let id = idDictionary.objectForKey("v") as? Int {
                 self.presentationID = id
             }
-            
         }
         if let titleDictionary = presentationInfoArray[1] as? NSDictionary {
             if let title = titleDictionary.objectForKey("v") as? String {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A091C69360300C2EAA4 /* ViewController.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItemTemp.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87F21A091C69360300C2EAA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */,
 				87FDA0781C73DFA600D5720F /* PresentationTemp.swift */,
 				87FDA07A1C74087E00D5720F /* BreakoutTemp.swift */,
+				8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */,
 			);
 			name = TempObjects;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
 				87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */,
+				8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
