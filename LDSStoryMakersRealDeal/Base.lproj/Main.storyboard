@@ -48,19 +48,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="45V-uZ-ZfP"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LDS Storymakers Conference 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzE-NK-M1X">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
+                                <rect key="frame" x="36" y="62" width="528" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="14j-eM-lQj"/>
+                                    <constraint firstAttribute="height" constant="58" id="rr4-d0-klh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
-                                <rect key="frame" x="72" y="74" width="456" height="58"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LDS Storymakers Conference 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzE-NK-M1X">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="Xz0-67-eCA"/>
+                                    <constraint firstAttribute="height" constant="74" id="lKa-ym-juo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,20 +69,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="48" id="0mI-NC-7na"/>
-                            <constraint firstItem="mzE-NK-M1X" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="0q5-LA-lWx"/>
-                            <constraint firstItem="mzE-NK-M1X" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="2uK-9A-ouT"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="6RU-Mr-fws"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Duk-nK-Tul"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="52" id="KLo-az-4A9"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="top" secondItem="mzE-NK-M1X" secondAttribute="bottom" id="TF6-Pm-OoG"/>
-                            <constraint firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="VCj-D3-B28"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="XrT-3w-Veu"/>
-                            <constraint firstItem="mzE-NK-M1X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aSP-v6-5ma"/>
-                            <constraint firstItem="mzE-NK-M1X" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="geU-GT-ze2"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="mzE-NK-M1X" secondAttribute="top" id="hsQ-Br-YbO"/>
-                            <constraint firstItem="mzE-NK-M1X" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="snw-ax-5yy"/>
-                            <constraint firstItem="mzE-NK-M1X" firstAttribute="centerX" secondItem="XCM-Fx-7dm" secondAttribute="centerX" id="vAe-GC-6jO"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="centerX" secondItem="mzE-NK-M1X" secondAttribute="centerX" id="05f-pQ-1lN"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="2O6-em-gqU"/>
+                            <constraint firstItem="mzE-NK-M1X" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="4XF-Kd-d4M"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="8EE-Hl-LL5"/>
+                            <constraint firstItem="mzE-NK-M1X" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="9ds-bT-ZDB"/>
+                            <constraint firstAttribute="trailing" secondItem="mzE-NK-M1X" secondAttribute="trailing" id="AEu-ll-Nbl"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="60" id="QCx-9Z-LJr"/>
+                            <constraint firstItem="mzE-NK-M1X" firstAttribute="top" secondItem="Mpi-Is-UTa" secondAttribute="top" id="QMb-W6-a1R"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="UyI-wX-an0"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="ZHo-bD-pLY"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="bdt-TF-NC3"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pyV-ah-jcq"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pzt-IC-2w3"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="thQ-l6-AEL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="6I2-6E-8w3"/>
@@ -98,6 +98,25 @@
             </objects>
             <point key="canvasLocation" x="1335" y="335"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="k7D-cu-uJ6">
+            <objects>
+                <viewController id="Zry-hZ-XlH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CKG-IN-A7P"/>
+                        <viewControllerLayoutGuide type="bottom" id="kbr-hb-v9j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oh7-op-Pdf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="vJd-nG-p1r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYr-Zd-LUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2047" y="335"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxn-ry-Fgk">
             <objects>
@@ -109,11 +128,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Cel-fw-gmo"/>
+                        <segue destination="Zry-hZ-XlH" kind="relationship" relationship="viewControllers" id="G5X-dh-n5A"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7en-28-Dlx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="335"/>
+            <point key="canvasLocation" x="696" y="347"/>
         </scene>
     </scenes>
 </document>

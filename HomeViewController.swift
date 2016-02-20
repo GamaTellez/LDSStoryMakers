@@ -31,6 +31,10 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func setUpLabelsApperance() {
         self.topLabelBar.backgroundColor = UIColor.greenColor()
         self.notificationLabelBanner.backgroundColor = UIColor.blueColor()
+        self.notificationLabelBanner.layer.borderWidth = 1.0
+        self.notificationLabelBanner.layer.cornerRadius = 10
+        self.notificationLabelBanner.layer.borderColor = UIColor.blackColor().CGColor
+        self.notificationLabelBanner.clipsToBounds = true
     }
 
     
@@ -51,11 +55,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func makeViewForTableViewHeaders(withTitle title:String) ->UIView {
+        let underLinedAttribute =  [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        let underLinedAttributedString = NSAttributedString(string: title, attributes: underLinedAttribute)
+        
         let headerSectionView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 20.0))
         headerSectionView.backgroundColor = UIColor.clearColor()
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: headerSectionView.frame.width, height: headerSectionView.frame.height))
         headerLabel.textAlignment = NSTextAlignment.Center
-        headerLabel.text = title
+        headerLabel.attributedText = underLinedAttributedString
         headerSectionView.addSubview(headerLabel)
            return headerSectionView
     }
