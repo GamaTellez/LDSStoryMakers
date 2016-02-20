@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */; };
+		873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811221C76B3A500F4A2D1 /* HomeViewController.swift */; };
+		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
-		87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A091C69360300C2EAA4 /* ViewController.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
 		87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */; };
 		87F21A121C69360300C2EAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A111C69360300C2EAA4 /* Assets.xcassets */; };
@@ -41,9 +42,10 @@
 
 /* Begin PBXFileReference section */
 		8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItemTemp.swift; sourceTree = "<group>"; };
+		873811221C76B3A500F4A2D1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
+		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87F21A091C69360300C2EAA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		87F21A0C1C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87F21A0F1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LDSStoryMakersRealDeal.xcdatamodel; sourceTree = "<group>"; };
 		87F21A111C69360300C2EAA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,7 +128,8 @@
 			children = (
 				87F21A0B1C69360300C2EAA4 /* Main.storyboard */,
 				87F21A071C69360300C2EAA4 /* AppDelegate.swift */,
-				87F21A091C69360300C2EAA4 /* ViewController.swift */,
+				873811221C76B3A500F4A2D1 /* HomeViewController.swift */,
+				873811241C76E10600F4A2D1 /* TableViewDataSource.swift */,
 				8738111F1C76645C00F4A2D1 /* Controllers */,
 				87FDA0751C73DF2B00D5720F /* TempObjects */,
 				878153911C6C0D380042F4EB /* DataModel */,
@@ -298,10 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */,
 				87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
-				87F21A0A1C69360300C2EAA4 /* ViewController.swift in Sources */,
 				8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */,
+				873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
