@@ -17,9 +17,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       NSURLSessionController.sharedInstance.getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor("Speakers")
-       let fetchResults = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
-        print(fetchResults.count)
+        NSURLSessionController.sharedInstance.getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor("Speakers")
         
         self.setUpLabelsApperance()
         self.setBackgroundImageView()

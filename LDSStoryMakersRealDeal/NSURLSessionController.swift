@@ -85,36 +85,47 @@ class NSURLSessionController: NSObject {
             }
         }
     ///getting a creating managed objects
-    func getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor(spreadsheetName:String) -> [AnyObject] {
+    func getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor(spreadsheetName:String)  {
         switch  spreadsheetName {
             case "Breakouts":
-                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
+                   let allBreakoutsCount = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
+                    print(allBreakoutsCount.count)
+                })
                 break
             case "Schedules":
-                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
+                    let scheduleItems = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
+                    print(scheduleItems.count)
+                })
                 break
             case "Speakers":
-                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
+                    let speakers = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
+                    print(speakers.count)
+                })
                 break
             case "Presentations":
-                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
-            break
-                case "Notifications":
-                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
+                    
+                })
+                break
+            case "Notifications":
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
+                    
+                })
         default:
             print("no such key")
             break
         }
-        return []
     }
     
-    func createManagedObjectsFromSpreadSheetData(entityName:String) {
+    func createManagedObjectsFromSpreadSheetData(entityName:String, completion:(finished:Bool) -> Void) {
         if let spreadSheetkeyForObject = self.defaults.objectForKey(entityName) as? String {
             let url = NSURL(string: self.generalSpreadSheetLink + spreadSheetkeyForObject)
             let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, responde:NSURLResponse?, error:NSError? ) -> Void in
                 if error ==  nil {
                     if let dataString = data {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
                             if let stringWithJason = stringFromData {
                                 if let jsonObject = self.getJsonObjectFromStringFromData(stringWithJason) as? NSDictionary {
@@ -123,11 +134,11 @@ class NSURLSessionController: NSObject {
                                 print("could not get json object")
                             }
                         }
-                    })
                 }
             } else {
                     print(error?.localizedDescription)
                 }
+            completion(finished: true)
             })
             dataTask.resume()
         } else {
