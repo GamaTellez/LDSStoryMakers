@@ -120,14 +120,56 @@ class ManagedObjectsController: NSObject {
         }
         self.saveToCoreData()
     }
-
+    //PRESENTATIONS
+    func createAndSavePresentationManagedObjectFromArrat(arrayWithInfoDicts:NSArray) {
+        let newPresentation = NSManagedObject(entity: NSEntityDescription.entityForName("Presentation", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+        if let idDictionary = arrayWithInfoDicts[0] as? NSDictionary {
+            if let id = idDictionary.objectForKey("v") as? Int {
+                newPresentation.setValue( NSNumber(integerLiteral:id), forKey: "id")
+            }
+        }
+        if let titleDictionary = arrayWithInfoDicts[1] as? NSDictionary {
+            if let title = titleDictionary.objectForKey("v") as? String {
+                newPresentation.setValue(title, forKey: "title")
+            }
+        }
+        if let descriptionDictionary = arrayWithInfoDicts[2] as? NSDictionary {
+            if let descript = descriptionDictionary.objectForKey("v") as? String {
+                newPresentation.setValue(descript, forKey: "presentationDescription")
+            }
+        }
+        if let speakerDictionary = arrayWithInfoDicts[3] as? NSDictionary {
+            if let speaker = speakerDictionary.objectForKey("v") as? String {
+                newPresentation.setValue(speaker, forKey: "speakerName")
+            }
+        }
+        if let speakerIdDictionary =  arrayWithInfoDicts[4] as? NSDictionary {
+            if let speakerId = speakerIdDictionary.objectForKey("v") as? Int  {
+                newPresentation.setValue(NSNumber(integerLiteral:speakerId), forKey: "speakerId")
+            }
+        }
+        if let presentationKindDictionaty = arrayWithInfoDicts[5] as? NSDictionary {
+            if let kind = presentationKindDictionaty.objectForKey("v") as? String {
+                if kind == "Yes" {
+                    newPresentation.setValue(NSNumber(bool: true), forKey: "isIntensive")
+                } else {
+                    newPresentation.setValue(NSNumber(bool: false), forKey: "isIntensive")
+                }
+            }
+        }
+        if let presentationSection = arrayWithInfoDicts[6] as? NSDictionary {
+            if let sect = presentationSection.objectForKey("v") as? Int {
+                    newPresentation.setValue(NSNumber(integerLiteral: sect), forKey: "sectionId")
+            }
+        }
+        self.saveToCoreData()
+    }
     func saveToCoreData() {
         do {
             try self.managedContext.save()
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-        
     }
     //FETC REQUESTS
     func getAllBreakoutsFromCoreData() -> [AnyObject] {
@@ -145,6 +187,11 @@ class ManagedObjectsController: NSObject {
         return self.fetchRequestExecuter(allSpeakersRequest)
     }
     
+    func getAllPresentationsFromCoreData() -> [AnyObject] {
+        let allPresentationsRequest = NSFetchRequest(entityName: "Presentation")
+        return fetchRequestExecuter(allPresentationsRequest)
+    }
+    
     func fetchRequestExecuter(request:NSFetchRequest) ->[AnyObject] {
         var requestResults:[AnyObject] = []
         do {
@@ -154,9 +201,4 @@ class ManagedObjectsController: NSObject {
         }
         return requestResults
     }
-    
-    
-    
-    
-    
 }

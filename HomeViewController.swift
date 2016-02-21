@@ -17,26 +17,29 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSURLSessionController.sharedInstance.getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor("Speakers")
-        
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
+        
+        let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
+        print(breakouts.count)
+        let schedules = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
+        print(schedules.count)
+        let presentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData()
+        print(presentations.count)
+        let speakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
+        print(speakers.count)
     }
+    
     func setBackgroundImageView() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor.clearColor()
     }
+    
     func setUpTablewView() {
         self.tableView.backgroundColor = UIColor.clearColor()
-       
-//        if (self.tableView.contentSize.height < self.tableView.frame.size.height) {
-//            self.tableView.scrollEnabled = false;
-//        }
-//        else {
-//            self.tableView.scrollEnabled = true;
-//        }
     }
+   
     func setUpLabelsApperance() {
         self.topLabelBar.backgroundColor = UIColor.greenColor()
         self.notificationLabelBanner.backgroundColor = UIColor.blueColor()
@@ -45,9 +48,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.notificationLabelBanner.layer.borderColor = UIColor.blackColor().CGColor
         self.notificationLabelBanner.clipsToBounds = true
     }
-
-    
-    
     //tableview delegate methods
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var viewForHeader:UIView = UIView()
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func makeViewForTableViewHeaders(withTitle title:String) ->UIView {
         let underLinedAttribute =  [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
         let underLinedAttributedString = NSAttributedString(string: title, attributes: underLinedAttribute)
-        
+
         let headerSectionView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 20.0))
         headerSectionView.backgroundColor = UIColor.clearColor()
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: headerSectionView.frame.width, height: headerSectionView.frame.height))
@@ -79,19 +79,4 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         return 30;
     }
 }
-//        NSURLSessionController.sharedInstance.getAllSpeakersGoogleSpreadSheet { (result) -> Void in
-//            print("speakers")
-//            print(result.count)
-//        }
-//        NSURLSessionController.sharedInstance.getAllPresentationsFromGoogleSpreadSheet { (result) -> Void in
-//            print("presentations")
-//            print(result.count)
-//        }
-//         NSURLSessionController.sharedInstance.getAllBreakoutsFromGoogleSpreadSheet { (result) -> Void in
-//            print("breakouts")
-//            print(result.count)
-//        }
-//           NSURLSessionController.sharedInstance.getAllSchedulesFromGooglrSpreadSheet { (result) -> Void in
-//            print("schedules")
-//            print(result.count)
-//        }
+

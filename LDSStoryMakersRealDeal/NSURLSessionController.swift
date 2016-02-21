@@ -16,12 +16,13 @@ class NSURLSessionController: NSObject {
     let session = NSURLSession.sharedSession()
     
     //getting spreadsheets keys
-    func getKeyLinksFromMainGoogleSpreadSheetToUserDefaults() {
+    func getKeyLinksFromMainGoogleSpreadSheetToUserDefaults(completion:(finished:Bool)->Void) {
         let mainSpreadSheetKey = "1Y8jMldIfTCOdiirkINlMHJNij1C_ura01Ol40AwZxHs"
         let url = NSURL(string: self.generalSpreadSheetLink + mainSpreadSheetKey)
         let dataTask = self.session.dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if (error != nil) {
                 print(error?.localizedDescription)
+                completion(finished: false)
             } else {
                 if let dataString = data {
                     let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
@@ -31,6 +32,7 @@ class NSURLSessionController: NSObject {
                     }
                 }
             }
+            completion(finished: true)
         }
      dataTask.resume()
     }
@@ -42,7 +44,6 @@ class NSURLSessionController: NSObject {
         let indexOfLastBrace = stringObject.rangeOfString("}", options: .BackwardsSearch)
         let jsonString = stringObject.substringToIndex(indexOfLastBrace.location + 1)
         let jsonDataFromJsonString = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
-       
         if let dataForJason = jsonDataFromJsonString {
             do {
                 let pureJson:AnyObject = try NSJSONSerialization.JSONObjectWithData(dataForJason, options: .MutableContainers)
@@ -107,7 +108,8 @@ class NSURLSessionController: NSObject {
                 break
             case "Presentations":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                    
+                    let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData()
+                    print(allPresentations.count)
                 })
                 break
             case "Notifications":
@@ -176,10 +178,15 @@ class NSURLSessionController: NSObject {
                     }
                     break
                 case "Presentations":
-                    print("need to implement presentations init")
+                    print("getting presentations")
+                    for dict in rowsDictArray {
+                        if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                            ManagedObjectsController.sharedInstance.createAndSavePresentationManagedObjectFromArrat(arrayWithInfoDictionaries)
+                        }
+                    }
                     break
                 case "Notifications":
-                    print("ned to implement notidications initn and create managed object")
+                    print("need to implement notidications initn and create managed object")
                 default:
                     break
                 }
