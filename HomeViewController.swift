@@ -17,16 +17,26 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NSURLSessionController.sharedInstance.getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor("Breakouts")
+       let allBreakoouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
+        print(allBreakoouts.count)
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
+        self.setUpTablewView()
     }
     func setBackgroundImageView() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor.clearColor()
+    }
+    func setUpTablewView() {
         self.tableView.backgroundColor = UIColor.clearColor()
-        
        
+//        if (self.tableView.contentSize.height < self.tableView.frame.size.height) {
+//            self.tableView.scrollEnabled = false;
+//        }
+//        else {
+//            self.tableView.scrollEnabled = true;
+//        }
     }
     func setUpLabelsApperance() {
         self.topLabelBar.backgroundColor = UIColor.greenColor()
@@ -41,7 +51,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     //tableview delegate methods
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print(section)
         var viewForHeader:UIView = UIView()
         switch section {
         case 1:

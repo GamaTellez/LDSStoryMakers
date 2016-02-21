@@ -66,7 +66,6 @@ class NSURLSessionController: NSObject {
     
     func saveToUserDefaults(arrayOfDictionaries:AnyObject) {
         let dictionariesInArray = arrayOfDictionaries as! [NSDictionary]
-        //print(dictionariesInArray)
         for dictionary in dictionariesInArray {
             var nameKey:String?
             let dictionaryWithObject = dictionary.objectForKey("c")
@@ -81,165 +80,219 @@ class NSURLSessionController: NSObject {
                     spreadSheetKey = stringSpreadSheetKey
                     }
                 }
-            print(nameKey)
-            print(spreadSheetKey)
             self.defaults.setObject(spreadSheetKey, forKey: nameKey!)
             self.defaults.synchronize()
             }
         }
     
-    ////////getting all speakers
-    func getAllSpeakersGoogleSpreadSheet(completion:(result:[SpeakerTemp]) -> Void) {
-        var allSpeakers:[SpeakerTemp] = []
-        var url:NSURL?
-        if let speakersKey = self.defaults.objectForKey("Speakers") as? String {
-            url = NSURL(string: self.generalSpreadSheetLink + speakersKey)
-           let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-                if error != nil {
-                    print(error?.localizedDescription)
-                } else {
+/////////
+    func getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor(spreadsheetName:String) -> [AnyObject] {
+        
+        switch  spreadsheetName {
+            case "Breakouts":
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+            break
+        default:
+            break
+        }
+        
+        return []
+    }
+    
+    
+    func createManagedObjectsFromSpreadSheetData(entityName:String) {
+        if let spreadSheetkeyForObject = self.defaults.objectForKey(entityName) as? String {
+            let url = NSURL(string: self.generalSpreadSheetLink + spreadSheetkeyForObject)
+            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, responde:NSURLResponse?, error:NSError? ) -> Void in
+                if error ==  nil {
                     if let dataString = data {
                         let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
-                      if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
-                         allSpeakers = self.getSpeakersFromJson(jsonObject)
-                        }
-                    }
-                }
-            completion(result: allSpeakers)
-            })
-        dataTask.resume()
-        } else {
-            print("no spreadSheet key available for Speakers")
-        }
-    }
-    
-    func getSpeakersFromJson(jsonDictionary:NSDictionary) -> [SpeakerTemp] {
-        var speakers:[SpeakerTemp] = []
-        if let tableDictionary = jsonDictionary.objectForKey("table") {
-            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-                for dict in rowsDictArray {
-                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-                        let newSpeaker = SpeakerTemp.init(speakerArray: arrayWithInfoDictionaries)
-                        speakers.append(newSpeaker)
-                    }
-                }
-            }
-        }
-     return speakers
-    }
-    //speakers
-    func getAllPresentationsFromGoogleSpreadSheet(completion:(result:[PresentationTemp]) -> Void) {
-                 var allPresentations:[PresentationTemp] = []
-        if let presentationsKey = self.defaults.objectForKey("Presentations") as? String {
-            let url = NSURL(string:self.generalSpreadSheetLink + presentationsKey)
-            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-                if error == nil {
-                    let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
-                        allPresentations = self.getPresentationsFromJson(jsonObject)
-                    }
-                } else {
-                    print(error?.localizedDescription)
-                }
-                completion(result: allPresentations)
-            })
-         dataTask.resume()
-        }
-    }
-    
-    func getPresentationsFromJson(jsonDictionary:NSDictionary) -> [PresentationTemp] {
-        var presentations:[PresentationTemp] = []
-        if let tableDictionary = jsonDictionary.objectForKey("table") {
-            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-                for dict in rowsDictArray {
-                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-                        let newPresentation = PresentationTemp.init(presentationInfoArray: arrayWithInfoDictionaries)
-                        presentations.append(newPresentation)
-                    }
-                }
-            }
-        }
-        return presentations
-    }
-    //breakouts
-    func getAllBreakoutsFromGoogleSpreadSheet(completion:(result:[BreakoutTemp]) -> Void) {
-        var breakouts:[BreakoutTemp] = []
-        if let breakOutsKey = self.defaults.objectForKey("Breakouts") as? String {
-            let url = NSURL(string: self.generalSpreadSheetLink + breakOutsKey)
-          let urlDataTaks = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-                if error ==  nil {
-                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
-                         if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
-                           breakouts = self.getAllBreakoutsFromJson(jsonObject)
+                        if let stringWithJason = stringFromData {
+                            if let jsonObject = self.getJsonObjectFromStringFromData(stringWithJason) as? NSDictionary {
+                                self.createManagedObjectsOfEntity(entityName, from: jsonObject)
+                            } else {
+                                print("could not get json object")
+                            }
                         }
                     }
                 } else {
                     print(error?.localizedDescription)
                 }
-            completion(result: breakouts)
-            })
-            urlDataTaks.resume()
-        } else {
-            print("no key for breakouts")
-        }
-    }
-    
-    func getAllBreakoutsFromJson(jsonDictionary:NSDictionary) -> [BreakoutTemp] {
-        var breakouts:[BreakoutTemp] = []
-        if let tableDictionary = jsonDictionary.objectForKey("table") {
-            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-                for dict in rowsDictArray {
-                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-                        let newBreakout = BreakoutTemp.init(from: arrayWithInfoDictionaries)
-                        breakouts.append(newBreakout)
-                    }
-                }
-            }
-        }
-        return breakouts
-    }
-
-    //getting schedule
-    func getAllSchedulesFromGooglrSpreadSheet(completion:(result:[ScheduleItemTemp]) -> Void) {
-        var scheduleItems:[ScheduleItemTemp] = []
-        if let schedulesKey = self.defaults.objectForKey("Schedules") as? String {
-            let url = NSURL(string: self.generalSpreadSheetLink + schedulesKey)
-            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-                if error == nil {
-                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
-                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
-                            scheduleItems = self.getScheduleItemsFromJson(jsonObject)
-                        }
-                    }
-                } else {
-                    print(error?.localizedDescription)
-                }
-                completion(result: scheduleItems)
             })
             dataTask.resume()
+        } else {
+            print("no key has been store for %@", entityName)
         }
-    }    
-
-    func getScheduleItemsFromJson(jsonDictionary: NSDictionary) -> [ScheduleItemTemp] {
-        var scheduleItems:[ScheduleItemTemp] = []
+    }
+    
+    func createManagedObjectsOfEntity(entityName:String, from jsonDictionary:NSDictionary) {
         if let tableDictionary = jsonDictionary.objectForKey("table") {
             if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-                for dict in rowsDictArray {
-                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-                        //print(arrayWithInfoDictionaries)
-                        let newItemInSchedule = ScheduleItemTemp.init(from: arrayWithInfoDictionaries)
-                        scheduleItems.append(newItemInSchedule)
+                switch entityName {
+                case "Breakouts":
+                    for dict in rowsDictArray {
+                        if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                        ManagedObjectsController.sharedInstance.createAndSaveBreakoutObjectFromInfoArray(arrayWithInfoDictionaries)
+                        }
                     }
+                    break
+                default:
+                    break
                 }
             }
         }
-        return scheduleItems
     }
-
 }
 
 
 
+//    ////////getting all speakers
+//    func getAllSpeakersGoogleSpreadSheet(completion:(result:[SpeakerTemp]) -> Void) {
+//        var allSpeakers:[SpeakerTemp] = []
+//        var url:NSURL?
+//        if let speakersKey = self.defaults.objectForKey("Speakers") as? String {
+//            url = NSURL(string: self.generalSpreadSheetLink + speakersKey)
+//           let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+//                if error != nil {
+//                    print(error?.localizedDescription)
+//                } else {
+//                    if let dataString = data {
+//                        let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
+//                      if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
+//                         allSpeakers = self.getSpeakersFromJson(jsonObject)
+//                        }
+//                    }
+//                }
+//            completion(result: allSpeakers)
+//            })
+//        dataTask.resume()
+//        } else {
+//            print("no spreadSheet key available for Speakers")
+//        }
+//    }
+//
+//    func getSpeakersFromJson(jsonDictionary:NSDictionary) -> [SpeakerTemp] {
+//        var speakers:[SpeakerTemp] = []
+//        if let tableDictionary = jsonDictionary.objectForKey("table") {
+//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+//                for dict in rowsDictArray {
+//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+//                        let newSpeaker = SpeakerTemp.init(speakerArray: arrayWithInfoDictionaries)
+//                        speakers.append(newSpeaker)
+//                    }
+//                }
+//            }
+//        }
+//     return speakers
+//    }
+//    //speakers
+//    func getAllPresentationsFromGoogleSpreadSheet(completion:(result:[PresentationTemp]) -> Void) {
+//                 var allPresentations:[PresentationTemp] = []
+//        if let presentationsKey = self.defaults.objectForKey("Presentations") as? String {
+//            let url = NSURL(string:self.generalSpreadSheetLink + presentationsKey)
+//            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+//                if error == nil {
+//                    let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
+//                        allPresentations = self.getPresentationsFromJson(jsonObject)
+//                    }
+//                } else {
+//                    print(error?.localizedDescription)
+//                }
+//                completion(result: allPresentations)
+//            })
+//         dataTask.resume()
+//        }
+//    }
+//
+//    func getPresentationsFromJson(jsonDictionary:NSDictionary) -> [PresentationTemp] {
+//        var presentations:[PresentationTemp] = []
+//        if let tableDictionary = jsonDictionary.objectForKey("table") {
+//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+//                for dict in rowsDictArray {
+//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+//                        let newPresentation = PresentationTemp.init(presentationInfoArray: arrayWithInfoDictionaries)
+//                        presentations.append(newPresentation)
+//                    }
+//                }
+//            }
+//        }
+//        return presentations
+//    }
+//    //breakouts
+//    func getAllBreakoutsFromGoogleSpreadSheet(completion:(result:[BreakoutTemp]) -> Void) {
+//        var breakouts:[BreakoutTemp] = []
+//        if let breakOutsKey = self.defaults.objectForKey("Breakouts") as? String {
+//            let url = NSURL(string: self.generalSpreadSheetLink + breakOutsKey)
+//          let urlDataTaks = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+//                if error ==  nil {
+//                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
+//                         if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
+//                           breakouts = self.getAllBreakoutsFromJson(jsonObject)
+//                        }
+//                    }
+//                } else {
+//                    print(error?.localizedDescription)
+//                }
+//            completion(result: breakouts)
+//            })
+//            urlDataTaks.resume()
+//        } else {
+//            print("no key for breakouts")
+//        }
+//    }
+//
+//    func getAllBreakoutsFromJson(jsonDictionary:NSDictionary) -> [BreakoutTemp] {
+//        var breakouts:[BreakoutTemp] = []
+//        if let tableDictionary = jsonDictionary.objectForKey("table") {
+//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+//                for dict in rowsDictArray {
+//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+//                        let newBreakout = BreakoutTemp.init(from: arrayWithInfoDictionaries)
+//                        breakouts.append(newBreakout)
+//                    }
+//                }
+//            }
+//        }
+//        return breakouts
+//    }
+//
+//    //getting schedule
+//    func getAllSchedulesFromGooglrSpreadSheet(completion:(result:[ScheduleItemTemp]) -> Void) {
+//        var scheduleItems:[ScheduleItemTemp] = []
+//        if let schedulesKey = self.defaults.objectForKey("Schedules") as? String {
+//            let url = NSURL(string: self.generalSpreadSheetLink + schedulesKey)
+//            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+//                if error == nil {
+//                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
+//                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
+//                            scheduleItems = self.getScheduleItemsFromJson(jsonObject)
+//                        }
+//                    }
+//                } else {
+//                    print(error?.localizedDescription)
+//                }
+//                completion(result: scheduleItems)
+//            })
+//            dataTask.resume()
+//        }
+//    }
+//
+//    func getScheduleItemsFromJson(jsonDictionary: NSDictionary) -> [ScheduleItemTemp] {
+//        var scheduleItems:[ScheduleItemTemp] = []
+//        if let tableDictionary = jsonDictionary.objectForKey("table") {
+//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
+//                for dict in rowsDictArray {
+//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+//                        //print(arrayWithInfoDictionaries)
+//                        let newItemInSchedule = ScheduleItemTemp.init(from: arrayWithInfoDictionaries)
+//                        scheduleItems.append(newItemInSchedule)
+//                    }
+//                }
+//            }
+//        }
+//        return scheduleItems
+//    }
 
 
 

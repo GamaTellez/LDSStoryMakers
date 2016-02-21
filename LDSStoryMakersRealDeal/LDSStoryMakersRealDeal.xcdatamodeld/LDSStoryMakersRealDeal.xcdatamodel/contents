@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
+    <entity name="Breakout" representedClassName=".Breakout" syncable="YES">
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Day" representedClassName=".Day" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="scheduleItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ScheduleItem" inverseName="day" inverseEntity="ScheduleItem" syncable="YES"/>
+    </entity>
+    <entity name="Presentation" representedClassName=".Presentation" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isIntensive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="keyNote" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="presentationDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sectionId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="speakerId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="speakerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ScheduleItem" representedClassName=".ScheduleItem" syncable="YES">
+        <attribute name="isPresentation" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="presentationId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="presentationTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scheduleId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="scheduleItems" inverseEntity="Day" syncable="YES"/>
+    </entity>
+    <entity name="Speaker" representedClassName=".Speaker" syncable="YES">
+        <attribute name="speakerBio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="speakerName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Speaker" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Presentation" positionX="-54" positionY="9" width="128" height="165"/>
+        <element name="Breakout" positionX="-36" positionY="72" width="128" height="90"/>
+        <element name="ScheduleItem" positionX="-18" positionY="81" width="128" height="165"/>
+        <element name="Day" positionX="0" positionY="117" width="128" height="90"/>
+    </elements>
 </model>

@@ -101,7 +101,7 @@
         <!--Item-->
         <scene sceneID="k7D-cu-uJ6">
             <objects>
-                <viewController id="Zry-hZ-XlH" sceneMemberID="viewController">
+                <viewController id="Zry-hZ-XlH" customClass="FullScheduleViewController" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CKG-IN-A7P"/>
                         <viewControllerLayoutGuide type="bottom" id="kbr-hb-v9j"/>
@@ -109,9 +109,41 @@
                     <view key="view" contentMode="scaleToFill" id="Oh7-op-Pdf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-Er-hFn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conference Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0h-ym-Xo1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f9t-vX-H7Y">
+                                <rect key="frame" x="20" y="97" width="560" height="29"/>
+                                <segments>
+                                    <segment title="Friday"/>
+                                    <segment title="Saturday"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segementedControllerTapped:" destination="Zry-hZ-XlH" eventType="valueChanged" id="B7q-ha-eAk"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NN7-Er-hFn" firstAttribute="top" secondItem="Oh7-op-Pdf" secondAttribute="top" id="d9z-C8-7sA"/>
+                            <constraint firstItem="NN7-Er-hFn" firstAttribute="leading" secondItem="Oh7-op-Pdf" secondAttribute="leading" id="h9S-W2-1EM"/>
+                            <constraint firstAttribute="trailing" secondItem="NN7-Er-hFn" secondAttribute="trailing" id="jOQ-2K-ROh"/>
+                            <constraint firstAttribute="bottom" secondItem="NN7-Er-hFn" secondAttribute="bottom" id="tgy-Hn-RTV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="vJd-nG-p1r"/>
+                    <connections>
+                        <outlet property="backGroundImageView" destination="NN7-Er-hFn" id="ONq-4L-VfE"/>
+                        <outlet property="segmentedController" destination="f9t-vX-H7Y" id="1uI-Xh-mQH"/>
+                        <outlet property="titleLabel" destination="a0h-ym-Xo1" id="ATY-bf-qNr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYr-Zd-LUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
