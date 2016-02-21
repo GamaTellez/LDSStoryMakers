@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.getKeysAvailableInUserDefaults()
         return true
@@ -168,6 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 dispatch_group_leave(completionBlocksWait)
             })
             dispatch_group_notify(completionBlocksWait, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                NSNotificationCenter.defaultCenter().postNotificationName("allObjectsFromGoogleSpreadSheetsInCoreData", object: nil)
             }
         } else {
             print("all keys stored in nsuserdefaults")

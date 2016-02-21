@@ -15,12 +15,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     
+    let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
-        
+        self.registerForNotifications()
         let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
         print(breakouts.count)
         let schedules = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
@@ -29,6 +31,16 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         print(presentations.count)
         let speakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
         print(speakers.count)
+
+    }
+    
+    func getObjectsFromCoreData() {
+        print("all objects in core data ready to use")
+        
+    }
+    
+    func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"getObjectsFromCoreData", name: kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
     }
     
     func setBackgroundImageView() {

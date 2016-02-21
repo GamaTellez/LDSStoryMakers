@@ -90,8 +90,10 @@ class NSURLSessionController: NSObject {
         switch  spreadsheetName {
             case "Breakouts":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                   let allBreakoutsCount = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
-                    print(allBreakoutsCount.count)
+                    if finished {
+                        let allBreakoutsCount = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
+                        print(allBreakoutsCount.count)
+                    }
                 })
                 break
             case "Schedules":
@@ -127,12 +129,16 @@ class NSURLSessionController: NSObject {
             let url = NSURL(string: self.generalSpreadSheetLink + spreadSheetkeyForObject)
             let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, responde:NSURLResponse?, error:NSError? ) -> Void in
                 if error ==  nil {
+                
                     if let dataString = data {
                             let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
                             if let stringWithJason = stringFromData {
                                 if let jsonObject = self.getJsonObjectFromStringFromData(stringWithJason) as? NSDictionary {
-                                    self.createManagedObjectsOfEntity(entityName, from: jsonObject)
-                            } else {
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        self.createManagedObjectsOfEntity(entityName, from: jsonObject)
+                                        
+                                    })
+                                } else {
                                 print("could not get json object")
                             }
                         }

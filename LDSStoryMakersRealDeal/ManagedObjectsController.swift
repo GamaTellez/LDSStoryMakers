@@ -12,9 +12,13 @@ import CoreData
 class ManagedObjectsController: NSObject {
     static let sharedInstance = ManagedObjectsController()
     let managedContext:NSManagedObjectContext
+   // let privateManagedContext:NSManagedObjectContext
     
     override init() {
         self.managedContext = ((UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext)!
+        //self.privateManagedContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        //self.privateManagedContext.parentContext = self.managedContext
+        //self.privateManagedContext.persistentStoreCoordinator = self.managedContext.persistentStoreCoordinator
     }
     
     //BREAKOUT
@@ -171,6 +175,14 @@ class ManagedObjectsController: NSObject {
             print(error.localizedDescription)
         }
     }
+    
+//    func backGroundSaveToCoreData() {
+//        do {
+//            try self.privateManagedContext.save()
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//        }
+//    }
     //FETC REQUESTS
     func getAllBreakoutsFromCoreData() -> [AnyObject] {
         let allbreakoutsRequest = NSFetchRequest(entityName: "Breakout")
