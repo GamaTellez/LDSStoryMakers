@@ -98,7 +98,7 @@
             </objects>
             <point key="canvasLocation" x="1335" y="335"/>
         </scene>
-        <!--Item-->
+        <!--Full Schedule-->
         <scene sceneID="k7D-cu-uJ6">
             <objects>
                 <viewController id="Zry-hZ-XlH" customClass="FullScheduleViewController" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,14 +113,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-Er-hFn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conference Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0h-ym-Xo1">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f9t-vX-H7Y">
-                                <rect key="frame" x="20" y="97" width="560" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f9t-vX-H7Y">
+                                <rect key="frame" x="20" y="76" width="560" height="29"/>
                                 <segments>
                                     <segment title="Friday"/>
                                     <segment title="Saturday"/>
@@ -132,22 +126,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NN7-Er-hFn" firstAttribute="top" secondItem="Oh7-op-Pdf" secondAttribute="top" id="d9z-C8-7sA"/>
-                            <constraint firstItem="NN7-Er-hFn" firstAttribute="leading" secondItem="Oh7-op-Pdf" secondAttribute="leading" id="h9S-W2-1EM"/>
-                            <constraint firstAttribute="trailing" secondItem="NN7-Er-hFn" secondAttribute="trailing" id="jOQ-2K-ROh"/>
-                            <constraint firstAttribute="bottom" secondItem="NN7-Er-hFn" secondAttribute="bottom" id="tgy-Hn-RTV"/>
+                            <constraint firstItem="NN7-Er-hFn" firstAttribute="top" secondItem="Oh7-op-Pdf" secondAttribute="top" id="Qy3-YJ-HKN"/>
+                            <constraint firstItem="f9t-vX-H7Y" firstAttribute="centerX" secondItem="NN7-Er-hFn" secondAttribute="centerX" id="R8V-Pm-5Bg"/>
+                            <constraint firstItem="f9t-vX-H7Y" firstAttribute="leading" secondItem="Oh7-op-Pdf" secondAttribute="leadingMargin" id="b5v-9u-WYE"/>
+                            <constraint firstItem="f9t-vX-H7Y" firstAttribute="top" secondItem="CKG-IN-A7P" secondAttribute="bottom" constant="12" id="jCR-Iv-yja"/>
+                            <constraint firstAttribute="bottom" secondItem="NN7-Er-hFn" secondAttribute="bottom" id="kOl-B5-eSw"/>
+                            <constraint firstAttribute="trailing" secondItem="NN7-Er-hFn" secondAttribute="trailing" id="qlV-oQ-1YV"/>
+                            <constraint firstItem="NN7-Er-hFn" firstAttribute="leading" secondItem="Oh7-op-Pdf" secondAttribute="leading" id="rYd-d9-44D"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="vJd-nG-p1r"/>
+                    <navigationItem key="navigationItem" title="Full Schedule" id="n6l-9n-MH7"/>
                     <connections>
                         <outlet property="backGroundImageView" destination="NN7-Er-hFn" id="ONq-4L-VfE"/>
                         <outlet property="segmentedController" destination="f9t-vX-H7Y" id="1uI-Xh-mQH"/>
-                        <outlet property="titleLabel" destination="a0h-ym-Xo1" id="ATY-bf-qNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYr-Zd-LUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047" y="335"/>
+            <point key="canvasLocation" x="2859" y="335"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxn-ry-Fgk">
@@ -160,12 +156,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Cel-fw-gmo"/>
-                        <segue destination="Zry-hZ-XlH" kind="relationship" relationship="viewControllers" id="G5X-dh-n5A"/>
+                        <segue destination="yUW-CK-9hU" kind="relationship" relationship="viewControllers" id="G5X-dh-n5A"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7en-28-Dlx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="696" y="347"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="hjD-NV-WSi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yUW-CK-9hU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="vJd-nG-p1r"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oNd-lj-WgG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Zry-hZ-XlH" kind="relationship" relationship="rootViewController" id="U23-Q6-MBc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BgN-vf-vWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2047" y="335"/>
         </scene>
     </scenes>
 </document>

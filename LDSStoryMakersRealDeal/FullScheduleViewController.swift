@@ -12,11 +12,23 @@ class FullScheduleViewController: UIViewController {
 
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var segmentedController: UISegmentedControl!
-    @IBOutlet var titleLabel: UILabel!
+
     
     override func viewDidLoad() {
         self.setViewControllerBackgroundImage()
+        self.getAllBreakouts()
+    }
+    
+    func getAllBreakouts() -> [Breakout] {
+        var allBreakouts:[Breakout] = []
+        if let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData() as? [Breakout] {
+            allBreakouts = breakouts
+        }
+        for timeBreakout in allBreakouts {
+            print(timeBreakout.id)
+        }
         
+        return allBreakouts
     }
     
     func setViewControllerBackgroundImage() {

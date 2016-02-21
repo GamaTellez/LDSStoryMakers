@@ -90,33 +90,22 @@ class NSURLSessionController: NSObject {
         switch  spreadsheetName {
             case "Breakouts":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                    if finished {
-                        let allBreakoutsCount = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
-                        print(allBreakoutsCount.count)
-                    }
                 })
                 break
             case "Schedules":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                    let scheduleItems = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
-                    print(scheduleItems.count)
                 })
                 break
             case "Speakers":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                    let speakers = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
-                    print(speakers.count)
                 })
                 break
             case "Presentations":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                    let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData()
-                    print(allPresentations.count)
                 })
                 break
             case "Notifications":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
-                    
                 })
         default:
             print("no such key")
@@ -136,7 +125,6 @@ class NSURLSessionController: NSObject {
                                 if let jsonObject = self.getJsonObjectFromStringFromData(stringWithJason) as? NSDictionary {
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                         self.createManagedObjectsOfEntity(entityName, from: jsonObject)
-                                        
                                     })
                                 } else {
                                 print("could not get json object")

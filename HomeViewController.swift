@@ -23,14 +23,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setBackgroundImageView()
         self.setUpTablewView()
         self.registerForNotifications()
-        let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
-        print(breakouts.count)
-        let schedules = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
-        print(schedules.count)
-        let presentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData()
-        print(presentations.count)
-        let speakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
-        print(speakers.count)
+//        let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
+//        print(breakouts.count)
+//        let schedules = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
+//        print(schedules.count)
+//        let presentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData()
+//        print(presentations.count)
+//        let speakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
+//        print(speakers.count)
 
     }
     
