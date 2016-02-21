@@ -84,21 +84,29 @@ class NSURLSessionController: NSObject {
             self.defaults.synchronize()
             }
         }
-    
-/////////
+    ///getting a creating managed objects
     func getDataFromSpreadSheetsAndSaveObjectsToCoreDataFor(spreadsheetName:String) -> [AnyObject] {
-        
         switch  spreadsheetName {
             case "Breakouts":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                break
+            case "Schedules":
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                break
+            case "Speakers":
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
+                break
+            case "Presentations":
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
             break
+                case "Notifications":
+                self.createManagedObjectsFromSpreadSheetData(spreadsheetName)
         default:
+            print("no such key")
             break
         }
-        
         return []
     }
-    
     
     func createManagedObjectsFromSpreadSheetData(entityName:String) {
         if let spreadSheetkeyForObject = self.defaults.objectForKey(entityName) as? String {
@@ -106,16 +114,18 @@ class NSURLSessionController: NSObject {
             let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, responde:NSURLResponse?, error:NSError? ) -> Void in
                 if error ==  nil {
                     if let dataString = data {
-                        let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
-                        if let stringWithJason = stringFromData {
-                            if let jsonObject = self.getJsonObjectFromStringFromData(stringWithJason) as? NSDictionary {
-                                self.createManagedObjectsOfEntity(entityName, from: jsonObject)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
+                            if let stringWithJason = stringFromData {
+                                if let jsonObject = self.getJsonObjectFromStringFromData(stringWithJason) as? NSDictionary {
+                                    self.createManagedObjectsOfEntity(entityName, from: jsonObject)
                             } else {
                                 print("could not get json object")
                             }
                         }
-                    }
-                } else {
+                    })
+                }
+            } else {
                     print(error?.localizedDescription)
                 }
             })
@@ -130,12 +140,34 @@ class NSURLSessionController: NSObject {
             if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
                 switch entityName {
                 case "Breakouts":
+                         print("getting breakouts")
                     for dict in rowsDictArray {
                         if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
                         ManagedObjectsController.sharedInstance.createAndSaveBreakoutObjectFromInfoArray(arrayWithInfoDictionaries)
                         }
                     }
                     break
+                case "Schedules":
+                    print("getting schedules")
+                    for dict in rowsDictArray {
+                        if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                            ManagedObjectsController.sharedInstance.createAndSaveScheduleItemObjectFromArray(arrayWithInfoDictionaries)
+                        }
+                    }
+                    break
+                case "Speakers":
+                    print("getting speakers")
+                    for dict in rowsDictArray {
+                        if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                            ManagedObjectsController.sharedInstance.createAndSaveSpeakerManagedObjectFromArray(arrayWithInfoDictionaries)
+                        }
+                    }
+                    break
+                case "Presentations":
+                    print("need to implement presentations init")
+                    break
+                case "Notifications":
+                    print("ned to implement notidications initn and create managed object")
                 default:
                     break
                 }
