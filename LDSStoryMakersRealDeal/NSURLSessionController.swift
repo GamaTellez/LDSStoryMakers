@@ -137,6 +137,7 @@ class NSURLSessionController: NSObject {
                 }
             } else {
                     print(error?.localizedDescription)
+                    completion(finished: false)
                 }
             completion(finished: true)
             })
