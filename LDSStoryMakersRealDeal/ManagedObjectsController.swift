@@ -184,8 +184,9 @@ class ManagedObjectsController: NSObject {
 //        }
 //    }
     //FETC REQUESTS
-    func getAllBreakoutsFromCoreData() -> [AnyObject] {
+    func getAllBreakoutsFromCoreDataByDate() -> [AnyObject] {
         let allbreakoutsRequest = NSFetchRequest(entityName: "Breakout")
+        allbreakoutsRequest.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: true)]
        return self.fetchRequestExecuter(allbreakoutsRequest)
     }
 

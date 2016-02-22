@@ -130,6 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         dispatch_group_leave(completionBlocksWait)
                     } else {
                         print("something went wrong while getting the speakers")
+                        dispatch_group_leave(completionBlocksWait)
               
                     }
                 })
@@ -140,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         dispatch_group_leave(completionBlocksWait)
                     } else {
                         print("something went wrong while getting the presentations")
-            
+                        dispatch_group_leave(completionBlocksWait)
                     }
                 })
                 dispatch_group_enter(completionBlocksWait)
@@ -151,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
                     } else {
                         print("something went wrong while getting the breakouts")
-            
+                        dispatch_group_leave(completionBlocksWait)
                     }
                 })
                 dispatch_group_enter(completionBlocksWait)
@@ -161,20 +162,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         dispatch_group_leave(completionBlocksWait)
                     } else {
                         print("something went wrong while getting the notifications")
-            
+                        dispatch_group_leave(completionBlocksWait)
                     }
                 })
                 dispatch_group_leave(completionBlocksWait)
             })
             dispatch_group_notify(completionBlocksWait, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                NSNotificationCenter.defaultCenter().postNotificationName("allObjectsFromGoogleSpreadSheetsInCoreData", object: nil)
+               // NSNotificationCenter.defaultCenter().postNotificationName("allObjectsFromGoogleSpreadSheetsInCoreData", object: nil)
             }
         } else {
             print("all keys stored in nsuserdefaults")
         }
     }
-    
-    
-    
 }
 

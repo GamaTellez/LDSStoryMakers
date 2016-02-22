@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
-        self.registerForNotifications()
+  //      self.registerForNotifications()
 //        let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
 //        print(breakouts.count)
 //        let schedules = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()

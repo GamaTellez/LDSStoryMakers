@@ -22,6 +22,9 @@
 		87B0704C1C78D72100014DD1 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070421C78D72100014DD1 /* Day.swift */; };
 		87B0704D1C78D72100014DD1 /* Presentation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070431C78D72100014DD1 /* Presentation+CoreDataProperties.swift */; };
 		87B0704E1C78D72100014DD1 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070441C78D72100014DD1 /* Presentation.swift */; };
+		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
+		87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */; };
+		87F1D3A21C7AA6D900D6AA87 /* CustomBreakoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F1D3A11C7AA6D900D6AA87 /* CustomBreakoutCell.xib */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
 		87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */; };
@@ -68,6 +71,9 @@
 		87B070421C78D72100014DD1 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Day.swift; path = ../Day.swift; sourceTree = "<group>"; };
 		87B070431C78D72100014DD1 /* Presentation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Presentation+CoreDataProperties.swift"; path = "../Presentation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		87B070441C78D72100014DD1 /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Presentation.swift; path = ../Presentation.swift; sourceTree = "<group>"; };
+		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
+		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
+		87F1D3A11C7AA6D900D6AA87 /* CustomBreakoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBreakoutCell.xib; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87F21A0C1C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				87B070371C78251600014DD1 /* FullScheduleViewController.swift */,
+				87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */,
+				87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */,
+				87F1D3A11C7AA6D900D6AA87 /* CustomBreakoutCell.xib */,
 			);
 			name = FullScheduleVC;
 			sourceTree = "<group>";
@@ -329,6 +338,7 @@
 				87F21A151C69360300C2EAA4 /* LaunchScreen.storyboard in Resources */,
 				87F21A121C69360300C2EAA4 /* Assets.xcassets in Resources */,
 				87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */,
+				87F1D3A21C7AA6D900D6AA87 /* CustomBreakoutCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,10 +370,12 @@
 				87B0704D1C78D72100014DD1 /* Presentation+CoreDataProperties.swift in Sources */,
 				87B070481C78D72100014DD1 /* ScheduleItem.swift in Sources */,
 				87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */,
+				87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */,
 				87B070461C78D72100014DD1 /* Speaker.swift in Sources */,
 				87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
 				8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */,
+				87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */,
 				873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
 				87B0704A1C78D72100014DD1 /* Breakout.swift in Sources */,
