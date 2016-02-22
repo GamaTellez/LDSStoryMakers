@@ -20,16 +20,18 @@ class BreakoutsDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(breakoutCellID, forIndexPath: indexPath) as? BreakoutCell
-        if (cell ==  nil) {
-            tableView.registerNib(UINib(nibName: "CustomBreakoutCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: breakoutCellID)
-            tableView.registerClass(BreakoutCell.self, forCellReuseIdentifier: breakoutCellID)
-        }
         cell?.backgroundColor = UIColor.clearColor()
         cell?.layer.cornerRadius = 5
         cell?.layer.borderColor = UIColor.blackColor().CGColor
         cell?.layer.borderWidth = 1
+        
+        let breakoutAtIndex = self.breakoutsByDay[indexPath.row]
         cell?.breakoutLabel.numberOfLines = 2
-        cell?.breakoutLabel.text = "breakout \n dderedfdfdfdfdfdfdfdfr"
+        if let startDate = breakoutAtIndex.startTime {
+            if let endDate = breakoutAtIndex.endTime {
+                cell?.breakoutLabel.text = String(format:"Breakout %@ \n  %@ to %@", breakoutAtIndex.breakoutID!,NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+            }
+        }
         return cell!
     }
     
