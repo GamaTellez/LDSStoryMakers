@@ -30,7 +30,7 @@ class ManagedObjectsController: NSObject {
         
         if let dictWithBreakoutID = arrayWithInfoDictionaries[0] as? NSDictionary {
             if let id = dictWithBreakoutID.objectForKey("v") as? String {
-                newBreakout.setValue(id, forKey: "id")
+                newBreakout.setValue(id, forKey: "breakoutID")
             }
         }
         

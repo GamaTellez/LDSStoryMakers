@@ -10,15 +10,14 @@ import UIKit
 
 class BreakoutCell: UITableViewCell {
 let breakoutCellID = "breakoutCell"
-    @IBOutlet var breakoutButton: UIButton!
-    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var breakoutLabel: UILabel!
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: breakoutCellID)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        //fatalError("init(coder:) has not been implemented")
-        super.init(coder: aDecoder)
-    }
+//    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: breakoutCellID)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        //fatalError("init(coder:) has not been implemented")
+//        super.init(coder: aDecoder)
+//    }
 }

@@ -14,22 +14,15 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     
-    override func viewDidLoad() {
-        self.setViewControllerBackgroundImage()
-        self.getAllBreakouts()
-        self.setUpTableView()
-    }
+    var fridayBreakouts:[Breakout] = []
+    var saturdayBreakouts:[Breakout] = []
+    let tableViewDataSoruce:BreakoutsDataSource = BreakoutsDataSource()
     
-    func getAllBreakouts() -> [Breakout] {
-        var allBreakouts:[Breakout] = []
-        if let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
-            allBreakouts = breakouts
-        }
-//        for timeBreakout in allBreakouts {
-//            print(timeBreakout.id)
-//            print(timeBreakout.startTime)
-//        }
-        return allBreakouts
+    override func viewDidLoad() {
+        self.getbreakoutsByDay()
+        self.setViewControllerBackgroundImage()
+        self.setUpTableView()
+        self.segmentedController.selectedSegmentIndex = 0
     }
     
     func setViewControllerBackgroundImage() {
@@ -39,12 +32,48 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     
     func setUpTableView(){
         self.tableView.backgroundColor = UIColor.clearColor()
-        self.tableView.registerNib(UINib(nibName: "CustomBreakoutCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: breakoutCellID)
-        tableView.registerClass(BreakoutCell.self, forCellReuseIdentifier: breakoutCellID)
         self.tableView.showsVerticalScrollIndicator = false
-
+        self.tableView.dataSource = self.tableViewDataSoruce
+        self.loadTableViewWithBreakouts(self.fridayBreakouts)
     }
     
+    func loadTableViewWithBreakouts(breakoutsByDay:[Breakout]) {
+        self.tableViewDataSoruce.updateBreakoutsArray(with: breakoutsByDay)
+        self.tableView.reloadData()
+    }
+    
+    func getbreakoutsByDay() {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        let friday = formatter.dateFromString("5/6/2016")
+        let saturday = formatter.dateFromString("5/7/2016")
+        if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+            var order = NSCalendar.currentCalendar()
+            for timeBreakout in allBreakouts {
+                if timeBreakout.breakoutID?.characters.count > 2 {
+                    print("it is a mandatory thingy")
+                } else {
+                if let dayDate = timeBreakout.startTime {
+                  //  print(NSDateFormatter.localizedStringFromDate(dayDate, dateStyle: .FullStyle, timeStyle: .NoStyle))
+                        let comparison = order.compareDate(friday!, toDate: dayDate, toUnitGranularity: .Day)
+                        if comparison == NSComparisonResult.OrderedSame {
+                            self.fridayBreakouts.append(timeBreakout)
+                        }
+                        let comparisonTwo = order.compareDate(saturday!, toDate: dayDate, toUnitGranularity: .Day)
+                        if comparisonTwo == NSComparisonResult.OrderedSame {
+                            self.saturdayBreakouts.append(timeBreakout)
+                        }
+                    }
+                }
+            }
+        }
+        print(String("FirdayBreakoouts %@",self.fridayBreakouts.count))
+        print(String("Saturday breakouts %@", self.saturdayBreakouts.count))
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 8
     }
@@ -54,8 +83,17 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
-    @IBAction func segementedControllerTapped(sender: AnyObject) {
-        
+    @IBAction func segementedControllerTapped(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.loadTableViewWithBreakouts(self.fridayBreakouts)
+            break
+        case 1:
+            self.loadTableViewWithBreakouts(self.saturdayBreakouts)
+            break
+        default:
+            break
+        }
     }
 
 }

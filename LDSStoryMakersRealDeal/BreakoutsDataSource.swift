@@ -8,10 +8,10 @@
 
 import UIKit
 
-let breakoutCellID = "breakoutCell"
+let breakoutCellID = "breakoutCellID"
 
 class BreakoutsDataSource: NSObject, UITableViewDataSource {
-    
+    var breakoutsByDay:[Breakout] = []
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 6
@@ -28,11 +28,18 @@ class BreakoutsDataSource: NSObject, UITableViewDataSource {
         cell?.layer.cornerRadius = 5
         cell?.layer.borderColor = UIColor.blackColor().CGColor
         cell?.layer.borderWidth = 1
-        //cell?.breakoutButton.titleLabel?.text = "Breakout"
-        cell?.timeLabel.text = "time here"
+        cell?.breakoutLabel.numberOfLines = 2
+        cell?.breakoutLabel.text = "breakout \n dderedfdfdfdfdfdfdfdfr"
         return cell!
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    func updateBreakoutsArray(with array:[Breakout]) {
+        self.breakoutsByDay = array
+    }
+
 }
+
