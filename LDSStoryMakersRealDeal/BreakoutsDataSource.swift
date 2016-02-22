@@ -19,13 +19,23 @@ class BreakoutsDataSource: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        switch indexPath.section {
+        case 0:
+            
+            
+            break
+        default:
+            break
+        }
+        
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(breakoutCellID, forIndexPath: indexPath) as? BreakoutCell
         cell?.backgroundColor = UIColor.clearColor()
         cell?.layer.cornerRadius = 5
         cell?.layer.borderColor = UIColor.blackColor().CGColor
         cell?.layer.borderWidth = 1
         
-        let breakoutAtIndex = self.breakoutsByDay[indexPath.row]
+        let breakoutAtIndex = self.breakoutsByDay[indexPath.section]
         cell?.breakoutLabel.numberOfLines = 2
         if let startDate = breakoutAtIndex.startTime {
             if let endDate = breakoutAtIndex.endTime {
@@ -43,5 +53,6 @@ class BreakoutsDataSource: NSObject, UITableViewDataSource {
         self.breakoutsByDay = array
     }
 
+    
 }
 
