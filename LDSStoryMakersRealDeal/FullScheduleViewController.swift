@@ -92,7 +92,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.fridayBreakouts[sectionBreakout]
-                            let breakoutDetailVC = segue.destinationViewController as! DetailBreakout
+                            let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
                             if let title = selectedBreakout.breakoutID {
                                 breakoutDetailVC.title = title
                             }
@@ -103,7 +103,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.saturdayBreakouts[sectionBreakout]
-                            let breakoutDetailVC = segue.destinationViewController as! DetailBreakout
+                            let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
                             if let title = selectedBreakout.breakoutID {
                                 breakoutDetailVC.title = String("Breakout %@", title)
                             }

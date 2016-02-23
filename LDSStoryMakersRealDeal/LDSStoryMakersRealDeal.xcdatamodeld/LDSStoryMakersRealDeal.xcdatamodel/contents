@@ -22,6 +22,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ScheduleItem" representedClassName=".ScheduleItem" syncable="YES">
+        <attribute name="breakout" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="isPresentation" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="presentationId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -39,7 +40,7 @@
         <element name="Breakout" positionX="-36" positionY="72" width="128" height="105"/>
         <element name="Day" positionX="0" positionY="117" width="128" height="90"/>
         <element name="Presentation" positionX="-54" positionY="9" width="128" height="165"/>
-        <element name="ScheduleItem" positionX="-18" positionY="81" width="128" height="165"/>
+        <element name="ScheduleItem" positionX="-18" positionY="81" width="128" height="180"/>
         <element name="Speaker" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>

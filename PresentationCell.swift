@@ -1,5 +1,5 @@
 //
-//  ItemScheduleCell.swift
+//  PresentationCell.swift
 //  LDSStoryMakersRealDeal
 //
 //  Created by Gamaliel Tellez on 2/23/16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ItemScheduleCell: UITableViewCell {
-
+class PresentationCell: UITableViewCell {
+    
     @IBOutlet var addRemoveButton: UIButton!
     @IBOutlet var speakerNameLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -18,20 +18,19 @@ class ItemScheduleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
+        self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
         self.addRemoveButton.layer.borderWidth = 0.3
         self.addRemoveButton.layer.borderColor = UIColor.blackColor().CGColor
         self.titleLabel.numberOfLines = 2
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
     
+
 }
