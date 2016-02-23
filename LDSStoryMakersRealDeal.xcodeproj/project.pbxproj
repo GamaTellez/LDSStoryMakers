@@ -10,6 +10,7 @@
 		8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */; };
 		873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811221C76B3A500F4A2D1 /* HomeViewController.swift */; };
 		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
+		8792D0E41C7C22530029E532 /* DetailBreakout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0E31C7C22530029E532 /* DetailBreakout.swift */; };
 		87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070371C78251600014DD1 /* FullScheduleViewController.swift */; };
 		87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */; };
 		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
@@ -58,6 +59,7 @@
 		8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItemTemp.swift; sourceTree = "<group>"; };
 		873811221C76B3A500F4A2D1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		8792D0E31C7C22530029E532 /* DetailBreakout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailBreakout.swift; path = ../DetailBreakout.swift; sourceTree = "<group>"; };
 		87B070371C78251600014DD1 /* FullScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScheduleViewController.swift; sourceTree = "<group>"; };
 		87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsController.swift; sourceTree = "<group>"; };
 		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
@@ -143,6 +145,14 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
+		8792D0E21C7C22110029E532 /* DetailBreakoutView */ = {
+			isa = PBXGroup;
+			children = (
+				8792D0E31C7C22530029E532 /* DetailBreakout.swift */,
+			);
+			name = DetailBreakoutView;
+			sourceTree = "<group>";
+		};
 		87D257FC1C79959E000368FC /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 				87B070371C78251600014DD1 /* FullScheduleViewController.swift */,
 				87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */,
 				87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */,
+				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
 			);
 			name = FullScheduleVC;
 			sourceTree = "<group>";
@@ -366,6 +377,7 @@
 				87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */,
 				87D350811C7AD7F600F96821 /* ScheduleItem.swift in Sources */,
 				87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */,
+				8792D0E41C7C22530029E532 /* DetailBreakout.swift in Sources */,
 				87D350871C7AD7F600F96821 /* Breakout.swift in Sources */,
 				87D350841C7AD7F600F96821 /* Presentation+CoreDataProperties.swift in Sources */,
 				87D350891C7AD7F600F96821 /* Day.swift in Sources */,

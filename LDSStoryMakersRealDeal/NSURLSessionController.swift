@@ -12,7 +12,7 @@ class NSURLSessionController: NSObject {
 
     static let sharedInstance = NSURLSessionController()
     let generalSpreadSheetLink:String = "https://spreadsheets.google.com/tq?key="
-    let defaults = NSUserDefaults.standardUserDefaults()
+    lazy var defaults = NSUserDefaults.standardUserDefaults()
     let session = NSURLSession.sharedSession()
     
     //getting spreadsheets keys

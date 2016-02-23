@@ -43,32 +43,75 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     }
     
     func getbreakoutsByDay() {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy"
-        let friday = formatter.dateFromString("5/6/2016")
-        let saturday = formatter.dateFromString("5/7/2016")
-        if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
-            var order = NSCalendar.currentCalendar()
-            for timeBreakout in allBreakouts {
-                if timeBreakout.breakoutID?.characters.count > 2 {
-                    print("it is a mandatory thingy")
-                } else {
-                if let dayDate = timeBreakout.startTime {
-                  //  print(NSDateFormatter.localizedStringFromDate(dayDate, dateStyle: .FullStyle, timeStyle: .NoStyle))
-                        let comparison = order.compareDate(friday!, toDate: dayDate, toUnitGranularity: .Day)
-                        if comparison == NSComparisonResult.OrderedSame {
-                            self.fridayBreakouts.append(timeBreakout)
-                        }
-                        let comparisonTwo = order.compareDate(saturday!, toDate: dayDate, toUnitGranularity: .Day)
-                        if comparisonTwo == NSComparisonResult.OrderedSame {
-                            self.saturdayBreakouts.append(timeBreakout)
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MM-dd-yyyy"
+            let friday = formatter.dateFromString("5/6/2016")
+            let saturday = formatter.dateFromString("5/7/2016")
+            if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+                let order = NSCalendar.currentCalendar()
+                for timeBreakout in allBreakouts {
+                    if timeBreakout.breakoutID?.characters.count > 2 {
+                      //  print("it is a mandatory thingy")
+                    } else {
+                        if let dayDate = timeBreakout.startTime {
+                            let comparison = order.compareDate(friday!, toDate: dayDate, toUnitGranularity: .Day)
+                            if comparison == NSComparisonResult.OrderedSame {
+                                self.fridayBreakouts.append(timeBreakout)
+                            }
+                            let comparisonTwo = order.compareDate(saturday!, toDate: dayDate, toUnitGranularity: .Day)
+                            if comparisonTwo == NSComparisonResult.OrderedSame {
+                                self.saturdayBreakouts.append(timeBreakout)
+                            }
                         }
                     }
                 }
             }
+            print(String("FirdayBreakoouts %@",self.fridayBreakouts.count))
+            print(String("Saturday breakouts %@", self.saturdayBreakouts.count))
+    }
+    
+    func getAllScheduleItemsForSelectedBreakout(selectedBreakout:Breakout) -> [ScheduleItem] {
+        var allScheduleItems:[ScheduleItem] = []
+        let breakoutId = selectedBreakout.breakoutID
+        
+        if let itemsSchedule = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
+            for item in itemsSchedule {
+                if item.timeId?.stringValue == breakoutId {
+                    allScheduleItems.append(item)
+                }
+            }
         }
-        print(String("FirdayBreakoouts %@",self.fridayBreakouts.count))
-        print(String("Saturday breakouts %@", self.saturdayBreakouts.count))
+        return allScheduleItems
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let segueId = segue.identifier {
+            switch segueId {
+                case "detailBreakout":
+                    let daySelected = self.segmentedController.selectedSegmentIndex
+                    if daySelected == 0 {
+                        let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
+                        if let sectionBreakout = indexpathOfSelectedBreakout?.section {
+                            let selectedBreakout = self.fridayBreakouts[sectionBreakout]
+                            let breakoutDetailVC:DetailBreakout = segue.destinationViewController as! DetailBreakout
+                            breakoutDetailVC.scheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
+                        }
+                    }
+                    if daySelected == 1 {
+                        let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
+                        if let sectionBreakout = indexpathOfSelectedBreakout?.section {
+                            let selectedBreakout = self.saturdayBreakouts[sectionBreakout]
+                            let breakoutDetailVC:DetailBreakout = segue.destinationViewController as! DetailBreakout
+                            breakoutDetailVC.scheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
+                        }
+                    }
+                break
+            default:
+                break
+            }
+        }
+    
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

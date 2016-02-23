@@ -127,29 +127,30 @@
                                 <rect key="frame" x="31" y="112" width="535" height="439"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakoutCellID" rowHeight="116" id="6gQ-2O-V5U" userLabel="I" customClass="BreakoutCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="535" height="116"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakoutCellID" rowHeight="116" id="6gQ-2O-V5U" userLabel="Breakoutcell" customClass="BreakoutCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="535" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gQ-2O-V5U" id="Rca-S6-MsT">
                                             <rect key="frame" x="0.0" y="0.0" width="535" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVD-Oq-MDe">
-                                                    <rect key="frame" x="-8" y="0.0" width="535" height="119"/>
+                                                    <rect key="frame" x="8" y="0.0" width="519" height="119"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="nVD-Oq-MDe" firstAttribute="top" secondItem="Rca-S6-MsT" secondAttribute="top" id="7R1-Gk-HXj"/>
-                                                <constraint firstItem="nVD-Oq-MDe" firstAttribute="trailing" secondItem="Rca-S6-MsT" secondAttribute="trailingMargin" id="AIL-pp-wQ3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="nVD-Oq-MDe" secondAttribute="bottom" constant="-11" id="Ja4-0x-Lgf"/>
-                                                <constraint firstItem="nVD-Oq-MDe" firstAttribute="leading" secondItem="Rca-S6-MsT" secondAttribute="leadingMargin" constant="-16" id="VqX-BS-4dq"/>
+                                                <constraint firstItem="nVD-Oq-MDe" firstAttribute="top" secondItem="Rca-S6-MsT" secondAttribute="top" id="ODg-0s-8aa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="nVD-Oq-MDe" secondAttribute="bottom" constant="-11" id="SnT-dJ-clp"/>
+                                                <constraint firstItem="nVD-Oq-MDe" firstAttribute="trailing" secondItem="Rca-S6-MsT" secondAttribute="trailingMargin" id="W8R-1F-ht6"/>
+                                                <constraint firstItem="nVD-Oq-MDe" firstAttribute="leading" secondItem="Rca-S6-MsT" secondAttribute="leadingMargin" id="s31-uk-9Oz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="breakoutLabel" destination="nVD-Oq-MDe" id="Kcb-kM-Wjp"/>
+                                            <segue destination="ABy-TQ-rbg" kind="show" identifier="detailBreakout" id="1nf-jR-Yme"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -185,6 +186,34 @@
                 <customObject id="dZR-Ka-Khc" customClass="BreakoutsDataSource" customModule="LDSStoryMakersRealDeal" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2859" y="335"/>
+        </scene>
+        <!--Detail Breakout-->
+        <scene sceneID="NBV-dR-SVh">
+            <objects>
+                <tableViewController id="ABy-TQ-rbg" customClass="DetailBreakout" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="28" sectionFooterHeight="28" id="UHF-Du-9mP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="135" id="yQK-O5-iCX" userLabel="ItemSchedule" customClass="itemSchedule">
+                                <rect key="frame" x="0.0" y="92" width="600" height="135"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQK-O5-iCX" id="grb-qJ-KpI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="134.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ABy-TQ-rbg" id="Rf5-je-cMR"/>
+                            <outlet property="delegate" destination="ABy-TQ-rbg" id="pvk-V1-4Su"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BQZ-BY-jSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3499" y="335"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxn-ry-Fgk">
