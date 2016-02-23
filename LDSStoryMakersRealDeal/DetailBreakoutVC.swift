@@ -13,6 +13,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var backGroundImage: UIImageView!
     
+    let cellHeight = PresentationCell().frame.height
     var tableViewDataSource = DetailBreakoutDataSource()
     var classesInBreakout:[Class] = []
     let scheduleItemCellID = "scheduleItemCellID"
@@ -22,6 +23,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
         self.setBackgroundImageView()
         self.setUpTableView()
         self.loadTableViewWithBreakouts(self.classesInBreakout)
+        
     }
     
     func setBackgroundImageView() {
@@ -38,21 +40,21 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
         self.tableView.reloadData()
     }
     
-//    func getPresentationFromItemScheduleName(items:[ScheduleItem]) -> [Presentation] {
-//        var breakoutsPresentation:[Presentation] = []
-//        if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
-//            for itemSchedule in items {
-//                for pres in allPresentations {
-//                    if itemSchedule.presentationTitle == pres.title {
-//                        breakoutsPresentation.append(pres)
-//                        break
-//                    }
-//                }
-//            }
-//        } else {
-//            print("could find presenations")
-//        }
-//        return breakoutsPresentation
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 150
+    }
+
 
 }

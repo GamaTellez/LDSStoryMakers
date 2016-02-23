@@ -18,7 +18,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
-        let classAttend = self.classes[indexPath.row]
+        let classAttend = self.classes[indexPath.section]
         if let title = classAttend.presentation?.title {
             cell.titleLabel.text = title
         }
@@ -36,8 +36,12 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
         
     return cell
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.classes.count
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
 
