@@ -9,22 +9,25 @@
 import UIKit
 
 class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
-    var presentations:[Presentation] = []
+    var classes:[Class] = []
     let presentationCellID = "detailPresentation"
     
-    func updatePresentationsArray(from presentationsArray:[Presentation]) {
-        self.presentations = presentationsArray
+    func updateClassesArray(from classesArray:[Class]) {
+        self.classes  = classesArray
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
-        let pres = self.presentations[indexPath.row]
-        cell.titleLabel.text = pres.title
-        cell.speakerNameLabel.text = pres.speakerName
-        return PresentationCell()
+        let classAttend = self.classes[indexPath.row]
+        cell.titleLabel.text = classAttend.presentation?.title
+        cell.speakerNameLabel.text = classAttend.presentation?.speakerName
+        cell.locationLabel.text = classAttend.scheduleItem?.location
+        
+    return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.presentations.count
+        return self.classes.count
     }
     
+
 }

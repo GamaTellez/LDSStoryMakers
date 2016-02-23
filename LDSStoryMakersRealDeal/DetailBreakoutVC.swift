@@ -14,15 +14,14 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImage: UIImageView!
     
     var tableViewDataSource = DetailBreakoutDataSource()
-    var scheduleItems:[ScheduleItem] = []
-    var presentationsForTableView:[Presentation] = []
+    var classesInBreakout:[Class] = []
     let scheduleItemCellID = "scheduleItemCellID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackgroundImageView()
-        let presentationsForDataDource =  self.getPresentationFromItemScheduleName(self.scheduleItems)
-        self.loadTableViewWithBreakouts(presentationsForDataDource)
+        self.setUpTableView()
+        self.loadTableViewWithBreakouts(self.classesInBreakout)
     }
     
     func setBackgroundImageView() {
@@ -34,26 +33,26 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.dataSource = self.tableViewDataSource
     }
-    func loadTableViewWithBreakouts(presses:[Presentation]) {
-        self.tableViewDataSource.updatePresentationsArray(from: presses)
+    func loadTableViewWithBreakouts(allClassesPos:[Class]) {
+        self.tableViewDataSource.updateClassesArray(from: allClassesPos)
         self.tableView.reloadData()
     }
     
-    func getPresentationFromItemScheduleName(items:[ScheduleItem]) -> [Presentation] {
-        var breakoutsPresentation:[Presentation] = []
-        if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
-            for itemSchedule in items {
-                for pres in allPresentations {
-                    if itemSchedule.presentationTitle == pres.title {
-                        breakoutsPresentation.append(pres)
-                        break
-                    }
-                }
-            }
-        } else {
-            print("could find presenations")
-        }
-        return breakoutsPresentation
-    }
+//    func getPresentationFromItemScheduleName(items:[ScheduleItem]) -> [Presentation] {
+//        var breakoutsPresentation:[Presentation] = []
+//        if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
+//            for itemSchedule in items {
+//                for pres in allPresentations {
+//                    if itemSchedule.presentationTitle == pres.title {
+//                        breakoutsPresentation.append(pres)
+//                        break
+//                    }
+//                }
+//            }
+//        } else {
+//            print("could find presenations")
+//        }
+//        return breakoutsPresentation
+//    }
 
 }

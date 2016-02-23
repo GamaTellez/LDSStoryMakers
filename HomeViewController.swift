@@ -31,7 +31,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
 //        print(presentations.count)
 //        let speakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
 //        print(speakers.count)
-
     }
     
     func getObjectsFromCoreData() {

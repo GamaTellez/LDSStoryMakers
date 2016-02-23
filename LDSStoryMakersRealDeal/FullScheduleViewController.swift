@@ -75,12 +75,54 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         let breakoutId = selectedBreakout.breakoutID
         if let itemsSchedule = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
             for item in itemsSchedule {
-                if item.timeId?.stringValue == breakoutId {
+                if item.breakout?.stringValue == breakoutId {
                     allScheduleItems.append(item)
                 }
             }
         }
         return allScheduleItems
+    }
+    
+    
+    func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [Class] {
+        var allClasses:[Class] = []
+       
+        for item in itemsSchedule {
+            var classObject = Class()
+            classObject.scheduleItem = item
+           
+            if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+                if let itemBreakoutId = item.breakout {
+                    for breakt in allBreakouts {
+                        if itemBreakoutId.stringValue == breakt.id {
+                            classObject.breakout = breakt
+                        }
+                    }
+                }
+            }
+            
+            if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
+                if let presentationId = item.presentationId {
+                    for pres in allPresentations {
+                        if presentationId.integerValue == pres.id?.integerValue {
+                            classObject.presentation = pres
+                        }
+                    }
+                }
+            }
+            
+            if let allSpeakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData() as? [Speaker] {
+                if let speakerId = classObject.presentation?.speakerId {
+                    for speak in allSpeakers {
+                        if speakerId.integerValue == speak.speakerId?.integerValue {
+                            classObject.speaker = speak
+                        }
+                    }
+                }
+            }
+            allClasses.append(classObject)
+        }
+        return allClasses
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -93,10 +135,16 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.fridayBreakouts[sectionBreakout]
                             let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
-                            if let title = selectedBreakout.breakoutID {
-                                breakoutDetailVC.title = title
+                            if let startDate = selectedBreakout.startTime {
+                                if let endDate = selectedBreakout.endTime {
+                                    breakoutDetailVC.title = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
+                                        ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                                }
                             }
-                            breakoutDetailVC.scheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
+                            let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
+                            breakoutDetailVC.classesInBreakout = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
+                            
+                            
                         }
                     }
                     if daySelected == 1 {
@@ -104,10 +152,14 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.saturdayBreakouts[sectionBreakout]
                             let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
-                            if let title = selectedBreakout.breakoutID {
-                                breakoutDetailVC.title = String("Breakout %@", title)
+                            if let startDate = selectedBreakout.startTime {
+                                if let endDate = selectedBreakout.endTime {
+                                    breakoutDetailVC.title = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
+                                        ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                                }
                             }
-                            breakoutDetailVC.scheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
+                            let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
+                            breakoutDetailVC.classesInBreakout = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
                         }
                     }
                 break

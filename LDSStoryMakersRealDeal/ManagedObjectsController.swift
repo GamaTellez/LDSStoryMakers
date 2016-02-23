@@ -82,6 +82,13 @@ class ManagedObjectsController: NSObject {
                 newItemSchedule.setValue(NSNumber(integer: idNum), forKey: "presentationId")
             }
         }
+        
+        if let itemBreakoutIdDict = arrayWithInfoDicts[3] as? NSDictionary {
+            if let idNum = itemBreakoutIdDict.objectForKey("v") as? Int {
+                newItemSchedule.setValue(NSNumber(integer: idNum), forKey: "breakout")
+            }
+        }
+        
         if let itemSectionDictionary = arrayWithInfoDicts[4] as? NSDictionary {
             if let sect = itemSectionDictionary.objectForKey("v") as? Int {
                 newItemSchedule.setValue(sect, forKey: "section")
@@ -112,6 +119,13 @@ class ManagedObjectsController: NSObject {
     //SPEAKERS
     func createAndSaveSpeakerManagedObjectFromArray(arrayWithInfoDicts:NSArray) {
         let newSpeaker = NSManagedObject(entity: NSEntityDescription.entityForName("Speaker", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+        
+        if let dictionaryWithId = arrayWithInfoDicts[0] as? NSDictionary {
+            if let id = dictionaryWithId.objectForKey("v") as? Int {
+                newSpeaker.setValue(NSNumber(integer: id), forKey: "speakerId")
+            }
+        }
+        
         if let dictionaryWithName = arrayWithInfoDicts[1] as? NSDictionary {
             if let name = dictionaryWithName.objectForKey("v") as? String {
                 newSpeaker.setValue(name, forKey: "speakerName")
