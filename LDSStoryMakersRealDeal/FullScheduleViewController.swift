@@ -100,7 +100,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                     }
                 }
             }
-            
             if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
                 if let presentationId = item.presentationId {
                     for pres in allPresentations {
@@ -110,7 +109,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                     }
                 }
             }
-            
             if let allSpeakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData() as? [Speaker] {
                 if let speakerId = classObject.presentation?.speakerId {
                     for speak in allSpeakers {

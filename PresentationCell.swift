@@ -11,10 +11,10 @@ import UIKit
 class PresentationCell: UITableViewCell {
     
     @IBOutlet var addRemoveButton: UIButton!
-    @IBOutlet var speakerNameLabel: UILabel!
+    @IBOutlet var speakerAndLocationLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var itemTimeLabel: UILabel!
-    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+ 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +24,11 @@ class PresentationCell: UITableViewCell {
         self.titleLabel.numberOfLines = 2
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.descriptionLabel.preferredMaxLayoutWidth = 35
+        self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.descriptionLabel.font = UIFont(name: "Cochin", size: 10)
+        self.descriptionLabel.numberOfLines = 0
+        self.speakerAndLocationLabel.font = UIFont(name: "Cochin", size: 10)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

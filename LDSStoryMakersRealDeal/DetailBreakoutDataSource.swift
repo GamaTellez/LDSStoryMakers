@@ -19,9 +19,20 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
     
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
         let classAttend = self.classes[indexPath.row]
-        cell.titleLabel.text = classAttend.presentation?.title
-        cell.speakerNameLabel.text = classAttend.presentation?.speakerName
-        cell.locationLabel.text = classAttend.scheduleItem?.location
+        if let title = classAttend.presentation?.title {
+            cell.titleLabel.text = title
+        }
+        if let spakerName = classAttend.speaker?.speakerName {
+            if let location = classAttend.scheduleItem?.location {
+                cell.speakerAndLocationLabel.text = String(format: "%@ at %@",spakerName, location)
+            } else {
+                cell.speakerAndLocationLabel.text = spakerName
+            }
+        }
+
+        if let shortDescription = classAttend.presentation?.presentationDescription {
+            cell.descriptionLabel.text = shortDescription
+        }
         
     return cell
     }
