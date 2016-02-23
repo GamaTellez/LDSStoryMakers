@@ -11,6 +11,7 @@
 		873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811221C76B3A500F4A2D1 /* HomeViewController.swift */; };
 		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
 		8792D0E41C7C22530029E532 /* DetailBreakout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0E31C7C22530029E532 /* DetailBreakout.swift */; };
+		8792D0E61C7CB0160029E532 /* ItemScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0E51C7CB0160029E532 /* ItemScheduleCell.swift */; };
 		87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070371C78251600014DD1 /* FullScheduleViewController.swift */; };
 		87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */; };
 		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
@@ -60,6 +61,7 @@
 		873811221C76B3A500F4A2D1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		8792D0E31C7C22530029E532 /* DetailBreakout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailBreakout.swift; path = ../DetailBreakout.swift; sourceTree = "<group>"; };
+		8792D0E51C7CB0160029E532 /* ItemScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemScheduleCell.swift; sourceTree = "<group>"; };
 		87B070371C78251600014DD1 /* FullScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScheduleViewController.swift; sourceTree = "<group>"; };
 		87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsController.swift; sourceTree = "<group>"; };
 		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				8792D0E31C7C22530029E532 /* DetailBreakout.swift */,
+				8792D0E51C7CB0160029E532 /* ItemScheduleCell.swift */,
 			);
 			name = DetailBreakoutView;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 			files = (
 				87D350831C7AD7F600F96821 /* Speaker.swift in Sources */,
 				873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */,
+				8792D0E61C7CB0160029E532 /* ItemScheduleCell.swift in Sources */,
 				87D350801C7AD7F600F96821 /* ScheduleItem+CoreDataProperties.swift in Sources */,
 				87D350821C7AD7F600F96821 /* Speaker+CoreDataProperties.swift in Sources */,
 				87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */,

@@ -9,29 +9,48 @@
 import UIKit
 
 class DetailBreakout: UITableViewController {
-    var scheduleItems:[ScheduleItem]?
+    var scheduleItems:[ScheduleItem] = []
+    let scheduleItemCellID = "scheduleItemCellID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(self.scheduleItems?.count)
+ 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
+    func getInfoAboutItemSchedule(forscheduleItem:[ScheduleItem],from presentations:[Presentation], at index:Int) {
+        
+        if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
+            for pres in allPresentations {
+            
+            }
+        }
+        
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.scheduleItems.count
     }
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(scheduleItemCellID) as! ItemScheduleCell
+            cell.titleLabel.text = self.scheduleItems[indexPath.row].presentationTitle
+        
+        return cell
+    }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+    }
 }

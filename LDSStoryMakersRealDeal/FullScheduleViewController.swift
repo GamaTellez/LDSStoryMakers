@@ -66,14 +66,13 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                     }
                 }
             }
-            print(String("FirdayBreakoouts %@",self.fridayBreakouts.count))
-            print(String("Saturday breakouts %@", self.saturdayBreakouts.count))
+         //   print(String("FirdayBreakoouts %@",self.fridayBreakouts.count))
+         //   print(String("Saturday breakouts %@", self.saturdayBreakouts.count))
     }
     
     func getAllScheduleItemsForSelectedBreakout(selectedBreakout:Breakout) -> [ScheduleItem] {
         var allScheduleItems:[ScheduleItem] = []
         let breakoutId = selectedBreakout.breakoutID
-        
         if let itemsSchedule = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
             for item in itemsSchedule {
                 if item.timeId?.stringValue == breakoutId {
@@ -85,7 +84,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if let segueId = segue.identifier {
             switch segueId {
                 case "detailBreakout":
@@ -94,7 +92,10 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.fridayBreakouts[sectionBreakout]
-                            let breakoutDetailVC:DetailBreakout = segue.destinationViewController as! DetailBreakout
+                            let breakoutDetailVC = segue.destinationViewController as! DetailBreakout
+                            if let title = selectedBreakout.breakoutID {
+                                breakoutDetailVC.title = title
+                            }
                             breakoutDetailVC.scheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                         }
                     }
@@ -102,7 +103,10 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.saturdayBreakouts[sectionBreakout]
-                            let breakoutDetailVC:DetailBreakout = segue.destinationViewController as! DetailBreakout
+                            let breakoutDetailVC = segue.destinationViewController as! DetailBreakout
+                            if let title = selectedBreakout.breakoutID {
+                                breakoutDetailVC.title = String("Breakout %@", title)
+                            }
                             breakoutDetailVC.scheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                         }
                     }
