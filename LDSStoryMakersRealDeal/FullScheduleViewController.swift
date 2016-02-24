@@ -13,6 +13,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var fullScheduleLabel: UILabel!
     
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
@@ -22,16 +23,19 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.getbreakoutsByDay()
         self.setViewControllerBackgroundImage()
         self.setUpTableView()
-        self.customizeNavBarAndTabBarApperance()
-        
-        self.segmentedController.selectedSegmentIndex = 0
+        self.segmentedControllerAppearance()
+        self.labelAppearance()
     }
-    func customizeNavBarAndTabBarApperance() {
-        self.navigationController?.navigationBar.backgroundColor = UIColor.grayColor()
-        UITabBar.appearance().barTintColor = UIColor.grayColor()
-        UITabBar.appearance().tintColor = UIColor.grayColor()
+    func labelAppearance() {
+        self.fullScheduleLabel.textColor = UIColor.whiteColor()
+        self.fullScheduleLabel.backgroundColor = UIColor(red: 0.200, green: 0.804, blue: 0.757, alpha: 1.00)
     }
     
+    func segmentedControllerAppearance() {
+        self.segmentedController.backgroundColor = UIColor.clearColor()
+        self.segmentedController.selectedSegmentIndex = 0
+        self.segmentedController.tintColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+    }
     func setViewControllerBackgroundImage() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor.clearColor()
@@ -58,7 +62,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                 let order = NSCalendar.currentCalendar()
                 for timeBreakout in allBreakouts {
                     if timeBreakout.breakoutID?.characters.count > 2 {
-                      //  print("it is a mandatory thingy")
                     } else {
                         if let dayDate = timeBreakout.startTime {
                             let comparison = order.compareDate(friday!, toDate: dayDate, toUnitGranularity: .Day)
@@ -140,8 +143,9 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                             let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
                             if let startDate = selectedBreakout.startTime {
                                 if let endDate = selectedBreakout.endTime {
-                                    breakoutDetailVC.title = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
+                                    breakoutDetailVC.stringForLabelBreakoutTime = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
                                         ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                                    breakoutDetailVC.title = String(format:"Breakout %@",selectedBreakout.breakoutID!)
                                 }
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
@@ -157,8 +161,9 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                             let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
                             if let startDate = selectedBreakout.startTime {
                                 if let endDate = selectedBreakout.endTime {
-                                    breakoutDetailVC.title = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
+                                    breakoutDetailVC.stringForLabelBreakoutTime = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
                                         ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                                    breakoutDetailVC.title = String(format:"Breakout %@",selectedBreakout.breakoutID!)
                                 }
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)

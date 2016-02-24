@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var notificationLabelBanner: UILabel!
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var fillerLabel: UILabel!
     
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
@@ -22,21 +23,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
-  //      self.registerForNotifications()
-//        let breakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreData()
-//        print(breakouts.count)
-//        let schedules = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
-//        print(schedules.count)
-//        let presentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData()
-//        print(presentations.count)
-//        let speakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData()
-//        print(speakers.count)
+
     }
     
     func getObjectsFromCoreData() {
         print("all objects in core data ready to use")
-        
     }
+
     
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"getObjectsFromCoreData", name: kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
@@ -52,11 +45,12 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
    
     func setUpLabelsApperance() {
-        self.notificationLabelBanner.backgroundColor = UIColor.blueColor()
-        self.notificationLabelBanner.layer.borderWidth = 1.0
-        self.notificationLabelBanner.layer.cornerRadius = 10
-        self.notificationLabelBanner.layer.borderColor = UIColor.blackColor().CGColor
+        self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
         self.notificationLabelBanner.clipsToBounds = true
+        self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.topLabelBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.topLabelBar.textColor = UIColor.whiteColor()
+        
     }
     //tableview delegate methods
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -81,6 +75,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: headerSectionView.frame.width, height: headerSectionView.frame.height))
         headerLabel.textAlignment = NSTextAlignment.Center
         headerLabel.attributedText = underLinedAttributedString
+        headerLabel.textColor = UIColor(red: 0.310, green: 0.431, blue: 0.435, alpha: 1.00)
         headerSectionView.addSubview(headerLabel)
            return headerSectionView
     }

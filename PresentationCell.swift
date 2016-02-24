@@ -33,12 +33,20 @@ class PresentationCell: UITableViewCell {
         self.descriptionLabel.font = UIFont(name: "SanFranciscoText-Light", size: 18)
         self.descriptionLabel.numberOfLines = 3
         self.speakerAndLocationLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 15)
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if selected {
-            self.titleLabel.backgroundColor = UIColor.grayColor()
+       UIView.animateWithDuration(0.5) { () -> Void in
+        self.addRemoveButton.alpha = 0
+        self.speakerAndLocationLabel.alpha = 0
+        self.descriptionLabel.alpha = 0
+        self.titleLabel.alpha = 0
+        self.addRemoveButton.alpha = 1
+        self.speakerAndLocationLabel.alpha = 1
+        self.descriptionLabel.alpha = 1
+        self.titleLabel.alpha = 1
         }
         
         // Configure the view for the selected state

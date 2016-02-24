@@ -18,6 +18,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
+        cell.selectionStyle = .None
         
         let classAttend = self.classes[indexPath.section]
         if let title = classAttend.presentation?.title {

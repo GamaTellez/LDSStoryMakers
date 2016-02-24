@@ -10,11 +10,13 @@ import UIKit
 
 class DetailBreakoutVC: UIViewController, UITableViewDelegate {
 
+    @IBOutlet var labelBreakoutTime: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var backGroundImage: UIImageView!
    
     var tableViewDataSource = DetailBreakoutDataSource()
     var classesInBreakout:[Class] = []
+    var stringForLabelBreakoutTime:String?
     let scheduleItemCellID = "scheduleItemCellID"
     
     override func viewDidLoad() {
@@ -22,7 +24,13 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
         self.setBackgroundImageView()
         self.setUpTableView()
         self.loadTableViewWithBreakouts(self.classesInBreakout)
+        self.setUpLabel()
         
+    }
+    func setUpLabel() {
+        self.labelBreakoutTime.text = self.stringForLabelBreakoutTime
+        self.labelBreakoutTime.textColor = UIColor.whiteColor()
+        self.labelBreakoutTime.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
     }
     
     func setBackgroundImageView() {
