@@ -22,7 +22,14 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.getbreakoutsByDay()
         self.setViewControllerBackgroundImage()
         self.setUpTableView()
+        self.customizeNavBarAndTabBarApperance()
+        
         self.segmentedController.selectedSegmentIndex = 0
+    }
+    func customizeNavBarAndTabBarApperance() {
+        self.navigationController?.navigationBar.backgroundColor = UIColor.grayColor()
+        UITabBar.appearance().barTintColor = UIColor.grayColor()
+        UITabBar.appearance().tintColor = UIColor.grayColor()
     }
     
     func setViewControllerBackgroundImage() {
@@ -83,12 +90,10 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         return allScheduleItems
     }
     
-    
     func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [Class] {
         var allClasses:[Class] = []
-       
         for item in itemsSchedule {
-            var classObject = Class()
+            let classObject = Class()
             classObject.scheduleItem = item
            
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {

@@ -21,18 +21,25 @@ class PresentationCell: UITableViewCell {
         self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
         self.addRemoveButton.layer.borderWidth = 0.3
         self.addRemoveButton.layer.borderColor = UIColor.blackColor().CGColor
-        self.titleLabel.numberOfLines = 2
+        self.titleLabel.numberOfLines = 3
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.titleLabel.backgroundColor = UIColor.grayColor()
+        self.titleLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 20)
+        self.titleLabel.textColor = UIColor.whiteColor()
         self.descriptionLabel.preferredMaxLayoutWidth = 35
         self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        self.descriptionLabel.font = UIFont(name: "Cochin", size: 10)
-        self.descriptionLabel.numberOfLines = 0
-        self.speakerAndLocationLabel.font = UIFont(name: "Cochin", size: 10)
+        self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        self.descriptionLabel.font = UIFont(name: "SanFranciscoText-Light", size: 18)
+        self.descriptionLabel.numberOfLines = 3
+        self.speakerAndLocationLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 15)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if selected {
+            self.titleLabel.backgroundColor = UIColor.grayColor()
+        }
         
         // Configure the view for the selected state
     }

@@ -52,7 +52,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
    
     func setUpLabelsApperance() {
-        self.topLabelBar.backgroundColor = UIColor.greenColor()
         self.notificationLabelBanner.backgroundColor = UIColor.blueColor()
         self.notificationLabelBanner.layer.borderWidth = 1.0
         self.notificationLabelBanner.layer.cornerRadius = 10

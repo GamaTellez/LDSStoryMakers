@@ -12,8 +12,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var backGroundImage: UIImageView!
-    
-    let cellHeight = PresentationCell().frame.height
+   
     var tableViewDataSource = DetailBreakoutDataSource()
     var classesInBreakout:[Class] = []
     let scheduleItemCellID = "scheduleItemCellID"
@@ -34,6 +33,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
     func setUpTableView() {
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.dataSource = self.tableViewDataSource
+  
     }
     func loadTableViewWithBreakouts(allClassesPos:[Class]) {
         self.tableViewDataSource.updateClassesArray(from: allClassesPos)

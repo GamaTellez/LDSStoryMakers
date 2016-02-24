@@ -18,6 +18,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
+        
         let classAttend = self.classes[indexPath.section]
         if let title = classAttend.presentation?.title {
             cell.titleLabel.text = title
@@ -29,11 +30,9 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
                 cell.speakerAndLocationLabel.text = spakerName
             }
         }
-
         if let shortDescription = classAttend.presentation?.presentationDescription {
             cell.descriptionLabel.text = shortDescription
         }
-        
     return cell
     }
     
