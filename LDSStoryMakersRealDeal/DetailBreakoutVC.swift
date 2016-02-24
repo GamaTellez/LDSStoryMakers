@@ -64,5 +64,18 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
         return 150
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueID = segue.identifier {
+            switch segueID {
+            default:
+                let classSelectedDetailVC = segue.destinationViewController as! ClassDetailView
+                if let indexOfClassSelected = self.tableView.indexPathForSelectedRow?.section {
+                    let classSelected = self.classesInBreakout[indexOfClassSelected]
+                    classSelectedDetailVC.classSelected = classSelected
+                }
+                break
+            }
+        }
+    }
 
 }

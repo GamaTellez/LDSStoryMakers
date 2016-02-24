@@ -38,16 +38,16 @@ class PresentationCell: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-       UIView.animateWithDuration(0.5) { () -> Void in
-        self.addRemoveButton.alpha = 0
-        self.speakerAndLocationLabel.alpha = 0
-        self.descriptionLabel.alpha = 0
-        self.titleLabel.alpha = 0
-        self.addRemoveButton.alpha = 1
-        self.speakerAndLocationLabel.alpha = 1
-        self.descriptionLabel.alpha = 1
-        self.titleLabel.alpha = 1
-        }
+//       UIView.animateWithDuration(0.5) { () -> Void in
+//        self.addRemoveButton.alpha = 0
+//        self.speakerAndLocationLabel.alpha = 0
+//        self.descriptionLabel.alpha = 0
+//        self.titleLabel.alpha = 0
+//        self.addRemoveButton.alpha = 1
+//        self.speakerAndLocationLabel.alpha = 1
+//        self.descriptionLabel.alpha = 1
+//        self.titleLabel.alpha = 1
+//        }
         
         // Configure the view for the selected state
     }
