@@ -11,9 +11,8 @@ import UIKit
 class SpeakerBioView: UIViewController, UITextViewDelegate {
 
     @IBOutlet var speakerNameLabel: UILabel!
-    @IBOutlet var fillerLabel: UILabel!
+   // @IBOutlet var fillerLabel: UILabel!
     @IBOutlet var speakerImageView: UIImageView!
-    @IBOutlet var bioLabel: UILabel!
     @IBOutlet var bioTextView: UITextView!
     
     var speakerSelected:Speaker?
@@ -26,7 +25,7 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     }
     
     func setUpViews() {
-        self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.speakerNameLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.speakerNameLabel.textColor = UIColor.whiteColor()
         self.speakerImageView.layer.borderColor = UIColor.blackColor().CGColor
@@ -47,4 +46,9 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         return false
     }
+    
+    @IBAction func doneButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
