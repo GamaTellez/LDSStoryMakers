@@ -1,5 +1,5 @@
 //
-//  Day+CoreDataProperties.swift
+//  ClassScheduled+CoreDataProperties.swift
 //  LDSStoryMakersRealDeal
 //
 //  Created by Gamaliel Tellez on 2/25/16.
@@ -12,10 +12,12 @@
 import Foundation
 import CoreData
 
-extension Day {
+extension ClassScheduled {
 
-    @NSManaged var date: NSDate?
-    @NSManaged var name: String?
-    @NSManaged var scheduledClasses: NSOrderedSet?
+    @NSManaged var breakOut: Breakout?
+    @NSManaged var speaker: Speaker?
+    @NSManaged var scheduleItem: ScheduleItem?
+    @NSManaged var presentation: Presentation?
+    @NSManaged var day: Day?
 
 }

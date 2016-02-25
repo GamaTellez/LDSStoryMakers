@@ -196,13 +196,6 @@ class ManagedObjectsController: NSObject {
         }
     }
     
-//    func backGroundSaveToCoreData() {
-//        do {
-//            try self.privateManagedContext.save()
-//        } catch let error as NSError {
-//            print(error.localizedDescription)
-//        }
-//    }
     //FETC REQUESTS
     func getAllBreakoutsFromCoreDataByDate() -> [AnyObject] {
         let allbreakoutsRequest = NSFetchRequest(entityName: "Breakout")
@@ -234,4 +227,17 @@ class ManagedObjectsController: NSObject {
         }
         return requestResults
     }
+    
+    
+    func createClassScheduledItem(from classPassed:Class, completion:(success:Bool)->Void) {
+        let classToSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 }

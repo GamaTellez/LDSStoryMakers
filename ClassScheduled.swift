@@ -1,5 +1,5 @@
 //
-//  Speaker.swift
+//  ClassScheduled.swift
 //  LDSStoryMakersRealDeal
 //
 //  Created by Gamaliel Tellez on 2/25/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Speaker: NSManagedObject {
+class ClassScheduled: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
