@@ -87,7 +87,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
             if let speakerName = currentClass.presentation?.speakerName {
                 self.speakerButton.setTitle(speakerName, forState: .Normal)
             }
-             self.speakerButton.setTitle("Feedback", forState: .Normal)
+             self.feecBackButtom.setTitle("Feedback", forState: .Normal)
         }
     }
     
@@ -103,6 +103,17 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueId = segue.identifier {
+            switch segueId {
+            default:
+                let speakerBioVC = segue.destinationViewController as! SpeakerBioView
+                if let speakerOfClassSelected = self.classSelected?.speaker {
+                    speakerBioVC.speakerSelected = speakerOfClassSelected
+                }
+                break
+            }
+        }
+    }
     
 }

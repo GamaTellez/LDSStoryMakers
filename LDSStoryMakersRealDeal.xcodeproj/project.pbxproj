@@ -18,6 +18,7 @@
 		8792D1161C7CFA770029E532 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D1151C7CFA770029E532 /* Class.swift */; };
 		87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070371C78251600014DD1 /* FullScheduleViewController.swift */; };
 		87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */; };
+		87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */; };
 		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
 		87D7F2391C7D02D900DCAAC8 /* Speaker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7F22F1C7D02D900DCAAC8 /* Speaker+CoreDataProperties.swift */; };
 		87D7F23A1C7D02D900DCAAC8 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7F2301C7D02D900DCAAC8 /* Speaker.swift */; };
@@ -72,6 +73,7 @@
 		8792D1151C7CFA770029E532 /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		87B070371C78251600014DD1 /* FullScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScheduleViewController.swift; sourceTree = "<group>"; };
 		87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsController.swift; sourceTree = "<group>"; };
+		87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerBioView.swift; sourceTree = "<group>"; };
 		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
 		87D7F22F1C7D02D900DCAAC8 /* Speaker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Speaker+CoreDataProperties.swift"; path = "../Speaker+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		87D7F2301C7D02D900DCAAC8 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Speaker.swift; path = ../Speaker.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */,
+				87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */,
 			);
 			name = ClassDetailView;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
 				8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */,
 				87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */,
+				87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */,
 				8792D0EC1C7CE2010029E532 /* PresentationCell.swift in Sources */,
 				873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */,
 				87D7F23B1C7D02D900DCAAC8 /* Breakout+CoreDataProperties.swift in Sources */,
