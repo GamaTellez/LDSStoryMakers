@@ -17,18 +17,24 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var fillerLabel: UILabel!
     
      let kclassSelectedNotification = "kClassSelectedNotification"
+     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
-        self.registerForNotifications()
+      //  self.registerForNotifications()
 
     }
     
     func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getDaysObjects", name: self.kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
+    }
+    
+    func getDaysObjects() {
+        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
     }
     
     func setBackgroundImageView() {

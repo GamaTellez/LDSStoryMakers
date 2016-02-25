@@ -10,6 +10,7 @@ import UIKit
 
 class NSURLSessionController: NSObject {
 
+    let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     static let sharedInstance = NSURLSessionController()
     let generalSpreadSheetLink:String = "https://spreadsheets.google.com/tq?key="
     lazy var defaults = NSUserDefaults.standardUserDefaults()
@@ -191,7 +192,6 @@ class NSURLSessionController: NSObject {
 
 
     func getKeysAvailableInUserDefaults() {
-        
         if self.defaults.objectForKey("Schedules") == nil || self.defaults.objectForKey("Speakers") == nil || self.defaults.objectForKey("Presentations") == nil || self.defaults.objectForKey("Breakouts") == nil || self.defaults.objectForKey("Notifications") == nil {
         print("no keys have been store in user defaults")
         let completionBlocksWait = dispatch_group_create()
@@ -252,7 +252,7 @@ class NSURLSessionController: NSObject {
             dispatch_group_leave(completionBlocksWait)
         })
         dispatch_group_notify(completionBlocksWait, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            // NSNotificationCenter.defaultCenter().postNotificationName("allObjectsFromGoogleSpreadSheetsInCoreData", object: nil)
+             NSNotificationCenter.defaultCenter().postNotificationName(self.kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
         }
     } else {
         print("all keys stored in nsuserdefaults")

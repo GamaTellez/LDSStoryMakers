@@ -9,8 +9,10 @@
 import UIKit
 
 class TableViewDataSource: NSObject, UITableViewDataSource {
-
+    var days:[Day] = []
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         
         return UITableViewCell()
     }
