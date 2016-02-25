@@ -9,9 +9,10 @@
 import UIKit
 
 class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCellButtonDelegate {
+    
     var classes:[Class] = []
     let presentationCellID = "detailPresentation"
-    
+    let kclassSelectedNotification = "kClassSelectedNotification"
     func updateClassesArray(from classesArray:[Class]) {
         self.classes  = classesArray
     }
@@ -45,10 +46,10 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
     //cell delegate
     func indexOfClassSelected(section: Int) {
-        print(section)
+         let classSelected = self.classes[section]
+        NSNotificationCenter.defaultCenter().postNotificationName(self.kclassSelectedNotification, object: self, userInfo: ["classSelected":classSelected])
     }
 
 }

@@ -47,9 +47,6 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         self.tableViewDataSource.updateClassesArray(from: allClassesPos)
         self.tableView.reloadData()
     }
-    func ClassSelected(hola: String) {
-        print(hola)
-    }
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

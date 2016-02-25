@@ -48,9 +48,6 @@ class PresentationCell: UITableViewCell {
             self.delegate?.indexOfClassSelected(buttonSection)
         }
     }
-   
-    
-    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 //       UIView.animateWithDuration(0.5) { () -> Void in

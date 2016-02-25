@@ -16,23 +16,19 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var fillerLabel: UILabel!
     
-    let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
+     let kclassSelectedNotification = "kClassSelectedNotification"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
+        self.registerForNotifications()
 
     }
-    
-    func getObjectsFromCoreData() {
-        print("all objects in core data ready to use")
-    }
-
     
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"getObjectsFromCoreData", name: kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
     }
     
     func setBackgroundImageView() {
@@ -52,6 +48,15 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.topLabelBar.textColor = UIColor.whiteColor()
         
     }
+    
+    func updatePersonalSchedule(notification:NSNotification) {
+        print("we are receiving the notifixation")
+            if let classObject = notification.userInfo!["classSelected"] as? Class {
+                   print(classObject)
+            }
+        
+    }
+    
     //tableview delegate methods
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var viewForHeader:UIView = UIView()
