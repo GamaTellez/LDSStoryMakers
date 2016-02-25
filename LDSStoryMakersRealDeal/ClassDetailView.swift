@@ -17,7 +17,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
     @IBOutlet var feecBackButtom: UIButton!
     
     @IBOutlet var backGroundImage: UIImageView!
-    var classSelected:Class?
+    var classSelected:ClassToSchedule?
 
     override func viewDidLoad() {
         super.viewDidLoad()

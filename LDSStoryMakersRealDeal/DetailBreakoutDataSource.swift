@@ -10,10 +10,10 @@ import UIKit
 
 class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCellButtonDelegate {
     
-    var classes:[Class] = []
+    var classes:[ClassToSchedule] = []
     let presentationCellID = "detailPresentation"
     let kclassSelectedNotification = "kClassSelectedNotification"
-    func updateClassesArray(from classesArray:[Class]) {
+    func updateClassesArray(from classesArray:[ClassToSchedule]) {
         self.classes  = classesArray
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

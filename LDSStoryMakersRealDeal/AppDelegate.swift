@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.getKeysAvailableInUserDefaults()
+        NSURLSessionController.sharedInstance.getKeysAvailableInUserDefaults()
+        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
         AppAppearance.setAppAppearance()
      
         return true
@@ -107,74 +108,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-        //checking for keys "Schedules", "Speakers", "Presentations", "Breakouts", "Notifications", if one is not available, wee need to run the method from nsurlcontroller to get them
-    func getKeysAvailableInUserDefaults() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if defaults.objectForKey("Schedules") == nil || defaults.objectForKey("Speakers") == nil || defaults.objectForKey("Presentations") == nil || defaults.objectForKey("Breakouts") == nil || defaults.objectForKey("Notifications") == nil {
-            print("no keys have been store in user defaults")
-            let completionBlocksWait = dispatch_group_create()
-            dispatch_group_enter(completionBlocksWait)
-            NSURLSessionController.sharedInstance.getKeyLinksFromMainGoogleSpreadSheetToUserDefaults({ (finished) -> Void in
-                dispatch_group_enter(completionBlocksWait)
-                NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Schedules", completion: { (finished) -> Void in
-                    if finished == true {
-                        print("schedules downloaded")
-                        dispatch_group_leave(completionBlocksWait)
-                    } else {
-                        print("something went wrong while getting the schedules")
-                        dispatch_group_leave(completionBlocksWait)
-                    }
-                })
-                dispatch_group_enter(completionBlocksWait)
-                NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Speakers", completion: { (finished) -> Void in
-                    if finished == true {
-                        print("speakers downloaded")
-                        dispatch_group_leave(completionBlocksWait)
-                    } else {
-                        print("something went wrong while getting the speakers")
-                        dispatch_group_leave(completionBlocksWait)
-              
-                    }
-                })
-                dispatch_group_enter(completionBlocksWait)
-                NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Presentations", completion: { (finished) -> Void in
-                    if finished == true {
-                        print("presentations downloaded")
-                        dispatch_group_leave(completionBlocksWait)
-                    } else {
-                        print("something went wrong while getting the presentations")
-                        dispatch_group_leave(completionBlocksWait)
-                    }
-                })
-                dispatch_group_enter(completionBlocksWait)
-                NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Breakouts", completion: { (finished) -> Void in
-                    if finished == true {
-                        dispatch_group_leave(completionBlocksWait)
-                        print("breakouts downloaded")
-            
-                    } else {
-                        print("something went wrong while getting the breakouts")
-                        dispatch_group_leave(completionBlocksWait)
-                    }
-                })
-                dispatch_group_enter(completionBlocksWait)
-                NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Notifications", completion: { (finished) -> Void in
-                    if finished == true {
-                        print("notifications downloaded")
-                        dispatch_group_leave(completionBlocksWait)
-                    } else {
-                        print("something went wrong while getting the notifications")
-                        dispatch_group_leave(completionBlocksWait)
-                    }
-                })
-                dispatch_group_leave(completionBlocksWait)
-            })
-            dispatch_group_notify(completionBlocksWait, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-               // NSNotificationCenter.defaultCenter().postNotificationName("allObjectsFromGoogleSpreadSheetsInCoreData", object: nil)
-            }
-        } else {
-            print("all keys stored in nsuserdefaults")
-        }
-    }
 }
-

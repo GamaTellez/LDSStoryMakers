@@ -51,7 +51,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func updatePersonalSchedule(notification:NSNotification) {
         print("we are receiving the notifixation")
-            if let classObject = notification.userInfo!["classSelected"] as? Class {
+            if let classObject = notification.userInfo!["classSelected"] as? ClassToSchedule {
                    print(classObject)
             }
         

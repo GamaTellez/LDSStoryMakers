@@ -93,10 +93,10 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         return allScheduleItems
     }
     
-    func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [Class] {
-        var allClasses:[Class] = []
+    func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [ClassToSchedule] {
+        var allClasses:[ClassToSchedule] = []
         for item in itemsSchedule {
-            let classObject = Class()
+            let classObject = ClassToSchedule()
             classObject.scheduleItem = item
            
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {

@@ -12,6 +12,7 @@ import CoreData
 class ManagedObjectsController: NSObject {
     static let sharedInstance = ManagedObjectsController()
     let managedContext:NSManagedObjectContext
+    lazy var userDefaults = NSUserDefaults.standardUserDefaults()
    // let privateManagedContext:NSManagedObjectContext
     
     override init() {
@@ -229,15 +230,37 @@ class ManagedObjectsController: NSObject {
     }
     
     
-    func createClassScheduledItem(from classPassed:Class, completion:(success:Bool)->Void) {
-        let classToSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
-        
-        
-        
-        
+    func createClassScheduledItem(from classPassed:ClassToSchedule, completion:(success:Bool)->Void) {
+       // let classToSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
     }
     
+    func createFridayAndSaturday() {
+        if (self.userDefaults.objectForKey("fridayAndSaturdayCreated") == nil) {
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MM-dd-yyyy"
+            let friday = NSManagedObject(entity: NSEntityDescription.entityForName("Day", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+            if let fridayDate = formatter.dateFromString("5/6/2016") {
+                friday.setValue(fridayDate, forKey: "date")
+            }
+            let saturday = NSManagedObject(entity: NSEntityDescription.entityForName("Day", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+            if let saturdayDate = formatter.dateFromString("5/7/2016") {
+                saturday.setValue(saturdayDate, forKey: "date")
+            }
+            self.saveToCoreData()
+            self.userDefaults.setObject(true, forKey: "fridayAndSaturdayCreated")
+            self.userDefaults.synchronize()
+        } else {
+           // self.getFridayAndSaturdayObjects()
+            print("friday and saturday created")
+        }
+    }
     
+    func getFridayAndSaturdayObjects() {
+        let daysRequest = NSFetchRequest(entityName: "Day")
+        daysRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        let array = self.fetchRequestExecuter(daysRequest)
+        print(array.count)
+    }
     
     
 }

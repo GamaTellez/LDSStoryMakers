@@ -187,158 +187,76 @@ class NSURLSessionController: NSObject {
             }
         }
     }
+
+
+
+    func getKeysAvailableInUserDefaults() {
+        
+        if self.defaults.objectForKey("Schedules") == nil || self.defaults.objectForKey("Speakers") == nil || self.defaults.objectForKey("Presentations") == nil || self.defaults.objectForKey("Breakouts") == nil || self.defaults.objectForKey("Notifications") == nil {
+        print("no keys have been store in user defaults")
+        let completionBlocksWait = dispatch_group_create()
+        dispatch_group_enter(completionBlocksWait)
+        NSURLSessionController.sharedInstance.getKeyLinksFromMainGoogleSpreadSheetToUserDefaults({ (finished) -> Void in
+            dispatch_group_enter(completionBlocksWait)
+            NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Schedules", completion: { (finished) -> Void in
+                if finished == true {
+                    print("schedules downloaded")
+                    dispatch_group_leave(completionBlocksWait)
+                } else {
+                    print("something went wrong while getting the schedules")
+                    dispatch_group_leave(completionBlocksWait)
+                }
+            })
+            dispatch_group_enter(completionBlocksWait)
+            NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Speakers", completion: { (finished) -> Void in
+                if finished == true {
+                    print("speakers downloaded")
+                    dispatch_group_leave(completionBlocksWait)
+                } else {
+                    print("something went wrong while getting the speakers")
+                    dispatch_group_leave(completionBlocksWait)
+                    
+                }
+            })
+            dispatch_group_enter(completionBlocksWait)
+            NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Presentations", completion: { (finished) -> Void in
+                if finished == true {
+                    print("presentations downloaded")
+                    dispatch_group_leave(completionBlocksWait)
+                } else {
+                    print("something went wrong while getting the presentations")
+                    dispatch_group_leave(completionBlocksWait)
+                }
+            })
+            dispatch_group_enter(completionBlocksWait)
+            NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Breakouts", completion: { (finished) -> Void in
+                if finished == true {
+                    dispatch_group_leave(completionBlocksWait)
+                    print("breakouts downloaded")
+                    
+                } else {
+                    print("something went wrong while getting the breakouts")
+                    dispatch_group_leave(completionBlocksWait)
+                }
+            })
+            dispatch_group_enter(completionBlocksWait)
+            NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Notifications", completion: { (finished) -> Void in
+                if finished == true {
+                    print("notifications downloaded")
+                    dispatch_group_leave(completionBlocksWait)
+                } else {
+                    print("something went wrong while getting the notifications")
+                    dispatch_group_leave(completionBlocksWait)
+                }
+            })
+            dispatch_group_leave(completionBlocksWait)
+        })
+        dispatch_group_notify(completionBlocksWait, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            // NSNotificationCenter.defaultCenter().postNotificationName("allObjectsFromGoogleSpreadSheetsInCoreData", object: nil)
+        }
+    } else {
+        print("all keys stored in nsuserdefaults")
+    }
+    }
 }
-
-
-
-//    ////////getting all speakers
-//    func getAllSpeakersGoogleSpreadSheet(completion:(result:[SpeakerTemp]) -> Void) {
-//        var allSpeakers:[SpeakerTemp] = []
-//        var url:NSURL?
-//        if let speakersKey = self.defaults.objectForKey("Speakers") as? String {
-//            url = NSURL(string: self.generalSpreadSheetLink + speakersKey)
-//           let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-//                if error != nil {
-//                    print(error?.localizedDescription)
-//                } else {
-//                    if let dataString = data {
-//                        let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
-//                      if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
-//                         allSpeakers = self.getSpeakersFromJson(jsonObject)
-//                        }
-//                    }
-//                }
-//            completion(result: allSpeakers)
-//            })
-//        dataTask.resume()
-//        } else {
-//            print("no spreadSheet key available for Speakers")
-//        }
-//    }
-//
-//    func getSpeakersFromJson(jsonDictionary:NSDictionary) -> [SpeakerTemp] {
-//        var speakers:[SpeakerTemp] = []
-//        if let tableDictionary = jsonDictionary.objectForKey("table") {
-//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-//                for dict in rowsDictArray {
-//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-//                        let newSpeaker = SpeakerTemp.init(speakerArray: arrayWithInfoDictionaries)
-//                        speakers.append(newSpeaker)
-//                    }
-//                }
-//            }
-//        }
-//     return speakers
-//    }
-//    //speakers
-//    func getAllPresentationsFromGoogleSpreadSheet(completion:(result:[PresentationTemp]) -> Void) {
-//                 var allPresentations:[PresentationTemp] = []
-//        if let presentationsKey = self.defaults.objectForKey("Presentations") as? String {
-//            let url = NSURL(string:self.generalSpreadSheetLink + presentationsKey)
-//            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-//                if error == nil {
-//                    let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData!) as? NSDictionary {
-//                        allPresentations = self.getPresentationsFromJson(jsonObject)
-//                    }
-//                } else {
-//                    print(error?.localizedDescription)
-//                }
-//                completion(result: allPresentations)
-//            })
-//         dataTask.resume()
-//        }
-//    }
-//
-//    func getPresentationsFromJson(jsonDictionary:NSDictionary) -> [PresentationTemp] {
-//        var presentations:[PresentationTemp] = []
-//        if let tableDictionary = jsonDictionary.objectForKey("table") {
-//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-//                for dict in rowsDictArray {
-//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-//                        let newPresentation = PresentationTemp.init(presentationInfoArray: arrayWithInfoDictionaries)
-//                        presentations.append(newPresentation)
-//                    }
-//                }
-//            }
-//        }
-//        return presentations
-//    }
-//    //breakouts
-//    func getAllBreakoutsFromGoogleSpreadSheet(completion:(result:[BreakoutTemp]) -> Void) {
-//        var breakouts:[BreakoutTemp] = []
-//        if let breakOutsKey = self.defaults.objectForKey("Breakouts") as? String {
-//            let url = NSURL(string: self.generalSpreadSheetLink + breakOutsKey)
-//          let urlDataTaks = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-//                if error ==  nil {
-//                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
-//                         if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
-//                           breakouts = self.getAllBreakoutsFromJson(jsonObject)
-//                        }
-//                    }
-//                } else {
-//                    print(error?.localizedDescription)
-//                }
-//            completion(result: breakouts)
-//            })
-//            urlDataTaks.resume()
-//        } else {
-//            print("no key for breakouts")
-//        }
-//    }
-//
-//    func getAllBreakoutsFromJson(jsonDictionary:NSDictionary) -> [BreakoutTemp] {
-//        var breakouts:[BreakoutTemp] = []
-//        if let tableDictionary = jsonDictionary.objectForKey("table") {
-//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-//                for dict in rowsDictArray {
-//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-//                        let newBreakout = BreakoutTemp.init(from: arrayWithInfoDictionaries)
-//                        breakouts.append(newBreakout)
-//                    }
-//                }
-//            }
-//        }
-//        return breakouts
-//    }
-//
-//    //getting schedule
-//    func getAllSchedulesFromGooglrSpreadSheet(completion:(result:[ScheduleItemTemp]) -> Void) {
-//        var scheduleItems:[ScheduleItemTemp] = []
-//        if let schedulesKey = self.defaults.objectForKey("Schedules") as? String {
-//            let url = NSURL(string: self.generalSpreadSheetLink + schedulesKey)
-//            let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-//                if error == nil {
-//                    if let stringFromData = NSString(data: data!, encoding: NSUTF8StringEncoding) {
-//                    if let jsonObject = self.getJsonObjectFromStringFromData(stringFromData) as? NSDictionary {
-//                            scheduleItems = self.getScheduleItemsFromJson(jsonObject)
-//                        }
-//                    }
-//                } else {
-//                    print(error?.localizedDescription)
-//                }
-//                completion(result: scheduleItems)
-//            })
-//            dataTask.resume()
-//        }
-//    }
-//
-//    func getScheduleItemsFromJson(jsonDictionary: NSDictionary) -> [ScheduleItemTemp] {
-//        var scheduleItems:[ScheduleItemTemp] = []
-//        if let tableDictionary = jsonDictionary.objectForKey("table") {
-//            if let rowsDictArray = tableDictionary.objectForKey("rows") as? NSArray {
-//                for dict in rowsDictArray {
-//                    if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
-//                        //print(arrayWithInfoDictionaries)
-//                        let newItemInSchedule = ScheduleItemTemp.init(from: arrayWithInfoDictionaries)
-//                        scheduleItems.append(newItemInSchedule)
-//                    }
-//                }
-//            }
-//        }
-//        return scheduleItems
-//    }
-
-
-
 

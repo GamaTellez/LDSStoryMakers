@@ -15,7 +15,6 @@
 		8792D0E81C7CDD500029E532 /* DetailBreakoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0E71C7CDD500029E532 /* DetailBreakoutVC.swift */; };
 		8792D0EA1C7CDDF00029E532 /* DetailBreakoutDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0E91C7CDDF00029E532 /* DetailBreakoutDataSource.swift */; };
 		8792D0EC1C7CE2010029E532 /* PresentationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0EB1C7CE2010029E532 /* PresentationCell.swift */; };
-		8792D1161C7CFA770029E532 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D1151C7CFA770029E532 /* Class.swift */; };
 		87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070371C78251600014DD1 /* FullScheduleViewController.swift */; };
 		87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */; };
 		87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */; };
@@ -32,6 +31,7 @@
 		87C416A41C7FA62800D99E17 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416981C7FA62800D99E17 /* Presentation.swift */; };
 		87C416A51C7FA62800D99E17 /* ClassScheduled+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416991C7FA62800D99E17 /* ClassScheduled+CoreDataProperties.swift */; };
 		87C416A61C7FA62800D99E17 /* ClassScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C4169A1C7FA62800D99E17 /* ClassScheduled.swift */; };
+		87C416A81C7FAAEA00D99E17 /* ClassToSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */; };
 		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
 		87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
@@ -73,7 +73,6 @@
 		8792D0E71C7CDD500029E532 /* DetailBreakoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBreakoutVC.swift; sourceTree = "<group>"; };
 		8792D0E91C7CDDF00029E532 /* DetailBreakoutDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBreakoutDataSource.swift; sourceTree = "<group>"; };
 		8792D0EB1C7CE2010029E532 /* PresentationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationCell.swift; path = ../PresentationCell.swift; sourceTree = "<group>"; };
-		8792D1151C7CFA770029E532 /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		87B070371C78251600014DD1 /* FullScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScheduleViewController.swift; sourceTree = "<group>"; };
 		87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsController.swift; sourceTree = "<group>"; };
 		87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerBioView.swift; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		87C416981C7FA62800D99E17 /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Presentation.swift; path = ../Presentation.swift; sourceTree = "<group>"; };
 		87C416991C7FA62800D99E17 /* ClassScheduled+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ClassScheduled+CoreDataProperties.swift"; path = "../ClassScheduled+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		87C4169A1C7FA62800D99E17 /* ClassScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassScheduled.swift; path = ../ClassScheduled.swift; sourceTree = "<group>"; };
+		87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassToSchedule.swift; path = ../ClassToSchedule.swift; sourceTree = "<group>"; };
 		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
 		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,7 +265,7 @@
 		87FDA0751C73DF2B00D5720F /* TempObjects */ = {
 			isa = PBXGroup;
 			children = (
-				8792D1151C7CFA770029E532 /* Class.swift */,
+				87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */,
 				87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */,
 				87FDA0781C73DFA600D5720F /* PresentationTemp.swift */,
 				87FDA07A1C74087E00D5720F /* BreakoutTemp.swift */,
@@ -407,6 +407,7 @@
 			files = (
 				8792D0EA1C7CDDF00029E532 /* DetailBreakoutDataSource.swift in Sources */,
 				873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */,
+				87C416A81C7FAAEA00D99E17 /* ClassToSchedule.swift in Sources */,
 				87FDA07B1C74087E00D5720F /* BreakoutTemp.swift in Sources */,
 				87C416A61C7FA62800D99E17 /* ClassScheduled.swift in Sources */,
 				87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */,
@@ -433,7 +434,6 @@
 				87C416A11C7FA62800D99E17 /* Day+CoreDataProperties.swift in Sources */,
 				87C4169C1C7FA62800D99E17 /* ScheduleItem.swift in Sources */,
 				8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */,
-				8792D1161C7CFA770029E532 /* Class.swift in Sources */,
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
 				87C416761C7F915E00D99E17 /* AddRemoveClass.swift in Sources */,
