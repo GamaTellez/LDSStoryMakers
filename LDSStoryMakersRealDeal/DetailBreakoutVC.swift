@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailBreakoutVC: UIViewController, UITableViewDelegate {
+class DetailBreakoutVC: UIViewController, UITableViewDelegate{
 
     @IBOutlet var labelBreakoutTime: UILabel!
     @IBOutlet var tableView: UITableView!
@@ -47,6 +47,10 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate {
         self.tableViewDataSource.updateClassesArray(from: allClassesPos)
         self.tableView.reloadData()
     }
+    func ClassSelected(hola: String) {
+        print(hola)
+    }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

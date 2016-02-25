@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
+class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCellButtonDelegate {
     var classes:[Class] = []
     let presentationCellID = "detailPresentation"
     
@@ -19,6 +19,8 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
     
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
         cell.selectionStyle = .None
+        cell.delegate = self
+        cell.addRemoveButton.section = indexPath.section
         
         let classAttend = self.classes[indexPath.section]
         if let title = classAttend.presentation?.title {
@@ -44,5 +46,9 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource {
         return 1
     }
     
+    //cell delegate
+    func indexOfClassSelected(section: Int) {
+        print(section)
+    }
 
 }

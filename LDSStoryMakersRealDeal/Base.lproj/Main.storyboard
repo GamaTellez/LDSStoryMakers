@@ -263,12 +263,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdY-gJ-D4k">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdY-gJ-D4k" customClass="AddRemoveClass" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
                                                     <rect key="frame" x="23" y="62" width="72" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="72" id="6Ru-5E-hce"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="addRemoveButtonTapped:" destination="gbx-Xx-Z0u" eventType="touchUpInside" id="YnR-fu-EMC"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -288,7 +291,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addRemoveButton" destination="IdY-gJ-D4k" id="ZFw-Ob-PJE"/>
+                                            <outlet property="addRemoveButton" destination="IdY-gJ-D4k" id="nkA-6t-7tR"/>
                                             <outlet property="descriptionLabel" destination="PPu-fg-pQM" id="s4j-ue-gQA"/>
                                             <outlet property="speakerAndLocationLabel" destination="OUX-AI-w1q" id="59M-eh-B7z"/>
                                             <outlet property="titleLabel" destination="ESp-OT-dmL" id="xEX-yh-a3B"/>

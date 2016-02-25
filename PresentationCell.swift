@@ -8,13 +8,20 @@
 
 import UIKit
 
+protocol PresentationCellButtonDelegate {
+    func indexOfClassSelected(section:Int)
+   // var indexOfClassSelected: Int { get set }
+}
+
 class PresentationCell: UITableViewCell {
     
-    @IBOutlet var addRemoveButton: UIButton!
+ 
+    @IBOutlet var addRemoveButton: AddRemoveClass!
     @IBOutlet var speakerAndLocationLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
  
+    var delegate:PresentationCellButtonDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +42,14 @@ class PresentationCell: UITableViewCell {
         self.speakerAndLocationLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 15)
         
     }
+    
+    @IBAction func addRemoveButtonTapped(sender: AddRemoveClass) {
+        if let buttonSection = sender.section {
+            self.delegate?.indexOfClassSelected(buttonSection)
+        }
+    }
+   
+    
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
