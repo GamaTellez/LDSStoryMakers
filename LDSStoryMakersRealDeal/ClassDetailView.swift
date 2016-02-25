@@ -87,6 +87,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
             if let speakerName = currentClass.presentation?.speakerName {
                 self.speakerButton.setTitle(speakerName, forState: .Normal)
             }
+             self.speakerButton.setTitle("Feedback", forState: .Normal)
         }
     }
     

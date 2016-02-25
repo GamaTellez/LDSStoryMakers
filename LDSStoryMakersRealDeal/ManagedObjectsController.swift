@@ -40,6 +40,12 @@ class ManagedObjectsController: NSObject {
             }
         }
         
+        if let breakoutIDDict = arrayWithInfoDictionaries[4] as? NSDictionary {
+            if let breakId = breakoutIDDict.objectForKey("f") as? String {
+                newBreakout.setValue(breakId, forKey: "id")
+            }
+        }
+        
         if let dictionayWithBreakoutStartTime = arrayWithInfoDictionaries[1] as? NSDictionary {
             if let stringStartTime = dictionayWithBreakoutStartTime.objectForKey("f") as? String {
                 let fullStartTimeString = String(format: "%@ %@", dateDay, stringStartTime)
