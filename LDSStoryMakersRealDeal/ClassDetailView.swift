@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClassDetailView: UIViewController {
+class ClassDetailView: UIViewController, UITextViewDelegate {
     @IBOutlet var classTitleLabel: UILabel!
     @IBOutlet var classTimeLabel: UILabel!
     @IBOutlet var classLocationLabel: UILabel!
@@ -38,17 +38,29 @@ class ClassDetailView: UIViewController {
     }
     
     func setViewsAppearance() {
-        self.classTimeLabel.textColor = UIColor.whiteColor()
+        self.classTitleLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.classTitleLabel.textColor = UIColor.whiteColor()
         self.classTimeLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.classTimeLabel.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.classTimeLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
         self.classTimeLabel.backgroundColor = UIColor.clearColor()
         self.classDescriptionTextView.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
-        self.classDescriptionTextView.allowsEditingTextAttributes = false
         self.classDescriptionTextView.textAlignment = NSTextAlignment.Justified
         self.speakerButton.titleLabel?.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.speakerButton.layer.cornerRadius = 5
+        self.speakerButton.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.speakerButton.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
+        self.speakerButton.titleLabel?.preferredMaxLayoutWidth = self.speakerButton.frame.width
+        self.speakerButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.speakerButton.titleLabel?.numberOfLines = 0
         self.feecBackButtom.layer.cornerRadius = 5
         self.feecBackButtom.titleLabel?.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.feecBackButtom.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.feecBackButtom.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
+        self.classLocationLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
+        
+    }
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        return false
     }
     
     func setUpViewsContent() {
@@ -63,7 +75,6 @@ class ClassDetailView: UIViewController {
                     self.classTimeLabel.text = String(format:"%@ %@ - %@", self.getDayFromDate(startDate), startTime, endTime)
                 }
             }
-         
             if let location = currentClass.scheduleItem?.location {
                 self.classLocationLabel.text = location
             } else {
@@ -74,7 +85,7 @@ class ClassDetailView: UIViewController {
                 self.classDescriptionTextView.text = classDescription
             }
             if let speakerName = currentClass.presentation?.speakerName {
-                self.speakerButton.titleLabel?.text = speakerName
+                self.speakerButton.setTitle(speakerName, forState: .Normal)
             }
         }
     }
