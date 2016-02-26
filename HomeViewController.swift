@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var fillerLabel: UILabel!
     
+    var friday:Day?
+    var saturday:Day?
      let kclassSelectedNotification = "kClassSelectedNotification"
      let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
@@ -27,6 +29,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setBackgroundImageView()
         self.setUpTablewView()
         self.registerForNotifications()
+        self.getFullScheduleForFridayAndSaturday()
 
     }
     
@@ -36,12 +39,53 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
     }
     
+    func getFullScheduleForFridayAndSaturday() {
+        if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
+            if fridayAndSaturday.isEmpty {
+                print("have to wait until all objects are downloaded")
+            } else {
+            self.friday = fridayAndSaturday[0]
+            self.saturday = fridayAndSaturday[1]
+            print(self.friday?.name)
+                print(self.friday?.scheduledClasses?.count)
+                print(self.friday?.date)
+            print(self.saturday?.name)
+                print(self.saturday?.scheduledClasses?.count)
+                print(saturday?.date)
+            }
+        }
+    }
+    
     func getDaysObjects() {
-        print("somethig")
-        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
-        ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
-
-
+        let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
+        if fridayAndSaturday.isEmpty {
+           ManagedObjectsController.sharedInstance.createFridayAndSaturday()
+            if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
+                 self.friday = fridayAndSaturday[0]
+                 self.saturday = fridayAndSaturday[1]
+                let mandatoryClassesForSchedule = ManagedObjectsController.sharedInstance.getMandatoryClassesForSchedule()
+                self.friday = fridayAndSaturday[0]
+                self.saturday = fridayAndSaturday[1]
+                let ordererByDate = NSCalendar.currentCalendar()
+                for itemToSchedule in mandatoryClassesForSchedule {
+                    if let startDate = itemToSchedule.breakout?.startTime {
+                        let comparison = ordererByDate.compareDate(friday!.date!, toDate: startDate, toUnitGranularity: .Day)
+                        if comparison == NSComparisonResult.OrderedSame {
+                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.friday!)
+                        } else {
+                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.saturday!)
+                        }
+                    }
+                }
+                if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
+                    self.friday = fridayAndSaturday[0]
+                    self.saturday = fridayAndSaturday[1]
+                    print(self.friday?.scheduledClasses?.count)
+                    print(self.saturday?.scheduledClasses?.count)
+                }
+        } else {
+            }
+        }
     }
     
     func updatePersonalScheduleWithNewClass(notification:NSNotification) {

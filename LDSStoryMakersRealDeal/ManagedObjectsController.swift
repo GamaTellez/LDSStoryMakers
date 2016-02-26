@@ -237,20 +237,18 @@ class ManagedObjectsController: NSObject {
         return requestResults
     }
     
-    
-    func createClassScheduledItem(from classPassed:ClassToSchedule, completion:(success:Bool)->Void) {
-       // let classToSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
-    }
-    
+    //friday and saturday
     func createFridayAndSaturday() {
         if (self.userDefaults.objectForKey("fridayAndSaturdayCreated") == nil) {
             let formatter = NSDateFormatter()
             formatter.dateFormat = "MM-dd-yyyy"
             let friday = NSManagedObject(entity: NSEntityDescription.entityForName("Day", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+            friday.setValue("friday", forKey: "name")
             if let fridayDate = formatter.dateFromString("5/6/2016") {
                 friday.setValue(fridayDate, forKey: "date")
             }
             let saturday = NSManagedObject(entity: NSEntityDescription.entityForName("Day", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+                saturday.setValue("saturday", forKey: "name")
             if let saturdayDate = formatter.dateFromString("5/7/2016") {
                 saturday.setValue(saturdayDate, forKey: "date")
             }
@@ -263,12 +261,93 @@ class ManagedObjectsController: NSObject {
         }
     }
     
-    func getFridayAndSaturdayObjects() {
+    func getFridayAndSaturdayObjects() -> [AnyObject] {
         let daysRequest = NSFetchRequest(entityName: "Day")
-        daysRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        let array = self.fetchRequestExecuter(daysRequest)
-        print(array.count)
+        daysRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        return self.fetchRequestExecuter(daysRequest)
     }
+    
+    //MAndatory breakouts for personal schedule
+    func getMandatoryClassesForSchedule() -> [ClassToSchedule] {
+        var classesToSchedule:[ClassToSchedule] = []
+            var mandatoryBreakouts:[Breakout] = []
+            if let allBreakouts = self.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+               mandatoryBreakouts = self.getMandatoryClassesToAttend(from: allBreakouts)
+                classesToSchedule = self.createClassToScheduleObjects(from: mandatoryBreakouts)
+            }
+        
+    return classesToSchedule
+    }
+    
+    func getMandatoryClassesToAttend(from allBreakouts:[Breakout]) -> [Breakout] {
+        var mandatoryOnes:[Breakout] = []
+        for bkout in allBreakouts {
+            if let idbkout = bkout.breakoutID {
+                if idbkout.characters.count > 2 {
+                    mandatoryOnes.append(bkout)
+                }
+            }
+        }
+        return mandatoryOnes
+    }
+    
+    func createClassToScheduleObjects(from mandatoryBreakouts:[Breakout]) -> [ClassToSchedule] {
+        var allClasses:[ClassToSchedule] = []
+        for item in mandatoryBreakouts {
+            let classObject = ClassToSchedule()
+            classObject.breakout = item
+            
+            if let allScheduleItems = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
+                if let itemBreakoutId = item.breakoutID {
+                    for itemSchedule in allScheduleItems {
+                        if itemBreakoutId == itemSchedule.presentationTitle {
+                            classObject.scheduleItem = itemSchedule
+                        }
+                    }
+                }
+            }
+            if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
+                if let title = item.breakoutID {
+                    for presentation in allPresentations {
+                        if title == presentation.title {
+                            classObject.presentation = presentation
+                        }
+                    }
+                }
+            }
+            if let allSpeakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData() as? [Speaker] {
+                if let speakerId = classObject.presentation?.speakerId {
+                    for speak in allSpeakers {
+                        if speakerId.integerValue == speak.speakerId?.integerValue {
+                            classObject.speaker = speak
+                        }
+                    }
+                }
+            }
+            allClasses.append(classObject)
+        }
+        return allClasses
+    }
+//create classscheduled from classtoschedule
+    func createScheduledClass(from clsToSchedule:ClassToSchedule, with day:Day) {
+        let newClassScheduled = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+        newClassScheduled.setValue(day, forKey: "Day")
+        if let breakoutForClass = clsToSchedule.breakout {
+            newClassScheduled.setValue(breakoutForClass, forKey: "breakOut")
+        }
+        if let presentationForClass = clsToSchedule.presentation {
+            newClassScheduled.setValue(presentationForClass, forKey: "presentation")
+        }
+        if let scheduleForClass = clsToSchedule.scheduleItem {
+            newClassScheduled.setValue(scheduleForClass, forKey:"scheduleItem")
+        }
+        if let speakerForClass = clsToSchedule.speaker {
+            newClassScheduled.setValue(speakerForClass, forKey: "speaker")
+        }
+        
+        self.saveToCoreData()
+    }
+    
     
     
 }
