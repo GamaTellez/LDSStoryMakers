@@ -13,13 +13,13 @@ class ManagedObjectsController: NSObject {
     static let sharedInstance = ManagedObjectsController()
     let managedContext:NSManagedObjectContext
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
-    let privateManagedContext:NSManagedObjectContext
+//    let privateManagedContext:NSManagedObjectContext
     
     override init() {
         self.managedContext = ((UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext)!
-        self.privateManagedContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        self.privateManagedContext.parentContext = self.managedContext
-        self.privateManagedContext.persistentStoreCoordinator = self.managedContext.persistentStoreCoordinator
+//        self.privateManagedContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+//        self.privateManagedContext.parentContext = self.managedContext
+//        self.privateManagedContext.persistentStoreCoordinator = self.managedContext.persistentStoreCoordinator
         
     }
     
@@ -189,6 +189,13 @@ class ManagedObjectsController: NSObject {
             }
         }
         self.saveToCoreData()
+    }
+    func saveToCoreDataWithPrivateContext() {
+        do {
+            try self.managedContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     func saveToCoreData() {
         do {

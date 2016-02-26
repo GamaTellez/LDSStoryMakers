@@ -252,7 +252,11 @@ class NSURLSessionController: NSObject {
             dispatch_group_leave(completionBlocksWait)
         })
         dispatch_group_notify(completionBlocksWait, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-             NSNotificationCenter.defaultCenter().postNotificationName(self.kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                     NSNotificationCenter.defaultCenter().postNotificationName(self.kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
+            })
+
+    
         }
     } else {
         print("all keys stored in nsuserdefaults")

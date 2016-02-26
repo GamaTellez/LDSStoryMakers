@@ -19,22 +19,25 @@ class HomeViewController: UIViewController, UITableViewDelegate {
      let kclassSelectedNotification = "kClassSelectedNotification"
      let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
+        ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
-      //  self.registerForNotifications()
-
+        self.registerForNotifications()
     }
     
+    
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getDaysObjects", name: self.kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getDaysObjects", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule", name: self.kclassSelectedNotification, object: nil)
     }
     
     func getDaysObjects() {
-        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
+        print("somethig")
     }
     
     func setBackgroundImageView() {
