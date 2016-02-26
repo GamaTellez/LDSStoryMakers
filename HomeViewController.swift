@@ -19,27 +19,36 @@ class HomeViewController: UIViewController, UITableViewDelegate {
      let kclassSelectedNotification = "kClassSelectedNotification"
      let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
-        ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
         self.registerForNotifications()
+
     }
     
     
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getDaysObjects", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule", name: self.kclassSelectedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
     }
     
     func getDaysObjects() {
         print("somethig")
+        ManagedObjectsController.sharedInstance.createFridayAndSaturday()
+        ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
+
+
     }
     
+    func updatePersonalScheduleWithNewClass(notification:NSNotification) {
+        if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
+            print(classSelected.presentation?.title)
+        }
+    }
     func setBackgroundImageView() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor.clearColor()
