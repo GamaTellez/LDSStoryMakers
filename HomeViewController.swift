@@ -127,7 +127,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Upcoming Class")
             break
         default:
-            viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Next Classes")
+            viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Next Classe")
             break
         }        
         return viewForHeader
@@ -152,7 +152,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 185
+        //185 for nextclasscell and 63 for upcomingclasses
+        switch indexPath.section {
+        case 0:
+            return 185
+        default:
+            return 81
+        }
     }
+    
 }
 
