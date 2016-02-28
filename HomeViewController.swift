@@ -152,7 +152,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 184
+        return 185
     }
 }
 
