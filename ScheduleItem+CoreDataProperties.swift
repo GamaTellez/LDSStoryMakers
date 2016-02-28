@@ -2,7 +2,7 @@
 //  ScheduleItem+CoreDataProperties.swift
 //  LDSStoryMakersRealDeal
 //
-//  Created by Gamaliel Tellez on 2/25/16.
+//  Created by Gamaliel Tellez on 2/27/16.
 //  Copyright © 2016 Gamaliel Tellez. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

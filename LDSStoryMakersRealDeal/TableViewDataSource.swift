@@ -9,18 +9,12 @@
 import UIKit
 
 class TableViewDataSource: NSObject, UITableViewDataSource {
-    var days:[Day] = []
+    var classesInSchedule:[ClassScheduled] = []
     let kNextClassID = "nextClassCell"
     let kupcomingClassID = "upcomingClass"
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCellWithIdentifier("nextClassCell", forIndexPath: indexPath) as! NextClassCell
-//        cell.classDescription.scrollRangeToVisible(NSMakeRange(0, 0))
-//        cell.backgroundColor = UIColor.clearColor()
-//        
-//        return cell
-//        
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassID, forIndexPath: indexPath) as! NextClassCell
@@ -45,5 +39,9 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     }
        func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
+    }
+    
+    func updateArrayForDataSource(alreadyScheduledClasses:[ClassScheduled]) {
+        self.classesInSchedule = alreadyScheduledClasses
     }
 }

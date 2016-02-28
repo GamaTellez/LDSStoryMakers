@@ -16,8 +16,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var fillerLabel: UILabel!
     
-    var friday:Day?
-    var saturday:Day?
+
+    let tableViewDataSource = TableViewDataSource()
      let kclassSelectedNotification = "kClassSelectedNotification"
      let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
@@ -29,64 +29,74 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setBackgroundImageView()
         self.setUpTablewView()
         self.registerForNotifications()
-        self.getFullScheduleForFridayAndSaturday()
+        self.getAllClassesAndPassedToDataSource()
 
     }
     
     
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getDaysObjects", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "scheduleMandatoryClassesOnFirstLaunch", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
     }
     
-    func getFullScheduleForFridayAndSaturday() {
-        if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
-            if fridayAndSaturday.isEmpty {
-                print("have to wait until all objects are downloaded")
-            } else {
-            self.friday = fridayAndSaturday[0]
-            self.saturday = fridayAndSaturday[1]
-            print(self.friday?.name)
-                print(self.friday?.scheduledClasses?.count)
-                print(self.friday?.date)
-            print(self.saturday?.name)
-                print(self.saturday?.scheduledClasses?.count)
-                print(saturday?.date)
+    func scheduleMandatoryClassesOnFirstLaunch() {
+        let mandatoryClasses = ManagedObjectsController.sharedInstance.getMandatoryClassesForSchedule()
+            for mustGoClass in mandatoryClasses {
+                ManagedObjectsController.sharedInstance.createScheduledClass(from: mustGoClass)
             }
-        }
     }
     
-    func getDaysObjects() {
-        let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
-        if fridayAndSaturday.isEmpty {
-           ManagedObjectsController.sharedInstance.createFridayAndSaturday()
-            if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
-                 self.friday = fridayAndSaturday[0]
-                 self.saturday = fridayAndSaturday[1]
-                let mandatoryClassesForSchedule = ManagedObjectsController.sharedInstance.getMandatoryClassesForSchedule()
-                self.friday = fridayAndSaturday[0]
-                self.saturday = fridayAndSaturday[1]
-                let ordererByDate = NSCalendar.currentCalendar()
-                for itemToSchedule in mandatoryClassesForSchedule {
-                    if let startDate = itemToSchedule.breakout?.startTime {
-                        let comparison = ordererByDate.compareDate(friday!.date!, toDate: startDate, toUnitGranularity: .Day)
-                        if comparison == NSComparisonResult.OrderedSame {
-                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.friday!)
-                        } else {
-                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.saturday!)
-                        }
-                    }
-                }
-                if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
-                    self.friday = fridayAndSaturday[0]
-                    self.saturday = fridayAndSaturday[1]
-                    print(self.friday?.scheduledClasses?.count)
-                    print(self.saturday?.scheduledClasses?.count)
-                }
-        } else {
+    func getAllClassesAndPassedToDataSource() {
+        if let allClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
+            if allClasses.isEmpty {
+                print("have to wait until finshed downloading items")
+            } else {
+                self.updateTableViewData(from: allClasses)
             }
         }
     }
+//    func getFullScheduleForFridayAndSaturday() {
+//        if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
+//            if fridayAndSaturday.isEmpty {
+//                print("have to wait until all objects are downloaded")
+//            } else {
+//            self.friday = fridayAndSaturday[0]
+//            self.saturday = fridayAndSaturday[1]
+//            print(self.friday?.name)
+//                print(self.friday?.scheduledClasses?.count)
+//                print(self.friday?.date)
+//            print(self.saturday?.name)
+//                print(self.saturday?.scheduledClasses?.count)
+//                print(saturday?.date)
+//            }
+//        }
+//    }
+    
+//    func getDaysObjects() {
+//        let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
+//        if fridayAndSaturday.isEmpty {
+//           ManagedObjectsController.sharedInstance.createFridayAndSaturday()
+//            if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
+//                 self.friday = fridayAndSaturday[0]
+//                 self.saturday = fridayAndSaturday[1]
+//                let mandatoryClassesForSchedule = ManagedObjectsController.sharedInstance.getMandatoryClassesForSchedule()
+//                let ordererByDate = NSCalendar.currentCalendar()
+//                for itemToSchedule in mandatoryClassesForSchedule {
+//                    if let startDate = itemToSchedule.breakout?.startTime {
+//                        let comparison = ordererByDate.compareDate(friday!.date!, toDate: startDate, toUnitGranularity: .Day)
+//                        if comparison == NSComparisonResult.OrderedSame {
+//                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.friday!)
+//                        } else {
+//                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.saturday!)
+//                        }
+//                    }
+//                }
+//                if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
+//                }
+//        } else {
+//            }
+//        }
+//    }
     
     func updatePersonalScheduleWithNewClass(notification:NSNotification) {
         if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
@@ -100,6 +110,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func setUpTablewView() {
         self.tableView.backgroundColor = UIColor.clearColor()
+        self.tableView.dataSource = self.tableViewDataSource
     }
    
     func setUpLabelsApperance() {
@@ -117,6 +128,11 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                    print(classObject)
             }
         
+    }
+    
+    func updateTableViewData(from arrayOfClasses:[ClassScheduled]) {
+        self.tableViewDataSource.updateArrayForDataSource(arrayOfClasses)
+        self.tableView.reloadData()
     }
     
     //tableview delegate methods
@@ -152,7 +168,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //185 for nextclasscell and 63 for upcomingclasses
         switch indexPath.section {
         case 0:
             return 185

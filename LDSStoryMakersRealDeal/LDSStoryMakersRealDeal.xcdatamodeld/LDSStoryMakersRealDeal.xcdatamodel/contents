@@ -8,16 +8,11 @@
         <relationship name="classScheduled" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClassScheduled" inverseName="breakOut" inverseEntity="ClassScheduled" syncable="YES"/>
     </entity>
     <entity name="ClassScheduled" representedClassName=".ClassScheduled" syncable="YES">
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="breakOut" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Breakout" inverseName="classScheduled" inverseEntity="Breakout" syncable="YES"/>
-        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="scheduledClasses" inverseEntity="Day" syncable="YES"/>
         <relationship name="presentation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Presentation" inverseName="classedScheduled" inverseEntity="Presentation" syncable="YES"/>
         <relationship name="scheduleItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScheduleItem" inverseName="classScheduled" inverseEntity="ScheduleItem" syncable="YES"/>
         <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Speaker" inverseName="classScheduled" inverseEntity="Speaker" syncable="YES"/>
-    </entity>
-    <entity name="Day" representedClassName=".Day" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="scheduledClasses" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ClassScheduled" inverseName="day" inverseEntity="ClassScheduled" syncable="YES"/>
     </entity>
     <entity name="Presentation" representedClassName=".Presentation" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -49,10 +44,9 @@
     </entity>
     <elements>
         <element name="Breakout" positionX="-36" positionY="72" width="128" height="30"/>
-        <element name="Day" positionX="0" positionY="117" width="128" height="30"/>
+        <element name="ClassScheduled" positionX="-27" positionY="90" width="128" height="120"/>
         <element name="Presentation" positionX="-54" positionY="9" width="128" height="30"/>
         <element name="ScheduleItem" positionX="-18" positionY="81" width="128" height="30"/>
         <element name="Speaker" positionX="-63" positionY="-18" width="128" height="30"/>
-        <element name="ClassScheduled" positionX="-27" positionY="90" width="128" height="30"/>
     </elements>
 </model>
