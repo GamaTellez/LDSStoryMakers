@@ -12,7 +12,7 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
 
     
     @IBOutlet var backGroundVieew: UIView!
-    @IBOutlet var speakerAndClassNameLabel: UITextView!
+    @IBOutlet var speakerAndClassNameLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var classDescription: UITextView!
     @IBOutlet var courseFeedBackButton: UIButton!

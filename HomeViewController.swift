@@ -44,6 +44,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             for mustGoClass in mandatoryClasses {
                 ManagedObjectsController.sharedInstance.createScheduledClass(from: mustGoClass)
             }
+        self.getAllClassesAndPassedToDataSource()
     }
     
     func getAllClassesAndPassedToDataSource() {
@@ -143,7 +144,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Upcoming Class")
             break
         default:
-            viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Next Classe")
+            viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Next Class")
             break
         }        
         return viewForHeader

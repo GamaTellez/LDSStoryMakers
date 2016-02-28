@@ -14,28 +14,67 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     let kupcomingClassID = "upcomingClass"
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //check it is not empty, it is crashing because of that
         
         switch indexPath.section {
         case 0:
+            let scheduledClass = self.classesInSchedule[indexPath.row]
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassID, forIndexPath: indexPath) as! NextClassCell
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = .None
+            if let start = scheduledClass.breakOut?.startTime {
+                if let end = scheduledClass.breakOut?.endTime {
+                    let startTime = NSDateFormatter.localizedStringFromDate(start, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+                    let endTime = NSDateFormatter.localizedStringFromDate(end, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+                    cell.timeLabel.text = String(format: "%@ - %@", startTime, endTime)
+                }
+            }
+
+            if let className = scheduledClass.presentation?.title {
+                cell.speakerAndClassNameLabel.text = className
+                if let speakerName = scheduledClass.presentation?.speakerName {
+                   cell.speakerAndClassNameLabel.text = String(format: "@% , @%", className, speakerName)
+                }
+            } else {
+                if let breakoutName = scheduledClass.breakOut?.breakoutID {
+                    cell.speakerAndClassNameLabel.text = breakoutName
+                }
+            }
+            if let classDescription = scheduledClass.presentation?.presentationDescription {
+                cell.classDescription.text = classDescription
+            }
+            
             return cell
         default:
+            let scheduledClass = self.classesInSchedule[indexPath.row + 1]
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kupcomingClassID, forIndexPath: indexPath) as! UpcomingClassCell
             cell.backgroundColor = UIColor.clearColor()
+            if let start = scheduledClass.breakOut?.startTime {
+                if let end = scheduledClass.breakOut?.endTime {
+                    let startTime = NSDateFormatter.localizedStringFromDate(start, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+                     let endTime = NSDateFormatter.localizedStringFromDate(end, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+                    cell.classLocationAndTime.text = String(format: "%@ - %@", startTime, endTime)
+                }
+            }
+            if let className = scheduledClass.presentation?.title {
+                    cell.className.text = className
+            }
             return cell
-        }
+            }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.classesInSchedule.isEmpty {
+            return 0
+        } else {
         if section == 0 {
             return 1
         }
         if section == 1 {
-            return 10
+            return 3
         }
         return 1
+        }
     }
        func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2

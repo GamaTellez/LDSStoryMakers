@@ -106,9 +106,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backGroundVieew" destination="3bq-tp-L39" id="M3F-9T-S6n"/>
-                                            <outlet property="classDescription" destination="ULA-LV-PSH" id="IeG-Sq-csv"/>
+                                            <outlet property="classDescription" destination="ULA-LV-PSH" id="5ht-Mt-4Hq"/>
                                             <outlet property="courseFeedBackButton" destination="yZd-qc-dDT" id="0NH-Zd-PsJ"/>
-                                            <outlet property="speakerAndClassNameLabel" destination="ULA-LV-PSH" id="Um8-J0-ap4"/>
+                                            <outlet property="speakerAndClassNameLabel" destination="vfS-nF-GXi" id="jfS-4P-ZYC"/>
                                             <outlet property="speakerBioButton" destination="HeD-EL-vig" id="8oS-Ga-2V2"/>
                                             <outlet property="timeLabel" destination="VFh-rY-4aQ" id="jFl-8l-e6b"/>
                                         </connections>
