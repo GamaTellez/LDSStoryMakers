@@ -14,6 +14,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("nextClassCell", forIndexPath: indexPath) as! NextClassCell
+        cell.classDescription.scrollRangeToVisible(NSMakeRange(0, 0))
         cell.backgroundColor = UIColor.clearColor()
         
         return cell
