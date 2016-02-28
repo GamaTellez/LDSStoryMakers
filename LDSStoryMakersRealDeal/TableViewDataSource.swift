@@ -13,8 +13,9 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("nextClassCell", forIndexPath: indexPath) as! NextClassCell
         
-        return UITableViewCell()
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

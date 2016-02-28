@@ -150,5 +150,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30;
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 184
+    }
 }
 
