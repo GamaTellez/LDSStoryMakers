@@ -15,11 +15,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var fillerLabel: UILabel!
+    @IBOutlet var notificationsButton: UIButton!
+    @IBOutlet var addClassButton: UIButton!
     
-
+    lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let tableViewDataSource = TableViewDataSource()
-     let kclassSelectedNotification = "kClassSelectedNotification"
-     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
+    let kclassSelectedNotification = "kClassSelectedNotification"
+    let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     
 
     
@@ -30,13 +32,21 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setUpTablewView()
         self.registerForNotifications()
         self.getAllClassesAndPassedToDataSource()
+        self.setUpButtons()
+    }
+    func setUpButtons() {
+        self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
+        self.notificationsButton.layer.borderWidth = 1
+        self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
+        self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
+        self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.addClassButton.alpha = 0.5
 
     }
     
-    
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "scheduleMandatoryClassesOnFirstLaunch", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
+     //   NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
     }
     
     func scheduleMandatoryClassesOnFirstLaunch() {
@@ -56,54 +66,23 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
-//    func getFullScheduleForFridayAndSaturday() {
-//        if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
-//            if fridayAndSaturday.isEmpty {
-//                print("have to wait until all objects are downloaded")
-//            } else {
-//            self.friday = fridayAndSaturday[0]
-//            self.saturday = fridayAndSaturday[1]
-//            print(self.friday?.name)
-//                print(self.friday?.scheduledClasses?.count)
-//                print(self.friday?.date)
-//            print(self.saturday?.name)
-//                print(self.saturday?.scheduledClasses?.count)
-//                print(saturday?.date)
-//            }
-//        }
-//    }
-    
-//    func getDaysObjects() {
-//        let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects()
-//        if fridayAndSaturday.isEmpty {
-//           ManagedObjectsController.sharedInstance.createFridayAndSaturday()
-//            if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
-//                 self.friday = fridayAndSaturday[0]
-//                 self.saturday = fridayAndSaturday[1]
-//                let mandatoryClassesForSchedule = ManagedObjectsController.sharedInstance.getMandatoryClassesForSchedule()
-//                let ordererByDate = NSCalendar.currentCalendar()
-//                for itemToSchedule in mandatoryClassesForSchedule {
-//                    if let startDate = itemToSchedule.breakout?.startTime {
-//                        let comparison = ordererByDate.compareDate(friday!.date!, toDate: startDate, toUnitGranularity: .Day)
-//                        if comparison == NSComparisonResult.OrderedSame {
-//                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.friday!)
-//                        } else {
-//                            ManagedObjectsController.sharedInstance.createScheduledClass(from: itemToSchedule, with: self.saturday!)
-//                        }
-//                    }
-//                }
-//                if let fridayAndSaturday = ManagedObjectsController.sharedInstance.getFridayAndSaturdayObjects() as? [Day] {
-//                }
-//        } else {
-//            }
-//        }
-//    }
-    
-    func updatePersonalScheduleWithNewClass(notification:NSNotification) {
-        if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
-            print(classSelected.presentation?.title)
+
+    @IBAction func dismissNotificationButtonTapped(sender: AnyObject) {
+        UIView.animateWithDuration(0.5) { () -> Void in
+            self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
+            self.tableView.center.y = self.notificationLabelBanner.frame.height + self.tableView.frame.height / 2 + self.fillerLabel.frame.height
+                self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
         }
     }
+    
+    @IBAction func addClassButtonTapped(sender: AnyObject) {
+        let fullScheduleView = self.storyBoard.instantiateViewControllerWithIdentifier("fullScheduleView")
+    }
+//    func updatePersonalScheduleWithNewClass(notification:NSNotification) {
+//        if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
+//            print(classSelected.presentation?.title)
+//        }
+//    }
     func setBackgroundImageView() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor.clearColor()
@@ -128,7 +107,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             if let classObject = notification.userInfo!["classSelected"] as? ClassToSchedule {
                    print(classObject)
             }
-        
     }
     
     func updateTableViewData(from arrayOfClasses:[ClassScheduled]) {

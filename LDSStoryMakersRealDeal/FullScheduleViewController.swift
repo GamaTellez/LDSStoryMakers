@@ -150,8 +150,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                             breakoutDetailVC.classesInBreakout = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
-                            
-                            
                         }
                     }
                     if daySelected == 1 {
