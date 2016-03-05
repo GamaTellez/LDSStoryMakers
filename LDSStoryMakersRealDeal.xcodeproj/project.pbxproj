@@ -33,6 +33,10 @@
 		87C416761C7F915E00D99E17 /* AddRemoveClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416751C7F915E00D99E17 /* AddRemoveClass.swift */; };
 		87C416A81C7FAAEA00D99E17 /* ClassToSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */; };
 		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
+		87D35D551C88D4500009EFF1 /* ViewFullScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D541C88D4500009EFF1 /* ViewFullScheduleCell.swift */; };
+		87D35D571C88D9940009EFF1 /* FullPersonalSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */; };
+		87D35D5A1C88DE390009EFF1 /* PersonalScheduleDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */; };
+		87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */; };
 		87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
@@ -91,6 +95,10 @@
 		87C416751C7F915E00D99E17 /* AddRemoveClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRemoveClass.swift; sourceTree = "<group>"; };
 		87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassToSchedule.swift; path = ../ClassToSchedule.swift; sourceTree = "<group>"; };
 		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
+		87D35D541C88D4500009EFF1 /* ViewFullScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFullScheduleCell.swift; sourceTree = "<group>"; };
+		87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPersonalSchedule.swift; sourceTree = "<group>"; };
+		87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleDS.swift; sourceTree = "<group>"; };
+		87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleCell.swift; sourceTree = "<group>"; };
 		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -191,11 +199,13 @@
 				873811241C76E10600F4A2D1 /* TableViewDataSource.swift */,
 				878E2ECA1C8274D30050D934 /* NextClassCell.swift */,
 				878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */,
+				87D35D541C88D4500009EFF1 /* ViewFullScheduleCell.swift */,
+				87D35D581C88D99D0009EFF1 /* FullPersonalSchedule */,
 			);
 			name = HomeVC;
 			sourceTree = "<group>";
 		};
-		87D257FD1C7995AA000368FC /* FullScheduleVC */ = {
+		87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */ = {
 			isa = PBXGroup;
 			children = (
 				87B070371C78251600014DD1 /* FullScheduleViewController.swift */,
@@ -203,7 +213,17 @@
 				87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */,
 				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
 			);
-			name = FullScheduleVC;
+			name = FullConferenceScheduleVC;
+			sourceTree = "<group>";
+		};
+		87D35D581C88D99D0009EFF1 /* FullPersonalSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */,
+				87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */,
+				87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */,
+			);
+			name = FullPersonalSchedule;
 			sourceTree = "<group>";
 		};
 		87F219FB1C69360200C2EAA4 = {
@@ -236,7 +256,7 @@
 				8738111F1C76645C00F4A2D1 /* Controllers */,
 				878153911C6C0D380042F4EB /* DataModel */,
 				87D257FC1C79959E000368FC /* HomeVC */,
-				87D257FD1C7995AA000368FC /* FullScheduleVC */,
+				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
 				87F21A111C69360300C2EAA4 /* Assets.xcassets */,
 				87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
@@ -421,12 +441,16 @@
 				878E2EDD1C829C3F0050D934 /* ClassScheduled.swift in Sources */,
 				8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */,
 				87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */,
+				87D35D551C88D4500009EFF1 /* ViewFullScheduleCell.swift in Sources */,
+				87D35D571C88D9940009EFF1 /* FullPersonalSchedule.swift in Sources */,
 				878E2EDE1C829C3F0050D934 /* ScheduleItem+CoreDataProperties.swift in Sources */,
 				878E2EDA1C829C3F0050D934 /* Breakout+CoreDataProperties.swift in Sources */,
 				87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */,
 				8792D0EC1C7CE2010029E532 /* PresentationCell.swift in Sources */,
 				873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */,
+				87D35D5A1C88DE390009EFF1 /* PersonalScheduleDS.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
+				87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */,
 				8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */,
 				878E2EE21C829C3F0050D934 /* Presentation+CoreDataProperties.swift in Sources */,
 				878E2EE01C829C3F0050D934 /* Speaker+CoreDataProperties.swift in Sources */,

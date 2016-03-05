@@ -14,7 +14,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var notificationLabelBanner: UILabel!
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var fillerLabel: UILabel!
     @IBOutlet var notificationsButton: UIButton!
     @IBOutlet var addClassButton: UIButton!
     
@@ -70,13 +69,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBAction func dismissNotificationButtonTapped(sender: AnyObject) {
         UIView.animateWithDuration(0.5) { () -> Void in
             self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
-            self.tableView.center.y = self.notificationLabelBanner.frame.height + self.tableView.frame.height / 2 + self.fillerLabel.frame.height
+            self.tableView.center.y -= self.notificationLabelBanner.frame.height
                 self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
         }
     }
     
     @IBAction func addClassButtonTapped(sender: AnyObject) {
         let fullScheduleView = self.storyBoard.instantiateViewControllerWithIdentifier("fullScheduleView")
+        self.navigationController?.pushViewController(fullScheduleView, animated: true)
     }
 //    func updatePersonalScheduleWithNewClass(notification:NSNotification) {
 //        if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
@@ -96,7 +96,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func setUpLabelsApperance() {
         self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
         self.notificationLabelBanner.clipsToBounds = true
-        self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.topLabelBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.topLabelBar.textColor = UIColor.whiteColor()
         

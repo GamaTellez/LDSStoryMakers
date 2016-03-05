@@ -26,8 +26,7 @@ class PresentationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
-        self.addRemoveButton.layer.borderWidth = 0.3
-        self.addRemoveButton.layer.borderColor = UIColor.blackColor().CGColor
+        self.addRemoveButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.titleLabel.numberOfLines = 3
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -35,7 +34,7 @@ class PresentationCell: UITableViewCell {
         self.titleLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 20)
         self.titleLabel.textColor = UIColor.whiteColor()
         self.descriptionLabel.preferredMaxLayoutWidth = 35
-        self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        //self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.descriptionLabel.font = UIFont(name: "SanFranciscoText-Light", size: 18)
         self.descriptionLabel.numberOfLines = 3

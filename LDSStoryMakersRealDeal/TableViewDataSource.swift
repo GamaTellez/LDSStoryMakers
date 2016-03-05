@@ -29,7 +29,6 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
                     cell.timeLabel.text = String(format: "%@ - %@", startTime, endTime)
                 }
             }
-
             if let className = scheduledClass.presentation?.title {
                 cell.speakerAndClassNameLabel.text = className
                 if let speakerName = scheduledClass.presentation?.speakerName {
@@ -43,9 +42,15 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
             if let classDescription = scheduledClass.presentation?.presentationDescription {
                 cell.classDescription.text = classDescription
             }
-            
             return cell
         default:
+            if indexPath.row == 3 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("fullSchedule")
+               // cell?.backgroundView?.backgroundColor = UIColor.clearColor()
+                cell?.contentView.backgroundColor = UIColor.clearColor()
+                cell?.backgroundColor = UIColor.clearColor()
+                return cell!
+            } else {
             let scheduledClass = self.classesInSchedule[indexPath.row + 1]
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kupcomingClassID, forIndexPath: indexPath) as! UpcomingClassCell
             cell.backgroundColor = UIColor.clearColor()
@@ -59,8 +64,11 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
             if let className = scheduledClass.presentation?.title {
                     cell.className.text = className
             }
+                
             return cell
             }
+        }
+            
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,7 +79,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
             return 1
         }
         if section == 1 {
-            return 3
+            return 4
         }
         return 1
         }
