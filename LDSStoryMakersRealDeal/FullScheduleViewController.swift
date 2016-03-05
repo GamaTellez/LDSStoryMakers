@@ -13,7 +13,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var fullScheduleLabel: UILabel!
+  
     
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
@@ -24,11 +24,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.setViewControllerBackgroundImage()
         self.setUpTableView()
         self.segmentedControllerAppearance()
-        self.labelAppearance()
-    }
-    func labelAppearance() {
-        self.fullScheduleLabel.textColor = UIColor.whiteColor()
-        self.fullScheduleLabel.backgroundColor = UIColor(red: 0.200, green: 0.804, blue: 0.757, alpha: 1.00)
     }
     
     func segmentedControllerAppearance() {

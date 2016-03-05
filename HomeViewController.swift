@@ -10,7 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate {
     
-    @IBOutlet var topLabelBar: UILabel!
     @IBOutlet var notificationLabelBanner: UILabel!
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
@@ -32,6 +31,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.registerForNotifications()
         self.getAllClassesAndPassedToDataSource()
         self.setUpButtons()
+        self.setUpStatusBarBackground()
     }
     func setUpButtons() {
         self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
@@ -42,7 +42,11 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.addClassButton.alpha = 0.5
 
     }
-    
+    func setUpStatusBarBackground() {
+        let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
+        statusBarView.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.navigationController?.navigationBar.addSubview(statusBarView)
+    }
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "scheduleMandatoryClassesOnFirstLaunch", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
      //   NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePersonalSchedule:", name: self.kclassSelectedNotification, object: nil)
@@ -97,9 +101,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
         self.notificationLabelBanner.clipsToBounds = true
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
-        self.topLabelBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.topLabelBar.textColor = UIColor.whiteColor()
-        
     }
     
     func updatePersonalSchedule(notification:NSNotification) {

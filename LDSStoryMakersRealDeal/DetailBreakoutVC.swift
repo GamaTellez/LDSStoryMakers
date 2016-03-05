@@ -29,8 +29,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     }
     func setUpLabel() {
         self.labelBreakoutTime.text = self.stringForLabelBreakoutTime
-        self.labelBreakoutTime.textColor = UIColor.whiteColor()
-        self.labelBreakoutTime.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.labelBreakoutTime.backgroundColor = UIColor.clearColor()
     }
     
     func setBackgroundImageView() {
