@@ -39,12 +39,10 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.addClassButton.alpha = 0.5
-
     }
     func setUpStatusBarBackground() {
         let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
-        statusBarView.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
         self.navigationController?.navigationBar.addSubview(statusBarView)
     }
     func registerForNotifications() {
@@ -151,10 +149,26 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             return 185
+        
         default:
+            if indexPath.row == 3 {
+            return 100
+            } 
             return 81
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        switch indexPath.section {
+//        case 1:
+//            if indexPath.row == 3 {
+//               let personalScheduleVC = self.storyBoard.instantiateViewControllerWithIdentifier("personalSchedule")
+//                self.navigationController?.pushViewController(personalScheduleVC, animated: true)
+//            }
+//        default:
+//            break
+//        }
+    }
 }
 

@@ -46,7 +46,6 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
         default:
             if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("fullSchedule")
-               // cell?.backgroundView?.backgroundColor = UIColor.clearColor()
                 cell?.contentView.backgroundColor = UIColor.clearColor()
                 cell?.backgroundColor = UIColor.clearColor()
                 return cell!
@@ -54,6 +53,8 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
             let scheduledClass = self.classesInSchedule[indexPath.row + 1]
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kupcomingClassID, forIndexPath: indexPath) as! UpcomingClassCell
             cell.backgroundColor = UIColor.clearColor()
+            cell.userInteractionEnabled = false
+                
             if let start = scheduledClass.breakOut?.startTime {
                 if let end = scheduledClass.breakOut?.endTime {
                     let startTime = NSDateFormatter.localizedStringFromDate(start, dateStyle: .NoStyle, timeStyle: .ShortStyle)

@@ -38,8 +38,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
     }
     
     func setViewsAppearance() {
-        self.classTitleLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.classTitleLabel.textColor = UIColor.whiteColor()
+        self.classTitleLabel.backgroundColor = UIColor.clearColor()
         self.classTimeLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.classTimeLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
         self.classTimeLabel.backgroundColor = UIColor.clearColor()

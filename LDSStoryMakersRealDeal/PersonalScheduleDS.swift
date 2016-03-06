@@ -21,27 +21,33 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
         let classForCell = self.classesScheduled[indexPath.row]
-        print(classForCell.presentation?.title)
-        print(classForCell.presentation?.speakerName)
-        print(classForCell.breakOut?.startTime)
-        print(classForCell.breakOut?.endTime)
-        print(classForCell.scheduleItem?.presentationTitle)
-        if let startTime = classForCell.breakOut?.startTime {
-            let startString = NSDateFormatter.localizedStringFromDate(startTime, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-            if let endTime = classForCell.breakOut?.endTime {
-                let endTimeString = NSDateFormatter.localizedStringFromDate(endTime, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-                if let location = classForCell.scheduleItem?.location {
-                    cell.timeAndLocationLabel.text = String(format: "%@ - %@, %@", startString, endTimeString, location)
-                }
-            }
+        var startTimeString = ""
+        var endTimeString = ""
+        var location = ""
+        var className = ""
+        var speakerName = ""
+        if let startTimeDate = classForCell.breakOut?.valueForKey("startTime") as? NSDate {
+             startTimeString = NSDateFormatter.localizedStringFromDate(startTimeDate, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+        }
+        if let endTimeDate = classForCell.breakOut?.valueForKey("endTime") as? NSDate {
+            endTimeString = NSDateFormatter.localizedStringFromDate(endTimeDate, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+        }
+        if let loc = classForCell.scheduleItem?.valueForKey("location") as? String {
+        location = loc
         }
         
-        if let className = classForCell.presentation?.title {
-            if let classSpeaker = classForCell.presentation?.speakerName {
-                cell.classAndSpeakerLabel.text = String(format:"%@, by %@", className, classSpeaker)
+        if let presentName = classForCell.presentation?.valueForKey("title") as? String {
+            className = presentName
+        } else {
+            if let event = classForCell.breakOut?.valueForKey("breakoutID") as? String {
+                className = event
             }
         }
-
+        if let teacherName = classForCell.presentation?.valueForKey("speakerName") as? String {
+                speakerName = teacherName
+        }
+        cell.timeAndLocationLabel.text = String(format: "%@ - %@ at %@", startTimeString, endTimeString, location)
+        cell.classAndSpeakerLabel.text = String(format: "%@, %@", className, speakerName)
         return cell
     }
     

@@ -12,8 +12,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentedController: UISegmentedControl!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var topFillerView: UILabel!
+    
+    
     
     var friday:[ClassScheduled] = []
     var saturday:[ClassScheduled] = []
@@ -26,11 +26,16 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.setUpTableViewAndSegmentedController()
        
     }
+    override func viewWillAppear(animated: Bool) {
+        self.setUpTableViewAndSegmentedController()
+    }
 
     func setUpViews() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
-        self.titleLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.topFillerView.backgroundColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
+            let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 22))
+            statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
+            self.view.addSubview(statusBarView)
+
     }
     func getAllClassesScheduled() {
         if let allClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {

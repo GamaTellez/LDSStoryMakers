@@ -24,12 +24,18 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.setViewControllerBackgroundImage()
         self.setUpTableView()
         self.segmentedControllerAppearance()
+        self.setUpStatusBarBackground()
+    }
+    func setUpStatusBarBackground() {
+        let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
+        statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
+        self.navigationController?.navigationBar.addSubview(statusBarView)
     }
     
     func segmentedControllerAppearance() {
         self.segmentedController.backgroundColor = UIColor.clearColor()
         self.segmentedController.selectedSegmentIndex = 0
-        self.segmentedController.tintColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.segmentedController.tintColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
     }
     func setViewControllerBackgroundImage() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")

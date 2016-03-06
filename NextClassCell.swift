@@ -28,12 +28,12 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
         self.classDescription.backgroundColor = UIColor.whiteColor()
         self.classDescription.textColor = UIColor.blackColor()
         self.classDescription.delegate = self
-        self.backGroundVieew.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.backGroundVieew.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.speakerBioButton.layer.cornerRadius = 10
-        self.speakerBioButton.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.speakerBioButton.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.speakerBioButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         self.courseFeedBackButton.layer.cornerRadius = 10
-        self.courseFeedBackButton.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+        self.courseFeedBackButton.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.courseFeedBackButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     }
 

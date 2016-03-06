@@ -50,7 +50,12 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     func indexOfClassSelected(section: Int) {
         let classSelected = self.classes[section]
             ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
-        //NSNotificationCenter.defaultCenter().postNotificationName(self.kclassSelectedNotification, object: self, userInfo: ["classSelected":classSelected])
+            print(classSelected.presentation?.speakerName)
+            print(classSelected.presentation?.title)
+            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.startTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
+            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.endTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
+            print("/////////")
+        
     }
 
 }

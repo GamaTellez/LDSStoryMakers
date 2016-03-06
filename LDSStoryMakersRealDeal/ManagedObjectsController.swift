@@ -356,7 +356,6 @@ class ManagedObjectsController: NSObject {
         if let startTime = clsToSchedule.breakout?.startTime {
             newClassScheduled.setValue(startTime, forKey: "startDate")
         }
-        
         self.saveToCoreData()
     }
     
