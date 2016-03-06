@@ -37,11 +37,11 @@
 		87D35D571C88D9940009EFF1 /* FullPersonalSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */; };
 		87D35D5A1C88DE390009EFF1 /* PersonalScheduleDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */; };
 		87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */; };
+		87F09ECF1C8CDAD400F7A7D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F09ECE1C8CDAD400F7A7D7 /* Assets.xcassets */; };
 		87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
 		87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */; };
-		87F21A121C69360300C2EAA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A111C69360300C2EAA4 /* Assets.xcassets */; };
 		87F21A151C69360300C2EAA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */; };
 		87F21A201C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A1F1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.swift */; };
 		87F21A2B1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */; };
@@ -99,12 +99,12 @@
 		87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPersonalSchedule.swift; sourceTree = "<group>"; };
 		87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleDS.swift; sourceTree = "<group>"; };
 		87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleCell.swift; sourceTree = "<group>"; };
+		87F09ECE1C8CDAD400F7A7D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87F21A0C1C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87F21A0F1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LDSStoryMakersRealDeal.xcdatamodel; sourceTree = "<group>"; };
-		87F21A111C69360300C2EAA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87F21A141C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87F21A161C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F21A1B1C69360300C2EAA4 /* LDSStoryMakersRealDealTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LDSStoryMakersRealDealTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,8 +257,8 @@
 				878153911C6C0D380042F4EB /* DataModel */,
 				87D257FC1C79959E000368FC /* HomeVC */,
 				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
-				87F21A111C69360300C2EAA4 /* Assets.xcassets */,
 				87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */,
+				87F09ECE1C8CDAD400F7A7D7 /* Assets.xcassets */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
 			);
 			path = LDSStoryMakersRealDeal;
@@ -399,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F21A151C69360300C2EAA4 /* LaunchScreen.storyboard in Resources */,
-				87F21A121C69360300C2EAA4 /* Assets.xcassets in Resources */,
+				87F09ECF1C8CDAD400F7A7D7 /* Assets.xcassets in Resources */,
 				87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

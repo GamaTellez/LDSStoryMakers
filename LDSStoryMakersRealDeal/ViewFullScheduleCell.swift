@@ -10,6 +10,7 @@ import UIKit
 
 class ViewFullScheduleCell: UITableViewCell {
     @IBOutlet var viewFullScheduleLabel: UILabel!
+    @IBOutlet var backView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +19,7 @@ class ViewFullScheduleCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        self.backView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
 
         // Configure the view for the selected state
     }

@@ -152,7 +152,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         
         default:
             if indexPath.row == 3 {
-            return 100
+            return 40
             } 
             return 81
         }
@@ -160,15 +160,16 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        switch indexPath.section {
-//        case 1:
-//            if indexPath.row == 3 {
-//               let personalScheduleVC = self.storyBoard.instantiateViewControllerWithIdentifier("personalSchedule")
-//                self.navigationController?.pushViewController(personalScheduleVC, animated: true)
-//            }
-//        default:
-//            break
-//        }
+        switch indexPath.section {
+        case 1:
+            if indexPath.row == 3 {
+               let personalScheduleVC = self.storyBoard.instantiateViewControllerWithIdentifier("personalSchedule") as? FullPersonalSchedule
+                personalScheduleVC?.hideFakeNavBar = true
+                self.navigationController?.pushViewController(personalScheduleVC!, animated: true)
+            }
+        default:
+            break
+        }
     }
 }
 

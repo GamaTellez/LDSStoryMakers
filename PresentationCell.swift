@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PresentationCellButtonDelegate {
-    func indexOfClassSelected(section:Int)
+    func indexOfClassSelectedWithButton(section:Int, and button:AddRemoveClass)
    // var indexOfClassSelected: Int { get set }
 }
 
@@ -26,7 +26,9 @@ class PresentationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
-        self.addRemoveButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+       // self.addRemoveButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.addRemoveButton.setBackgroundImage(UIImage(named: "button-add_green"), forState: .Normal)
+        self.addRemoveButton.setBackgroundImage(UIImage(named: "removewButton"), forState: .Selected)
         self.titleLabel.numberOfLines = 3
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -44,7 +46,7 @@ class PresentationCell: UITableViewCell {
     
     @IBAction func addRemoveButtonTapped(sender: AddRemoveClass) {
         if let buttonSection = sender.section {
-            self.delegate?.indexOfClassSelected(buttonSection)
+            self.delegate?.indexOfClassSelectedWithButton(buttonSection, and: sender)
         }
     }
     override func setSelected(selected: Bool, animated: Bool) {

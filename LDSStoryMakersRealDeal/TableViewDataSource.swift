@@ -48,6 +48,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCellWithIdentifier("fullSchedule")
                 cell?.contentView.backgroundColor = UIColor.clearColor()
                 cell?.backgroundColor = UIColor.clearColor()
+                cell?.textLabel?.textColor = UIColor.whiteColor()
                 return cell!
             } else {
             let scheduledClass = self.classesInSchedule[indexPath.row + 1]
@@ -65,7 +66,6 @@ class TableViewDataSource: NSObject, UITableViewDataSource {
             if let className = scheduledClass.presentation?.title {
                     cell.className.text = className
             }
-                
             return cell
             }
         }

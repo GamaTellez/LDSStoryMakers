@@ -47,15 +47,23 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         return 1
     }
     //cell delegate
-    func indexOfClassSelected(section: Int) {
-        let classSelected = self.classes[section]
-            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
-            print(classSelected.presentation?.speakerName)
-            print(classSelected.presentation?.title)
-            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.startTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
-            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.endTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
-            print("/////////")
+    func indexOfClassSelectedWithButton(section: Int, and button: AddRemoveClass) {
+        switch button.selected {
+        case true:
+            button.selected = false
+            break
+        default:
+            button.selected = true
+        }
+        //        let classSelected = self.classes[section]
+        //            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
+        //            print(classSelected.presentation?.speakerName)
+        //            print(classSelected.presentation?.title)
+        //            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.startTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
+        //            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.endTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
+        //            print("/////////")
         
     }
+
 
 }

@@ -12,9 +12,9 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentedController: UISegmentedControl!
+    @IBOutlet var fakeNavBar: UILabel!
     
-    
-    
+    var hideFakeNavBar:Bool = false
     var friday:[ClassScheduled] = []
     var saturday:[ClassScheduled] = []
     let dataSource = PersonalScheduleDS()
@@ -35,6 +35,11 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
             let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 22))
             statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
             self.view.addSubview(statusBarView)
+        self.fakeNavBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.segmentedController.tintColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
+        if self.hideFakeNavBar == true {
+            self.fakeNavBar.hidden = true
+        }
 
     }
     func getAllClassesScheduled() {

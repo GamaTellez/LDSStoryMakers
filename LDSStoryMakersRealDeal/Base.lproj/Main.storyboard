@@ -164,14 +164,18 @@
                                             <outlet property="className" destination="Fzh-Ll-b0t" id="Ifa-1E-I9S"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fullSchedule" id="vyz-HI-Fja" customClass="ViewFullScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="316" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fullSchedule" rowHeight="32" id="vyz-HI-Fja" customClass="ViewFullScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="316" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vyz-HI-Fja" id="nha-vD-FHI">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-Bu-QAn">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMK-EG-VgA">
+                                                    <rect key="frame" x="24" y="-7" width="552" height="39"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Full Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-Bu-QAn">
                                                     <rect key="frame" x="24" y="-7" width="552" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -179,12 +183,19 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kqc-Bu-QAn" firstAttribute="leading" secondItem="nha-vD-FHI" secondAttribute="leadingMargin" constant="16" id="Blh-4B-efg"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="kqc-Bu-QAn" secondAttribute="bottom" constant="4" id="PuT-sz-N0B"/>
-                                                <constraint firstItem="kqc-Bu-QAn" firstAttribute="top" secondItem="nha-vD-FHI" secondAttribute="topMargin" constant="-15" id="mLk-W1-Nz4"/>
-                                                <constraint firstItem="kqc-Bu-QAn" firstAttribute="centerX" secondItem="nha-vD-FHI" secondAttribute="centerX" id="mwV-P4-Vji"/>
+                                                <constraint firstItem="kqc-Bu-QAn" firstAttribute="top" secondItem="nha-vD-FHI" secondAttribute="topMargin" constant="-15" id="AcM-FM-lsl"/>
+                                                <constraint firstAttribute="bottom" secondItem="GMK-EG-VgA" secondAttribute="bottom" id="ENB-xE-hhV"/>
+                                                <constraint firstItem="GMK-EG-VgA" firstAttribute="centerX" secondItem="nha-vD-FHI" secondAttribute="centerX" id="Ngn-89-uha"/>
+                                                <constraint firstItem="GMK-EG-VgA" firstAttribute="trailing" secondItem="kqc-Bu-QAn" secondAttribute="trailing" id="SrG-4i-MVh"/>
+                                                <constraint firstItem="kqc-Bu-QAn" firstAttribute="leading" secondItem="nha-vD-FHI" secondAttribute="leadingMargin" constant="16" id="aEq-dL-fbS"/>
+                                                <constraint firstItem="GMK-EG-VgA" firstAttribute="top" secondItem="kqc-Bu-QAn" secondAttribute="top" id="aje-fb-LSc"/>
+                                                <constraint firstItem="GMK-EG-VgA" firstAttribute="leading" secondItem="kqc-Bu-QAn" secondAttribute="leading" id="vIk-8m-4Qp"/>
+                                                <constraint firstItem="GMK-EG-VgA" firstAttribute="bottom" secondItem="kqc-Bu-QAn" secondAttribute="bottom" id="ya6-sm-1C0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="backView" destination="GMK-EG-VgA" id="sta-tx-5cM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -271,18 +282,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KRY-OW-rXa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eh3-oi-Ie0">
-                                <rect key="frame" x="39" y="47" width="523" height="29"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentedControllerTapped:" destination="J04-ai-fx7" eventType="valueChanged" id="LY7-oe-Ksi"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="119" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gsp-Wg-JwN">
-                                <rect key="frame" x="0.0" y="76" width="600" height="491"/>
+                                <rect key="frame" x="0.0" y="152" width="600" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="classCell" rowHeight="119" id="mnS-xn-tci" customClass="PersonalScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
@@ -352,25 +353,48 @@
                                     <outlet property="delegate" destination="J04-ai-fx7" id="1Q5-cZ-Awj"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khN-hL-Kyf">
+                                <rect key="frame" x="0.0" y="22" width="600" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="mch-fH-7Th"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eh3-oi-Ie0">
+                                <rect key="frame" x="20" y="102" width="560" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControllerTapped:" destination="J04-ai-fx7" eventType="valueChanged" id="LY7-oe-Ksi"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="top" secondItem="eh3-oi-Ie0" secondAttribute="bottom" constant="1" id="0pX-2T-oI4"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="centerX" secondItem="eh3-oi-Ie0" secondAttribute="centerX" id="1YB-Zy-XsM"/>
-                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="top" secondItem="Gvw-dh-F8U" secondAttribute="bottom" constant="27" id="6E4-ET-JLq"/>
-                            <constraint firstAttribute="bottom" secondItem="KRY-OW-rXa" secondAttribute="bottom" id="B5I-Vx-2RE"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="leading" secondItem="KRY-OW-rXa" secondAttribute="leading" id="CvW-OO-9cN"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Gsp-Wg-JwN" secondAttribute="bottom" constant="33" id="EGk-66-gLt"/>
-                            <constraint firstItem="KRY-OW-rXa" firstAttribute="top" secondItem="Z6h-BX-IdQ" secondAttribute="top" id="Tbj-Zp-G5u"/>
-                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leadingMargin" constant="19" id="XQg-C5-JYs"/>
-                            <constraint firstAttribute="trailing" secondItem="KRY-OW-rXa" secondAttribute="trailing" id="a9J-f3-NB4"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leading" id="p4b-76-oQI"/>
-                            <constraint firstItem="KRY-OW-rXa" firstAttribute="trailing" secondItem="Gsp-Wg-JwN" secondAttribute="trailing" id="u8q-CH-W6s"/>
+                            <constraint firstItem="khN-hL-Kyf" firstAttribute="trailing" secondItem="Gsp-Wg-JwN" secondAttribute="trailing" id="2Ms-eZ-Ada"/>
+                            <constraint firstItem="khN-hL-Kyf" firstAttribute="top" secondItem="Gvw-dh-F8U" secondAttribute="bottom" constant="2" id="4cG-1N-UJQ"/>
+                            <constraint firstItem="khN-hL-Kyf" firstAttribute="centerX" secondItem="eh3-oi-Ie0" secondAttribute="centerX" id="BCl-l7-EG6"/>
+                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leadingMargin" id="Jqc-L1-QhU"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leading" id="Kdk-M5-urX"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="top" secondItem="Z6h-BX-IdQ" secondAttribute="top" id="MYx-Qm-ayT"/>
+                            <constraint firstAttribute="bottom" secondItem="KRY-OW-rXa" secondAttribute="bottom" id="SGb-ec-KEZ"/>
+                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="top" secondItem="eh3-oi-Ie0" secondAttribute="bottom" constant="22" id="Zwx-am-gwl"/>
+                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="leading" secondItem="khN-hL-Kyf" secondAttribute="leading" id="coN-Dr-eDr"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="leading" secondItem="khN-hL-Kyf" secondAttribute="leading" id="epC-SU-Bc4"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="trailing" secondItem="Gsp-Wg-JwN" secondAttribute="trailing" id="gbB-nh-GoK"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Gsp-Wg-JwN" secondAttribute="bottom" constant="33" id="hbZ-ap-hYe"/>
+                            <constraint firstAttribute="trailing" secondItem="Gsp-Wg-JwN" secondAttribute="trailing" id="p02-pB-uct"/>
+                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="top" secondItem="khN-hL-Kyf" secondAttribute="bottom" constant="39" id="rZA-HI-bG5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Personal" id="Scc-sK-lja"/>
                     <connections>
                         <outlet property="backGroundImageView" destination="KRY-OW-rXa" id="2Em-ew-vWk"/>
+                        <outlet property="fakeNavBar" destination="khN-hL-Kyf" id="rI5-ve-bX2"/>
                         <outlet property="segmentedController" destination="eh3-oi-Ie0" id="GQu-kF-Pm1"/>
                         <outlet property="tableView" destination="Gsp-Wg-JwN" id="ecl-ip-Fir"/>
                     </connections>
@@ -378,7 +402,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ur-R2-Go9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="PhR-yJ-9S1" customClass="PersonalScheduleDS" customModule="LDSStoryMakersRealDeal" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="1805" y="1059"/>
+            <point key="canvasLocation" x="2004" y="1071"/>
         </scene>
         <!--Full Schedule-->
         <scene sceneID="k7D-cu-uJ6">
@@ -524,7 +548,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="72" id="6Ru-5E-hce"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="addRemoveButtonTapped:" destination="gbx-Xx-Z0u" eventType="touchUpInside" id="YnR-fu-EMC"/>
                                                     </connections>
