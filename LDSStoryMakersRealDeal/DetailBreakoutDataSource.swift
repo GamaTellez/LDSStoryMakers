@@ -48,8 +48,10 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     }
     //cell delegate
     func indexOfClassSelectedWithButton(section: Int, and button: AddRemoveClass) {
+        let classSelected = self.classes[section]
         switch button.selected {
         case true:
+            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
             button.selected = false
             break
         default:
