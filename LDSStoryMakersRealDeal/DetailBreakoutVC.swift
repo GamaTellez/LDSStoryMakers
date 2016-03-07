@@ -20,6 +20,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     let scheduleItemCellID = "scheduleItemCellID"
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
+    let classTimeConflict = "classTimeConflict"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemSavedAlert", name: itemSuccesfullySaved, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDeletedAlert", name: itemSuccesFullyDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "classTimeConflictAlert", name: classTimeConflict, object: nil)
     }
     
     func itemSavedAlert() {
@@ -55,8 +57,12 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
                 self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             }
         })
-
         
+        func classTimeConflictAlert() {
+            let timeConflictAlert = UIAlertController(title: "Failed to add Class", message: "There is a time conflic with your schedule", preferredStyle: UIAlertControllerStyle.Alert)
+            timeConflictAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
+            self.navigationController?.presentViewController(timeConflictAlert, animated: true, completion: nil)
+        }
     }
     
     func setUpLabel() {

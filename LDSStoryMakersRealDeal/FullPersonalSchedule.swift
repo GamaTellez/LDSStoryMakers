@@ -27,7 +27,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
        
     }
     override func viewWillAppear(animated: Bool) {
-        self.setUpTableViewAndSegmentedController()
+    getAllClassesScheduled()
+    self.segmentedController.selectedSegmentIndex = 0
     }
 
     func setUpViews() {
@@ -59,6 +60,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                 }
             }
         }
+        print(self.friday.count)
+        print(self.saturday.count)
     }
 
     func setUpTableViewAndSegmentedController() {

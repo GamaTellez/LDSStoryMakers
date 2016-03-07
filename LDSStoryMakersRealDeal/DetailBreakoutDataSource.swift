@@ -58,12 +58,10 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         switch button.selected {
         case true:
             button.selected = false
-            if let classesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
-                for classItem in classesInSchedule {
+                for classItem in self.classesInSchedule! {
                    if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
                         ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem)
                     }
-                }
             }
             break
         default:
@@ -79,6 +77,15 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
             }
         }
         return false
+    }
+    
+    func isBreakoutAvailable(newClassBreakout:String, allClasses:[ClassScheduled]) -> Bool {
+        for possibleClass in allClasses {
+            if possibleClass.breakOut?.valueForKey("id") as? String == newClassBreakout {
+                return false
+            }
+        }
+    return true
     }
     
 }

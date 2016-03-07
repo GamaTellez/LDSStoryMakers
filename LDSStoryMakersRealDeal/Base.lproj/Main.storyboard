@@ -365,8 +365,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eh3-oi-Ie0">
                                 <rect key="frame" x="20" y="102" width="560" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Friday"/>
+                                    <segment title="Saturday"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentedControllerTapped:" destination="J04-ai-fx7" eventType="valueChanged" id="LY7-oe-Ksi"/>
