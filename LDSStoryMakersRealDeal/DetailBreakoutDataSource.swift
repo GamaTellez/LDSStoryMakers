@@ -11,6 +11,7 @@ import UIKit
 class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCellButtonDelegate {
     
     var classes:[ClassToSchedule] = []
+    let classesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
     let presentationCellID = "detailPresentation"
     let kclassSelectedNotification = "kClassSelectedNotification"
     func updateClassesArray(from classesArray:[ClassToSchedule]) {
@@ -22,8 +23,11 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         cell.selectionStyle = .None
         cell.delegate = self
         cell.addRemoveButton.section = indexPath.section
-        
         let classAttend = self.classes[indexPath.section]
+        let isInSchedule = self.isClassScheduled(classAttend, from: self.classesInSchedule!)
+        if isInSchedule == true {
+            cell.addRemoveButton.selected = true
+        }
         if let title = classAttend.presentation?.title {
             cell.titleLabel.text = title
         }
@@ -43,29 +47,38 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.classes.count
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
     //cell delegate
     func indexOfClassSelectedWithButton(section: Int, and button: AddRemoveClass) {
         let classSelected = self.classes[section]
         switch button.selected {
         case true:
-            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
             button.selected = false
+            if let classesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
+                for classItem in classesInSchedule {
+                   if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
+                        ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem)
+                    }
+                }
+            }
             break
         default:
+            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
             button.selected = true
         }
-        //        let classSelected = self.classes[section]
-        //            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
-        //            print(classSelected.presentation?.speakerName)
-        //            print(classSelected.presentation?.title)
-        //            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.startTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
-        //            print(NSDateFormatter.localizedStringFromDate((classSelected.breakout?.endTime)!, dateStyle: .FullStyle, timeStyle: .FullStyle))
-        //            print("/////////")
-        
     }
-
-
+ 
+    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
+        for possibleClass in classesInSchedule {
+            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
+                return true
+            }
+        }
+        return false
+    }
+    
 }

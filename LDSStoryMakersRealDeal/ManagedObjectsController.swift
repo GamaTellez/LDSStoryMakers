@@ -12,6 +12,8 @@ import CoreData
 class ManagedObjectsController: NSObject {
     static let sharedInstance = ManagedObjectsController()
     let managedContext:NSManagedObjectContext
+    let kitemSuccedsfullySaved = "itemSuccesfullySaved"
+    let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
 //    let privateManagedContext:NSManagedObjectContext
     
@@ -190,21 +192,20 @@ class ManagedObjectsController: NSObject {
         }
         self.saveToCoreData()
     }
-    func saveToCoreDataWithPrivateContext() {
-        do {
-            try self.managedContext.save()
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-    }
+
     func saveToCoreData() {
         do {
             try self.managedContext.save()
+            NSNotificationCenter.defaultCenter().postNotificationName(kitemSuccedsfullySaved, object: nil)
         } catch let error as NSError {
             print(error.localizedDescription)
         }
     }
     
+    func deleteScheduledClass(classInSchedule:ClassScheduled) {
+                self.managedContext.deleteObject(classInSchedule)
+            NSNotificationCenter.defaultCenter().postNotificationName(itemSuccesFullyDeleted, object: nil)
+    }
     //FETC REQUESTS
     
     func getAllScheduledClasses() -> [AnyObject] {
@@ -213,7 +214,6 @@ class ManagedObjectsController: NSObject {
        return self.fetchRequestExecuter(allScheduledClassesRequest)
         
     }
-    
     
     func getAllBreakoutsFromCoreDataByDate() -> [AnyObject] {
         let allbreakoutsRequest = NSFetchRequest(entityName: "Breakout")
@@ -246,35 +246,6 @@ class ManagedObjectsController: NSObject {
         return requestResults
     }
     
-//    //friday and saturday
-//    func createFridayAndSaturday() {
-//        if (self.userDefaults.objectForKey("fridayAndSaturdayCreated") == nil) {
-//            let formatter = NSDateFormatter()
-//            formatter.dateFormat = "MM-dd-yyyy"
-//            let friday = NSManagedObject(entity: NSEntityDescription.entityForName("Day", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
-//            friday.setValue("friday", forKey: "name")
-//            if let fridayDate = formatter.dateFromString("5/6/2016") {
-//                friday.setValue(fridayDate, forKey: "date")
-//            }
-//            let saturday = NSManagedObject(entity: NSEntityDescription.entityForName("Day", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
-//                saturday.setValue("saturday", forKey: "name")
-//            if let saturdayDate = formatter.dateFromString("5/7/2016") {
-//                saturday.setValue(saturdayDate, forKey: "date")
-//            }
-//            self.saveToCoreData()
-//            self.userDefaults.setObject(true, forKey: "fridayAndSaturdayCreated")
-//            self.userDefaults.synchronize()
-//        } else {
-//           // self.getFridayAndSaturdayObjects()
-//            print("friday and saturday created")
-//        }
-//    }
-    
-//    func getFridayAndSaturdayObjects() -> [AnyObject] {
-//        let daysRequest = NSFetchRequest(entityName: "Day")
-//        daysRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-//        return self.fetchRequestExecuter(daysRequest)
-//    }
     
     //MAndatory breakouts for personal schedule
     func getMandatoryClassesForSchedule() -> [ClassToSchedule] {

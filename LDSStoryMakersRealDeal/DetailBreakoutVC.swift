@@ -18,6 +18,8 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     var classesInBreakout:[ClassToSchedule] = []
     var stringForLabelBreakoutTime:String?
     let scheduleItemCellID = "scheduleItemCellID"
+    let itemSuccesfullySaved = "itemSuccesfullySaved"
+    let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +27,38 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         self.setUpTableView()
         self.loadTableViewWithBreakouts(self.classesInBreakout)
         self.setUpLabel()
+        self.registerForNotifications()
         
     }
+    func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemSavedAlert", name: itemSuccesfullySaved, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDeletedAlert", name: itemSuccesFullyDeleted, object: nil)
+    }
+    
+    func itemSavedAlert() {
+        let classSavedAlert = UIAlertController(title: "Class Saved", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
+            let delay = 0.5 * Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        })
+    }
+    
+    func itemDeletedAlert() {
+        let classSavedAlert = UIAlertController(title: "Class Deleted", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
+            let delay = 0.5 * Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        })
+
+        
+    }
+    
     func setUpLabel() {
         self.labelBreakoutTime.text = self.stringForLabelBreakoutTime
         self.labelBreakoutTime.backgroundColor = UIColor.clearColor()

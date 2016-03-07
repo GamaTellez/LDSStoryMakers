@@ -99,7 +99,6 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         default:
             return "Saturday"
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
