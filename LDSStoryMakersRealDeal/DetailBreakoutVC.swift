@@ -67,11 +67,10 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     }
         func classTimeConflictAlert() {
             print("working")
-//            let timeConflictAlert = UIAlertController(title: "Failed to add Class", message: "There is a time conflic with your schedule", preferredStyle: UIAlertControllerStyle.Alert)
-//            timeConflictAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
-//            self.navigationController?.presentViewController(timeConflictAlert, animated: true, completion: nil)
-//        }
-    }
+            let timeConflictAlert = UIAlertController(title: "Failed to add Class", message: "There is a time conflic with your schedule", preferredStyle: UIAlertControllerStyle.Alert)
+            timeConflictAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
+            self.navigationController?.presentViewController(timeConflictAlert, animated: true, completion: nil)
+        }
     
     func setUpLabel() {
         self.labelBreakoutTime.text = self.stringForLabelBreakoutTime
