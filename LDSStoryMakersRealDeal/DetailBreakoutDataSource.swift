@@ -54,14 +54,17 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     
     //cell delegate
     func indexOfClassSelectedWithButton(section: Int, and button: AddRemoveClass) {
+    
         let classSelected = self.classes[section]
         switch button.selected {
         case true:
-            button.selected = false
-                for classItem in self.classesInSchedule! {
-                   if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
+            if let currentlySavedClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
+                button.selected = false
+                for classItem in currentlySavedClasses {
+                    if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
                         ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem)
                     }
+                }
             }
             break
         default:

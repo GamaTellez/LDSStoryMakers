@@ -49,6 +49,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     }
     
     func itemDeletedAlert() {
+        print("deleteing")
         let classSavedAlert = UIAlertController(title: "Class Deleted", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
             let delay = 0.5 * Double(NSEC_PER_SEC)
