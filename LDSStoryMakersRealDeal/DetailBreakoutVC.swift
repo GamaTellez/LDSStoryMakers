@@ -20,7 +20,8 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     let scheduleItemCellID = "scheduleItemCellID"
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
-    let classTimeConflict = "classTimeConflict"
+    let timeConlictNotication = "timeConlictNotication"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,14 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemSavedAlert", name: itemSuccesfullySaved, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDeletedAlert", name: itemSuccesFullyDeleted, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "classTimeConflictAlert", name: classTimeConflict, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "classTimeConflictAlert", name: timeConlictNotication, object: nil)
     }
     
     func itemSavedAlert() {
         let classSavedAlert = UIAlertController(title: "Class Saved", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        classSavedAlert.popoverPresentationController?.sourceView = self.view
+        classSavedAlert.popoverPresentationController?.sourceRect = self.view.bounds
+        // this is the center of the screen currently but it can be any point in the vi
         self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
             let delay = 0.5 * Double(NSEC_PER_SEC)
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -49,21 +53,24 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     }
     
     func itemDeletedAlert() {
-        print("deleteing")
-        let classSavedAlert = UIAlertController(title: "Class Deleted", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
+        let classDeletedAlert = UIAlertController(title: "Class Deleted", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        classDeletedAlert.popoverPresentationController?.sourceView = self.view
+        classDeletedAlert.popoverPresentationController?.sourceRect = self.view.bounds
+        // this is the center of the screen currently but it can be any point in the vi
+        self.navigationController?.presentViewController(classDeletedAlert, animated: true, completion: { () -> Void in
             let delay = 0.5 * Double(NSEC_PER_SEC)
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
                 self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             }
         })
-        
+    }
         func classTimeConflictAlert() {
-            let timeConflictAlert = UIAlertController(title: "Failed to add Class", message: "There is a time conflic with your schedule", preferredStyle: UIAlertControllerStyle.Alert)
-            timeConflictAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
-            self.navigationController?.presentViewController(timeConflictAlert, animated: true, completion: nil)
-        }
+            print("working")
+//            let timeConflictAlert = UIAlertController(title: "Failed to add Class", message: "There is a time conflic with your schedule", preferredStyle: UIAlertControllerStyle.Alert)
+//            timeConflictAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
+//            self.navigationController?.presentViewController(timeConflictAlert, animated: true, completion: nil)
+//        }
     }
     
     func setUpLabel() {

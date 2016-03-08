@@ -13,7 +13,8 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     var classes:[ClassToSchedule] = []
     let classesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
     let presentationCellID = "detailPresentation"
-    let kclassSelectedNotification = "kClassSelectedNotification"
+    let timeConlictNotication = "timeConlictNotication"
+    
     func updateClassesArray(from classesArray:[ClassToSchedule]) {
         self.classes  = classesArray
     }
@@ -54,23 +55,31 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
     
     //cell delegate
     func indexOfClassSelectedWithButton(section: Int, and button: AddRemoveClass) {
-    
+        if let currentlySavedClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
         let classSelected = self.classes[section]
         switch button.selected {
         case true:
-            if let currentlySavedClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
                 button.selected = false
                 for classItem in currentlySavedClasses {
                     if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
                         ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem)
                     }
                 }
-            }
             break
         default:
-            ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
-            button.selected = true
+            if let classSelectedBreakout = classSelected.breakout?.valueForKey("breakoutID") as? String {
+                let canSave = self.isBreakoutAvailable(classSelectedBreakout, allClasses: currentlySavedClasses)
+                print(canSave)
+                if canSave {
+                    ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
+                    button.selected = true
+                } else {
+                    NSNotificationCenter.defaultCenter().postNotificationName(timeConlictNotication, object: nil)
+                }
+            }
+          break
         }
+      }
     }
  
     func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
