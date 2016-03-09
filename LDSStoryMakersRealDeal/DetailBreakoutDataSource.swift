@@ -69,7 +69,6 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         default:
             if let classSelectedBreakout = classSelected.breakout?.valueForKey("breakoutID") as? String {
                 let canSave = self.isBreakoutAvailable(classSelectedBreakout, allClasses: currentlySavedClasses)
-                print(canSave)
                 if canSave {
                     ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
                     button.selected = true

@@ -14,6 +14,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var fakeNavBar: UILabel!
     
+    let itemSuccesfullySaved = "itemSuccesfullySaved"
+    let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     var hideFakeNavBar:Bool = false
     var friday:[ClassScheduled] = []
     var saturday:[ClassScheduled] = []
@@ -24,11 +26,15 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.getAllClassesScheduled()
         self.setUpViews()
         self.setUpTableViewAndSegmentedController()
+        self.registerForNotifications()
        
     }
     override func viewWillAppear(animated: Bool) {
-    getAllClassesScheduled()
-    self.segmentedController.selectedSegmentIndex = 0
+    }
+    
+    func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesfullySaved, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesFullyDeleted, object: nil)
     }
 
     func setUpViews() {
@@ -72,6 +78,15 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.dataSource.updateDataSource(self.friday)
         self.tableView.reloadData()
     }
+    
+    func updateTableViewAndReloadDataUponNotification(){
+        self.friday.removeAll()
+        self.saturday.removeAll()
+        self.getAllClassesScheduled()
+        self.segmentedController.selectedSegmentIndex = 0
+        self.dataSource.updateDataSource(self.friday)
+        self.tableView.reloadData()
+      }
     
     @IBAction func segmentedControllerTapped(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

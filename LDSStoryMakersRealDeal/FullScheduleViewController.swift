@@ -58,28 +58,23 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
             let formatter = NSDateFormatter()
             formatter.dateFormat = "MM-dd-yyyy"
             let friday = formatter.dateFromString("5/6/2016")
-            let saturday = formatter.dateFromString("5/7/2016")
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
                 let order = NSCalendar.currentCalendar()
                 for timeBreakout in allBreakouts {
                     if timeBreakout.breakoutID?.characters.count > 2 {
                     } else {
-                        if let dayDate = timeBreakout.startTime {
+                        if let dayDate = timeBreakout.valueForKey("startTime") as? NSDate {
                             let comparison = order.compareDate(friday!, toDate: dayDate, toUnitGranularity: .Day)
                             if comparison == NSComparisonResult.OrderedSame {
                                 self.fridayBreakouts.append(timeBreakout)
-                            }
-                            let comparisonTwo = order.compareDate(saturday!, toDate: dayDate, toUnitGranularity: .Day)
-                            if comparisonTwo == NSComparisonResult.OrderedSame {
+                            } else {
                                 self.saturdayBreakouts.append(timeBreakout)
                             }
+                          }
                         }
                     }
                 }
             }
-         //   print(String("FirdayBreakoouts %@",self.fridayBreakouts.count))
-         //   print(String("Saturday breakouts %@", self.saturdayBreakouts.count))
-    }
     
     func getAllScheduleItemsForSelectedBreakout(selectedBreakout:Breakout) -> [ScheduleItem] {
         var allScheduleItems:[ScheduleItem] = []
@@ -205,5 +200,4 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
             break
         }
     }
-
 }
