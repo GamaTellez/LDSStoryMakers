@@ -25,10 +25,21 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         cell.delegate = self
         cell.addRemoveButton.section = indexPath.section
         let classAttend = self.classes[indexPath.section]
-        let isInSchedule = self.isClassScheduled(classAttend, from: self.classesInSchedule!)
-        if isInSchedule == true {
-            cell.addRemoveButton.selected = true
+//        let isInSchedule = self.isClassScheduled(classAttend, from: self.classesInSchedule!)
+//        if isInSchedule == true {
+//            classAttend.inSchedule = true
+//        }
+//        if classAttend.inSchedule == true {
+//            cell.addRemoveButton.selected = true
+//        }
+        if let scheduled = classAttend.inSchedule {
+            if scheduled == true {
+                cell.addRemoveButton.selected = true
+            } else {
+                cell.addRemoveButton.selected = false
+            }
         }
+        
         if let title = classAttend.presentation?.title {
             cell.titleLabel.text = title
         }
@@ -59,10 +70,11 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         let classSelected = self.classes[section]
         switch button.selected {
         case true:
-                button.selected = false
                 for classItem in currentlySavedClasses {
                     if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
                         ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem)
+                        button.selected = false
+                        classSelected.inSchedule = false
                     }
                 }
             break
@@ -72,6 +84,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
                 if canSave {
                     ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
                     button.selected = true
+                    classSelected.inSchedule = true
                 } else {
                     NSNotificationCenter.defaultCenter().postNotificationName(timeConlictNotication, object: nil)
                 }
@@ -81,14 +94,14 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
       }
     }
  
-    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
-        for possibleClass in classesInSchedule {
-            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
-                return true
-            }
-        }
-        return false
-    }
+//    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
+//        for possibleClass in classesInSchedule {
+//            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
+//                return true
+//            }
+//        }
+//        return false
+//    }
     
     func isBreakoutAvailable(newClassBreakout:String, allClasses:[ClassScheduled]) -> Bool {
         for possibleClass in allClasses {
