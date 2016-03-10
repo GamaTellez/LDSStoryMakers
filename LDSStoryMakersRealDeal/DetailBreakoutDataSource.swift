@@ -25,21 +25,13 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCell
         cell.delegate = self
         cell.addRemoveButton.section = indexPath.section
         let classAttend = self.classes[indexPath.section]
-//        let isInSchedule = self.isClassScheduled(classAttend, from: self.classesInSchedule!)
-//        if isInSchedule == true {
-//            classAttend.inSchedule = true
-//        }
-//        if classAttend.inSchedule == true {
-//            cell.addRemoveButton.selected = true
-//        }
         if let scheduled = classAttend.inSchedule {
             if scheduled == true {
                 cell.addRemoveButton.selected = true
             } else {
                 cell.addRemoveButton.selected = false
             }
-        }
-        
+        }        
         if let title = classAttend.presentation?.title {
             cell.titleLabel.text = title
         }
