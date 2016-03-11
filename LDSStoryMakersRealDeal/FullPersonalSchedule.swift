@@ -70,8 +70,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                 }
             }
         }
-        print(self.friday.count)
-        print(self.saturday.count)
+//        print(self.friday.count)
+//        print(self.saturday.count)
     }
 
     func setUpTableViewAndSegmentedController() {
