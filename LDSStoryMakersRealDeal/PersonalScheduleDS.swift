@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalScheduleDS: NSObject, UITableViewDataSource {
+class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeletedDelegate {
     var classesScheduled:[ClassScheduled] = []
     let cellID = "classCell"
     
@@ -20,6 +20,8 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! PersonalScheduleCell
         cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
+        cell.delegate = self
+        cell.removeClassButton.section = indexPath.row
         let classForCell = self.classesScheduled[indexPath.row]
         var startTimeString = ""
         var endTimeString = ""
@@ -53,5 +55,9 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.classesScheduled.count
+    }
+    func indexOfClassDeletedInTableView(row: Int) {
+         let classToDelete = self.classesScheduled[row]
+        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete)
     }
 }

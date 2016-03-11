@@ -25,6 +25,7 @@ class BreakoutsDataSource: NSObject, UITableViewDataSource {
                 cell?.breakoutLabel.text = String(format:"Breakout %@ \n  %@ to %@", breakoutAtIndex.breakoutID!,NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
             }
         }
+        
         return cell!
         
     }

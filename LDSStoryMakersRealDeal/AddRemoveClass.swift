@@ -11,5 +11,4 @@ import UIKit
 class AddRemoveClass: UIButton {
 
     var section:Int?
-
 }

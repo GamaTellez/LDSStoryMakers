@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailBreakoutDataSource: NSObject, UITableViewDataSource,PresentationCellButtonDelegate {
+class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCellButtonDelegate {
     
     var classes:[ClassToSchedule] = []
     let classesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
