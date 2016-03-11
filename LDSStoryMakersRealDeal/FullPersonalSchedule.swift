@@ -18,6 +18,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
+    let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
     var hideFakeNavBar:Bool = false
     var friday:[ClassScheduled] = []
     var saturday:[ClassScheduled] = []
@@ -37,6 +38,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesfullySaved, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesFullyDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataFromPersonalVC", name: classFromPersonalScheduleDeleted, object: nil)
     }
 
     func setUpViews() {
@@ -85,10 +87,27 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.friday.removeAll()
         self.saturday.removeAll()
         self.getAllClassesScheduled()
-        self.segmentedController.selectedSegmentIndex = 0
-        self.dataSource.updateDataSource(self.friday)
+        if self.segmentedController.selectedSegmentIndex == 0 {
+            self.dataSource.updateDataSource(self.friday)
+        } else {
+            self.dataSource.updateDataSource(self.saturday)
+        }
         self.tableView.reloadData()
       }
+    
+    func updateTableViewAndReloadDataFromPersonalVC(){
+        self.friday.removeAll()
+        self.saturday.removeAll()
+        self.getAllClassesScheduled()
+        if self.segmentedController.selectedSegmentIndex == 0 {
+            self.dataSource.updateDataSource(self.friday)
+        } else {
+            self.dataSource.updateDataSource(self.saturday)
+        }
+        
+        self.tableView.reloadData()
+    }
+
     
     @IBAction func segmentedControllerTapped(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

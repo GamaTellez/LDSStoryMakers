@@ -14,7 +14,10 @@ class ManagedObjectsController: NSObject {
     let managedContext:NSManagedObjectContext
     let kitemSuccedsfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
+    let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
+    
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
+    
 //    let privateManagedContext:NSManagedObjectContext
     
     override init() {
@@ -202,9 +205,21 @@ class ManagedObjectsController: NSObject {
         }
     }
     
-    func deleteScheduledClass(classInSchedule:ClassScheduled) {
-                self.managedContext.deleteObject(classInSchedule)
+    func deleteScheduledClass(classInSchedule:ClassScheduled, fromView:String)  {
+        
+        switch fromView {
+        case "conferenceSchedule":
+            self.managedContext.deleteObject(classInSchedule)
             NSNotificationCenter.defaultCenter().postNotificationName(itemSuccesFullyDeleted, object: nil)
+            break
+        case "personalSchedule":
+            self.managedContext.deleteObject(classInSchedule)
+            NSNotificationCenter.defaultCenter().postNotificationName(classFromPersonalScheduleDeleted, object: nil)
+        default:
+       
+        break
+        }
+        
     }
     //FETC REQUESTS
     

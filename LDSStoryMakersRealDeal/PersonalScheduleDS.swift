@@ -58,6 +58,6 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
     }
     func indexOfClassDeletedInTableView(row: Int) {
          let classToDelete = self.classesScheduled[row]
-        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete)
+        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete, fromView: "personalSchedule")
     }
 }
