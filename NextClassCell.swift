@@ -8,6 +8,11 @@
 
 import UIKit
 
+    protocol SpeakerInfoButtonTappedDelegate {
+        func indexOfClassForSpeakerSelected(section:Int)
+    }
+
+
 class NextClassCell: UITableViewCell, UITextViewDelegate {
 
     
@@ -17,6 +22,7 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet var classDescription: UITextView!
     @IBOutlet var courseFeedBackButton: UIButton!
     @IBOutlet var speakerBioButton: UIButton!
+    var delegate:SpeakerInfoButtonTappedDelegate?
     
     
     override func awakeFromNib() {
@@ -44,4 +50,8 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         return false
     }
+    @IBAction func speakerBioButtonTapped(sender: UIButton) {
+        self.delegate?.indexOfClassForSpeakerSelected(sender.tag)
+    }
+    
 }

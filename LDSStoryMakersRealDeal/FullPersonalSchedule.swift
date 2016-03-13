@@ -104,10 +104,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         } else {
             self.dataSource.updateDataSource(self.saturday)
         }
-        
         self.tableView.reloadData()
     }
-
     
     @IBAction func segmentedControllerTapped(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

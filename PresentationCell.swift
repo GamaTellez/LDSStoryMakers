@@ -10,7 +10,6 @@ import UIKit
 
 protocol PresentationCellButtonDelegate {
     func indexOfClassSelectedWithButton(section:Int, and button:AddRemoveClass)
-   // var indexOfClassSelected: Int { get set }
 }
 
 class PresentationCell: UITableViewCell {
@@ -20,15 +19,15 @@ class PresentationCell: UITableViewCell {
     @IBOutlet var speakerAndLocationLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
+
  
     var delegate:PresentationCellButtonDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
-       // self.addRemoveButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.addRemoveButton.setBackgroundImage(UIImage(named: "button-add_green"), forState: .Normal)
-        self.addRemoveButton.setBackgroundImage(UIImage(named: "removewButton"),
+        self.addRemoveButton.setBackgroundImage(UIImage(named: "addButton"), forState: .Normal)
+        self.addRemoveButton.setBackgroundImage(UIImage(named: "removeButton"),
             forState: .Selected)
         self.titleLabel.numberOfLines = 3
         self.titleLabel.preferredMaxLayoutWidth = 35
@@ -37,7 +36,6 @@ class PresentationCell: UITableViewCell {
         self.titleLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 20)
         self.titleLabel.textColor = UIColor.whiteColor()
         self.descriptionLabel.preferredMaxLayoutWidth = 35
-        //self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.descriptionLabel.font = UIFont(name: "SanFranciscoText-Light", size: 18)
         self.descriptionLabel.numberOfLines = 3

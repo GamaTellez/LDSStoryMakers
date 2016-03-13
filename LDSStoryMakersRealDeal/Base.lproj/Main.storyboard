@@ -24,11 +24,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wvE-SC-xgX">
-                                <rect key="frame" x="0.0" y="139" width="600" height="462"/>
+                                <rect key="frame" x="0.0" y="139" width="600" height="516"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nextClassCell" rowHeight="185" id="j0c-uo-twm" customClass="NextClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="185"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="185"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0c-uo-twm" id="XwJ-D5-wKN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
@@ -67,6 +67,9 @@
                                                         <constraint firstAttribute="width" constant="140" id="vJn-uc-TWy"/>
                                                     </constraints>
                                                     <state key="normal" title="About Speaker"/>
+                                                    <connections>
+                                                        <action selector="speakerBioButtonTapped:" destination="j0c-uo-twm" eventType="touchUpInside" id="JCF-fz-K8R"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZd-qc-dDT">
                                                     <rect key="frame" x="42" y="134" width="140" height="53"/>
@@ -114,7 +117,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingClass" rowHeight="81" id="lAl-kr-bYo" customClass="UpcomingClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="234.5" width="600" height="81"/>
+                                        <rect key="frame" x="0.0" y="235" width="600" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAl-kr-bYo" id="24X-BZ-SH2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
@@ -165,7 +168,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fullSchedule" rowHeight="32" id="vyz-HI-Fja" customClass="ViewFullScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="315.5" width="600" height="32"/>
+                                        <rect key="frame" x="0.0" y="316" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vyz-HI-Fja" id="nha-vD-FHI">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
@@ -213,8 +216,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sui-7H-tEe">
                                 <rect key="frame" x="518" y="74" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="KfN-e4-7zg"/>
-                                    <constraint firstAttribute="height" constant="40" id="o57-uY-ncz"/>
+                                    <constraint firstAttribute="width" constant="40" id="HiG-J8-HYh"/>
+                                    <constraint firstAttribute="height" constant="40" id="jvc-Hg-lYI"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -224,8 +227,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4y-BB-gG7">
                                 <rect key="frame" x="514" y="471" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="K1J-U7-yzM"/>
-                                    <constraint firstAttribute="width" constant="70" id="MKv-MR-FYV"/>
+                                    <constraint firstAttribute="height" constant="70" id="FZ4-to-WFX"/>
+                                    <constraint firstAttribute="width" constant="70" id="l3v-NC-bja"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -235,22 +238,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="sui-7H-tEe" secondAttribute="bottom" constant="25" id="14O-ti-8JV"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="A4E-tT-ggC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sui-7H-tEe" secondAttribute="trailing" constant="22" id="CdI-bI-kdf"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="ECh-sc-x4o"/>
-                            <constraint firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="GD5-LB-h54"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="MJh-Id-Uo6"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="centerX" secondItem="XCM-Fx-7dm" secondAttribute="centerX" id="a03-FZ-l5z"/>
-                            <constraint firstItem="sui-7H-tEe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="aWa-Jk-XuM"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="bh2-bh-IyF"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="centerY" secondItem="sui-7H-tEe" secondAttribute="centerY" id="ibV-81-pwb"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lVd-wf-Tuw"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="n0K-Jj-60h"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ruz-uN-c3I"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="s1Q-JZ-cod"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="8" symbolic="YES" id="ykf-Qx-gW8"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-1" id="ze5-SS-FVK"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="sui-7H-tEe" secondAttribute="bottom" constant="25" id="0jh-2h-tWp"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="2JH-2Z-SOc"/>
+                            <constraint firstItem="sui-7H-tEe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="6do-hi-qNN"/>
+                            <constraint firstItem="sui-7H-tEe" firstAttribute="centerY" secondItem="XCM-Fx-7dm" secondAttribute="centerY" id="76M-Rf-MF3"/>
+                            <constraint firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="89q-B4-EoN"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="Aet-J0-3OK"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="centerX" secondItem="XCM-Fx-7dm" secondAttribute="centerX" id="Ayv-Al-FMj"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="BAf-Wx-jap"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RB2-Ny-4jV"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="8" symbolic="YES" id="Tl0-0A-IGU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="bwM-KY-BEh"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-55" id="fiQ-qa-qaM"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="lci-Dc-hQ0"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mPm-7F-ktf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sui-7H-tEe" secondAttribute="trailing" constant="22" id="nna-gs-VW6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="tgx-eC-Fmy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="LDS Storymakers 2016" id="Cbs-Tj-kE3"/>
@@ -737,7 +740,7 @@
         <!--Speaker Bio View-->
         <scene sceneID="Mwr-1u-dxZ">
             <objects>
-                <viewController id="TqS-TY-OPW" customClass="SpeakerBioView" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="speakerBioVC" id="TqS-TY-OPW" customClass="SpeakerBioView" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jkp-9M-mVC"/>
                         <viewControllerLayoutGuide type="bottom" id="kSP-9F-aI4"/>

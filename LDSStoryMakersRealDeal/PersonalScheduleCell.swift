@@ -32,7 +32,7 @@ class PersonalScheduleCell: UITableViewCell {
         self.classAndSpeakerLabel.preferredMaxLayoutWidth = 30
         self.classAndSpeakerLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.classAndSpeakerLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
-        self.removeClassButton.setBackgroundImage(UIImage(named: "removewButton"), forState: .Normal)
+        self.removeClassButton.setBackgroundImage(UIImage(named: "removeButton"), forState: .Normal)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

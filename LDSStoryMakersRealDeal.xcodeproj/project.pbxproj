@@ -12,6 +12,7 @@
 		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
 		8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E01C7E117800EFAA8B /* AppAppearance.swift */; };
 		8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */; };
+		875D55F11C92830E00EEF930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875D55F01C92830E00EEF930 /* Assets.xcassets */; };
 		878E2ECB1C8274D30050D934 /* NextClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECA1C8274D30050D934 /* NextClassCell.swift */; };
 		878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */; };
 		878E2EDA1C829C3F0050D934 /* Breakout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ED01C829C3F0050D934 /* Breakout+CoreDataProperties.swift */; };
@@ -37,7 +38,6 @@
 		87D35D571C88D9940009EFF1 /* FullPersonalSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */; };
 		87D35D5A1C88DE390009EFF1 /* PersonalScheduleDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */; };
 		87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */; };
-		87F09ECF1C8CDAD400F7A7D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F09ECE1C8CDAD400F7A7D7 /* Assets.xcassets */; };
 		87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
@@ -74,6 +74,7 @@
 		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		8741B1E01C7E117800EFAA8B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailView.swift; sourceTree = "<group>"; };
+		875D55F01C92830E00EEF930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		878E2ECA1C8274D30050D934 /* NextClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NextClassCell.swift; path = ../NextClassCell.swift; sourceTree = "<group>"; };
 		878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpcomingClassCell.swift; path = ../UpcomingClassCell.swift; sourceTree = "<group>"; };
 		878E2ED01C829C3F0050D934 /* Breakout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breakout+CoreDataProperties.swift"; path = "../Breakout+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		87D35D561C88D9940009EFF1 /* FullPersonalSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPersonalSchedule.swift; sourceTree = "<group>"; };
 		87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleDS.swift; sourceTree = "<group>"; };
 		87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleCell.swift; sourceTree = "<group>"; };
-		87F09ECE1C8CDAD400F7A7D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 				87D257FC1C79959E000368FC /* HomeVC */,
 				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
 				87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */,
-				87F09ECE1C8CDAD400F7A7D7 /* Assets.xcassets */,
+				875D55F01C92830E00EEF930 /* Assets.xcassets */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
 			);
 			path = LDSStoryMakersRealDeal;
@@ -399,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F21A151C69360300C2EAA4 /* LaunchScreen.storyboard in Resources */,
-				87F09ECF1C8CDAD400F7A7D7 /* Assets.xcassets in Resources */,
+				875D55F11C92830E00EEF930 /* Assets.xcassets in Resources */,
 				87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
