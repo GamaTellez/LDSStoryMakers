@@ -15,6 +15,7 @@ import CoreData
 extension ClassScheduled {
 
     @NSManaged var startDate: NSDate?
+    @NSManaged var isMandatory: NSNumber?
     @NSManaged var breakOut: Breakout?
     @NSManaged var presentation: Presentation?
     @NSManaged var scheduleItem: ScheduleItem?

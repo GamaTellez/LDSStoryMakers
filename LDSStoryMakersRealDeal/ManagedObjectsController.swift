@@ -354,12 +354,19 @@ class ManagedObjectsController: NSObject {
         }
         return allClasses
     }
-    
+    //////
 //create classscheduled from classtoschedule
     func createScheduledClass(from clsToSchedule:ClassToSchedule) {
         let newClassScheduled = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let breakoutForClass = clsToSchedule.breakout {
             newClassScheduled.setValue(breakoutForClass, forKey: "breakOut")
+            if let breakoutId = breakoutForClass.valueForKey("breakoutID") as? String {
+                if breakoutId.characters.count > 2 {
+                    newClassScheduled.setValue(NSNumber(bool: true), forKey: "isMandatory")
+                } else {
+                    newClassScheduled.setValue(NSNumber(bool: false), forKey: "isMandatory")
+                }
+            }
         }
         if let presentationForClass = clsToSchedule.presentation {
             newClassScheduled.setValue(presentationForClass, forKey: "presentation")

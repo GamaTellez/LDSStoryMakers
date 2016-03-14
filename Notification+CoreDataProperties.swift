@@ -14,7 +14,7 @@ import CoreData
 
 extension Notification {
 
-    @NSManaged var notificationInfo: String?
     @NSManaged var notificationID: NSNumber?
+    @NSManaged var notificationInfo: String?
 
 }
