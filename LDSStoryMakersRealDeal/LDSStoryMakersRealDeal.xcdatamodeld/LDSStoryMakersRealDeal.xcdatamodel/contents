@@ -14,6 +14,10 @@
         <relationship name="scheduleItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScheduleItem" inverseName="classScheduled" inverseEntity="ScheduleItem" syncable="YES"/>
         <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Speaker" inverseName="classScheduled" inverseEntity="Speaker" syncable="YES"/>
     </entity>
+    <entity name="Notification" representedClassName=".Notification" syncable="YES">
+        <attribute name="notificationID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="notificationInfo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Presentation" representedClassName=".Presentation" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="isIntensive" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -48,5 +52,6 @@
         <element name="Presentation" positionX="-54" positionY="9" width="128" height="30"/>
         <element name="ScheduleItem" positionX="-18" positionY="81" width="128" height="30"/>
         <element name="Speaker" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Notification" positionX="-36" positionY="108" width="128" height="75"/>
     </elements>
 </model>

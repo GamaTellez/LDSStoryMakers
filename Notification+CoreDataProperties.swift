@@ -1,5 +1,5 @@
 //
-//  ClassScheduled+CoreDataProperties.swift
+//  Notification+CoreDataProperties.swift
 //  LDSStoryMakersRealDeal
 //
 //  Created by Gamaliel Tellez on 3/14/16.
@@ -12,12 +12,9 @@
 import Foundation
 import CoreData
 
-extension ClassScheduled {
+extension Notification {
 
-    @NSManaged var startDate: NSDate?
-    @NSManaged var breakOut: Breakout?
-    @NSManaged var presentation: Presentation?
-    @NSManaged var scheduleItem: ScheduleItem?
-    @NSManaged var speaker: Speaker?
+    @NSManaged var notificationInfo: String?
+    @NSManaged var notificationID: NSNumber?
 
 }

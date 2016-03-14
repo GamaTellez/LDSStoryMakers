@@ -24,8 +24,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wvE-SC-xgX">
-                                <rect key="frame" x="0.0" y="140" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="141" width="600" height="517"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="517" id="sd1-yx-ofS"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nextClassCell" rowHeight="185" id="j0c-uo-twm" customClass="NextClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="600" height="185"/>
@@ -207,60 +210,69 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="45V-uZ-ZfP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNK-tW-MQz">
+                                <rect key="frame" x="0.0" y="59" width="600" height="77"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
+                                        <rect key="frame" x="8" y="10" width="584" height="65"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrK-Vr-2hT">
+                                        <rect key="frame" x="11" y="10" width="578" height="64"/>
+                                        <connections>
+                                            <action selector="dismissNotificationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5YU-K1-4Qy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="NNK-tW-MQz" secondAttribute="leadingMargin" id="9Rv-82-psX"/>
+                                    <constraint firstItem="WrK-Vr-2hT" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="top" id="GUD-VU-A5M"/>
+                                    <constraint firstItem="XCM-Fx-7dm" firstAttribute="centerX" secondItem="WrK-Vr-2hT" secondAttribute="centerX" id="LFa-ty-k0G"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="2" id="ac0-yu-fJ3"/>
+                                    <constraint firstItem="XCM-Fx-7dm" firstAttribute="centerY" secondItem="WrK-Vr-2hT" secondAttribute="centerY" id="jG7-DA-as5"/>
+                                    <constraint firstItem="WrK-Vr-2hT" firstAttribute="top" secondItem="NNK-tW-MQz" secondAttribute="top" constant="10" id="rEN-vw-q8P"/>
+                                    <constraint firstItem="XCM-Fx-7dm" firstAttribute="trailing" secondItem="NNK-tW-MQz" secondAttribute="trailingMargin" id="zCX-Q9-eFK"/>
+                                    <constraint firstItem="WrK-Vr-2hT" firstAttribute="leading" secondItem="NNK-tW-MQz" secondAttribute="leading" constant="11" id="zFq-50-Zpa"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4y-BB-gG7">
                                 <rect key="frame" x="514" y="471" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="5Vs-w6-ikm"/>
-                                    <constraint firstAttribute="height" constant="70" id="kzO-Hh-KGr"/>
+                                    <constraint firstAttribute="height" constant="70" id="1gY-v6-6ar"/>
+                                    <constraint firstAttribute="width" constant="70" id="6EF-xF-oby"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="addClassButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwV-6h-08e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
-                                <rect key="frame" x="0.0" y="59" width="600" height="73"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrK-Vr-2hT">
-                                <rect key="frame" x="526" y="81" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="LNJ-GD-nQ7"/>
-                                    <constraint firstAttribute="height" constant="40" id="oDg-dt-3M9"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="dismissNotificationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5YU-K1-4Qy"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2Qk-xu-ksq"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="XCM-Fx-7dm" secondAttribute="leading" id="5EM-Qd-Bh7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WrK-Vr-2hT" secondAttribute="trailing" constant="14" id="DpX-qH-6BM"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-76" id="a7C-07-1RM"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="8" symbolic="YES" id="a9e-G7-1dE"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="WrK-Vr-2hT" secondAttribute="bottom" constant="19" id="aNR-oZ-7g3"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="59" id="bU1-Vr-Paw"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="dlP-9n-pYK"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kFa-gr-wVl"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="mAS-08-sv1"/>
-                            <constraint firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="nDH-01-fvY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="qs9-9o-RMc"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="sOJ-vF-Wnk"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tYM-4m-cOH"/>
-                            <constraint firstItem="WrK-Vr-2hT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="vKs-R5-Z8V"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="xEK-YJ-w7f"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-58" id="2cX-fs-9ps"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="NNK-tW-MQz" secondAttribute="trailing" id="3sm-1S-PeS"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9HO-fo-M4Y"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L4I-UL-eEG"/>
+                            <constraint firstItem="NNK-tW-MQz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="59" id="Ov9-F5-fR0"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="NNK-tW-MQz" secondAttribute="trailing" id="Qx2-L3-WuN"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="NNK-tW-MQz" secondAttribute="leading" id="RaJ-6P-Jf7"/>
+                            <constraint firstItem="NNK-tW-MQz" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="ULW-KH-BYn"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="NNK-tW-MQz" secondAttribute="bottom" constant="5" id="WlC-nT-Xag"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="e7J-tt-WzJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="fAU-gT-r2c"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="vPh-p6-uYR"/>
+                            <constraint firstAttribute="trailing" secondItem="NNK-tW-MQz" secondAttribute="trailing" id="xGK-oe-6Lg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="LDS Storymakers 2016" id="Cbs-Tj-kE3"/>
                     <connections>
                         <outlet property="addClassButton" destination="x4y-BB-gG7" id="f7m-B5-E5z"/>
                         <outlet property="backGroundImageView" destination="Mpi-Is-UTa" id="zcP-hl-EeD"/>
-                        <outlet property="notificationLabelBanner" destination="XCM-Fx-7dm" id="Qc2-Wt-pFS"/>
+                        <outlet property="notificationLabelBanner" destination="XCM-Fx-7dm" id="cU3-BR-REQ"/>
+                        <outlet property="notificationLabelHolderView" destination="NNK-tW-MQz" id="PdH-DD-quH"/>
                         <outlet property="notificationsButton" destination="WrK-Vr-2hT" id="Okm-qJ-IAC"/>
                         <outlet property="tableView" destination="wvE-SC-xgX" id="tzc-mf-fYq"/>
                     </connections>

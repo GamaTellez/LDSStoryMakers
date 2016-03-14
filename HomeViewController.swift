@@ -15,14 +15,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
     @IBOutlet var notificationsButton: UIButton!
+    @IBOutlet var notificationLabelHolderView: UIView!
     
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let tableViewDataSource = TableViewDataSource()
     let kclassSelectedNotification = "kClassSelectedNotification"
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     var isNotificationBannerUp = true
-
-    
+    var newestNotification:Notification?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,18 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.getAllClassesAndPassedToDataSource()
         self.setUpButtons()
         self.setUpStatusBarBackground()
+        self.getNewestNotification()
+    }
+    
+    func getNewestNotification(){
+        if let newNot = ManagedObjectsController.sharedInstance.getNotification("mostRecent") as? [Notification] {
+            if let recentNot = newNot.first {
+                self.newestNotification = recentNot
+                if let notificationMessage = self.newestNotification?.valueForKey("notificationInfo") as? String {
+                    self.notificationLabelBanner.text = notificationMessage
+                }
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +55,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func animateInNotificationBannerLabelAndButton() {
         UIView.animateWithDuration(0.6, animations: { () -> Void in
+            self.notificationLabelHolderView.center.y += self.notificationLabelHolderView.frame.height
             self.notificationLabelBanner.center.y += self.notificationLabelBanner.frame.height
             self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
             self.tableView.center.y += self.notificationLabelBanner.frame.height
@@ -51,10 +64,11 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     func setUpButtons() {
-        self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
-        self.notificationsButton.layer.borderWidth = 1
-        self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
-        self.notificationLabelBanner.userInteractionEnabled = true
+        //self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
+        //self.notificationsButton.layer.borderWidth = 1
+        //self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
+        //self.notificationLabelBanner.userInteractionEnabled = true
+        //self.notificationsButton.setBackgroundImage(UIImage(named: "closeWhite"), forState: .Normal)
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
     }
@@ -88,6 +102,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
 
     @IBAction func dismissNotificationButtonTapped(button:UIButton) {
         UIView.animateWithDuration(0.6, animations: { () -> Void in
+            self.notificationLabelHolderView.center.y -= self.notificationLabelHolderView.frame.height
             self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
             self.tableView.center.y -= self.notificationLabelBanner.frame.height
             self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
@@ -116,8 +131,12 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
    
     func setUpLabelsApperance() {
-        self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
+        self.notificationLabelBanner.backgroundColor = UIColor.clearColor()
         self.notificationLabelBanner.clipsToBounds = true
+        self.notificationLabelBanner.preferredMaxLayoutWidth = 30
+        self.notificationLabelBanner.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        self.notificationLabelBanner.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
+        self.notificationLabelBanner.numberOfLines = 0
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
     }
     

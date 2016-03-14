@@ -182,7 +182,12 @@ class NSURLSessionController: NSObject {
                     }
                     break
                 case "Notifications":
-                    print("need to implement notidications initn and create managed object")
+                    print("getting notifications")
+                    for dict in rowsDictArray {
+                        if let arrayWithInfoDictionaries = dict.objectForKey("c") as? NSArray {
+                            ManagedObjectsController.sharedInstance.createAndSaveNotificationsFromArray(arrayWithInfoDictionaries)
+                        }
+                    }
                 default:
                     break
                 }

@@ -196,6 +196,22 @@ class ManagedObjectsController: NSObject {
         }
         self.saveToCoreData()
     }
+    
+    //NOTIFICATIONS
+    func createAndSaveNotificationsFromArray(arrayWithInfoDict:NSArray) {
+        let newNotification = NSManagedObject(entity: NSEntityDescription.entityForName("Notification", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
+        if let idDictionary = arrayWithInfoDict[0] as? NSDictionary {
+           if let notificationID = idDictionary.objectForKey("v") as? Int {
+             newNotification.setValue(notificationID, forKey: "notificationID")
+            }
+        }
+        if let notificationInfoDict = arrayWithInfoDict[1] as? NSDictionary {
+            if let notificationDetails = notificationInfoDict.objectForKey("v") as? String {
+                newNotification.setValue(notificationDetails, forKey: "notificationInfo")
+            }
+        }
+        self.saveToCoreData()
+    }
 
     func saveToCoreData() {
         do {
@@ -207,7 +223,6 @@ class ManagedObjectsController: NSObject {
     }
     
     func deleteScheduledClass(classInSchedule:ClassScheduled, fromView:String)  {
-        
         switch fromView {
         case "conferenceSchedule":
             self.managedContext.deleteObject(classInSchedule)
@@ -252,6 +267,20 @@ class ManagedObjectsController: NSObject {
         return fetchRequestExecuter(allPresentationsRequest)
     }
     
+    //most recent for most recent one, and all for all
+    func getNotification(notificationWanted:String) -> [AnyObject] {
+        let notificationRequest = NSFetchRequest(entityName: "Notification")
+        notificationRequest.sortDescriptors = [NSSortDescriptor(key: "notificationID", ascending: true)]
+        switch (notificationWanted) {
+            case "mostRecent":
+                notificationRequest.fetchLimit = 1
+                return self.fetchRequestExecuter(notificationRequest)
+            default:
+                return self.fetchRequestExecuter(notificationRequest)
+        }
+    }
+
+    
     func fetchRequestExecuter(request:NSFetchRequest) ->[AnyObject] {
         var requestResults:[AnyObject] = []
         do {
@@ -261,6 +290,7 @@ class ManagedObjectsController: NSObject {
         }
         return requestResults
     }
+    
     
     
     //MAndatory breakouts for personal schedule
@@ -324,6 +354,7 @@ class ManagedObjectsController: NSObject {
         }
         return allClasses
     }
+    
 //create classscheduled from classtoschedule
     func createScheduledClass(from clsToSchedule:ClassToSchedule) {
         let newClassScheduled = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)

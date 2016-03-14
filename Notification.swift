@@ -1,5 +1,5 @@
 //
-//  Speaker.swift
+//  Notification.swift
 //  LDSStoryMakersRealDeal
 //
 //  Created by Gamaliel Tellez on 3/14/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Speaker: NSManagedObject {
+class Notification: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
