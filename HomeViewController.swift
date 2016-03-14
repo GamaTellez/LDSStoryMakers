@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
     @IBOutlet var notificationsButton: UIButton!
-    @IBOutlet var notificationLabelHolderView: UIView!
+
     
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let tableViewDataSource = TableViewDataSource()
@@ -55,7 +55,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func animateInNotificationBannerLabelAndButton() {
         UIView.animateWithDuration(0.6, animations: { () -> Void in
-            self.notificationLabelHolderView.center.y += self.notificationLabelHolderView.frame.height
             self.notificationLabelBanner.center.y += self.notificationLabelBanner.frame.height
             self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
             self.tableView.center.y += self.notificationLabelBanner.frame.height
@@ -68,7 +67,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         //self.notificationsButton.layer.borderWidth = 1
         //self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
         //self.notificationLabelBanner.userInteractionEnabled = true
-        //self.notificationsButton.setBackgroundImage(UIImage(named: "closeWhite"), forState: .Normal)
+        self.notificationsButton.setBackgroundImage(UIImage(named: "closeBlack"), forState: .Normal)
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
     }
@@ -102,7 +101,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
 
     @IBAction func dismissNotificationButtonTapped(button:UIButton) {
         UIView.animateWithDuration(0.6, animations: { () -> Void in
-            self.notificationLabelHolderView.center.y -= self.notificationLabelHolderView.frame.height
             self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
             self.tableView.center.y -= self.notificationLabelBanner.frame.height
             self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
@@ -131,7 +129,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
    
     func setUpLabelsApperance() {
-        self.notificationLabelBanner.backgroundColor = UIColor.clearColor()
+        self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
         self.notificationLabelBanner.clipsToBounds = true
         self.notificationLabelBanner.preferredMaxLayoutWidth = 30
         self.notificationLabelBanner.lineBreakMode = NSLineBreakMode.ByTruncatingTail
