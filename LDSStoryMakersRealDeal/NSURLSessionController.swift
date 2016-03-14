@@ -12,6 +12,7 @@ class NSURLSessionController: NSObject {
 
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     static let sharedInstance = NSURLSessionController()
+    let failedToFetchTheSpeakerImage = "failedToFetchTheSpeakerImage"
     let generalSpreadSheetLink:String = "https://spreadsheets.google.com/tq?key="
     lazy var defaults = NSUserDefaults.standardUserDefaults()
     let session = NSURLSession.sharedSession()
@@ -260,7 +261,26 @@ class NSURLSessionController: NSObject {
         }
     } else {
         print("all keys stored in nsuserdefaults")
+        }
     }
+    
+    func getSpeakerPhotoData(speakerName:String, completion: (photoData:NSData) -> Void) {
+        //http://res-4.cloudinary.com/innatemobile/image/upload/JENNY_PROCTOR.jpg
+        let formattedSpeakerName = speakerName.stringByReplacingOccurrencesOfString(" ", withString: "_").uppercaseString
+        print(formattedSpeakerName)
+        let url = NSURL(string: String(format:"http://res-4.cloudinary.com/innatemobile/image/upload/%@.jpg",formattedSpeakerName))
+        let dataTask = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+            if ((error) != nil) {
+                print(error?.localizedDescription)
+                NSNotificationCenter.defaultCenter().postNotificationName(self.failedToFetchTheSpeakerImage, object: nil)
+            }
+            if let photoInData = data {
+            completion(photoData: photoInData)
+            }
+        }
+        dataTask.resume()
     }
+    
+    
 }
 

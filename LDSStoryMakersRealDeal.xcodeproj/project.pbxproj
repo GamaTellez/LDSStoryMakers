@@ -12,6 +12,7 @@
 		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
 		8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E01C7E117800EFAA8B /* AppAppearance.swift */; };
 		8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */; };
+		875692791C9662920096A1EA /* CloudinaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875692781C9662920096A1EA /* CloudinaryController.swift */; };
 		875D55F11C92830E00EEF930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875D55F01C92830E00EEF930 /* Assets.xcassets */; };
 		878E2ECB1C8274D30050D934 /* NextClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECA1C8274D30050D934 /* NextClassCell.swift */; };
 		878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */; };
@@ -74,6 +75,7 @@
 		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		8741B1E01C7E117800EFAA8B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailView.swift; sourceTree = "<group>"; };
+		875692781C9662920096A1EA /* CloudinaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudinaryController.swift; path = ../CloudinaryController.swift; sourceTree = "<group>"; };
 		875D55F01C92830E00EEF930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		878E2ECA1C8274D30050D934 /* NextClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NextClassCell.swift; path = ../NextClassCell.swift; sourceTree = "<group>"; };
 		878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpcomingClassCell.swift; path = ../UpcomingClassCell.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */,
 				87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */,
+				875692781C9662920096A1EA /* CloudinaryController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -211,7 +214,6 @@
 				87B070371C78251600014DD1 /* FullScheduleViewController.swift */,
 				87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */,
 				87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */,
-				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
 			);
 			name = FullConferenceScheduleVC;
 			sourceTree = "<group>";
@@ -257,6 +259,7 @@
 				878153911C6C0D380042F4EB /* DataModel */,
 				87D257FC1C79959E000368FC /* HomeVC */,
 				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
+				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
 				87F21A131C69360300C2EAA4 /* LaunchScreen.storyboard */,
 				875D55F01C92830E00EEF930 /* Assets.xcassets */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
@@ -436,6 +439,7 @@
 				87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */,
 				87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
+				875692791C9662920096A1EA /* CloudinaryController.swift in Sources */,
 				878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */,
 				878E2EDB1C829C3F0050D934 /* Breakout.swift in Sources */,
 				878E2EDD1C829C3F0050D934 /* ClassScheduled.swift in Sources */,
@@ -607,6 +611,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -618,6 +623,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gamaTellez.LDSStoryMakersRealDeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

@@ -56,6 +56,8 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.feecBackButtom.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.feecBackButtom.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
         self.classLocationLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
+        self.classDescriptionTextView.backgroundColor = UIColor.clearColor()
+        
         
     }
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
@@ -106,7 +108,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
             switch segueId {
             default:
                 let speakerBioVC = segue.destinationViewController as! SpeakerBioView
-                if let speakerOfClassSelected = self.classSelected?.speaker {
+                if let speakerOfClassSelected = self.classSelected?.valueForKey("speaker") as? Speaker {
                     speakerBioVC.speakerSelected = speakerOfClassSelected
                 }
                 break

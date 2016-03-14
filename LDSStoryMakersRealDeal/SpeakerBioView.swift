@@ -14,22 +14,34 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
    // @IBOutlet var fillerLabel: UILabel!
     @IBOutlet var speakerImageView: UIImageView!
     @IBOutlet var bioTextView: UITextView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var backGroundImage: UIImageView!
     
     var speakerSelected:Speaker?
+    var speakerPhotoData:NSData?
+    let failedToFetchTheSpeakerImage = "failedToFetchTheSpeakerImage"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpViews()
         self.setViewContent()
+        
+           }
+    override func viewWillDisappear(animated: Bool) {
+        self.removeObserverFromNotifications()
     }
     
     func setUpViews() {
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.speakerNameLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.speakerNameLabel.textColor = UIColor.whiteColor()
-        self.speakerImageView.layer.borderColor = UIColor.blackColor().CGColor
-        self.speakerImageView.layer.borderWidth = 1
+        self.activityIndicator.startAnimating()
+    }
+    
+    func setBackgroundImageView() {
+        self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
+        self.view.backgroundColor = UIColor.clearColor()
     }
     
     func setViewContent() {
@@ -41,6 +53,31 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
                 self.bioTextView.text = speakerBio
             }
         }
+        if let speakerName = self.speakerSelected?.valueForKey("speakerName") as? String {
+            NSURLSessionController.sharedInstance.getSpeakerPhotoData(speakerName, completion: { (photoData) -> Void in
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.alpha = 0
+                self.speakerImageView.image = UIImage(data: photoData)
+                
+            })
+        }
+    }
+    
+    func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageFetchFailAlert", name: failedToFetchTheSpeakerImage, object: nil)
+    }
+    
+    func imageFetchFailAlert() {
+        let imageFailedAlert  = UIAlertController(title: "Error", message: "There was an errror while obtaining the image", preferredStyle: UIAlertControllerStyle.Alert)
+        imageFailedAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(imageFailedAlert, animated: true) { () -> Void in
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.alpha = 0
+        }
+    }
+    
+    func removeObserverFromNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {

@@ -15,6 +15,7 @@ class ManagedObjectsController: NSObject {
     let kitemSuccedsfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
+
     
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
     
