@@ -26,8 +26,9 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         self.setUpViews()
         self.setViewContent()
-        
-           }
+        self.setBackgroundImageView()
+        self.registerForNotifications()
+    }
     override func viewWillDisappear(animated: Bool) {
         self.removeObserverFromNotifications()
     }
@@ -36,7 +37,9 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.speakerNameLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.speakerNameLabel.textColor = UIColor.whiteColor()
+        self.bioTextView.backgroundColor = UIColor.clearColor()
         self.activityIndicator.startAnimating()
+        self.activityIndicator.alpha = 1
     }
     
     func setBackgroundImageView() {
@@ -55,10 +58,11 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         }
         if let speakerName = self.speakerSelected?.valueForKey("speakerName") as? String {
             NSURLSessionController.sharedInstance.getSpeakerPhotoData(speakerName, completion: { (photoData) -> Void in
+               dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.alpha = 0
                 self.speakerImageView.image = UIImage(data: photoData)
-                
+               })
             })
         }
     }
