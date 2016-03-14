@@ -32,8 +32,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.registerForNotifications()
        
     }
-    override func viewWillAppear(animated: Bool) {
-    }
+
     
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesfullySaved, object: nil)

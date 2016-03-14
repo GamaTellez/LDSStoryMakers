@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wvE-SC-xgX">
-                                <rect key="frame" x="0.0" y="139" width="600" height="516"/>
+                                <rect key="frame" x="0.0" y="140" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nextClassCell" rowHeight="185" id="j0c-uo-twm" customClass="NextClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
@@ -207,53 +207,53 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="45V-uZ-ZfP"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
-                                <rect key="frame" x="36" y="58" width="528" height="73"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sui-7H-tEe">
-                                <rect key="frame" x="518" y="74" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="HiG-J8-HYh"/>
-                                    <constraint firstAttribute="height" constant="40" id="jvc-Hg-lYI"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="dismissNotificationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dnt-bu-Ylr"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4y-BB-gG7">
                                 <rect key="frame" x="514" y="471" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="FZ4-to-WFX"/>
-                                    <constraint firstAttribute="width" constant="70" id="l3v-NC-bja"/>
+                                    <constraint firstAttribute="width" constant="70" id="5Vs-w6-ikm"/>
+                                    <constraint firstAttribute="height" constant="70" id="kzO-Hh-KGr"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="addClassButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwV-6h-08e"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
+                                <rect key="frame" x="0.0" y="59" width="600" height="73"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrK-Vr-2hT">
+                                <rect key="frame" x="526" y="81" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="LNJ-GD-nQ7"/>
+                                    <constraint firstAttribute="height" constant="40" id="oDg-dt-3M9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="dismissNotificationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5YU-K1-4Qy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="sui-7H-tEe" secondAttribute="bottom" constant="25" id="0jh-2h-tWp"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="2JH-2Z-SOc"/>
-                            <constraint firstItem="sui-7H-tEe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="6do-hi-qNN"/>
-                            <constraint firstItem="sui-7H-tEe" firstAttribute="centerY" secondItem="XCM-Fx-7dm" secondAttribute="centerY" id="76M-Rf-MF3"/>
-                            <constraint firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="89q-B4-EoN"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="Aet-J0-3OK"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="centerX" secondItem="XCM-Fx-7dm" secondAttribute="centerX" id="Ayv-Al-FMj"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="BAf-Wx-jap"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RB2-Ny-4jV"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="8" symbolic="YES" id="Tl0-0A-IGU"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="bwM-KY-BEh"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-55" id="fiQ-qa-qaM"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="lci-Dc-hQ0"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mPm-7F-ktf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sui-7H-tEe" secondAttribute="trailing" constant="22" id="nna-gs-VW6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="tgx-eC-Fmy"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2Qk-xu-ksq"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="XCM-Fx-7dm" secondAttribute="leading" id="5EM-Qd-Bh7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WrK-Vr-2hT" secondAttribute="trailing" constant="14" id="DpX-qH-6BM"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-76" id="a7C-07-1RM"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="8" symbolic="YES" id="a9e-G7-1dE"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="WrK-Vr-2hT" secondAttribute="bottom" constant="19" id="aNR-oZ-7g3"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="59" id="bU1-Vr-Paw"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="dlP-9n-pYK"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kFa-gr-wVl"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="mAS-08-sv1"/>
+                            <constraint firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="nDH-01-fvY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="qs9-9o-RMc"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="sOJ-vF-Wnk"/>
+                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tYM-4m-cOH"/>
+                            <constraint firstItem="WrK-Vr-2hT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="vKs-R5-Z8V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="xEK-YJ-w7f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="LDS Storymakers 2016" id="Cbs-Tj-kE3"/>
@@ -261,14 +261,14 @@
                         <outlet property="addClassButton" destination="x4y-BB-gG7" id="f7m-B5-E5z"/>
                         <outlet property="backGroundImageView" destination="Mpi-Is-UTa" id="zcP-hl-EeD"/>
                         <outlet property="notificationLabelBanner" destination="XCM-Fx-7dm" id="Qc2-Wt-pFS"/>
-                        <outlet property="notificationsButton" destination="sui-7H-tEe" id="6Qi-iq-hGy"/>
+                        <outlet property="notificationsButton" destination="WrK-Vr-2hT" id="Okm-qJ-IAC"/>
                         <outlet property="tableView" destination="wvE-SC-xgX" id="tzc-mf-fYq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="zOs-22-fN5" customClass="TableViewDataSource" customModule="LDSStoryMakersRealDeal" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="347"/>
+            <point key="canvasLocation" x="2012" y="400"/>
         </scene>
         <!--Personal-->
         <scene sceneID="uni-HZ-X9T">
@@ -408,7 +408,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ur-R2-Go9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="PhR-yJ-9S1" customClass="PersonalScheduleDS" customModule="LDSStoryMakersRealDeal" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="1071"/>
+            <point key="canvasLocation" x="686" y="1064"/>
         </scene>
         <!--Full Schedule-->
         <scene sceneID="k7D-cu-uJ6">
@@ -497,7 +497,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYr-Zd-LUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="dZR-Ka-Khc" customClass="BreakoutsDataSource" customModule="LDSStoryMakersRealDeal" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="3396" y="335"/>
+            <point key="canvasLocation" x="3283" y="230"/>
         </scene>
         <!--Detail BreakoutVC-->
         <scene sceneID="HGH-e1-wTS">

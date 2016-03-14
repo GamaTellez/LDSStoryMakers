@@ -13,15 +13,16 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var notificationLabelBanner: UILabel!
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var notificationsButton: UIButton!
     @IBOutlet var addClassButton: UIButton!
+    @IBOutlet var notificationsButton: UIButton!
     
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let tableViewDataSource = TableViewDataSource()
     let kclassSelectedNotification = "kClassSelectedNotification"
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
-    
+    var isNotificationBannerUp = true
 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,27 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setUpButtons()
         self.setUpStatusBarBackground()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if self.isNotificationBannerUp == false {
+            animateInNotificationBannerLabelAndButton()
+        }
+    }
+    
+    func animateInNotificationBannerLabelAndButton() {
+        UIView.animateWithDuration(0.6, animations: { () -> Void in
+            self.notificationLabelBanner.center.y += self.notificationLabelBanner.frame.height
+            self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
+            self.tableView.center.y += self.notificationLabelBanner.frame.height
+            }) { (Bool) -> Void in
+                self.isNotificationBannerUp = true
+        }
+    }
     func setUpButtons() {
         self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
         self.notificationsButton.layer.borderWidth = 1
         self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
+        self.notificationLabelBanner.userInteractionEnabled = true
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
     }
@@ -68,11 +86,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
 
-    @IBAction func dismissNotificationButtonTapped(sender: AnyObject) {
-        UIView.animateWithDuration(0.5) { () -> Void in
+    @IBAction func dismissNotificationButtonTapped(button:UIButton) {
+        UIView.animateWithDuration(0.6, animations: { () -> Void in
             self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
             self.tableView.center.y -= self.notificationLabelBanner.frame.height
-                self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
+            self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
+            }) { (Bool) -> Void in
+                self.isNotificationBannerUp = false
         }
     }
     
