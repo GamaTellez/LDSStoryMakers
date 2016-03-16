@@ -10,6 +10,7 @@ import UIKit
 
     protocol SpeakerInfoButtonTappedDelegate {
         func indexOfClassForSpeakerSelected(section:Int)
+        func indexOfClassForCourseSelected(section:Int)
     }
 
 
@@ -52,6 +53,9 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
     }
     @IBAction func speakerBioButtonTapped(sender: UIButton) {
         self.delegate?.indexOfClassForSpeakerSelected(sender.tag)
+    }
+    @IBAction func courseFeedBackButtonTapped(sender: AnyObject) {
+        self.delegate?.indexOfClassForCourseSelected(sender.tag)
     }
     
 }

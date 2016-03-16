@@ -23,6 +23,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassID, forIndexPath: indexPath) as! NextClassCell
             cell.backgroundColor = UIColor.clearColor()
             cell.speakerBioButton.tag = indexPath.section
+            cell.courseFeedBackButton.tag = indexPath.section
             cell.delegate = self
             cell.selectionStyle = .None
             if scheduledClass.valueForKey("speaker") == nil {
@@ -30,8 +31,8 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
                 cell.speakerBioButton.enabled = false
                 cell.courseFeedBackButton.alpha = 0.4
                 cell.courseFeedBackButton.enabled = false
-                
             }
+            
             if let start = scheduledClass.breakOut?.valueForKey("startTime") as? NSDate {
                 if let end = scheduledClass.breakOut?.valueForKey("endTime") as? NSDate {
                     let startTime = NSDateFormatter.localizedStringFromDate(start, dateStyle: .NoStyle, timeStyle: .ShortStyle)
@@ -110,6 +111,11 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             speakerBioVC?.speakerSelected = speakerSelected
             UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(speakerBioVC!, animated: true, completion: nil)
         }
-        
+    }
+    func indexOfClassForCourseSelected(section: Int) {
+        let classSelected = self.classesInSchedule[section]
+        if let courseSelectedName = classSelected.presentation?.valueForKey("title") as? String {
+            ManagedObjectsController.sharedInstance.openFeedBackPageForCourse(courseSelectedName)
+        }
     }
 }

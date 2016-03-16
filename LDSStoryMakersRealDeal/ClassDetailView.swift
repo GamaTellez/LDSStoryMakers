@@ -18,6 +18,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
     
     @IBOutlet var backGroundImage: UIImageView!
     var classSelected:ClassToSchedule?
+    lazy var userDefaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +114,30 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
                 }
                 break
             }
+        }
+    }
+
+    @IBAction func feedBackButtonTapped(sender: AnyObject) {
+        //        if let conferenceFeedBack = self.userDefaults.objectForKey("ConferenceLink") {
+        //            print(conferenceFeedBack)
+        //        }
+
+            
+//        if let courseFeedBackFixedPortion = self.userDefaults.objectForKey("CourseLink") as? String {
+//            if let courseFeedBeforeName = self.userDefaults.objectForKey("Course Feedback") as? String {
+//                if let courseEncodedName = (self.classSelected?.presentation?.valueForKey("title") as? String)?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+//                    let stringURL = courseFeedBackFixedPortion + courseFeedBeforeName + courseEncodedName
+//                    if (UIApplication.sharedApplication().openURL(NSURL(string: stringURL)!)) {
+//                        print(stringURL)
+//                        print("opening course feed")
+//                    } else {
+//                        print("failed to open course feedback page")
+//                    }
+//                }
+//            }
+//        }
+        if let courseName = self.classSelected?.presentation?.valueForKey("title") as? String {
+            ManagedObjectsController.sharedInstance.openFeedBackPageForCourse(courseName)
         }
     }
     

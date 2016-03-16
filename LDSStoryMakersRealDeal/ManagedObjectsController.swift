@@ -384,6 +384,35 @@ class ManagedObjectsController: NSObject {
         self.saveToCoreData()
     }
     
-    
-    
+    //take to feedback in browser
+//    if let courseFeedBackFixedPortion = self.userDefaults.objectForKey("CourseLink") as? String {
+//        if let courseFeedBeforeName = self.userDefaults.objectForKey("Course Feedback") as? String {
+//            if let courseEncodedName = (self.classSelected?.presentation?.valueForKey("title") as? String)?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+//                let stringURL = courseFeedBackFixedPortion + courseFeedBeforeName + courseEncodedName
+//                if (UIApplication.sharedApplication().openURL(NSURL(string: stringURL)!)) {
+//                    print(stringURL)
+//                    print("opening course feed")
+//                } else {
+//                    print("failed to open course feedback page")
+//                }
+//            }
+//        }
+//    }
+    func openFeedBackPageForCourse(course:String) {
+            if let courseFeedBackFixedPortion = self.userDefaults.objectForKey("CourseLink") as? String {
+                if let courseFeedBeforeName = self.userDefaults.objectForKey("Course Feedback") as? String {
+                    if let courseEncodedName = course.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+                        let stringURL = courseFeedBackFixedPortion + courseFeedBeforeName + courseEncodedName
+                        if (UIApplication.sharedApplication().openURL(NSURL(string: stringURL)!)) {
+                            print(stringURL)
+                            print("opening course feed")
+                        } else {
+                            print("failed to open course feedback page")
+                        }
+                    }
+                }
+            }
+    }
 }
+
+

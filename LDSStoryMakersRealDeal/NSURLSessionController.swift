@@ -61,6 +61,7 @@ class NSURLSessionController: NSObject {
         if let jsonDictionary = jsonObject as? NSDictionary {
             if let tableDict = jsonDictionary.objectForKey("table") {
                 if let rowsArray = tableDict.objectForKey("rows") {
+                    print(rowsArray)
                     self.saveToUserDefaults(rowsArray)
                 }
             }
@@ -75,6 +76,20 @@ class NSURLSessionController: NSObject {
             if let dictionaryWithNameKey = dictionaryWithObject![1] {
                 if let stringName = dictionaryWithNameKey.objectForKey("v") as? String {
                     nameKey = stringName
+                    if stringName == "Conference Feedback" {
+                        if let dictWithConferenceLink = dictionaryWithObject![2] {
+                            if let conferenceFeedBacLink = dictWithConferenceLink.objectForKey("v") as? String {
+                                self.defaults.setObject(conferenceFeedBacLink, forKey: "ConferenceLink")
+                            }
+                        }
+                    }
+                    if stringName == "Course Feedback" {
+                        if let dictWithCourseLink = dictionaryWithObject![2] {
+                            if let courseFeedBacLink = dictWithCourseLink.objectForKey("v") as? String {
+                                self.defaults.setObject(courseFeedBacLink, forKey: "CourseLink")
+                            }
+                        }
+                    }
                 }
             }
             var spreadSheetKey:String?

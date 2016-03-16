@@ -12,7 +12,6 @@
 		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
 		8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E01C7E117800EFAA8B /* AppAppearance.swift */; };
 		8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */; };
-		875692791C9662920096A1EA /* CloudinaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875692781C9662920096A1EA /* CloudinaryController.swift */; };
 		875D55F11C92830E00EEF930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875D55F01C92830E00EEF930 /* Assets.xcassets */; };
 		8774D88F1C97665000136514 /* ScheduleItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8831C97665000136514 /* ScheduleItem+CoreDataProperties.swift */; };
 		8774D8901C97665000136514 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8841C97665000136514 /* ScheduleItem.swift */; };
@@ -78,7 +77,6 @@
 		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		8741B1E01C7E117800EFAA8B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailView.swift; sourceTree = "<group>"; };
-		875692781C9662920096A1EA /* CloudinaryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudinaryController.swift; path = ../CloudinaryController.swift; sourceTree = "<group>"; };
 		875D55F01C92830E00EEF930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8774D8831C97665000136514 /* ScheduleItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ScheduleItem+CoreDataProperties.swift"; path = "../ScheduleItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8774D8841C97665000136514 /* ScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleItem.swift; path = ../ScheduleItem.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			children = (
 				87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */,
 				87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */,
-				875692781C9662920096A1EA /* CloudinaryController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -450,7 +447,6 @@
 				8774D8931C97665000136514 /* Notification+CoreDataProperties.swift in Sources */,
 				87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
-				875692791C9662920096A1EA /* CloudinaryController.swift in Sources */,
 				8774D8971C97665000136514 /* Speaker+CoreDataProperties.swift in Sources */,
 				878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */,
 				8774D8981C97665000136514 /* Speaker.swift in Sources */,

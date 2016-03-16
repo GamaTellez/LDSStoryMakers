@@ -92,4 +92,5 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
 }
