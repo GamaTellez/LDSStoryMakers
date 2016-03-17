@@ -61,7 +61,7 @@ class NSURLSessionController: NSObject {
         if let jsonDictionary = jsonObject as? NSDictionary {
             if let tableDict = jsonDictionary.objectForKey("table") {
                 if let rowsArray = tableDict.objectForKey("rows") {
-                    print(rowsArray)
+                    //print(rowsArray)
                     self.saveToUserDefaults(rowsArray)
                 }
             }
@@ -276,8 +276,6 @@ class NSURLSessionController: NSObject {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                      NSNotificationCenter.defaultCenter().postNotificationName(self.kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
             })
-
-    
         }
     } else {
         print("all keys stored in nsuserdefaults")
@@ -287,7 +285,7 @@ class NSURLSessionController: NSObject {
     func getSpeakerPhotoData(speakerName:String, completion: (photoData:NSData) -> Void) {
         //http://res-4.cloudinary.com/innatemobile/image/upload/JENNY_PROCTOR.jpg <- sample link
         let formattedSpeakerName = speakerName.stringByReplacingOccurrencesOfString(" ", withString: "_").uppercaseString
-        print(formattedSpeakerName)
+       // print(formattedSpeakerName)
         let url = NSURL(string: String(format:"http://res-4.cloudinary.com/innatemobile/image/upload/%@.jpg",formattedSpeakerName))
         let dataTask = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if ((error) != nil) {

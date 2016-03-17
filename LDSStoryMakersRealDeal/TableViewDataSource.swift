@@ -102,6 +102,10 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
     
     func updateArrayForDataSource(alreadyScheduledClasses:[ClassScheduled]) {
         self.classesInSchedule = alreadyScheduledClasses
+       // let nowTime = NSDate()
+        
+        
+        
     }
     
     func indexOfClassForSpeakerSelected(section: Int) {
