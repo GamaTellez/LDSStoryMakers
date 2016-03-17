@@ -98,12 +98,14 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
+      "filename" : "rsz_6writerslogo1-2.png",
       "extent" : "to-status-bar",
       "scale" : "1x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
+      "filename" : "rsz_1rsz_writerslogo1.png",
       "extent" : "full-screen",
       "scale" : "1x"
     },
@@ -122,13 +124,14 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "WritersLogo1.png",
+      "filename" : "rsz_writerslogo1-1.png",
       "extent" : "to-status-bar",
       "scale" : "2x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
+      "filename" : "rsz_7writerslogo1.png",
       "extent" : "full-screen",
       "scale" : "2x"
     },
