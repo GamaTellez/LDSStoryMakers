@@ -10,26 +10,20 @@ import UIKit
 
 class SettingsVC: UIViewController {
 
+    @IBOutlet var backGroundImage: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.setBackgroundImageView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setBackgroundImageView() {
+        self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
+        self.view.backgroundColor = UIColor.clearColor()
     }
-    */
 
+    func setUpApperanceViews() {
+        self.titleLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+    }
 }

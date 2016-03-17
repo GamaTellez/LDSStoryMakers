@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
     @IBOutlet var notificationsButton: UIButton!
-
+    @IBOutlet var labelTitle: UILabel!
     
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let tableViewDataSource = TableViewDataSource()
@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
     var isNotificationBannerUp = true
     var newestNotification:Notification?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,12 +70,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         //self.notificationLabelBanner.userInteractionEnabled = true
         self.notificationsButton.setBackgroundImage(UIImage(named: "closeBlack"), forState: .Normal)
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
-        self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
+        //self.addClassButton.setBackgroundImage(UIImage(named: "cross-3"), forState: .Normal)
     }
     func setUpStatusBarBackground() {
-        let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
+        let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 22))
         statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
-        self.navigationController?.navigationBar.addSubview(statusBarView)
+        self.labelTitle.addSubview(statusBarView)
     }
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "scheduleMandatoryClassesOnFirstLaunch", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
@@ -136,6 +138,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.notificationLabelBanner.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.notificationLabelBanner.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
         self.notificationLabelBanner.numberOfLines = 0
+        self.labelTitle.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        self.labelTitle.numberOfLines = 2
+        self.labelTitle.text = "\n LDS Storymakers Conference 2016"
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
     }
     
@@ -200,9 +205,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.section {
         case 1:
-            if indexPath.row == 3 {
                 self.tabBarController?.selectedIndex = 2
-            }
         default:
             break
         }
