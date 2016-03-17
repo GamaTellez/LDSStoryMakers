@@ -287,7 +287,7 @@
             </objects>
             <point key="canvasLocation" x="2013" y="347"/>
         </scene>
-        <!--Personal-->
+        <!--My Schedule-->
         <scene sceneID="uni-HZ-X9T">
             <objects>
                 <viewController storyboardIdentifier="personalSchedule" id="J04-ai-fx7" customClass="FullPersonalSchedule" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
@@ -367,6 +367,7 @@
                                             <outlet property="extraBackGRoundView" destination="qOC-u3-YzT" id="BAH-Zv-z3k"/>
                                             <outlet property="removeClassButton" destination="Ori-h8-tEs" id="fbs-6h-zj3"/>
                                             <outlet property="timeAndLocationLabel" destination="bsw-Ex-qCo" id="OKe-mZ-46b"/>
+                                            <segue destination="lgg-gX-Cpn" kind="show" identifier="scheduledClassDetail" id="4w5-2e-V1N"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mandatoryClassCell" rowHeight="75" id="oLR-il-8x4" customClass="MandatoryClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
@@ -413,15 +414,6 @@
                                     <outlet property="delegate" destination="J04-ai-fx7" id="1Q5-cZ-Awj"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khN-hL-Kyf">
-                                <rect key="frame" x="0.0" y="22" width="600" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="XQw-bX-dzS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eh3-oi-Ie0">
                                 <rect key="frame" x="20" y="102" width="560" height="29"/>
                                 <segments>
@@ -435,26 +427,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="Gsp-Wg-JwN" secondAttribute="bottom" constant="33" id="1w3-Qy-DHx"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="leading" secondItem="khN-hL-Kyf" secondAttribute="leading" id="2SR-jh-EbS"/>
-                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="top" secondItem="khN-hL-Kyf" secondAttribute="bottom" constant="39" id="6Or-cg-xCW"/>
-                            <constraint firstItem="KRY-OW-rXa" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leading" id="7zp-DR-D8l"/>
-                            <constraint firstItem="KRY-OW-rXa" firstAttribute="top" secondItem="Z6h-BX-IdQ" secondAttribute="top" id="EFA-Vr-2eZ"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="leading" secondItem="KRY-OW-rXa" secondAttribute="leading" id="Nxp-Ag-jIg"/>
-                            <constraint firstAttribute="trailing" secondItem="Gsp-Wg-JwN" secondAttribute="trailing" id="Xki-hs-cAr"/>
-                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leadingMargin" id="bV2-XS-PVV"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="top" secondItem="eh3-oi-Ie0" secondAttribute="bottom" constant="22" id="jDn-js-iTd"/>
-                            <constraint firstItem="khN-hL-Kyf" firstAttribute="top" secondItem="Gvw-dh-F8U" secondAttribute="bottom" constant="2" id="jMK-uQ-lhk"/>
-                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="centerX" secondItem="khN-hL-Kyf" secondAttribute="centerX" id="ji9-MB-xEi"/>
-                            <constraint firstItem="khN-hL-Kyf" firstAttribute="trailing" secondItem="KRY-OW-rXa" secondAttribute="trailing" id="kFw-Ck-o0f"/>
-                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="trailing" secondItem="khN-hL-Kyf" secondAttribute="trailing" id="yXs-p1-B7u"/>
-                            <constraint firstAttribute="bottom" secondItem="KRY-OW-rXa" secondAttribute="bottom" id="zOU-fN-Hev"/>
+                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="top" secondItem="Gvw-dh-F8U" secondAttribute="bottom" constant="38" id="0Kp-BN-NPI"/>
+                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="centerX" secondItem="Gsp-Wg-JwN" secondAttribute="centerX" id="277-hQ-NXa"/>
+                            <constraint firstAttribute="bottom" secondItem="KRY-OW-rXa" secondAttribute="bottom" id="AUn-xG-H6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="KRY-OW-rXa" secondAttribute="trailing" id="FbG-pB-MEL"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Gsp-Wg-JwN" secondAttribute="bottom" constant="33" id="Uhe-i8-POq"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leading" id="WOt-lk-5zH"/>
+                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="top" secondItem="eh3-oi-Ie0" secondAttribute="bottom" constant="22" id="X8v-4P-wJd"/>
+                            <constraint firstItem="eh3-oi-Ie0" firstAttribute="leading" secondItem="Z6h-BX-IdQ" secondAttribute="leadingMargin" id="bLv-OF-1kn"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="leading" secondItem="Gsp-Wg-JwN" secondAttribute="leading" id="bb2-Wm-U0K"/>
+                            <constraint firstItem="Gsp-Wg-JwN" firstAttribute="trailing" secondItem="KRY-OW-rXa" secondAttribute="trailing" id="ib0-V2-anf"/>
+                            <constraint firstItem="KRY-OW-rXa" firstAttribute="top" secondItem="Z6h-BX-IdQ" secondAttribute="top" id="uGa-by-hFQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Personal" image="rsz_calendaradd" id="Scc-sK-lja"/>
+                    <navigationItem key="navigationItem" title="My Schedule" id="5gq-tb-BtR"/>
                     <connections>
                         <outlet property="backGroundImageView" destination="KRY-OW-rXa" id="2Em-ew-vWk"/>
-                        <outlet property="fakeNavBar" destination="khN-hL-Kyf" id="rI5-ve-bX2"/>
                         <outlet property="segmentedController" destination="eh3-oi-Ie0" id="GQu-kF-Pm1"/>
                         <outlet property="tableView" destination="Gsp-Wg-JwN" id="ecl-ip-Fir"/>
                     </connections>
@@ -462,7 +450,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ur-R2-Go9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="PhR-yJ-9S1" customClass="PersonalScheduleDS" customModule="LDSStoryMakersRealDeal" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="1122"/>
+            <point key="canvasLocation" x="2750" y="1106"/>
         </scene>
         <!--Full Schedule-->
         <scene sceneID="k7D-cu-uJ6">
@@ -792,7 +780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E5L-NR-tJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4829" y="335"/>
+            <point key="canvasLocation" x="4059" y="1057"/>
         </scene>
         <!--Speaker Bio View-->
         <scene sceneID="Mwr-1u-dxZ">
@@ -882,7 +870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyu-1A-z4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5585" y="330"/>
+            <point key="canvasLocation" x="4843" y="1057"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxn-ry-Fgk">
@@ -896,7 +884,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ief-zu-OfJ"/>
                         <segue destination="yUW-CK-9hU" kind="relationship" relationship="viewControllers" id="G5X-dh-n5A"/>
-                        <segue destination="J04-ai-fx7" kind="relationship" relationship="viewControllers" id="a3o-p7-0ar"/>
+                        <segue destination="fdk-aX-X20" kind="relationship" relationship="viewControllers" id="a3o-p7-0ar"/>
                         <segue destination="AJZ-rY-1rJ" kind="relationship" relationship="viewControllers" id="jAR-2V-QiH"/>
                     </connections>
                 </tabBarController>
@@ -953,10 +941,32 @@
             </objects>
             <point key="canvasLocation" x="1062" y="1122"/>
         </scene>
+        <!--Personal-->
+        <scene sceneID="hv7-Kj-Ct2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fdk-aX-X20" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Personal" image="rsz_calendaradd" id="Scc-sK-lja"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZZf-1k-FxS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="J04-ai-fx7" kind="relationship" relationship="rootViewController" id="V7e-9c-BB7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vAE-sh-vNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1938" y="1106"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_home" width="24" height="24"/>
         <image name="rsz_calendar" width="25" height="25"/>
         <image name="rsz_calendaradd" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4w5-2e-V1N"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -14,7 +14,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentedController: UISegmentedControl!
-    @IBOutlet var fakeNavBar: UILabel!
+   
     
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
@@ -41,10 +41,10 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
 
     func setUpViews() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
-            let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 22))
+            let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
             statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
-            self.view.addSubview(statusBarView)
-        self.fakeNavBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+            self.navigationController?.navigationBar.addSubview(statusBarView)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.segmentedController.tintColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
     }
     func getAllClassesScheduled() {
@@ -120,4 +120,38 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 119
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueId = segue.identifier {
+            switch (segueId) {
+            default:
+                let detailView = segue.destinationViewController as! ClassDetailView
+                if segmentedController.selectedSegmentIndex == 0 {
+                    if let rowSelected = self.tableView.indexPathForSelectedRow?.row {
+                      let classScheduledSelected = self.friday[rowSelected]
+                        detailView.classSelected = self.classToScheduleFromClassScheduled(classScheduledSelected)
+                    }
+                }
+            break
+            }
+        }
+    }
+    
+    func classToScheduleFromClassScheduled(scheduledClass: ClassScheduled) -> ClassToSchedule {
+        let temporarelyClass = ClassToSchedule()
+        if let breakoutForClass = scheduledClass.valueForKey("breakOut") as? Breakout {
+            temporarelyClass.breakout = breakoutForClass
+        }
+        if let speakerForClass = scheduledClass.valueForKey("speaker") as? Speaker {
+            temporarelyClass.speaker = speakerForClass
+        }
+        if let presentationForClass = scheduledClass.valueForKey("presentation") as? Presentation {
+            temporarelyClass.presentation = presentationForClass
+        }
+        if let scheduleItemForClass = scheduledClass.valueForKey("scheduleItem") as? ScheduleItem {
+            temporarelyClass.scheduleItem = scheduleItemForClass
+        }
+        return temporarelyClass
+    }
+    
 }
