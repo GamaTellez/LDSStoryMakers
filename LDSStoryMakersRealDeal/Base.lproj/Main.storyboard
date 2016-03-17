@@ -883,6 +883,7 @@
                         <segue destination="Tpr-jh-q1v" kind="relationship" relationship="viewControllers" id="Cel-fw-gmo"/>
                         <segue destination="yUW-CK-9hU" kind="relationship" relationship="viewControllers" id="G5X-dh-n5A"/>
                         <segue destination="J04-ai-fx7" kind="relationship" relationship="viewControllers" id="a3o-p7-0ar"/>
+                        <segue destination="AJZ-rY-1rJ" kind="relationship" relationship="viewControllers" id="jAR-2V-QiH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7en-28-Dlx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -926,6 +927,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sk-dY-TvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1334" y="347"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="zJ5-13-PeM">
+            <objects>
+                <viewController id="AJZ-rY-1rJ" customClass="SettingsVC" customModule="LDSStoryMakersRealDeal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QLG-U1-Dho"/>
+                        <viewControllerLayoutGuide type="bottom" id="CbV-WZ-xbB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RKE-mb-oIz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkx-6f-om2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="6RT-N4-76D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9w-ex-QJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1510" y="1078"/>
         </scene>
     </scenes>
     <resources>

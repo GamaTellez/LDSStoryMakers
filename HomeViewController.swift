@@ -110,8 +110,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func addClassButtonTapped(sender: AnyObject) {
-        let fullScheduleView = self.storyBoard.instantiateViewControllerWithIdentifier("fullScheduleView")
-        self.navigationController?.pushViewController(fullScheduleView, animated: true)
+//        let fullScheduleView = self.storyBoard.instantiateViewControllerWithIdentifier("fullScheduleView")
+//        self.navigationController?.pushViewController(fullScheduleView, animated: true)
+        self.tabBarController?.selectedIndex = 1
     }
 //    func updatePersonalScheduleWithNewClass(notification:NSNotification) {
 //        if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
@@ -200,9 +201,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         switch indexPath.section {
         case 1:
             if indexPath.row == 3 {
-               let personalScheduleVC = self.storyBoard.instantiateViewControllerWithIdentifier("personalSchedule") as? FullPersonalSchedule
-                personalScheduleVC?.hideFakeNavBar = true
-                self.navigationController?.pushViewController(personalScheduleVC!, animated: true)
+                self.tabBarController?.selectedIndex = 2
             }
         default:
             break

@@ -33,6 +33,7 @@
 		8792D0EC1C7CE2010029E532 /* PresentationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792D0EB1C7CE2010029E532 /* PresentationCell.swift */; };
 		87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070371C78251600014DD1 /* FullScheduleViewController.swift */; };
 		87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */; };
+		87BACC2E1C9A523A003E917C /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BACC2D1C9A523A003E917C /* SettingsVC.swift */; };
 		87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */; };
 		87C416761C7F915E00D99E17 /* AddRemoveClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416751C7F915E00D99E17 /* AddRemoveClass.swift */; };
 		87C416A81C7FAAEA00D99E17 /* ClassToSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */; };
@@ -98,6 +99,7 @@
 		8792D0EB1C7CE2010029E532 /* PresentationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationCell.swift; path = ../PresentationCell.swift; sourceTree = "<group>"; };
 		87B070371C78251600014DD1 /* FullScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScheduleViewController.swift; sourceTree = "<group>"; };
 		87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsController.swift; sourceTree = "<group>"; };
+		87BACC2D1C9A523A003E917C /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerBioView.swift; sourceTree = "<group>"; };
 		87C416751C7F915E00D99E17 /* AddRemoveClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRemoveClass.swift; sourceTree = "<group>"; };
 		87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassToSchedule.swift; path = ../ClassToSchedule.swift; sourceTree = "<group>"; };
@@ -195,9 +197,16 @@
 				8792D0E91C7CDDF00029E532 /* DetailBreakoutDataSource.swift */,
 				8792D0EB1C7CE2010029E532 /* PresentationCell.swift */,
 				87C416751C7F915E00D99E17 /* AddRemoveClass.swift */,
-				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
 			);
 			name = DetailBreakoutView;
+			sourceTree = "<group>";
+		};
+		87BACC2F1C9A524C003E917C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				87BACC2D1C9A523A003E917C /* SettingsVC.swift */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		87D257FC1C79959E000368FC /* HomeVC */ = {
@@ -266,6 +275,8 @@
 				87D257FC1C79959E000368FC /* HomeVC */,
 				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
 				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
+				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
+				87BACC2F1C9A524C003E917C /* New Group */,
 				87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */,
 				875D55F01C92830E00EEF930 /* Assets.xcassets */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
@@ -447,6 +458,7 @@
 				8774D8931C97665000136514 /* Notification+CoreDataProperties.swift in Sources */,
 				87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */,
 				87FDA0771C73DF6500D5720F /* SpeakerTemp.swift in Sources */,
+				87BACC2E1C9A523A003E917C /* SettingsVC.swift in Sources */,
 				8774D8971C97665000136514 /* Speaker+CoreDataProperties.swift in Sources */,
 				878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */,
 				8774D8981C97665000136514 /* Speaker.swift in Sources */,
