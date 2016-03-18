@@ -10,8 +10,9 @@ import UIKit
 
 class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTappedDelegate {
     var classesInSchedule:[ClassScheduled] = []
-    let kNextClassID = "nextClassCell"
+    let kNextClassCellID = "nextClassCell"
     let kupcomingClassID = "upcomingClass"
+//    var nextClass:ClassScheduled?
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -20,7 +21,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
         switch indexPath.section {
         case 0:
             let scheduledClass = self.classesInSchedule[indexPath.row]
-            let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassID, forIndexPath: indexPath) as! NextClassCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassCellID, forIndexPath: indexPath) as! NextClassCell
             cell.backgroundColor = UIColor.clearColor()
             cell.speakerBioButton.tag = indexPath.section
             cell.courseFeedBackButton.tag = indexPath.section
@@ -102,11 +103,17 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
     
     func updateArrayForDataSource(alreadyScheduledClasses:[ClassScheduled]) {
         self.classesInSchedule = alreadyScheduledClasses
-       // let nowTime = NSDate()
-        
-        
-        
-    }
+//        let currentBreakout = self.findCurrentBreakout()
+//        if let currentBreakoutID = currentBreakout.valueForKey("breakoutID") as? String {
+//            for classItem in self.classesInSchedule {
+//                if let classItemBreakout = classItem.breakOut?.valueForKey("breakoutID") as? String {
+//                    if classItemBreakout == currentBreakoutID {
+//                        self.nextClass = classItem
+//                        }
+//                    }
+//                }
+//            }
+        }
     
     func indexOfClassForSpeakerSelected(section: Int) {
         let speakerBioVC = self.storyBoard.instantiateViewControllerWithIdentifier("speakerBioVC") as? SpeakerBioView
@@ -121,5 +128,27 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
         if let courseSelectedName = classSelected.presentation?.valueForKey("title") as? String {
             ManagedObjectsController.sharedInstance.openFeedBackPageForCourse(courseSelectedName)
         }
+    }
+    
+    func findCurrentBreakout() -> Breakout {
+        let currentTime = NSDate()
+        let currentCalendar = NSCalendar.currentCalendar()
+        var currentBreakout:Breakout?
+        if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+            for breakoutTime in allBreakouts {
+                if let startTimeBreakout = (breakoutTime.valueForKey("startTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
+                let comparisonResultStart = currentCalendar.compareDate(currentTime, toDate: startTimeBreakout, toUnitGranularity: .Hour)
+                    if comparisonResultStart == NSComparisonResult.OrderedDescending {
+                        if let endTimeBreakout = (breakoutTime.valueForKey("endTime") as? NSDate)?.dateByAddingTimeInterval(-(60*30)) {
+                            let comparisonResultEnd = currentCalendar.compareDate(currentTime, toDate: endTimeBreakout, toUnitGranularity: .Hour)
+                            if comparisonResultEnd == NSComparisonResult.OrderedDescending {
+                                currentBreakout = breakoutTime
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return currentBreakout!
     }
 }
