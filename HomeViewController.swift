@@ -112,15 +112,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func addClassButtonTapped(sender: AnyObject) {
-//        let fullScheduleView = self.storyBoard.instantiateViewControllerWithIdentifier("fullScheduleView")
-//        self.navigationController?.pushViewController(fullScheduleView, animated: true)
         self.tabBarController?.selectedIndex = 1
     }
-//    func updatePersonalScheduleWithNewClass(notification:NSNotification) {
-//        if let classSelected = notification.userInfo!["classSelected"] as? ClassToSchedule {
-//            print(classSelected.presentation?.title)
-//        }
-//    }
+
     func setBackgroundImageView() {
         self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor.clearColor()

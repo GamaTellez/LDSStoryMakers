@@ -395,8 +395,29 @@ class ManagedObjectsController: NSObject {
                         }
                     }
                 }
+        }
+    }
+    
+    func openConferenceFeedBack() {
+                if let conferenceFeedBack = self.userDefaults.objectForKey("ConferenceLink") as? String {
+                    if UIApplication.sharedApplication().openURL(NSURL(string: conferenceFeedBack)!) {
+                        print("opening conference feedback url")
+                    } else {
+                        print("failed to open conference feedback")
+                    }
             }
     }
+    
+    func openGeneralCourseFeedBack() {
+        if let courseFeedBackLink = self.userDefaults.objectForKey("CourseLink") as? String {
+            if UIApplication.sharedApplication().openURL(NSURL(string: courseFeedBackLink)!) {
+                print("opening course feedback general")
+            } else {
+                print("failed to open link")
+            }
+        }
+    }
 }
+
 
 

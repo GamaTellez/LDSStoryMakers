@@ -201,12 +201,12 @@
 			name = DetailBreakoutView;
 			sourceTree = "<group>";
 		};
-		87BACC2F1C9A524C003E917C /* New Group */ = {
+		87BACC2F1C9A524C003E917C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				87BACC2D1C9A523A003E917C /* SettingsVC.swift */,
 			);
-			name = "New Group";
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		87D257FC1C79959E000368FC /* HomeVC */ = {
@@ -276,7 +276,7 @@
 				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
 				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
 				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
-				87BACC2F1C9A524C003E917C /* New Group */,
+				87BACC2F1C9A524C003E917C /* Settings */,
 				87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */,
 				875D55F01C92830E00EEF930 /* Assets.xcassets */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
