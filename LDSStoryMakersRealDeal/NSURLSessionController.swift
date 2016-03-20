@@ -124,6 +124,7 @@ class NSURLSessionController: NSObject {
             case "Notifications":
                 self.createManagedObjectsFromSpreadSheetData(spreadsheetName, completion: { (finished) -> Void in
                 })
+                break
         default:
             print("no such key")
             break

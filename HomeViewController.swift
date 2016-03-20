@@ -21,7 +21,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     let tableViewDataSource = TableViewDataSource()
     let kclassSelectedNotification = "kClassSelectedNotification"
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
-    var isNotificationBannerUp = true
     var newestNotification:Notification?
     
     
@@ -38,19 +37,18 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func getNewestNotification(){
-        if let newNot = ManagedObjectsController.sharedInstance.getNotification("mostRecent") as? [Notification] {
-            if let recentNot = newNot.first {
-                self.newestNotification = recentNot
-                if let notificationMessage = self.newestNotification?.valueForKey("notificationInfo") as? String {
-                    self.notificationLabelBanner.text = notificationMessage
+        NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Notifications") { (finished) -> Void in
+            if let newNot = ManagedObjectsController.sharedInstance.getNotification("mostRecent") as? [Notification] {
+                if let recentNot = newNot.first {
+                    self.newestNotification = recentNot
+                    if let notificationMessage = self.newestNotification?.valueForKey("notificationInfo") as? String {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.notificationLabelBanner.text = notificationMessage
+                            self.animateInNotificationBannerLabelAndButton()
+                        })
+                    }
                 }
             }
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        if self.isNotificationBannerUp == false {
-            animateInNotificationBannerLabelAndButton()
         }
     }
     
@@ -60,7 +58,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
             self.tableView.center.y += self.notificationLabelBanner.frame.height
             }) { (Bool) -> Void in
-                self.isNotificationBannerUp = true
         }
     }
     func setUpButtons() {
@@ -107,7 +104,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             self.tableView.center.y -= self.notificationLabelBanner.frame.height
             self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
             }) { (Bool) -> Void in
-                self.isNotificationBannerUp = false
         }
     }
     

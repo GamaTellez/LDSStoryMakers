@@ -226,10 +226,12 @@ class ManagedObjectsController: NSObject {
         switch fromView {
         case "conferenceSchedule":
             self.managedContext.deleteObject(classInSchedule)
+            self.saveToCoreData()
             NSNotificationCenter.defaultCenter().postNotificationName(itemSuccesFullyDeleted, object: nil)
             break
         case "personalSchedule":
             self.managedContext.deleteObject(classInSchedule)
+            self.saveToCoreData()
             NSNotificationCenter.defaultCenter().postNotificationName(classFromPersonalScheduleDeleted, object: nil)
         default:
         break
