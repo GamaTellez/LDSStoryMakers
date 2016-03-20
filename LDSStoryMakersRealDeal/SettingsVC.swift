@@ -70,11 +70,12 @@ class SettingsVC: UIViewController {
         self.courseFeedBackButton.titleLabel?.textAlignment = NSTextAlignment.Center
         
         self.notificationsLabel.numberOfLines = 2
-        self.notificationsLabel.text = "Notifications \n Notifications are On"
+        self.notificationsLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 15)
+        self.notificationsLabel.text = "Notifications"
     }
     
     func updateNotificationLabelText(onOff:String) {
-        self.notificationsLabel.text = String(format:"Notifications \nNotifications are %@", onOff)
+        
     }
     
     @IBAction  func conferenceFeedBackButtonTapped(sender:UIButton) {
