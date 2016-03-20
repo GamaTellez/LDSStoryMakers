@@ -23,12 +23,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpi-Is-UTa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LDS Storymakers 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-3r-qls">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="Gph-nx-ii9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="wvE-SC-xgX">
-                                <rect key="frame" x="0.0" y="136" width="600" height="496"/>
+                                <rect key="frame" x="0.0" y="84" width="600" height="467"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nextClassCell" rowHeight="185" id="j0c-uo-twm" customClass="NextClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="185"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="185"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0c-uo-twm" id="XwJ-D5-wKN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
@@ -120,7 +129,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingClass" rowHeight="81" id="lAl-kr-bYo" customClass="UpcomingClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="234.5" width="600" height="81"/>
+                                        <rect key="frame" x="0.0" y="235" width="600" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAl-kr-bYo" id="24X-BZ-SH2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
@@ -171,7 +180,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fullSchedule" rowHeight="32" id="vyz-HI-Fja" customClass="ViewFullScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="315.5" width="600" height="32"/>
+                                        <rect key="frame" x="0.0" y="316" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vyz-HI-Fja" id="nha-vD-FHI">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
@@ -213,62 +222,30 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4y-BB-gG7">
                                 <rect key="frame" x="514" y="471" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Ps7-E4-qwQ"/>
-                                    <constraint firstAttribute="width" constant="70" id="S1v-nk-HKV"/>
+                                    <constraint firstAttribute="height" constant="70" id="cgl-C2-NUq"/>
+                                    <constraint firstAttribute="width" constant="70" id="qaS-3X-5WH"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="addClassButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwV-6h-08e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCM-Fx-7dm">
-                                <rect key="frame" x="45" y="63" width="510" height="65"/>
-                                <color key="backgroundColor" red="0.14117647059999999" green="0.4431372549" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WrK-Vr-2hT">
-                                <rect key="frame" x="535" y="108" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="8Pb-WI-3zT"/>
-                                    <constraint firstAttribute="width" constant="20" id="H39-Tb-1hD"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="dismissNotificationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5YU-K1-4Qy"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LDS Storymakers 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-3r-qls">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="Ky6-8U-8Tw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="5Hx-em-orx"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="BZj-1T-gRy"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="Cy7-Aa-Hwv"/>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="top" secondItem="Mpi-Is-UTa" secondAttribute="top" id="PuU-8N-CHG"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="C3W-3r-qls" secondAttribute="leading" id="Q78-60-ky2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="YTX-QL-HUU"/>
-                            <constraint firstItem="XCM-Fx-7dm" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="bottom" id="ZXM-C2-Efi"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="cFI-4j-XQw"/>
-                            <constraint firstItem="WrK-Vr-2hT" firstAttribute="trailing" secondItem="XCM-Fx-7dm" secondAttribute="trailing" id="eSt-uB-lFf"/>
-                            <constraint firstAttribute="trailing" secondItem="C3W-3r-qls" secondAttribute="trailing" id="gcp-0v-jlw"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="WrK-Vr-2hT" secondAttribute="bottom" constant="8" symbolic="YES" id="iKL-da-vh1"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="XCM-Fx-7dm" secondAttribute="bottom" constant="8" symbolic="YES" id="iLL-Ta-Ppr"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="wvE-SC-xgX" secondAttribute="bottom" constant="-32" id="jOf-zc-k8J"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="l1j-0c-Yqp"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lwp-4b-MeK"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="qfS-YB-6BG"/>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wnc-Kb-cfF"/>
-                            <constraint firstItem="WrK-Vr-2hT" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="bottom" constant="45" id="x60-T2-WFr"/>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="centerX" secondItem="XCM-Fx-7dm" secondAttribute="centerX" id="zdg-Cj-ESw"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="bottom" constant="21" id="1Tb-KB-cDF"/>
+                            <constraint firstItem="C3W-3r-qls" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="5iN-sj-Vl5"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="76r-7m-VAO"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="82W-Cf-b62"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Cco-WO-jFg"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Gha-mO-ju2"/>
+                            <constraint firstItem="C3W-3r-qls" firstAttribute="top" secondItem="Mpi-Is-UTa" secondAttribute="top" id="Hae-G0-qjd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="KOU-nA-Zuk"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="PIL-wn-V3U"/>
+                            <constraint firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="PX4-i3-00U"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SVc-X5-czG"/>
+                            <constraint firstItem="C3W-3r-qls" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="gSp-lw-qg2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="yW4-xL-xXr"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="ic_home" id="VkR-3j-q47"/>
@@ -277,8 +254,6 @@
                         <outlet property="addClassButton" destination="x4y-BB-gG7" id="f7m-B5-E5z"/>
                         <outlet property="backGroundImageView" destination="Mpi-Is-UTa" id="zcP-hl-EeD"/>
                         <outlet property="labelTitle" destination="C3W-3r-qls" id="ssh-sY-GCl"/>
-                        <outlet property="notificationLabelBanner" destination="XCM-Fx-7dm" id="cU3-BR-REQ"/>
-                        <outlet property="notificationsButton" destination="WrK-Vr-2hT" id="Okm-qJ-IAC"/>
                         <outlet property="tableView" destination="wvE-SC-xgX" id="tzc-mf-fYq"/>
                     </connections>
                 </viewController>
@@ -472,7 +447,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakoutCellID" rowHeight="116" id="6gQ-2O-V5U" userLabel="Breakoutcell" customClass="BreakoutCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="560" height="116"/>
+                                        <rect key="frame" x="0.0" y="50" width="560" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gQ-2O-V5U" id="Rca-S6-MsT">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="116"/>
@@ -561,10 +536,10 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailPresentation" rowHeight="137" id="gbx-Xx-Z0u" customClass="PresentationCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="581" height="137"/>
+                                        <rect key="frame" x="0.0" y="50" width="581" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbx-Xx-Z0u" id="c2w-Et-Xgj">
-                                            <rect key="frame" x="0.0" y="0.0" width="581" height="136.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="581" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESp-OT-dmL">

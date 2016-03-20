@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5315C4D2D499E5005B87F725 /* Pods_LDSStoryMakersRealDeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB3C339F211A94054E69CA /* Pods_LDSStoryMakersRealDeal.framework */; };
 		8738111E1C76320000F4A2D1 /* ScheduleItemTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */; };
 		873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811221C76B3A500F4A2D1 /* HomeViewController.swift */; };
 		873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873811241C76E10600F4A2D1 /* TableViewDataSource.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09AB3C339F211A94054E69CA /* Pods_LDSStoryMakersRealDeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LDSStoryMakersRealDeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8738111D1C76320000F4A2D1 /* ScheduleItemTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItemTemp.swift; sourceTree = "<group>"; };
 		873811221C76B3A500F4A2D1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		873811241C76E10600F4A2D1 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleCell.swift; sourceTree = "<group>"; };
 		87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
+		87F1F551D392D3D0BF60376B /* Pods-LDSStoryMakersRealDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LDSStoryMakersRealDeal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal.release.xcconfig"; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F21A071C69360300C2EAA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87F21A0C1C69360300C2EAA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		87FDA0761C73DF6500D5720F /* SpeakerTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakerTemp.swift; path = ../SpeakerTemp.swift; sourceTree = "<group>"; };
 		87FDA0781C73DFA600D5720F /* PresentationTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationTemp.swift; sourceTree = "<group>"; };
 		87FDA07A1C74087E00D5720F /* BreakoutTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreakoutTemp.swift; path = ../BreakoutTemp.swift; sourceTree = "<group>"; };
+		A0E924C83E9CB8454AFE5EE7 /* Pods-LDSStoryMakersRealDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LDSStoryMakersRealDeal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5315C4D2D499E5005B87F725 /* Pods_LDSStoryMakersRealDeal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57AA09A51BE0294FC3126C77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09AB3C339F211A94054E69CA /* Pods_LDSStoryMakersRealDeal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8738111F1C76645C00F4A2D1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +263,8 @@
 				87F21A1E1C69360300C2EAA4 /* LDSStoryMakersRealDealTests */,
 				87F21A291C69360300C2EAA4 /* LDSStoryMakersRealDealUITests */,
 				87F21A051C69360200C2EAA4 /* Products */,
+				E1F99EDB41A7320F9608BE96 /* Pods */,
+				57AA09A51BE0294FC3126C77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -314,6 +329,15 @@
 			name = TempObjects;
 			sourceTree = "<group>";
 		};
+		E1F99EDB41A7320F9608BE96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A0E924C83E9CB8454AFE5EE7 /* Pods-LDSStoryMakersRealDeal.debug.xcconfig */,
+				87F1F551D392D3D0BF60376B /* Pods-LDSStoryMakersRealDeal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,9 +345,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87F21A2F1C69360300C2EAA4 /* Build configuration list for PBXNativeTarget "LDSStoryMakersRealDeal" */;
 			buildPhases = (
+				E2C7C7A115CD3396425DC2E6 /* Check Pods Manifest.lock */,
 				87F21A001C69360200C2EAA4 /* Sources */,
 				87F21A011C69360200C2EAA4 /* Frameworks */,
 				87F21A021C69360200C2EAA4 /* Resources */,
+				C1E6D544EEF1BA7F1117F7AC /* Embed Pods Frameworks */,
+				59185E81E4DBC69F9D3E90B8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,6 +466,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		59185E81E4DBC69F9D3E90B8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1E6D544EEF1BA7F1117F7AC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2C7C7A115CD3396425DC2E6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		87F21A001C69360200C2EAA4 /* Sources */ = {
@@ -617,6 +692,7 @@
 		};
 		87F21A301C69360300C2EAA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0E924C83E9CB8454AFE5EE7 /* Pods-LDSStoryMakersRealDeal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -630,6 +706,7 @@
 		};
 		87F21A311C69360300C2EAA4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87F1F551D392D3D0BF60376B /* Pods-LDSStoryMakersRealDeal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

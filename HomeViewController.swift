@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import BRYXBanner
 
 class HomeViewController: UIViewController, UITableViewDelegate {
     
-    @IBOutlet var notificationLabelBanner: UILabel!
+   // @IBOutlet var notificationLabelBanner: UILabel!
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
-    @IBOutlet var notificationsButton: UIButton!
+    //@IBOutlet var notificationsButton: UIButton!
     @IBOutlet var labelTitle: UILabel!
     
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
@@ -43,8 +44,17 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                     self.newestNotification = recentNot
                     if let notificationMessage = self.newestNotification?.valueForKey("notificationInfo") as? String {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.notificationLabelBanner.text = notificationMessage
-                            self.animateInNotificationBannerLabelAndButton()
+                              let banner = Banner(title: "", subtitle: notificationMessage, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: { () -> () in
+                              })
+                                banner.dismissesOnTap = true
+                                banner.show()
+//                            self.notificationLabelBanner.text = notificationMessage
+//                            self.animateInNotificationBannerLabelAndButton()
+//                            let popUp = APNotificationAlertView.popupWithText(notificationMessage)
+//                            popUp.hideAfterDelay = 10
+//                            popUp.animationDuration = 1
+//                            popUp.show()
+                            
                         })
                     }
                 }
@@ -52,20 +62,20 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func animateInNotificationBannerLabelAndButton() {
-        UIView.animateWithDuration(0.6, animations: { () -> Void in
-            self.notificationLabelBanner.center.y += self.notificationLabelBanner.frame.height
-            self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
-            self.tableView.center.y += self.notificationLabelBanner.frame.height
-            }) { (Bool) -> Void in
-        }
-    }
+//    func animateInNotificationBannerLabelAndButton() {
+//        UIView.animateWithDuration(0.6, animations: { () -> Void in
+//            self.notificationLabelBanner.center.y += self.notificationLabelBanner.frame.height
+//            self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
+//            self.tableView.center.y += self.notificationLabelBanner.frame.height
+//            }) { (Bool) -> Void in
+//        }
+//    }
     func setUpButtons() {
         //self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
         //self.notificationsButton.layer.borderWidth = 1
         //self.notificationsButton.layer.borderColor = UIColor.blackColor().CGColor
         //self.notificationLabelBanner.userInteractionEnabled = true
-        self.notificationsButton.setBackgroundImage(UIImage(named: "closeBlack"), forState: .Normal)
+      //  self.notificationsButton.setBackgroundImage(UIImage(named: "closeBlack"), forState: .Normal)
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
         //self.addClassButton.setBackgroundImage(UIImage(named: "cross-3"), forState: .Normal)
@@ -98,14 +108,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
 
-    @IBAction func dismissNotificationButtonTapped(button:UIButton) {
-        UIView.animateWithDuration(0.6, animations: { () -> Void in
-            self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
-            self.tableView.center.y -= self.notificationLabelBanner.frame.height
-            self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
-            }) { (Bool) -> Void in
-        }
-    }
+//    @IBAction func dismissNotificationButtonTapped(button:UIButton) {
+//        UIView.animateWithDuration(0.6, animations: { () -> Void in
+//            self.notificationLabelBanner.center.y -= self.notificationLabelBanner.frame.height
+//            self.tableView.center.y -= self.notificationLabelBanner.frame.height
+//            self.notificationsButton.center.y -= self.notificationLabelBanner.frame.height
+//            }) { (Bool) -> Void in
+//        }
+//    }
     
     @IBAction func addClassButtonTapped(sender: AnyObject) {
         self.tabBarController?.selectedIndex = 1
@@ -122,12 +132,12 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
    
     func setUpLabelsApperance() {
-        self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
-        self.notificationLabelBanner.clipsToBounds = true
-        self.notificationLabelBanner.preferredMaxLayoutWidth = 30
-        self.notificationLabelBanner.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        self.notificationLabelBanner.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
-        self.notificationLabelBanner.numberOfLines = 0
+//        self.notificationLabelBanner.backgroundColor = UIColor.whiteColor()
+//        self.notificationLabelBanner.clipsToBounds = true
+//        self.notificationLabelBanner.preferredMaxLayoutWidth = 30
+//        self.notificationLabelBanner.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+//        self.notificationLabelBanner.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
+//        self.notificationLabelBanner.numberOfLines = 0
         self.labelTitle.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.labelTitle.numberOfLines = 2
         self.labelTitle.text = "\n LDS Storymakers Conference 2016"
