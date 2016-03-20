@@ -21,6 +21,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     let timeConlictNotication = "timeConlictNotication"
+    let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
 
     
     override func viewDidLoad() {
@@ -30,12 +31,24 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         self.loadTableViewWithBreakouts(self.classesInBreakout)
         self.setUpLabel()
         self.registerForNotifications()
-        
     }
+    
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemSavedAlert", name: itemSuccesfullySaved, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDeletedAlert", name: itemSuccesFullyDeleted, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "classTimeConflictAlert", name: timeConlictNotication, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "classDeletedInPersonalSchedule", name: classFromPersonalScheduleDeleted, object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: classFromPersonalScheduleDeleted, object: nil)
+    }
+    
+    func classDeletedInPersonalSchedule() {
+        self.loadTableViewWithBreakouts(self.classesInBreakout)
     }
     
     func itemSavedAlert() {

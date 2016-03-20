@@ -11,11 +11,11 @@ import UIKit
 class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCellButtonDelegate {
     
     var classes:[ClassToSchedule] = []
-    let classesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
     let presentationCellID = "detailPresentation"
     let timeConlictNotication = "timeConlictNotication"
     
     func updateClassesArray(from classesArray:[ClassToSchedule]) {
+        self.checkIfClassIsAlreadyScheduled(classesArray)
         self.classes  = classesArray
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -85,15 +85,6 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         }
       }
     }
- 
-//    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
-//        for possibleClass in classesInSchedule {
-//            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
-//                return true
-//            }
-//        }
-//        return false
-//    }
     
     func isBreakoutAvailable(newClassBreakout:String, allClasses:[ClassScheduled]) -> Bool {
         for possibleClass in allClasses {
@@ -104,4 +95,25 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
     return true
     }
     
+    func checkIfClassIsAlreadyScheduled(classesToSchedule:[ClassToSchedule]) {
+        let personalSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
+        for clsToSched in self.classes {
+            let isAlreadyInSchedule = self.isClassScheduled(clsToSched, from: personalSchedule!)
+            if isAlreadyInSchedule == true {
+                clsToSched.inSchedule = true
+            } else {
+                clsToSched.inSchedule = false
+            }
+        }
+    }
+    
+    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
+        for possibleClass in classesInSchedule {
+            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
+                return true
+            }
+        }
+        return false
+    }
+
 }
