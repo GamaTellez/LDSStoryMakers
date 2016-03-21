@@ -10,7 +10,6 @@ import UIKit
 
     protocol SpeakerInfoButtonTappedDelegate {
         func indexOfClassForSpeakerSelected(section:Int)
-        func indexOfClassForCourseSelected(section:Int)
     }
 
 
@@ -21,7 +20,6 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet var speakerAndClassNameLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var classDescription: UITextView!
-    @IBOutlet var courseFeedBackButton: UIButton!
     @IBOutlet var speakerBioButton: UIButton!
     var delegate:SpeakerInfoButtonTappedDelegate?
     
@@ -39,9 +37,6 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
         self.speakerBioButton.layer.cornerRadius = 10
         self.speakerBioButton.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.speakerBioButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.courseFeedBackButton.layer.cornerRadius = 10
-        self.courseFeedBackButton.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
-        self.courseFeedBackButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -53,9 +48,6 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
     }
     @IBAction func speakerBioButtonTapped(sender: UIButton) {
         self.delegate?.indexOfClassForSpeakerSelected(sender.tag)
-    }
-    @IBAction func courseFeedBackButtonTapped(sender: AnyObject) {
-        self.delegate?.indexOfClassForCourseSelected(sender.tag)
     }
     
 }

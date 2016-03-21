@@ -48,12 +48,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                               })
                                 banner.dismissesOnTap = true
                                 banner.show()
-//                            self.notificationLabelBanner.text = notificationMessage
-//                            self.animateInNotificationBannerLabelAndButton()
-//                            let popUp = APNotificationAlertView.popupWithText(notificationMessage)
-//                            popUp.hideAfterDelay = 10
-//                            popUp.animationDuration = 1
-//                            popUp.show()
                             
                         })
                     }
@@ -62,14 +56,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-//    func animateInNotificationBannerLabelAndButton() {
-//        UIView.animateWithDuration(0.6, animations: { () -> Void in
-//            self.notificationLabelBanner.center.y += self.notificationLabelBanner.frame.height
-//            self.notificationsButton.center.y += self.notificationLabelBanner.frame.height
-//            self.tableView.center.y += self.notificationLabelBanner.frame.height
-//            }) { (Bool) -> Void in
-//        }
-//    }
+
+    
     func setUpButtons() {
         //self.notificationsButton.layer.cornerRadius = self.notificationsButton.frame.width / 2
         //self.notificationsButton.layer.borderWidth = 1
@@ -191,7 +179,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 185
+            return 210
         
         default:
             if indexPath.row == 3 {

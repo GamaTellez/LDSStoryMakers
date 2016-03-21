@@ -24,14 +24,11 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassCellID, forIndexPath: indexPath) as! NextClassCell
             cell.backgroundColor = UIColor.clearColor()
             cell.speakerBioButton.tag = indexPath.section
-            cell.courseFeedBackButton.tag = indexPath.section
             cell.delegate = self
             cell.selectionStyle = .None
             if scheduledClass.valueForKey("speaker") == nil {
                 cell.speakerBioButton.alpha = 0.4
                 cell.speakerBioButton.enabled = false
-                cell.courseFeedBackButton.alpha = 0.4
-                cell.courseFeedBackButton.enabled = false
             }
             
             if let start = scheduledClass.breakOut?.valueForKey("startTime") as? NSDate {
@@ -53,6 +50,10 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             }
             if let classDescription = scheduledClass.presentation?.valueForKey("presentationDescription") as? String {
                 cell.classDescription.text = classDescription
+                cell.classDescription.textAlignment = NSTextAlignment.Justified
+            } else {
+//                cell.classDescription.text = "No description available for this event"
+//                cell.classDescription.textAlignment = NSTextAlignment.Center
             }
             return cell
         default:
@@ -123,12 +124,12 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(speakerBioVC!, animated: true, completion: nil)
         }
     }
-    func indexOfClassForCourseSelected(section: Int) {
-        let classSelected = self.classesInSchedule[section]
-        if let courseSelectedName = classSelected.presentation?.valueForKey("title") as? String {
-            ManagedObjectsController.sharedInstance.openFeedBackPageForCourse(courseSelectedName)
-        }
-    }
+//    func indexOfClassForCourseSelected(section: Int) {
+//        let classSelected = self.classesInSchedule[section]
+//        if let courseSelectedName = classSelected.presentation?.valueForKey("title") as? String {
+//            ManagedObjectsController.sharedInstance.openFeedBackPageForCourse(courseSelectedName)
+//        }
+//    }
     
     func findCurrentBreakout() -> Breakout {
         let currentTime = NSDate()
