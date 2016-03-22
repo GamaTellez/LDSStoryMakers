@@ -55,7 +55,7 @@ public class Banner: UIView {
     public var springiness = BannerSpringiness.Slight
     
     /// The color of the text as well as the image tint color if `shouldTintImage` is `true`.
-    public var textColor = UIColor.whiteColor() {
+    public var textColor = UIColor.blackColor() {
         didSet {
             resetTintColor()
         }

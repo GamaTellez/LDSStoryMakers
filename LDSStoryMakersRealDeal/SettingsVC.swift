@@ -54,9 +54,12 @@ class SettingsVC: UIViewController {
         self.conferenceFeedBackButton.layer.shadowRadius = 0
         self.conferenceFeedBackButton.layer.shadowOffset = CGSizeMake(0, 0.1)
         self.conferenceFeedBackButton.titleLabel?.numberOfLines = 2
-        self.conferenceFeedBackButton.setTitle("Take the course feedback.\n We would greately appreciate it", forState: .Normal)
+        self.conferenceFeedBackButton.setTitle("Conference feedback.", forState: .Normal)
         self.conferenceFeedBackButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.conferenceFeedBackButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        self.conferenceFeedBackButton.layer.opacity = 0.7
+        self.conferenceFeedBackButton.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        self.conferenceFeedBackButton.layer.shadowRadius = 5.0
         
         self.courseFeedBackButton.backgroundColor = UIColor.whiteColor()
         self.courseFeedBackButton.layer.masksToBounds = false
@@ -65,18 +68,21 @@ class SettingsVC: UIViewController {
         self.courseFeedBackButton.layer.shadowRadius = 0
         self.courseFeedBackButton.layer.shadowOffset = CGSizeMake(0, 0.1)
         self.courseFeedBackButton.titleLabel?.numberOfLines = 2
-        self.courseFeedBackButton.setTitle("Take the course feedback.\n We would greately appreciate it", forState: .Normal)
+        self.courseFeedBackButton.setTitle("Course feedback.", forState: .Normal)
         self.courseFeedBackButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.courseFeedBackButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        self.courseFeedBackButton.layer.opacity = 0.7
+        self.courseFeedBackButton.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        self.courseFeedBackButton.layer.shadowRadius = 5.0
         
-        self.notificationsLabel.numberOfLines = 2
+        
+       // self.notificationsLabel.numberOfLines = 2
         self.notificationsLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 15)
         self.notificationsLabel.text = "Notifications"
-    }
-    
-    func updateNotificationLabelText(onOff:String) {
         
+        self.switchNotifications.backgroundColor = UIColor.clearColor()
     }
+
     
     @IBAction  func conferenceFeedBackButtonTapped(sender:UIButton) {
         ManagedObjectsController.sharedInstance.openConferenceFeedBack()
@@ -87,10 +93,6 @@ class SettingsVC: UIViewController {
     }
     
     @IBAction func notificationSwitchTapped(sender: UISwitch) {
-        if sender.on {
-            self.updateNotificationLabelText("On.")
-        } else {
-            self.updateNotificationLabelText("Off.")
-        }
+
     }
 }

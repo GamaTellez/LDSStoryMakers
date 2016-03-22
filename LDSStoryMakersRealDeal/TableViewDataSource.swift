@@ -12,7 +12,6 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
     var classesInSchedule:[ClassScheduled] = []
     let kNextClassCellID = "nextClassCell"
     let kupcomingClassID = "upcomingClass"
-//    var nextClass:ClassScheduled?
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -103,18 +102,19 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
     }
     
     func updateArrayForDataSource(alreadyScheduledClasses:[ClassScheduled]) {
-        self.classesInSchedule = alreadyScheduledClasses
-//        let currentBreakout = self.findCurrentBreakout()
-//        if let currentBreakoutID = currentBreakout.valueForKey("breakoutID") as? String {
-//            for classItem in self.classesInSchedule {
-//                if let classItemBreakout = classItem.breakOut?.valueForKey("breakoutID") as? String {
-//                    if classItemBreakout == currentBreakoutID {
-//                        self.nextClass = classItem
-//                        }
-//                    }
-//                }
-//            }
+        let currentTime = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        for classScheduled in alreadyScheduledClasses {
+            if let classStartTime = classScheduled.valueForKey("startDate") as? NSDate {
+                    let timeComparison =  calendar.compareDate(currentTime, toDate: classStartTime, toUnitGranularity: NSCalendarUnit.Hour)
+                if timeComparison == NSComparisonResult.OrderedAscending {
+                    self.classesInSchedule.append(classScheduled)
+                } else {
+                    print("time is ")
+                }
+            }
         }
+    }
     
     func indexOfClassForSpeakerSelected(section: Int) {
         let speakerBioVC = self.storyBoard.instantiateViewControllerWithIdentifier("speakerBioVC") as? SpeakerBioView
@@ -124,32 +124,26 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(speakerBioVC!, animated: true, completion: nil)
         }
     }
-//    func indexOfClassForCourseSelected(section: Int) {
-//        let classSelected = self.classesInSchedule[section]
-//        if let courseSelectedName = classSelected.presentation?.valueForKey("title") as? String {
-//            ManagedObjectsController.sharedInstance.openFeedBackPageForCourse(courseSelectedName)
-//        }
-//    }
     
-    func findCurrentBreakout() -> Breakout {
-        let currentTime = NSDate()
-        let currentCalendar = NSCalendar.currentCalendar()
-        var currentBreakout:Breakout?
-        if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
-            for breakoutTime in allBreakouts {
-                if let startTimeBreakout = (breakoutTime.valueForKey("startTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
-                let comparisonResultStart = currentCalendar.compareDate(currentTime, toDate: startTimeBreakout, toUnitGranularity: .Hour)
-                    if comparisonResultStart == NSComparisonResult.OrderedDescending {
-                        if let endTimeBreakout = (breakoutTime.valueForKey("endTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
-                            let comparisonResultEnd = currentCalendar.compareDate(currentTime, toDate: endTimeBreakout, toUnitGranularity: .Hour)
-                            if comparisonResultEnd == NSComparisonResult.OrderedDescending {
-                                currentBreakout = breakoutTime
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return currentBreakout!
-    }
+//    func findCurrentBreakout() -> Breakout {
+//        let currentTime = NSDate()
+//        let currentCalendar = NSCalendar.currentCalendar()
+//        var currentBreakout:Breakout?
+//        if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+//            for breakoutTime in allBreakouts {
+//                if let startTimeBreakout = (breakoutTime.valueForKey("startTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
+//                let comparisonResultStart = currentCalendar.compareDate(currentTime, toDate: startTimeBreakout, toUnitGranularity: .Hour)
+//                    if comparisonResultStart == NSComparisonResult.OrderedDescending {
+//                        if let endTimeBreakout = (breakoutTime.valueForKey("endTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
+//                            let comparisonResultEnd = currentCalendar.compareDate(currentTime, toDate: endTimeBreakout, toUnitGranularity: .Hour)
+//                            if comparisonResultEnd == NSComparisonResult.OrderedDescending {
+//                                currentBreakout = breakoutTime
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        return currentBreakout!
+//    }
 }
