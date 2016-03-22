@@ -28,7 +28,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             cell.selectionStyle = .None
             if scheduledClass.valueForKey("speaker") == nil {
                 cell.speakerBioButton.alpha = 0.4
-                cell.speakerBioButton.enabled = false
+                cell.speakerBioButton.hidden = true
             }
             
             if let start = scheduledClass.breakOut?.valueForKey("startTime") as? NSDate {
@@ -52,8 +52,8 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
                 cell.classDescription.text = classDescription
                 cell.classDescription.textAlignment = NSTextAlignment.Justified
             } else {
-//                cell.classDescription.text = "No description available for this event"
-//                cell.classDescription.textAlignment = NSTextAlignment.Center
+               cell.classDescription.text = "No description available for this event"
+                cell.classDescription.textAlignment = NSTextAlignment.Center
             }
             return cell
         default:
@@ -140,7 +140,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
                 if let startTimeBreakout = (breakoutTime.valueForKey("startTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
                 let comparisonResultStart = currentCalendar.compareDate(currentTime, toDate: startTimeBreakout, toUnitGranularity: .Hour)
                     if comparisonResultStart == NSComparisonResult.OrderedDescending {
-                        if let endTimeBreakout = (breakoutTime.valueForKey("endTime") as? NSDate)?.dateByAddingTimeInterval(-(60*30)) {
+                        if let endTimeBreakout = (breakoutTime.valueForKey("endTime") as? NSDate)?.dateByAddingTimeInterval(-(60 * 30)) {
                             let comparisonResultEnd = currentCalendar.compareDate(currentTime, toDate: endTimeBreakout, toUnitGranularity: .Hour)
                             if comparisonResultEnd == NSComparisonResult.OrderedDescending {
                                 currentBreakout = breakoutTime

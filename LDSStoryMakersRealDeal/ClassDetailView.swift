@@ -40,6 +40,9 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
     
     func setViewsAppearance() {
         self.classTitleLabel.backgroundColor = UIColor.clearColor()
+        self.classTitleLabel.preferredMaxLayoutWidth = self.classTitleLabel.frame.width
+        self.classTitleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        self.classTitleLabel.numberOfLines = 0
         self.classTimeLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.classTimeLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
         self.classTimeLabel.backgroundColor = UIColor.clearColor()
@@ -51,7 +54,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.speakerButton.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
         self.speakerButton.titleLabel?.preferredMaxLayoutWidth = self.speakerButton.frame.width
         self.speakerButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        self.speakerButton.titleLabel?.numberOfLines = 0
+        self.speakerButton.titleLabel?.numberOfLines = 2
         self.feecBackButtom.layer.cornerRadius = 5
         self.feecBackButtom.titleLabel?.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.feecBackButtom.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)

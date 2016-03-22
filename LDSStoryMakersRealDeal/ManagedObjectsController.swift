@@ -255,6 +255,7 @@ class ManagedObjectsController: NSObject {
 
     func getAllSchedulesFRomCoreData() -> [AnyObject] {
         let allScheduleItemsRquest = NSFetchRequest(entityName: "ScheduleItem")
+        allScheduleItemsRquest.sortDescriptors = [NSSortDescriptor(key: "presentationTitle", ascending: true)]
         return self.fetchRequestExecuter(allScheduleItemsRquest)
     }
     
