@@ -51,6 +51,7 @@
 		87F21A2B1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */; };
 		87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */; };
 		87F330F11CA22771004E90BD /* WAActivityIndicatorView in Resources */ = {isa = PBXBuildFile; fileRef = 87F330F01CA22771004E90BD /* WAActivityIndicatorView */; };
+		87F330F31CA23ECA004E90BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F330F21CA23ECA004E90BD /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		87F21A2C1C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionController.swift; sourceTree = "<group>"; };
 		87F330F01CA22771004E90BD /* WAActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WAActivityIndicatorView; sourceTree = "<group>"; };
+		87F330F21CA23ECA004E90BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A0E924C83E9CB8454AFE5EE7 /* Pods-LDSStoryMakersRealDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LDSStoryMakersRealDeal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,6 +292,7 @@
 				87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */,
 				875D55F01C92830E00EEF930 /* Assets.xcassets */,
 				87F21A161C69360300C2EAA4 /* Info.plist */,
+				87F330F21CA23ECA004E90BD /* Images.xcassets */,
 			);
 			path = LDSStoryMakersRealDeal;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87F330F11CA22771004E90BD /* WAActivityIndicatorView in Resources */,
+				87F330F31CA23ECA004E90BD /* Images.xcassets in Resources */,
 				875D55F11C92830E00EEF930 /* Assets.xcassets in Resources */,
 				87F0AB2A1C9A4B370074D3C0 /* Launch Screen.storyboard in Resources */,
 				87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */,
@@ -684,6 +688,7 @@
 			baseConfigurationReference = A0E924C83E9CB8454AFE5EE7 /* Pods-LDSStoryMakersRealDeal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = LDSStoryMakersRealDeal/Info.plist;
@@ -699,6 +704,7 @@
 			baseConfigurationReference = 87F1F551D392D3D0BF60376B /* Pods-LDSStoryMakersRealDeal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = LDSStoryMakersRealDeal/Info.plist;

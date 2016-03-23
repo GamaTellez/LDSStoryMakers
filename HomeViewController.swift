@@ -12,12 +12,13 @@ import DGActivityIndicatorView
 
 class HomeViewController: UIViewController, UITableViewDelegate {
     
-   // @IBOutlet var notificationLabelBanner: UILabel!
+  
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
-    //@IBOutlet var notificationsButton: UIButton!
     @IBOutlet var labelTitle: UILabel!
+    lazy var conteinerView = UIView()
+    lazy var defaults = NSUserDefaults.standardUserDefaults()
     
     lazy var storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     let tableViewDataSource = TableViewDataSource()
@@ -28,7 +29,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presentWaitingBlurryView()
+        if let firstLaunch = self.defaults.valueForKey("firstLaunch") as? Bool {
+            if firstLaunch  != false {
+                self.presentWaitingLoadingView()
+            }
+        } else {
+            self.presentWaitingLoadingView()
+        }
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
@@ -57,8 +64,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-
-    
     func setUpButtons() {
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
@@ -80,6 +85,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                 ManagedObjectsController.sharedInstance.createScheduledClass(from: mustGoClass)
             }
         self.getAllClassesAndPassedToDataSource()
+        self.removeAndStopBlurryView()
+        self.defaults.setBool(false, forKey: "firstLaunch")
+        self.defaults.synchronize()
     }
     
     func getAllClassesAndPassedToDataSource() {
@@ -87,6 +95,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             if allClasses.isEmpty {
                 print("have to wait until finshed downloading items")
             } else {
+                UIView.animateWithDuration(0.8, animations: { () -> Void in
+                    self.tableView.alpha = 1
+                })
                 self.updateTableViewData(from: allClasses)
             }
         }
@@ -103,6 +114,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     func setUpTablewView() {
         self.tableView.backgroundColor = UIColor.clearColor()
+        self.tableView.alpha = 0
         self.tableView.dataSource = self.tableViewDataSource
     }
    
@@ -180,9 +192,10 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func presentWaitingBlurryView() {
+    func presentWaitingLoadingView() {
         let blurryEfect = UIBlurEffect(style: .Light)
-        let blurryEfectView = UIVisualEffectView(effect: blurryEfect)
+        let blurryEfectView = UIVisualEffectView()
+        blurryEfectView.effect = blurryEfect
         blurryEfectView.frame = self.view.frame
         blurryEfectView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         let label = UILabel(frame: CGRect(x: self.view.center.x - 30, y: self.view.center.y, width: self.view.frame.width - 20, height: 60))
@@ -196,9 +209,18 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         activityView.center = self.view.center
         activityView.startAnimating()
         blurryEfectView.addSubview(activityView)
-//        let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.center.x - 25, y: self.view.center.y - 25, width: 50, height: 50), type: NVActivityIndicatorType.LineScale, color: UIColor.blueColor(), padding: CGFloat(20.0))
-//        blurryEfectView.addSubview(activityIndicatorView)
-        self.view.addSubview(blurryEfectView)
+        self.conteinerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.conteinerView.addSubview(blurryEfectView)
+        self.view.addSubview(conteinerView)
+       
+        
+    }
+    func removeAndStopBlurryView() {
+        UIView.animateWithDuration(1.0, delay: 2.0, options: [], animations: { () -> Void in
+            self.conteinerView.alpha = 0
+            }) { (done:Bool) -> Void in
+                self.conteinerView.removeFromSuperview()
+        }        
     }
 }
 
