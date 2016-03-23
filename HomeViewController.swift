@@ -1,4 +1,3 @@
-//
 //  HomeViewController.swift
 //  LDSStoryMakersRealDeal
 //
@@ -8,6 +7,8 @@
 
 import UIKit
 import BRYXBanner
+import DGActivityIndicatorView
+
 
 class HomeViewController: UIViewController, UITableViewDelegate {
     
@@ -27,6 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presentWaitingBlurryView()
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
@@ -112,7 +114,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     func updatePersonalSchedule(notification:NSNotification) {
-        print("we are receiving the notifixation")
+       // print("we are receiving the notifixation")
             if let classObject = notification.userInfo!["classSelected"] as? ClassToSchedule {
                    print(classObject)
             }
@@ -176,6 +178,27 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         default:
             break
         }
+    }
+    
+    func presentWaitingBlurryView() {
+        let blurryEfect = UIBlurEffect(style: .Light)
+        let blurryEfectView = UIVisualEffectView(effect: blurryEfect)
+        blurryEfectView.frame = self.view.frame
+        blurryEfectView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        let label = UILabel(frame: CGRect(x: self.view.center.x - 30, y: self.view.center.y, width: self.view.frame.width - 20, height: 60))
+        label.center.x = self.view.center.x
+        label.center.y = self.view.center.y - 200
+        label.textAlignment = NSTextAlignment.Center
+        label.numberOfLines = 0
+        blurryEfectView.addSubview(label)
+        label.text = "Welcome to LDS Storymakers Conference"
+        let activityView = DGActivityIndicatorView(type: .LineScale, tintColor: UIColor.blackColor(), size: 50)
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        blurryEfectView.addSubview(activityView)
+//        let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.center.x - 25, y: self.view.center.y - 25, width: 50, height: 50), type: NVActivityIndicatorType.LineScale, color: UIColor.blueColor(), padding: CGFloat(20.0))
+//        blurryEfectView.addSubview(activityIndicatorView)
+        self.view.addSubview(blurryEfectView)
     }
 }
 

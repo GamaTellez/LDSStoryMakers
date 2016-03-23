@@ -6,6 +6,7 @@
 target 'LDSStoryMakersRealDeal' do
 
 pod 'BRYXBanner'
+pod 'DGActivityIndicatorView'
 
 use_frameworks!
 
