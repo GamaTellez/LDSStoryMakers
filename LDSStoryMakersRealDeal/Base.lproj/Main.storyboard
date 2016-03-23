@@ -24,7 +24,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LDS Storymakers 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3W-3r-qls">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="uJt-8D-BWb"/>
+                                    <constraint firstAttribute="height" constant="63" id="XX6-bw-EiA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -35,7 +35,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nextClassCell" rowHeight="210" id="j0c-uo-twm" customClass="NextClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="210"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0c-uo-twm" id="XwJ-D5-wKN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
@@ -110,7 +110,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingClass" rowHeight="81" id="lAl-kr-bYo" customClass="UpcomingClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="259.5" width="600" height="81"/>
+                                        <rect key="frame" x="0.0" y="260" width="600" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAl-kr-bYo" id="24X-BZ-SH2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
@@ -161,7 +161,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fullSchedule" rowHeight="32" id="vyz-HI-Fja" customClass="ViewFullScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="340.5" width="600" height="32"/>
+                                        <rect key="frame" x="0.0" y="341" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vyz-HI-Fja" id="nha-vD-FHI">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
@@ -203,30 +203,40 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4y-BB-gG7">
                                 <rect key="frame" x="514" y="471" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="0zy-Yg-p9R"/>
-                                    <constraint firstAttribute="height" constant="70" id="aia-0Z-coN"/>
+                                    <constraint firstAttribute="width" constant="70" id="d1s-nz-hXt"/>
+                                    <constraint firstAttribute="height" constant="70" id="oBX-fI-co3"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="addClassButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwV-6h-08e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xkw-ji-RBL">
+                                <rect key="frame" x="544" y="63" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GwE-1h-ecO"/>
+                                    <constraint firstAttribute="width" constant="40" id="cPJ-Q4-SE4"/>
+                                </constraints>
+                                <state key="normal" image="refresh"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4y-BB-gG7" secondAttribute="trailing" constant="-4" id="3GG-PK-20c"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="BwB-jc-8Zu"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="DZO-g7-b5f"/>
-                            <constraint firstAttribute="trailing" secondItem="Mpi-Is-UTa" secondAttribute="trailing" id="F6e-r5-zHw"/>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="top" secondItem="Mpi-Is-UTa" secondAttribute="top" id="NJu-Rc-tw0"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="U0h-zN-TKw"/>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZHS-8S-MRr"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="bCG-aw-wjE"/>
-                            <constraint firstItem="C3W-3r-qls" firstAttribute="leading" secondItem="wvE-SC-xgX" secondAttribute="leading" id="c4q-Jz-SNi"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="dC8-Qg-6Z2"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="bottom" constant="21" id="fjp-pg-Mzq"/>
-                            <constraint firstItem="wvE-SC-xgX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="nig-4B-i1V"/>
-                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="C3W-3r-qls" secondAttribute="trailing" id="ydl-WD-yqA"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="1Ul-Si-iKJ"/>
+                            <constraint firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="1YW-bl-wxR"/>
+                            <constraint firstItem="Xkw-ji-RBL" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="bottom" id="6Ua-6i-ltE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x4y-BB-gG7" secondAttribute="bottom" constant="10" id="7MZ-Jr-1HD"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9ui-O6-qq0"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="trailing" secondItem="wvE-SC-xgX" secondAttribute="trailing" id="AIi-RD-Rgd"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="top" id="AnU-dE-vLG"/>
+                            <constraint firstItem="Xkw-ji-RBL" firstAttribute="trailing" secondItem="x4y-BB-gG7" secondAttribute="trailing" id="Ies-bq-RGC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xkw-ji-RBL" secondAttribute="trailing" constant="-4" id="PTt-3d-qWX"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="top" secondItem="C3W-3r-qls" secondAttribute="bottom" constant="21" id="R2u-Bw-DpL"/>
+                            <constraint firstItem="C3W-3r-qls" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="a23-r3-rcb"/>
+                            <constraint firstItem="Mpi-Is-UTa" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="drt-J7-mXr"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="hWg-ro-QHE"/>
+                            <constraint firstItem="C3W-3r-qls" firstAttribute="leading" secondItem="Mpi-Is-UTa" secondAttribute="leading" id="nya-cQ-jE7"/>
+                            <constraint firstItem="wvE-SC-xgX" firstAttribute="trailing" secondItem="C3W-3r-qls" secondAttribute="trailing" id="pAz-Ts-5GK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="ic_home" id="VkR-3j-q47"/>
@@ -234,7 +244,7 @@
                     <connections>
                         <outlet property="addClassButton" destination="x4y-BB-gG7" id="f7m-B5-E5z"/>
                         <outlet property="backGroundImageView" destination="Mpi-Is-UTa" id="zcP-hl-EeD"/>
-                        <outlet property="labelTitle" destination="C3W-3r-qls" id="ssh-sY-GCl"/>
+                        <outlet property="labelTitle" destination="C3W-3r-qls" id="r4Q-2C-H3z"/>
                         <outlet property="tableView" destination="wvE-SC-xgX" id="tzc-mf-fYq"/>
                     </connections>
                 </viewController>
@@ -981,6 +991,7 @@
     <resources>
         <image name="ic_home" width="24" height="24"/>
         <image name="ic_settings" width="24" height="24"/>
+        <image name="refresh" width="24" height="24"/>
         <image name="rsz_calendar" width="25" height="25"/>
         <image name="rsz_calendaradd" width="25" height="25"/>
     </resources>
