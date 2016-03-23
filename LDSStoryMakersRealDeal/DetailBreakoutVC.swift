@@ -34,13 +34,13 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     }
     
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemSavedAlert", name: itemSuccesfullySaved, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDeletedAlert", name: itemSuccesFullyDeleted, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "classTimeConflictAlert", name: timeConlictNotication, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DetailBreakoutVC.itemSavedAlert), name: itemSuccesfullySaved, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DetailBreakoutVC.itemDeletedAlert), name: itemSuccesFullyDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DetailBreakoutVC.classTimeConflictAlert), name: timeConlictNotication, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "classDeletedInPersonalSchedule", name: classFromPersonalScheduleDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DetailBreakoutVC.classDeletedInPersonalSchedule), name: classFromPersonalScheduleDeleted, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

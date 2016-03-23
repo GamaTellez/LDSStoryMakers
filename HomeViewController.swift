@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
     @IBOutlet var labelTitle: UILabel!
+    @IBOutlet var refreshButton: UIButton!
+    
     lazy var conteinerView = UIView()
     lazy var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -75,8 +77,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.labelTitle.addSubview(statusBarView)
     }
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "scheduleMandatoryClassesOnFirstLaunch", name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getNewestNotification", name: "appIsResuming", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeViewController.scheduleMandatoryClassesOnFirstLaunch), name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeViewController.getNewestNotification), name: "appIsResuming", object: nil)
     }
     
     func scheduleMandatoryClassesOnFirstLaunch() {

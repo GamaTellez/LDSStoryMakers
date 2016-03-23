@@ -34,9 +34,9 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
 
     
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesfullySaved, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataUponNotification", name: itemSuccesFullyDeleted, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewAndReloadDataFromPersonalVC", name: classFromPersonalScheduleDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesfullySaved, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesFullyDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataFromPersonalVC), name: classFromPersonalScheduleDeleted, object: nil)
     }
 
     func setUpViews() {

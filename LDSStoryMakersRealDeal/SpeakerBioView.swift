@@ -68,7 +68,7 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     }
     
     func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageFetchFailAlert", name: failedToFetchTheSpeakerImage, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SpeakerBioView.imageFetchFailAlert), name: failedToFetchTheSpeakerImage, object: nil)
     }
     
     func imageFetchFailAlert() {

@@ -67,24 +67,27 @@ class NSURLSessionController: NSObject {
             }
         }
     }
+
+    
     
     func saveToUserDefaults(arrayOfDictionaries:AnyObject) {
         let dictionariesInArray = arrayOfDictionaries as! [NSDictionary]
         for dictionary in dictionariesInArray {
             var nameKey:String?
-            let dictionaryWithObject = dictionary.objectForKey("c")
-            if let dictionaryWithNameKey = dictionaryWithObject![1] {
+            print(arrayOfDictionaries)
+            if let dictionaryWithObject = dictionary.objectForKey("c") as? NSArray {
+            if let dictionaryWithNameKey = dictionaryWithObject[1] as? NSDictionary {
                 if let stringName = dictionaryWithNameKey.objectForKey("v") as? String {
                     nameKey = stringName
                     if stringName == "Conference Feedback" {
-                        if let dictWithConferenceLink = dictionaryWithObject![2] {
+                        if let dictWithConferenceLink = dictionaryWithObject[2] as? NSDictionary {
                             if let conferenceFeedBacLink = dictWithConferenceLink.objectForKey("v") as? String {
                                 self.defaults.setObject(conferenceFeedBacLink, forKey: "ConferenceLink")
                             }
                         }
                     }
                     if stringName == "Course Feedback" {
-                        if let dictWithCourseLink = dictionaryWithObject![2] {
+                        if let dictWithCourseLink = dictionaryWithObject[2] as? NSDictionary {
                             if let courseFeedBacLink = dictWithCourseLink.objectForKey("v") as? String {
                                 self.defaults.setObject(courseFeedBacLink, forKey: "CourseLink")
                             }
@@ -92,14 +95,18 @@ class NSURLSessionController: NSObject {
                     }
                 }
             }
+        
             var spreadSheetKey:String?
-            if let dictionaryWithSpreadSheetKey = dictionaryWithObject![3] {
+            if let dictionaryWithSpreadSheetKey = dictionaryWithObject[3] as? NSDictionary {
                 if let stringSpreadSheetKey = dictionaryWithSpreadSheetKey.objectForKey("v") as? String {
                     spreadSheetKey = stringSpreadSheetKey
                     }
                 }
             self.defaults.setObject(spreadSheetKey, forKey: nameKey!)
             self.defaults.synchronize()
+            } else {
+                print("failed to get dictionary")
+            }
             }
         }
     ///getting a creating managed objects
