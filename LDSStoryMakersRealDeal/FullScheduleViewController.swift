@@ -14,7 +14,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
   
-    
+    let finishedRedownLoadingData = "finishedRedownLoadingData"
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
     let tableViewDataSoruce:BreakoutsDataSource = BreakoutsDataSource()
@@ -25,7 +25,32 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.setUpTableView()
         self.segmentedControllerAppearance()
         self.setUpStatusBarBackground()
+        self.unregiterFromNotifications()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.unregiterFromNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.registerForNotifications()
+    }
+    
+    func registerForNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullScheduleViewController.reloadTableViewUponNotification), name: self.finishedRedownLoadingData, object: nil)
+    }
+    func unregiterFromNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: self.finishedRedownLoadingData, object: nil)
+    }
+    
+    func reloadTableViewUponNotification() {
+        self.fridayBreakouts.removeAll()
+        self.saturdayBreakouts.removeAll()
+        self.getbreakoutsByDay()
+        self.segmentedController.selectedSegmentIndex = 0
+        self.loadTableViewWithBreakouts(self.fridayBreakouts)
+    }
+    
     func setUpStatusBarBackground() {
         let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
         statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
@@ -53,6 +78,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.tableViewDataSoruce.updateBreakoutsArray(with: breakoutsByDay)
         self.tableView.reloadData()
     }
+    
     
     func getbreakoutsByDay() {
             let formatter = NSDateFormatter()

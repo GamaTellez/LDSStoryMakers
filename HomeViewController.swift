@@ -26,6 +26,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     let tableViewDataSource = TableViewDataSource()
     let kclassSelectedNotification = "kClassSelectedNotification"
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
+      let finishedRedownLoadingData = "finishedRedownLoadingData"
     var newestNotification:Notification?
     
     
@@ -239,6 +240,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                                     NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Breakouts", completion: { (finished) in
                                         dispatch_async(dispatch_get_main_queue(), { 
                                                 self.removeAndStopBlurryView()
+                                                NSNotificationCenter.defaultCenter().postNotificationName(self.finishedRedownLoadingData, object: nil)
                                         })
                                     })
                                 })
