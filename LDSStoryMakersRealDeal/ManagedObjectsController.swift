@@ -15,8 +15,6 @@ class ManagedObjectsController: NSObject {
     let kitemSuccedsfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
-
-    
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
     
 //    let privateManagedContext:NSManagedObjectContext
@@ -362,6 +360,7 @@ class ManagedObjectsController: NSObject {
         let newClassScheduled = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let breakoutForClass = clsToSchedule.breakout {
             newClassScheduled.setValue(breakoutForClass, forKey: "breakOut")
+            breakoutForClass.setValue(newClassScheduled, forKey: "classScheduled")
             if let breakoutId = breakoutForClass.valueForKey("breakoutID") as? String {
                 if breakoutId.characters.count > 2 {
                     newClassScheduled.setValue(NSNumber(bool: true), forKey: "isMandatory")
@@ -372,12 +371,15 @@ class ManagedObjectsController: NSObject {
         }
         if let presentationForClass = clsToSchedule.presentation {
             newClassScheduled.setValue(presentationForClass, forKey: "presentation")
+            presentationForClass.setValue(newClassScheduled, forKey: "classedScheduled")
         }
         if let scheduleForClass = clsToSchedule.scheduleItem {
             newClassScheduled.setValue(scheduleForClass, forKey:"scheduleItem")
+            scheduleForClass.setValue(newClassScheduled, forKey: "classScheduled")
         }
         if let speakerForClass = clsToSchedule.speaker {
             newClassScheduled.setValue(speakerForClass, forKey: "speaker")
+            speakerForClass.setValue(newClassScheduled, forKey: "classScheduled")
         }
         
         if let startTime = clsToSchedule.breakout?.startTime {
@@ -395,9 +397,9 @@ class ManagedObjectsController: NSObject {
                         //    print("opening course feed")
                         } else {
                             print("failed to open course feedback page")
-                        }
                     }
                 }
+            }
         }
     }
     
@@ -420,7 +422,50 @@ class ManagedObjectsController: NSObject {
             }
         }
     }
+  
+    //delete all data except classes scheduled
+    func deleteAllDataAndDownloadAgain(completion:(finished:Bool) -> Void) {
+        let allSchedulesRequest = NSFetchRequest(entityName: "ScheduleItem")
+        if let schedules = self.fetchRequestExecuter(allSchedulesRequest) as? [ScheduleItem] {
+            for item in schedules {
+                if item.classScheduled == nil {
+                    self.managedContext.deleteObject(item)
+                }
+            }
+        }
+        let allPresentationsRequest = NSFetchRequest(entityName: "Presentation")
+        if let presentations = self.fetchRequestExecuter(allPresentationsRequest) as? [Presentation] {
+            for item in presentations {
+                if item.classedScheduled == nil {
+                    self.managedContext.deleteObject(item)
+                }
+            }
+        }
+        let allSpeakersRequest = NSFetchRequest(entityName: "Speaker")
+        if let speakers = self.fetchRequestExecuter(allSpeakersRequest) as? [Speaker] {
+            for item in speakers {
+                if item.classScheduled == nil {
+                    self.managedContext.deleteObject(item)
+                }
+            }
+        }
+        let allBreakoutsRequest = NSFetchRequest(entityName: "Breakout")
+        if let breakouts = self.fetchRequestExecuter(allBreakoutsRequest) as? [Breakout] {
+            for item in breakouts {
+                if item.classScheduled == nil {
+                    self.managedContext.deleteObject(item)
+                }
+            }
+        }
+        do {
+        try self.managedContext.save()
+            completion(finished: true)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
 }
+
 
 
 

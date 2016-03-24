@@ -33,10 +33,12 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         if let firstLaunch = self.defaults.valueForKey("firstLaunch") as? Bool {
             if firstLaunch  != false {
-                self.presentWaitingLoadingView()
+                self.presentWaitingLoadingView(with: "Welcome To LDS Storymakers 2016")
             }
         } else {
-            self.presentWaitingLoadingView()
+            self.presentWaitingLoadingView(with: "Welcome To LDS Storymakers 2016")
+            self.enableAndDisableTabBarItems(false)
+            
         }
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
@@ -69,6 +71,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func setUpButtons() {
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
+        self.refreshButton.setImage(UIImage(named:"refresh"), forState: .Normal)
         //self.addClassButton.setBackgroundImage(UIImage(named: "cross-3"), forState: .Normal)
     }
     func setUpStatusBarBackground() {
@@ -194,7 +197,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func presentWaitingLoadingView() {
+    func presentWaitingLoadingView(with text:String) {
         let blurryEfect = UIBlurEffect(style: .Light)
         let blurryEfectView = UIVisualEffectView()
         blurryEfectView.effect = blurryEfect
@@ -206,23 +209,56 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         label.textAlignment = NSTextAlignment.Center
         label.numberOfLines = 0
         blurryEfectView.addSubview(label)
-        label.text = "Welcome to LDS Storymakers Conference"
+        label.text = text
         let activityView = DGActivityIndicatorView(type: .LineScale, tintColor: UIColor.blackColor(), size: 50)
         activityView.center = self.view.center
         activityView.startAnimating()
         blurryEfectView.addSubview(activityView)
         self.conteinerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.conteinerView.hidden = false
+        self.conteinerView.alpha = 1
         self.conteinerView.addSubview(blurryEfectView)
         self.view.addSubview(conteinerView)
-       
-        
     }
+    
+    @IBAction func refreshButtonTapped(sender: AnyObject) {
+            UIView.animateWithDuration(1.0, animations: {
+                self.presentWaitingLoadingView(with: "Updating Schedule")
+            }) { (succeded:Bool) in
+                    self.enableAndDisableTabBarItems(false)
+                    ManagedObjectsController.sharedInstance.deleteAllDataAndDownloadAgain({ (finished) in
+                        NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Schedules", completion: { (finished) in
+                            NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Speakers", completion: { (finished) in
+                                NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Presentations", completion: { (finished) in
+                                    NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Breakouts", completion: { (finished) in
+                                        dispatch_async(dispatch_get_main_queue(), { 
+                                                self.removeAndStopBlurryView()
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                })
+        }
+    }
+    
     func removeAndStopBlurryView() {
         UIView.animateWithDuration(1.0, delay: 2.0, options: [], animations: { () -> Void in
             self.conteinerView.alpha = 0
             }) { (done:Bool) -> Void in
-                self.conteinerView.removeFromSuperview()
+                self.conteinerView.hidden = true
+                self.enableAndDisableTabBarItems(true)
         }        
     }
+    func enableAndDisableTabBarItems(enable:Bool) {
+        if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as! AnyObject as? NSArray{
+            for item in arrayOfTabBarItems {
+                if let tabBarItem = item as? UITabBarItem {
+                    tabBarItem.enabled = enable
+                }
+            }
+        }
+    }
+    
 }
 

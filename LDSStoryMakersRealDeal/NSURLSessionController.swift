@@ -74,7 +74,6 @@ class NSURLSessionController: NSObject {
         let dictionariesInArray = arrayOfDictionaries as! [NSDictionary]
         for dictionary in dictionariesInArray {
             var nameKey:String?
-            print(arrayOfDictionaries)
             if let dictionaryWithObject = dictionary.objectForKey("c") as? NSArray {
             if let dictionaryWithNameKey = dictionaryWithObject[1] as? NSDictionary {
                 if let stringName = dictionaryWithNameKey.objectForKey("v") as? String {
