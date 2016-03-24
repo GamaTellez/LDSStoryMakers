@@ -117,6 +117,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     
     func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [ClassToSchedule] {
         var allClasses:[ClassToSchedule] = []
+        let allClassesStored = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
         for item in itemsSchedule {
             let classObject = ClassToSchedule()
             classObject.scheduleItem = item
@@ -149,6 +150,12 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                     }
                 }
             }
+            if let allClassesInScheduled = allClassesStored {
+                let scheduled = self.isClassScheduled(classObject, from: allClassesInScheduled)
+                if scheduled {
+                    classObject.inSchedule = true
+                }
+            }
             allClasses.append(classObject)
         }
         return allClasses
@@ -173,16 +180,18 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                            let allClasesToSchedule = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
-                            let personalSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
-                            for clsToSched in allClasesToSchedule {
-                                let isAlreadyInSchedule = self.isClassScheduled(clsToSched, from: personalSchedule!)
-                                if isAlreadyInSchedule == true {
-                                    clsToSched.inSchedule = true
-                                } else {
-                                    clsToSched.inSchedule = false
-                                }
-                            }
-                             breakoutDetailVC.classesInBreakout = allClasesToSchedule
+                            breakoutDetailVC.classesInBreakout = allClasesToSchedule
+//                            let personalSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
+//                            for clsToSched in allClasesToSchedule {
+//                                let isAlreadyInSchedule = self.isClassScheduled(clsToSched, from: personalSchedule!)
+//                                if isAlreadyInSchedule == true {
+//                                    clsToSched.inSchedule = true
+//                                } else {
+//                                    clsToSched.inSchedule = false
+//                                }
+//                            }
+//                             breakoutDetailVC.classesInBreakout = allClasesToSchedule
+//                        }
                         }
                     }
                     if daySelected == 1 {
