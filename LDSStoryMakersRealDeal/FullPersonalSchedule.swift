@@ -18,7 +18,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
-    let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
+    let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
     var friday:[ClassScheduled] = []
     var saturday:[ClassScheduled] = []
     let dataSource = PersonalScheduleDS()
@@ -36,7 +36,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesfullySaved, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesFullyDeleted, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataFromPersonalVC), name: classFromPersonalScheduleDeleted, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataFromPersonalVC), name: self.itemSuccesFullyDeletedFromPersonalView, object: nil)
     }
 
     func setUpViews() {

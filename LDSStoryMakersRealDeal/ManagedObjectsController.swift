@@ -232,9 +232,7 @@ class ManagedObjectsController: NSObject {
         }
     }
     
-    func deleteScheduledClass(classInSchedule:ClassScheduled, fromView:String, completion:(succedeed:Bool)->Void)  {
-        switch fromView {
-        case "conferenceSchedule":
+    func deleteScheduledClass(classInSchedule:ClassScheduled, completion:(succedeed:Bool)->Void)  {
             self.managedContext.deleteObject(classInSchedule)
             self.saveToCoreData({ (succesful) in
                 if (succesful == true) {
@@ -243,17 +241,6 @@ class ManagedObjectsController: NSObject {
                     completion(succedeed: false)
                 }
             })
-            break
-        case "personalSchedule":
-            self.managedContext.deleteObject(classInSchedule)
-            self.saveToCoreData({ (succesful) in
-                
-            })
-           // NSNotificationCenter.defaultCenter().postNotificationName(classFromPersonalScheduleDeleted, object: nil)
-        default:
-        break
-        }
-        
     }
     //FETC REQUESTS
     

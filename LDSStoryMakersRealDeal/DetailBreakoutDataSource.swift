@@ -66,7 +66,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         case true:
                 for classItem in currentlySavedClasses {
                     if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
-                       ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem, fromView: "conferenceSchedule", completion: { (succedeed) in
+                       ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem, completion: { (succedeed) in
                         if (succedeed == true) {
                             button.selected = false
                             classSelected.inSchedule = false
