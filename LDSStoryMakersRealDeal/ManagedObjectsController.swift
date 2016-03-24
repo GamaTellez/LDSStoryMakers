@@ -20,15 +20,15 @@ class ManagedObjectsController: NSObject {
 //    let privateManagedContext:NSManagedObjectContext
     
     override init() {
-        self.managedContext = ((UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext)!
-//        self.privateManagedContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-//        self.privateManagedContext.parentContext = self.managedContext
-//        self.privateManagedContext.persistentStoreCoordinator = self.managedContext.persistentStoreCoordinator
-        
+        self.managedContext = ((UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext)!        
     }
     
     //BREAKOUT
     func createAndSaveBreakoutObjectFromInfoArray(arrayWithInfoDictionaries:NSArray) {
+       let breakoutAlreadyExist = self.checkIfBreakoutExistsAlready(from: arrayWithInfoDictionaries)
+        if breakoutAlreadyExist == true {
+            //print("breakout already exist")
+        } else {
         let newBreakout = NSManagedObject(entity: NSEntityDescription.entityForName("Breakout", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
@@ -62,7 +62,7 @@ class ManagedObjectsController: NSObject {
                 }
             }
         }
-        
+    
         if let dictionaryWithBreakoutEndTime = arrayWithInfoDictionaries[2] as? NSDictionary {
             if let stringEndTime = dictionaryWithBreakoutEndTime.objectForKey("f") as? String {
                 let fullEndTimeString = String(format: "%@ %@", dateDay, stringEndTime)
@@ -74,12 +74,36 @@ class ManagedObjectsController: NSObject {
             }
         }
         self.saveToCoreData { (succesful) in
-            
         }
+        }
+    }
+    
+    func checkIfBreakoutExistsAlready(from arrayWithObjects:NSArray) -> Bool {
+        var exists = false
+        if let breakoutsInMemory = self.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+            for item in breakoutsInMemory {
+                if let itemID = item.valueForKey("breakoutID") as? String {
+                    if let dictWithBreakoutID = arrayWithObjects[0] as? NSDictionary {
+                        if let id = dictWithBreakoutID.objectForKey("v") as? String {
+                            if itemID == id {
+                                exists = true
+                                return exists
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return exists
     }
     
     //SCHEDULE
     func createAndSaveScheduleItemObjectFromArray(arrayWithInfoDicts:NSArray) {
+        let scheduleAlreadyExist = self.checkIfScheduleExistsAlready(from: arrayWithInfoDicts)
+        if scheduleAlreadyExist == true {
+            print("schedule already exists")
+        } else {
         let newItemSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ScheduleItem", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let scheduleIdDictionary = arrayWithInfoDicts[0] as? NSDictionary {
             if let schID = scheduleIdDictionary.objectForKey("v") as? Int {
@@ -132,8 +156,33 @@ class ManagedObjectsController: NSObject {
             
         }
     }
+    }
+    
+    func checkIfScheduleExistsAlready(from arrayWithObjects:NSArray) -> Bool {
+        var exists = false
+        if let schedulesInMemory = self.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
+            for item in schedulesInMemory {
+                if let itemID = item.valueForKey("presentationId") as? Int {
+                    if let scheduleIdDictionary = arrayWithObjects[0] as? NSDictionary {
+                        if let schID = scheduleIdDictionary.objectForKey("v") as? Int {
+                            if itemID == schID {
+                                exists = false
+                                return exists
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return exists
+    }
+    
     //SPEAKERS
     func createAndSaveSpeakerManagedObjectFromArray(arrayWithInfoDicts:NSArray) {
+        let speakerExistAlready = self.checkIfSpeakerExistsAlready(from: arrayWithInfoDicts)
+        if speakerExistAlready == true {
+            print("speaker already Exists")
+        } else {
         let newSpeaker = NSManagedObject(entity: NSEntityDescription.entityForName("Speaker", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         
         if let dictionaryWithId = arrayWithInfoDicts[0] as? NSDictionary {
@@ -154,10 +203,37 @@ class ManagedObjectsController: NSObject {
         }
         self.saveToCoreData { (succesful) in
             
+            }
         }
     }
+    
+    func checkIfSpeakerExistsAlready(from arrayWithObjects:NSArray) -> Bool {
+        var exists = false
+        if let speakersInMemory = self.getAllSpeakersFromCoreData() as? [Speaker] {
+            for item in speakersInMemory {
+                if let itemName = item.valueForKey("speakerName") as? String {
+                    if let dictionaryWithName = arrayWithObjects[1] as? NSDictionary {
+                        if let name = dictionaryWithName.objectForKey("v") as? String {
+                            if itemName == name {
+                                exists = true
+                                return exists
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return exists
+    }
+
+    
     //PRESENTATIONS
     func createAndSavePresentationManagedObjectFromArrat(arrayWithInfoDicts:NSArray) {
+        let presentationAlreadyExist = self.checkIfPresentationsrAlready(from: arrayWithInfoDicts)
+        if presentationAlreadyExist == true {
+            print("presentation already exists")
+        } else {
         let newPresentation = NSManagedObject(entity: NSEntityDescription.entityForName("Presentation", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let idDictionary = arrayWithInfoDicts[0] as? NSDictionary {
             if let id = idDictionary.objectForKey("v") as? Int {
@@ -201,7 +277,32 @@ class ManagedObjectsController: NSObject {
         self.saveToCoreData { (succesful) in
             
         }
+        }
     }
+    
+    func checkIfPresentationsrAlready(from arrayWithObjects:NSArray) -> Bool {
+        var exists = false
+        if let presentationsInMemory = self.getAllPresentationsFromCoreData() as? [Presentation] {
+            for item in presentationsInMemory {
+                if let itemID = item.valueForKey("id") as? Int {
+                    if let idDictionary = arrayWithObjects[0] as? NSDictionary {
+                        if let id = idDictionary.objectForKey("v") as? Int {
+                            if itemID == id {
+                                exists = true
+                                return exists
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        
+        return exists
+    }
+
+    
+    
     
     //NOTIFICATIONS
     func createAndSaveNotificationsFromArray(arrayWithInfoDict:NSArray) {

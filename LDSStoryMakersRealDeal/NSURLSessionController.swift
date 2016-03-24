@@ -142,7 +142,6 @@ class NSURLSessionController: NSObject {
             let url = NSURL(string: self.generalSpreadSheetLink + spreadSheetkeyForObject)
             let dataTask = self.session.dataTaskWithURL(url!, completionHandler: { (data:NSData?, responde:NSURLResponse?, error:NSError? ) -> Void in
                 if error ==  nil {
-                
                     if let dataString = data {
                             let stringFromData = NSString(data: dataString, encoding: NSUTF8StringEncoding)
                             if let stringWithJason = stringFromData {

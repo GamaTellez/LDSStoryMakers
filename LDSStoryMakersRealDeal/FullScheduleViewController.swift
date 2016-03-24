@@ -81,9 +81,9 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     
     
     func getbreakoutsByDay() {
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "MM-dd-yyyy"
-            let friday = formatter.dateFromString("5/6/2016")
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        let friday = formatter.dateFromString("5/6/2016")
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
                 let order = NSCalendar.currentCalendar()
                 for timeBreakout in allBreakouts {
