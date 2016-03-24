@@ -87,7 +87,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func scheduleMandatoryClassesOnFirstLaunch() {
         let mandatoryClasses = ManagedObjectsController.sharedInstance.getMandatoryClassesForSchedule()
             for mustGoClass in mandatoryClasses {
-                ManagedObjectsController.sharedInstance.createScheduledClass(from: mustGoClass)
+                ManagedObjectsController.sharedInstance.createScheduledClass(from: mustGoClass, completion: { (succeeded) in
+                    if (succeeded == true) {
+                        print("must go class added")
+                    } else {
+                        print("failed to save must go class")
+                    }
+                })
             }
         self.getAllClassesAndPassedToDataSource()
         self.removeAndStopBlurryView()

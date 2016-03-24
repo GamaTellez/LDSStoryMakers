@@ -12,6 +12,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
     var classesScheduled:[ClassScheduled] = []
     let cellID = "classCell"
     let mandatoryClassCell = "mandatoryClassCell"
+    let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     
     func updateDataSource(withClasses:[ClassScheduled]) {
         self.classesScheduled = withClasses
@@ -84,6 +85,13 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
     }
     func indexOfClassDeletedInTableView(row: Int) {
          let classToDelete = self.classesScheduled[row]
-        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete, fromView: "personalSchedule")
+        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete, fromView: "personalSchedule") { (succedeed) in
+            if (succedeed == true) {
+               // NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeleted, object: nil)
+            } else {
+                
+            }
+        }
+        
     }
 }

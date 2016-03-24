@@ -13,7 +13,7 @@ class ManagedObjectsController: NSObject {
     static let sharedInstance = ManagedObjectsController()
     let managedContext:NSManagedObjectContext
     let kitemSuccedsfullySaved = "itemSuccesfullySaved"
-    let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
+
     let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -73,7 +73,9 @@ class ManagedObjectsController: NSObject {
                 }
             }
         }
-        self.saveToCoreData()
+        self.saveToCoreData { (succesful) in
+            
+        }
     }
     
     //SCHEDULE
@@ -126,7 +128,9 @@ class ManagedObjectsController: NSObject {
                 newItemSchedule.setValue(NSNumber(integerLiteral: timeId), forKey: "timeId")
             }
         }
-        self.saveToCoreData()
+        self.saveToCoreData { (succesful) in
+            
+        }
     }
     //SPEAKERS
     func createAndSaveSpeakerManagedObjectFromArray(arrayWithInfoDicts:NSArray) {
@@ -148,7 +152,9 @@ class ManagedObjectsController: NSObject {
                 newSpeaker.setValue(bio, forKey: "speakerBio")
             }
         }
-        self.saveToCoreData()
+        self.saveToCoreData { (succesful) in
+            
+        }
     }
     //PRESENTATIONS
     func createAndSavePresentationManagedObjectFromArrat(arrayWithInfoDicts:NSArray) {
@@ -192,7 +198,9 @@ class ManagedObjectsController: NSObject {
                     newPresentation.setValue(NSNumber(integerLiteral: sect), forKey: "sectionId")
             }
         }
-        self.saveToCoreData()
+        self.saveToCoreData { (succesful) in
+            
+        }
     }
     
     //NOTIFICATIONS
@@ -208,29 +216,40 @@ class ManagedObjectsController: NSObject {
                 newNotification.setValue(notificationDetails, forKey: "notificationInfo")
             }
         }
-        self.saveToCoreData()
+       self.saveToCoreData { (succesful) in
+        
+        }
     }
 
-    func saveToCoreData() {
+    func saveToCoreData(completion:(succesful:Bool) -> Void) {
         do {
             try self.managedContext.save()
-            NSNotificationCenter.defaultCenter().postNotificationName(kitemSuccedsfullySaved, object: nil)
+            completion(succesful: true)
+           // NSNotificationCenter.defaultCenter().postNotificationName(kitemSuccedsfullySaved, object: nil)
         } catch let error as NSError {
+            completion(succesful: false)
             print(error.localizedDescription)
         }
     }
     
-    func deleteScheduledClass(classInSchedule:ClassScheduled, fromView:String)  {
+    func deleteScheduledClass(classInSchedule:ClassScheduled, fromView:String, completion:(succedeed:Bool)->Void)  {
         switch fromView {
         case "conferenceSchedule":
             self.managedContext.deleteObject(classInSchedule)
-            self.saveToCoreData()
-            NSNotificationCenter.defaultCenter().postNotificationName(itemSuccesFullyDeleted, object: nil)
+            self.saveToCoreData({ (succesful) in
+                if (succesful == true) {
+                    completion(succedeed: true)
+                } else {
+                    completion(succedeed: false)
+                }
+            })
             break
         case "personalSchedule":
             self.managedContext.deleteObject(classInSchedule)
-            self.saveToCoreData()
-            NSNotificationCenter.defaultCenter().postNotificationName(classFromPersonalScheduleDeleted, object: nil)
+            self.saveToCoreData({ (succesful) in
+                
+            })
+           // NSNotificationCenter.defaultCenter().postNotificationName(classFromPersonalScheduleDeleted, object: nil)
         default:
         break
         }
@@ -356,7 +375,7 @@ class ManagedObjectsController: NSObject {
     }
     //////
 //create classscheduled from classtoschedule
-    func createScheduledClass(from clsToSchedule:ClassToSchedule) {
+    func createScheduledClass(from clsToSchedule:ClassToSchedule, completion:(succeeded:Bool)->Void) {
         let newClassScheduled = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let breakoutForClass = clsToSchedule.breakout {
             newClassScheduled.setValue(breakoutForClass, forKey: "breakOut")
@@ -385,7 +404,14 @@ class ManagedObjectsController: NSObject {
         if let startTime = clsToSchedule.breakout?.startTime {
             newClassScheduled.setValue(startTime, forKey: "startDate")
         }
-        self.saveToCoreData()
+        self.saveToCoreData { (succesful) in
+            if (succesful == true) {
+                completion(succeeded: true)
+            } else {
+                completion(succeeded: false)
+            }
+            
+        }
     }
 
     func openFeedBackPageForCourse(course:String) {

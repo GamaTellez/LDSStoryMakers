@@ -13,6 +13,8 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
     var classes:[ClassToSchedule] = []
     let presentationCellID = "detailPresentation"
     let timeConlictNotication = "timeConlictNotication"
+    let itemSuccesfullySaved = "itemSuccesfullySaved"
+    let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     
     func updateClassesArray(from classesArray:[ClassToSchedule]) {
         self.checkIfClassIsAlreadyScheduled(classesArray)
@@ -64,9 +66,16 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         case true:
                 for classItem in currentlySavedClasses {
                     if classSelected.presentation?.title == classItem.presentation?.valueForKey("title") as? String {
-                        ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem, fromView: "conferenceSchedule")
-                        button.selected = false
-                        classSelected.inSchedule = false
+                       ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem, fromView: "conferenceSchedule", completion: { (succedeed) in
+                        if (succedeed == true) {
+                            button.selected = false
+                            classSelected.inSchedule = false
+                            NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeleted, object: nil)
+                        } else {
+                            print("failed to delete Item")
+                        }
+                       })
+                       
                     }
                 }
             break
@@ -74,9 +83,14 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
             if let classSelectedBreakout = classSelected.breakout?.valueForKey("breakoutID") as? String {
                 let canSave = self.isBreakoutAvailable(classSelectedBreakout, allClasses: currentlySavedClasses)
                 if canSave {
-                    ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected)
-                    button.selected = true
-                    classSelected.inSchedule = true
+                    ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected, completion: { (succeeded) in
+                        if (succeeded == true) {
+                            button.selected = true
+                            classSelected.inSchedule = true
+                            NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesfullySaved, object: nil)
+                        } else {
+                        }
+                    })
                 } else {
                     NSNotificationCenter.defaultCenter().postNotificationName(timeConlictNotication, object: nil)
                 }
