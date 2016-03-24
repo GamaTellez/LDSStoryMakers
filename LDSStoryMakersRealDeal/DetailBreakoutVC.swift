@@ -41,6 +41,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     
     override func viewWillDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DetailBreakoutVC.classDeletedInPersonalSchedule), name: classFromPersonalScheduleDeleted, object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: itemSuccesfullySaved, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
