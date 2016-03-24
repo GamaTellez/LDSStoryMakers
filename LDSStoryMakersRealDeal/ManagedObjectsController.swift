@@ -161,12 +161,13 @@ class ManagedObjectsController: NSObject {
     func checkIfScheduleExistsAlready(from arrayWithObjects:NSArray) -> Bool {
         var exists = false
         if let schedulesInMemory = self.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
+            print(schedulesInMemory.count)
             for item in schedulesInMemory {
-                if let itemID = item.valueForKey("presentationId") as? Int {
-                    if let scheduleIdDictionary = arrayWithObjects[0] as? NSDictionary {
-                        if let schID = scheduleIdDictionary.objectForKey("v") as? Int {
+                if let itemID = item.valueForKey("presentationTitle") as? String {
+                    if let scheduleIdDictionary = arrayWithObjects[1] as? NSDictionary {
+                        if let schID = scheduleIdDictionary.objectForKey("v") as? String {
                             if itemID == schID {
-                                exists = false
+                                exists = true
                                 return exists
                             }
                         }
