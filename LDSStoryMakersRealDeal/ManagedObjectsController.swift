@@ -161,7 +161,6 @@ class ManagedObjectsController: NSObject {
     func checkIfScheduleExistsAlready(from arrayWithObjects:NSArray) -> Bool {
         var exists = false
         if let schedulesInMemory = self.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
-            print(schedulesInMemory.count)
             for item in schedulesInMemory {
                 if let itemID = item.valueForKey("presentationTitle") as? String {
                     if let scheduleIdDictionary = arrayWithObjects[1] as? NSDictionary {
@@ -521,7 +520,7 @@ class ManagedObjectsController: NSObject {
     func openConferenceFeedBack() {
                 if let conferenceFeedBack = self.userDefaults.objectForKey("ConferenceLink") as? String {
                     if UIApplication.sharedApplication().openURL(NSURL(string: conferenceFeedBack)!) {
-                        print("opening conference feedback url")
+                      //  print("opening conference feedback url")
                     } else {
                         print("failed to open conference feedback")
                     }

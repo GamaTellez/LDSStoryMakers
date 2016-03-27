@@ -217,7 +217,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         label.numberOfLines = 0
         blurryEfectView.addSubview(label)
         label.text = text
-        let activityView = DGActivityIndicatorView(type: .LineScale, tintColor: UIColor.blackColor(), size: 50)
+        let activityView = DGActivityIndicatorView(type: .BallPulse, tintColor: UIColor.blackColor(), size: 50)
         activityView.center = self.view.center
         activityView.startAnimating()
         blurryEfectView.addSubview(activityView)
