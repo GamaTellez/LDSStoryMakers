@@ -291,7 +291,7 @@ class NSURLSessionController: NSObject {
     func getSpeakerPhotoData(speakerName:String, completion: (photoData:NSData) -> Void) {
         var formattedSpeakerName = speakerName.stringByReplacingOccurrencesOfString(" ", withString: "_").uppercaseString
         formattedSpeakerName = formattedSpeakerName.stringByReplacingOccurrencesOfString("DR._", withString: "")
-        print(formattedSpeakerName)
+        //print(formattedSpeakerName)
         let url = NSURL(string: String(format:"http://res-4.cloudinary.com/innatemobile/image/upload/%@.jpg",formattedSpeakerName))
         let dataTask = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if ((error) != nil) {

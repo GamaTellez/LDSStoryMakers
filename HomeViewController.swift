@@ -34,10 +34,10 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         if let firstLaunch = self.defaults.valueForKey("firstLaunch") as? Bool {
             if firstLaunch  != false {
-                self.presentWaitingLoadingView(with: "Welcome To LDS Storymakers 2016")
+                self.presentWaitingLoadingView(with: "Welcome To LDStorymakers 2016")
             }
         } else {
-            self.presentWaitingLoadingView(with: "Welcome To LDS Storymakers 2016")
+            self.presentWaitingLoadingView(with: "Welcome To LDStorymakers 2016")
             self.enableAndDisableTabBarItems(false)
             
         }
@@ -72,8 +72,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func setUpButtons() {
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
+        self.addClassButton.setImage(UIImage(named: "homeAddClas"), forState: .Normal)
         self.refreshButton.setImage(UIImage(named:"refresh"), forState: .Normal)
-        //self.addClassButton.setBackgroundImage(UIImage(named: "cross-3"), forState: .Normal)
+       
     }
     func setUpStatusBarBackground() {
         let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 22))
