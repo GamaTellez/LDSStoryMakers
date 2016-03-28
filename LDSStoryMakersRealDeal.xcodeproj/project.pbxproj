@@ -13,18 +13,6 @@
 		8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E01C7E117800EFAA8B /* AppAppearance.swift */; };
 		8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */; };
 		875D55F11C92830E00EEF930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875D55F01C92830E00EEF930 /* Assets.xcassets */; };
-		8774D88F1C97665000136514 /* ScheduleItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8831C97665000136514 /* ScheduleItem+CoreDataProperties.swift */; };
-		8774D8901C97665000136514 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8841C97665000136514 /* ScheduleItem.swift */; };
-		8774D8911C97665000136514 /* ClassScheduled+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8851C97665000136514 /* ClassScheduled+CoreDataProperties.swift */; };
-		8774D8921C97665000136514 /* ClassScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8861C97665000136514 /* ClassScheduled.swift */; };
-		8774D8931C97665000136514 /* Notification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8871C97665000136514 /* Notification+CoreDataProperties.swift */; };
-		8774D8941C97665000136514 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8881C97665000136514 /* Notification.swift */; };
-		8774D8951C97665000136514 /* Presentation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D8891C97665000136514 /* Presentation+CoreDataProperties.swift */; };
-		8774D8961C97665000136514 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D88A1C97665000136514 /* Presentation.swift */; };
-		8774D8971C97665000136514 /* Speaker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D88B1C97665000136514 /* Speaker+CoreDataProperties.swift */; };
-		8774D8981C97665000136514 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D88C1C97665000136514 /* Speaker.swift */; };
-		8774D8991C97665000136514 /* Breakout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D88D1C97665000136514 /* Breakout+CoreDataProperties.swift */; };
-		8774D89A1C97665000136514 /* Breakout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D88E1C97665000136514 /* Breakout.swift */; };
 		8774D89C1C976B3600136514 /* MandatoryClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D89B1C976B3600136514 /* MandatoryClassCell.swift */; };
 		878E2ECB1C8274D30050D934 /* NextClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECA1C8274D30050D934 /* NextClassCell.swift */; };
 		878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */; };
@@ -43,6 +31,18 @@
 		87D35D5A1C88DE390009EFF1 /* PersonalScheduleDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */; };
 		87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */; };
 		87F0AB2A1C9A4B370074D3C0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */; };
+		87F1BB921CA9804100473D3C /* Speaker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB861CA9804100473D3C /* Speaker+CoreDataProperties.swift */; };
+		87F1BB931CA9804100473D3C /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB871CA9804100473D3C /* Speaker.swift */; };
+		87F1BB941CA9804100473D3C /* Notification+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB881CA9804100473D3C /* Notification+CoreDataProperties.swift */; };
+		87F1BB951CA9804100473D3C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB891CA9804100473D3C /* Notification.swift */; };
+		87F1BB961CA9804100473D3C /* ScheduleItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB8A1CA9804100473D3C /* ScheduleItem+CoreDataProperties.swift */; };
+		87F1BB971CA9804100473D3C /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB8B1CA9804100473D3C /* ScheduleItem.swift */; };
+		87F1BB981CA9804100473D3C /* Breakout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB8C1CA9804100473D3C /* Breakout+CoreDataProperties.swift */; };
+		87F1BB991CA9804100473D3C /* Breakout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB8D1CA9804100473D3C /* Breakout.swift */; };
+		87F1BB9A1CA9804100473D3C /* ClassScheduled+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB8E1CA9804100473D3C /* ClassScheduled+CoreDataProperties.swift */; };
+		87F1BB9B1CA9804100473D3C /* ClassScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB8F1CA9804100473D3C /* ClassScheduled.swift */; };
+		87F1BB9C1CA9804100473D3C /* Presentation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB901CA9804100473D3C /* Presentation+CoreDataProperties.swift */; };
+		87F1BB9D1CA9804100473D3C /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1BB911CA9804100473D3C /* Presentation.swift */; };
 		87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */; };
 		87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F21A071C69360300C2EAA4 /* AppDelegate.swift */; };
 		87F21A0D1C69360300C2EAA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87F21A0B1C69360300C2EAA4 /* Main.storyboard */; };
@@ -78,18 +78,6 @@
 		8741B1E01C7E117800EFAA8B /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		8741B1E21C7E2BCF00EFAA8B /* ClassDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDetailView.swift; sourceTree = "<group>"; };
 		875D55F01C92830E00EEF930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8774D8831C97665000136514 /* ScheduleItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ScheduleItem+CoreDataProperties.swift"; path = "../ScheduleItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8774D8841C97665000136514 /* ScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleItem.swift; path = ../ScheduleItem.swift; sourceTree = "<group>"; };
-		8774D8851C97665000136514 /* ClassScheduled+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ClassScheduled+CoreDataProperties.swift"; path = "../ClassScheduled+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8774D8861C97665000136514 /* ClassScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassScheduled.swift; path = ../ClassScheduled.swift; sourceTree = "<group>"; };
-		8774D8871C97665000136514 /* Notification+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Notification+CoreDataProperties.swift"; path = "../Notification+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8774D8881C97665000136514 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = ../Notification.swift; sourceTree = "<group>"; };
-		8774D8891C97665000136514 /* Presentation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Presentation+CoreDataProperties.swift"; path = "../Presentation+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8774D88A1C97665000136514 /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Presentation.swift; path = ../Presentation.swift; sourceTree = "<group>"; };
-		8774D88B1C97665000136514 /* Speaker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Speaker+CoreDataProperties.swift"; path = "../Speaker+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8774D88C1C97665000136514 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Speaker.swift; path = ../Speaker.swift; sourceTree = "<group>"; };
-		8774D88D1C97665000136514 /* Breakout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Breakout+CoreDataProperties.swift"; path = "../Breakout+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8774D88E1C97665000136514 /* Breakout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Breakout.swift; path = ../Breakout.swift; sourceTree = "<group>"; };
 		8774D89B1C976B3600136514 /* MandatoryClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MandatoryClassCell.swift; sourceTree = "<group>"; };
 		878E2ECA1C8274D30050D934 /* NextClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NextClassCell.swift; path = ../NextClassCell.swift; sourceTree = "<group>"; };
 		878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpcomingClassCell.swift; path = ../UpcomingClassCell.swift; sourceTree = "<group>"; };
@@ -108,6 +96,18 @@
 		87D35D591C88DE390009EFF1 /* PersonalScheduleDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleDS.swift; sourceTree = "<group>"; };
 		87D35D5B1C88E0CF0009EFF1 /* PersonalScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalScheduleCell.swift; sourceTree = "<group>"; };
 		87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
+		87F1BB861CA9804100473D3C /* Speaker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Speaker+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87F1BB871CA9804100473D3C /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		87F1BB881CA9804100473D3C /* Notification+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87F1BB891CA9804100473D3C /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		87F1BB8A1CA9804100473D3C /* ScheduleItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduleItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87F1BB8B1CA9804100473D3C /* ScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
+		87F1BB8C1CA9804100473D3C /* Breakout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Breakout+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87F1BB8D1CA9804100473D3C /* Breakout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breakout.swift; sourceTree = "<group>"; };
+		87F1BB8E1CA9804100473D3C /* ClassScheduled+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClassScheduled+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87F1BB8F1CA9804100473D3C /* ClassScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassScheduled.swift; sourceTree = "<group>"; };
+		87F1BB901CA9804100473D3C /* Presentation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Presentation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		87F1BB911CA9804100473D3C /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutCell.swift; sourceTree = "<group>"; };
 		87F1F551D392D3D0BF60376B /* Pods-LDSStoryMakersRealDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LDSStoryMakersRealDeal.release.xcconfig"; path = "Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal.release.xcconfig"; sourceTree = "<group>"; };
 		87F21A041C69360200C2EAA4 /* LDSStoryMakersRealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LDSStoryMakersRealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,18 +182,18 @@
 		878153911C6C0D380042F4EB /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				8774D8831C97665000136514 /* ScheduleItem+CoreDataProperties.swift */,
-				8774D8841C97665000136514 /* ScheduleItem.swift */,
-				8774D8851C97665000136514 /* ClassScheduled+CoreDataProperties.swift */,
-				8774D8861C97665000136514 /* ClassScheduled.swift */,
-				8774D8871C97665000136514 /* Notification+CoreDataProperties.swift */,
-				8774D8881C97665000136514 /* Notification.swift */,
-				8774D8891C97665000136514 /* Presentation+CoreDataProperties.swift */,
-				8774D88A1C97665000136514 /* Presentation.swift */,
-				8774D88B1C97665000136514 /* Speaker+CoreDataProperties.swift */,
-				8774D88C1C97665000136514 /* Speaker.swift */,
-				8774D88D1C97665000136514 /* Breakout+CoreDataProperties.swift */,
-				8774D88E1C97665000136514 /* Breakout.swift */,
+				87F1BB861CA9804100473D3C /* Speaker+CoreDataProperties.swift */,
+				87F1BB871CA9804100473D3C /* Speaker.swift */,
+				87F1BB881CA9804100473D3C /* Notification+CoreDataProperties.swift */,
+				87F1BB891CA9804100473D3C /* Notification.swift */,
+				87F1BB8A1CA9804100473D3C /* ScheduleItem+CoreDataProperties.swift */,
+				87F1BB8B1CA9804100473D3C /* ScheduleItem.swift */,
+				87F1BB8C1CA9804100473D3C /* Breakout+CoreDataProperties.swift */,
+				87F1BB8D1CA9804100473D3C /* Breakout.swift */,
+				87F1BB8E1CA9804100473D3C /* ClassScheduled+CoreDataProperties.swift */,
+				87F1BB8F1CA9804100473D3C /* ClassScheduled.swift */,
+				87F1BB901CA9804100473D3C /* Presentation+CoreDataProperties.swift */,
+				87F1BB911CA9804100473D3C /* Presentation.swift */,
 				87F21A0E1C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld */,
 			);
 			name = DataModel;
@@ -517,41 +517,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F1BB921CA9804100473D3C /* Speaker+CoreDataProperties.swift in Sources */,
 				8792D0EA1C7CDDF00029E532 /* DetailBreakoutDataSource.swift in Sources */,
-				8774D8961C97665000136514 /* Presentation.swift in Sources */,
+				87F1BB941CA9804100473D3C /* Notification+CoreDataProperties.swift in Sources */,
 				873811251C76E10600F4A2D1 /* TableViewDataSource.swift in Sources */,
 				8774D89C1C976B3600136514 /* MandatoryClassCell.swift in Sources */,
 				87C416A81C7FAAEA00D99E17 /* ClassToSchedule.swift in Sources */,
-				8774D8901C97665000136514 /* ScheduleItem.swift in Sources */,
+				87F1BB971CA9804100473D3C /* ScheduleItem.swift in Sources */,
+				87F1BB9C1CA9804100473D3C /* Presentation+CoreDataProperties.swift in Sources */,
 				87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */,
 				8792D0E81C7CDD500029E532 /* DetailBreakoutVC.swift in Sources */,
+				87F1BB9B1CA9804100473D3C /* ClassScheduled.swift in Sources */,
 				87F1D3A01C7A988100D6AA87 /* BreakoutCell.swift in Sources */,
-				8774D8931C97665000136514 /* Notification+CoreDataProperties.swift in Sources */,
 				87B070381C78251600014DD1 /* FullScheduleViewController.swift in Sources */,
 				87BACC2E1C9A523A003E917C /* SettingsVC.swift in Sources */,
-				8774D8971C97665000136514 /* Speaker+CoreDataProperties.swift in Sources */,
 				878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */,
-				8774D8981C97665000136514 /* Speaker.swift in Sources */,
+				87F1BB991CA9804100473D3C /* Breakout.swift in Sources */,
 				87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */,
 				87D35D551C88D4500009EFF1 /* ViewFullScheduleCell.swift in Sources */,
-				8774D8941C97665000136514 /* Notification.swift in Sources */,
 				87D35D571C88D9940009EFF1 /* FullPersonalSchedule.swift in Sources */,
 				87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */,
-				8774D8911C97665000136514 /* ClassScheduled+CoreDataProperties.swift in Sources */,
 				8792D0EC1C7CE2010029E532 /* PresentationCell.swift in Sources */,
+				87F1BB961CA9804100473D3C /* ScheduleItem+CoreDataProperties.swift in Sources */,
+				87F1BB9A1CA9804100473D3C /* ClassScheduled+CoreDataProperties.swift in Sources */,
 				873811231C76B3A500F4A2D1 /* HomeViewController.swift in Sources */,
 				87D35D5A1C88DE390009EFF1 /* PersonalScheduleDS.swift in Sources */,
-				8774D8951C97665000136514 /* Presentation+CoreDataProperties.swift in Sources */,
-				8774D8991C97665000136514 /* Breakout+CoreDataProperties.swift in Sources */,
 				87F21A081C69360300C2EAA4 /* AppDelegate.swift in Sources */,
-				8774D8921C97665000136514 /* ClassScheduled.swift in Sources */,
-				8774D89A1C97665000136514 /* Breakout.swift in Sources */,
+				87F1BB9D1CA9804100473D3C /* Presentation.swift in Sources */,
 				87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */,
+				87F1BB951CA9804100473D3C /* Notification.swift in Sources */,
 				8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */,
 				8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */,
-				8774D88F1C97665000136514 /* ScheduleItem+CoreDataProperties.swift in Sources */,
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
+				87F1BB981CA9804100473D3C /* Breakout+CoreDataProperties.swift in Sources */,
+				87F1BB931CA9804100473D3C /* Speaker.swift in Sources */,
 				87C416761C7F915E00D99E17 /* AddRemoveClass.swift in Sources */,
 				878E2ECB1C8274D30050D934 /* NextClassCell.swift in Sources */,
 			);

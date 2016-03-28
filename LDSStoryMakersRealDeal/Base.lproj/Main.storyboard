@@ -291,16 +291,16 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqc-qF-2yJ">
                                                             <rect key="frame" x="114" y="49" width="451" height="36"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="36" id="kb7-2i-ab8"/>
+                                                                <constraint firstAttribute="height" constant="36" id="hxe-iK-PQA"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ori-h8-tEs" customClass="AddRemoveClass" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                                            <rect key="frame" x="11" y="4" width="95" height="95"/>
+                                                            <rect key="frame" x="14" y="13" width="69" height="80"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="95" id="V1g-cp-vg7"/>
+                                                                <constraint firstAttribute="width" constant="69" id="vJF-3Z-68W"/>
                                                             </constraints>
                                                             <connections>
                                                                 <action selector="removeClassButtonTapped:" destination="mnS-xn-tci" eventType="touchUpInside" id="nnu-MN-duY"/>
@@ -308,24 +308,24 @@
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="mqc-qF-2yJ" secondAttribute="leading" id="21r-EJ-2xq"/>
-                                                        <constraint firstItem="Ori-h8-tEs" firstAttribute="leading" secondItem="qOC-u3-YzT" secondAttribute="leading" constant="11" id="3oI-CE-CBb"/>
-                                                        <constraint firstItem="Ori-h8-tEs" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" constant="4" id="EHY-H8-UEc"/>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="Ori-h8-tEs" secondAttribute="trailing" constant="8" symbolic="YES" id="O1b-MM-yXT"/>
-                                                        <constraint firstItem="mqc-qF-2yJ" firstAttribute="trailing" secondItem="qOC-u3-YzT" secondAttribute="trailingMargin" id="Z0N-d3-VbK"/>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" id="a3q-Lb-vIz"/>
-                                                        <constraint firstItem="mqc-qF-2yJ" firstAttribute="top" secondItem="bsw-Ex-qCo" secondAttribute="bottom" constant="8" symbolic="YES" id="adE-j8-22B"/>
-                                                        <constraint firstItem="Ori-h8-tEs" firstAttribute="centerY" secondItem="qOC-u3-YzT" secondAttribute="centerY" id="ie5-QC-KNM"/>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="mqc-qF-2yJ" secondAttribute="trailing" id="wd8-p5-mVf"/>
-                                                        <constraint firstAttribute="bottom" secondItem="mqc-qF-2yJ" secondAttribute="bottom" constant="18" id="wn9-VX-19r"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="mqc-qF-2yJ" secondAttribute="leading" id="3XI-Qj-LaY"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="qOC-u3-YzT" secondAttribute="trailingMargin" id="7hT-7A-xK5"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" id="LMQ-Rk-KgV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ori-h8-tEs" secondAttribute="bottom" constant="10" id="SIW-FC-RiJ"/>
+                                                        <constraint firstItem="Ori-h8-tEs" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" constant="13" id="aKu-70-Anf"/>
+                                                        <constraint firstItem="mqc-qF-2yJ" firstAttribute="top" secondItem="bsw-Ex-qCo" secondAttribute="bottom" constant="8" symbolic="YES" id="hXs-QO-ij1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="mqc-qF-2yJ" secondAttribute="bottom" constant="18" id="kzs-DK-0Tk"/>
+                                                        <constraint firstItem="Ori-h8-tEs" firstAttribute="leading" secondItem="qOC-u3-YzT" secondAttribute="leading" constant="14" id="qN0-pM-lmg"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="mqc-qF-2yJ" secondAttribute="trailing" id="sSq-pe-59g"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="Ori-h8-tEs" secondAttribute="trailing" constant="31" id="yVd-1P-yGG"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="top" secondItem="5Je-YB-1sV" secondAttribute="topMargin" id="6F1-po-tZ3"/>
-                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="centerX" secondItem="5Je-YB-1sV" secondAttribute="centerX" id="E4R-mS-ebI"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="qOC-u3-YzT" secondAttribute="bottom" constant="12" id="iZI-Hk-V2J"/>
-                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="leading" secondItem="5Je-YB-1sV" secondAttribute="leadingMargin" constant="6" id="xNy-fw-EHk"/>
+                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="centerX" secondItem="5Je-YB-1sV" secondAttribute="centerX" id="3Ef-Ac-7ep"/>
+                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="top" secondItem="5Je-YB-1sV" secondAttribute="topMargin" id="E9A-Kc-ed3"/>
+                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="leading" secondItem="5Je-YB-1sV" secondAttribute="leadingMargin" constant="6" id="rgw-RZ-XZc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qOC-u3-YzT" secondAttribute="bottom" constant="12" id="wfn-Em-eI9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -179,6 +179,7 @@ class ManagedObjectsController: NSObject {
     
     //SPEAKERS
     func createAndSaveSpeakerManagedObjectFromArray(arrayWithInfoDicts:NSArray) {
+        print(arrayWithInfoDicts)
         let speakerExistAlready = self.checkIfSpeakerExistsAlready(from: arrayWithInfoDicts)
         if speakerExistAlready == true {
             print("speaker already Exists")
@@ -201,6 +202,11 @@ class ManagedObjectsController: NSObject {
                 newSpeaker.setValue(bio, forKey: "speakerBio")
             }
         }
+            if let dictionaryWithImageName = arrayWithInfoDicts[3] as? NSDictionary {
+                if let imageName = dictionaryWithImageName.objectForKey("v") as? String {
+                    newSpeaker.setValue(imageName, forKey: "imageName")
+                }
+            }
         self.saveToCoreData { (succesful) in
             
             }

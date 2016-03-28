@@ -288,22 +288,23 @@ class NSURLSessionController: NSObject {
         }
     }
     
-    func getSpeakerPhotoData(speakerName:String, completion: (photoData:NSData) -> Void) {
-        var formattedSpeakerName = speakerName.stringByReplacingOccurrencesOfString(" ", withString: "_").uppercaseString
-        formattedSpeakerName = formattedSpeakerName.stringByReplacingOccurrencesOfString("DR._", withString: "")
-        //print(formattedSpeakerName)
-        let url = NSURL(string: String(format:"http://res-4.cloudinary.com/innatemobile/image/upload/%@.jpg",formattedSpeakerName))
+    func getSpeakerPhotoData(speakerName:String, completion: (photoData:NSData?) -> Void) {
+        let formattedSpeakerName = speakerName.stringByReplacingOccurrencesOfString(" ", withString: "_").uppercaseString
+        let url = NSURL(string: String(format:"http://res-4.cloudinary.com/innatemobile/image/upload/%@",formattedSpeakerName))
         let dataTask = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            if ((error) != nil) {
-                print(error?.localizedDescription)
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                      NSNotificationCenter.defaultCenter().postNotificationName(self.failedToFetchTheSpeakerImage, object: nil)
-                })
+            if (error == nil) {
+                if let responseHttp = response as? NSHTTPURLResponse {
+                    if responseHttp.statusCode != 404 {
+                        if let photoInData = data {
+                            completion(photoData: photoInData)
+                         }
+                    } else {
+                        print(responseHttp.statusCode.description)
+                        completion(photoData: nil)
+                    }
+                    }
+                }
             }
-            if let photoInData = data {
-            completion(photoData: photoInData)
-            }
-        }
         dataTask.resume()
     }
     

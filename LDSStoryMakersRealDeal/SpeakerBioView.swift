@@ -56,12 +56,16 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
                 self.bioTextView.text = speakerBio
             }
         }
-        if let speakerName = self.speakerSelected?.valueForKey("speakerName") as? String {
+        if let speakerName = self.speakerSelected?.valueForKey("imageName") as? String {
             NSURLSessionController.sharedInstance.getSpeakerPhotoData(speakerName, completion: { (photoData) -> Void in
                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.alpha = 0
-                self.speakerImageView.image = UIImage(data: photoData)
+                if let imageData = photoData {
+                    self.speakerImageView.image = UIImage(data: imageData)
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.alpha = 0
+                } else {
+                    self.imageFetchFailAlert()
+                }
                })
             })
         }
@@ -72,7 +76,7 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     }
     
     func imageFetchFailAlert() {
-        let imageFailedAlert  = UIAlertController(title: "Error", message: "There was an errror while obtaining the image", preferredStyle: UIAlertControllerStyle.Alert)
+        let imageFailedAlert  = UIAlertController(title: "Error", message: "We apologize, there is no image available", preferredStyle: UIAlertControllerStyle.Alert)
         imageFailedAlert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(imageFailedAlert, animated: true) { () -> Void in
             self.activityIndicator.stopAnimating()
