@@ -25,13 +25,16 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         let cell =  tableView.dequeueReusableCellWithIdentifier(presentationCellID) as! PresentationCell
         cell.selectionStyle = .None
         cell.delegate = self
-        cell.addRemoveButton.section = indexPath.section
+        cell.addRemoveButton.tag = indexPath.section
         let classAttend = self.classes[indexPath.section]
         if let scheduled = classAttend.inSchedule {
             if scheduled == true {
                 cell.addRemoveButton.selected = true
+                cell.addRemoveButton.backgroundColor = UIColor(red: 0.561, green: 0.008, blue: 0.020, alpha: 1.00)
+                
             } else {
                 cell.addRemoveButton.selected = false
+                cell.addRemoveButton.backgroundColor = UIColor(red: 0.094, green: 0.588, blue: 0.251, alpha: 1.00)
             }
         }        
         if let title = classAttend.presentation?.title {
@@ -59,7 +62,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
     }
     
     //cell delegate
-    func indexOfClassSelectedWithButton(section: Int, and button: AddRemoveClass) {
+    func indexOfClassSelectedWithButton(section: Int, and button: UIButton) {
         if let currentlySavedClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
         let classSelected = self.classes[section]
         switch button.selected {
@@ -69,6 +72,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
                        ManagedObjectsController.sharedInstance.deleteScheduledClass(classItem, completion: { (succedeed) in
                         if (succedeed == true) {
                             button.selected = false
+                            button.backgroundColor = UIColor(red: 0.094, green: 0.588, blue: 0.251, alpha: 1.00)
                             classSelected.inSchedule = false
                             NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeleted, object: nil)
                         } else {
@@ -86,6 +90,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
                     ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected, completion: { (succeeded) in
                         if (succeeded == true) {
                             button.selected = true
+                            button.backgroundColor = UIColor(red: 0.561, green: 0.008, blue: 0.020, alpha: 1.00)
                             classSelected.inSchedule = true
                             NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesfullySaved, object: nil)
                         } else {

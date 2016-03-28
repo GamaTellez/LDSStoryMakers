@@ -9,13 +9,13 @@
 import UIKit
 
 protocol PresentationCellButtonDelegate {
-    func indexOfClassSelectedWithButton(section:Int, and button:AddRemoveClass)
+    func indexOfClassSelectedWithButton(section:Int, and button:UIButton)
 }
 
 class PresentationCell: UITableViewCell {
     
  
-    @IBOutlet var addRemoveButton: AddRemoveClass!
+    @IBOutlet var addRemoveButton: UIButton!
     @IBOutlet var speakerAndLocationLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -26,8 +26,9 @@ class PresentationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
-        //self.addRemoveButton.setBackgroundImage(UIImage(named: "addButton"), forState: .Normal)
-       // self.addRemoveButton.setBackgroundImage(UIImage(named: "removeClass"), forState: .Selected)
+        self.addRemoveButton.tintColor = UIColor.clearColor()
+        self.addRemoveButton.setBackgroundImage(UIImage(named: "homeAddClas"), forState: .Normal)
+        self.addRemoveButton.setBackgroundImage(UIImage(named: "removeClass"), forState: .Selected)
         self.titleLabel.numberOfLines = 3
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -41,12 +42,7 @@ class PresentationCell: UITableViewCell {
         self.speakerAndLocationLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 15)
         
     }
-        @IBAction func addRemoveButtonTapped(sender: AddRemoveClass) {
-        if let buttonSection = sender.section {
-            self.delegate?.indexOfClassSelectedWithButton(buttonSection, and: sender)
-        }
+        @IBAction func addRemoveButtonTapped(sender: UIButton) {
+            self.delegate?.indexOfClassSelectedWithButton(sender.tag, and: sender)
     }
-
-    
-
 }
