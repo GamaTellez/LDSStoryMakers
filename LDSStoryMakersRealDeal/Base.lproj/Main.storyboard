@@ -527,17 +527,14 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailPresentation" rowHeight="137" id="gbx-Xx-Z0u" customClass="PresentationCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="581" height="137"/>
+                                        <rect key="frame" x="0.0" y="50" width="581" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbx-Xx-Z0u" id="c2w-Et-Xgj">
-                                            <rect key="frame" x="0.0" y="0.0" width="581" height="136.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="581" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESp-OT-dmL">
                                                     <rect key="frame" x="0.0" y="-1" width="581" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="ukW-zI-1oc"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -545,7 +542,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker and location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUX-AI-w1q">
                                                     <rect key="frame" x="151" y="52" width="430" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="FNV-Kk-1fp"/>
+                                                        <constraint firstAttribute="height" constant="21" id="ndA-Pd-jd4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -558,9 +555,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdY-gJ-D4k" customClass="AddRemoveClass" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                                    <rect key="frame" x="23" y="62" width="72" height="60"/>
+                                                    <rect key="frame" x="35" y="66" width="62" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="72" id="6Ru-5E-hce"/>
+                                                        <constraint firstAttribute="height" constant="50" id="9Vz-18-mQ1"/>
+                                                        <constraint firstAttribute="width" constant="62" id="RO6-sR-QiX"/>
                                                     </constraints>
                                                     <connections>
                                                         <action selector="addRemoveButtonTapped:" destination="gbx-Xx-Z0u" eventType="touchUpInside" id="YnR-fu-EMC"/>
@@ -568,19 +566,19 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IdY-gJ-D4k" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leadingMargin" constant="15" id="4xi-pQ-6ea"/>
-                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leading" id="6Ak-bs-Cw4"/>
-                                                <constraint firstItem="IdY-gJ-D4k" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="13" id="6Q9-FP-zVA"/>
-                                                <constraint firstItem="PPu-fg-pQM" firstAttribute="top" secondItem="OUX-AI-w1q" secondAttribute="bottom" constant="2" id="DOo-N5-cxa"/>
-                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="EM1-Zr-N9u"/>
-                                                <constraint firstItem="PPu-fg-pQM" firstAttribute="leading" secondItem="OUX-AI-w1q" secondAttribute="leading" id="EyU-UY-fSr"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="IdY-gJ-D4k" secondAttribute="bottom" constant="6.5" id="PHy-Y7-vza"/>
-                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="top" secondItem="c2w-Et-Xgj" secondAttribute="topMargin" constant="-9" id="V4B-4U-yUn"/>
-                                                <constraint firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="Ymb-UF-PjE"/>
-                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="3" id="ZxQ-H3-JuX"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="PPu-fg-pQM" secondAttribute="bottom" constant="-0.5" id="hiU-H1-ney"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="PPu-fg-pQM" secondAttribute="trailing" constant="-4" id="ijh-UD-ryx"/>
-                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="IdY-gJ-D4k" secondAttribute="trailing" constant="56" id="jc6-QG-5HL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PPu-fg-pQM" secondAttribute="bottom" constant="-0.5" id="6Yv-SX-tf7"/>
+                                                <constraint firstItem="IdY-gJ-D4k" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="17" id="DfL-TM-MaK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="IdY-gJ-D4k" secondAttribute="bottom" constant="12.5" id="Nhu-Kx-mNM"/>
+                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="PPu-fg-pQM" secondAttribute="leading" id="Tee-qH-yKE"/>
+                                                <constraint firstItem="PPu-fg-pQM" firstAttribute="top" secondItem="OUX-AI-w1q" secondAttribute="bottom" constant="2" id="VcX-3o-W4F"/>
+                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leading" id="a5A-at-K1d"/>
+                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="IdY-gJ-D4k" secondAttribute="trailing" constant="54" id="b0S-iy-sUq"/>
+                                                <constraint firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="cgO-c2-G5h"/>
+                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="e7e-9Z-Fhd"/>
+                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="3" id="fRA-TP-Utd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PPu-fg-pQM" secondAttribute="trailing" constant="-4" id="kcV-zK-CZP"/>
+                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="top" secondItem="c2w-Et-Xgj" secondAttribute="topMargin" constant="-9" id="lX1-MH-nZX"/>
+                                                <constraint firstItem="IdY-gJ-D4k" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leadingMargin" constant="27" id="rgq-Vd-uNE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -995,6 +993,6 @@
         <image name="rsz_calendaradd" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4w5-2e-V1N"/>
+        <segue reference="MKO-8W-aej"/>
     </inferredMetricsTieBreakers>
 </document>

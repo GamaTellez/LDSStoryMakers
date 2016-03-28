@@ -25,7 +25,7 @@ class PresentationCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
+        self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
         //self.addRemoveButton.setBackgroundImage(UIImage(named: "addButton"), forState: .Normal)
        // self.addRemoveButton.setBackgroundImage(UIImage(named: "removeClass"), forState: .Selected)
         self.titleLabel.numberOfLines = 3

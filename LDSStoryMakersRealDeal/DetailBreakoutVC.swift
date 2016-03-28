@@ -65,7 +65,6 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         let classSavedAlert = UIAlertController(title: "Class Saved", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         classSavedAlert.popoverPresentationController?.sourceView = self.view
         classSavedAlert.popoverPresentationController?.sourceRect = self.view.bounds
-        // this is the center of the screen currently but it can be any point in the vi
         self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
             let delay = 0.5 * Double(NSEC_PER_SEC)
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
