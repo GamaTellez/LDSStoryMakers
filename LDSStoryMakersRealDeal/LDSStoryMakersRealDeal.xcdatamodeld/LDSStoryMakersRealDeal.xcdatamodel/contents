@@ -3,7 +3,7 @@
     <entity name="Breakout" representedClassName=".Breakout" syncable="YES">
         <attribute name="breakoutID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="classScheduled" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClassScheduled" inverseName="breakOut" inverseEntity="ClassScheduled" syncable="YES"/>
     </entity>
@@ -49,7 +49,7 @@
         <relationship name="classScheduled" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClassScheduled" inverseName="speaker" inverseEntity="ClassScheduled" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Breakout" positionX="-36" positionY="72" width="128" height="30"/>
+        <element name="Breakout" positionX="-36" positionY="72" width="128" height="120"/>
         <element name="ClassScheduled" positionX="-27" positionY="90" width="128" height="135"/>
         <element name="Notification" positionX="-36" positionY="108" width="128" height="75"/>
         <element name="Presentation" positionX="-54" positionY="9" width="128" height="30"/>

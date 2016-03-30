@@ -2,7 +2,7 @@
 //  ScheduleItem.swift
 //  
 //
-//  Created by Gamaliel Tellez on 3/28/16.
+//  Created by Gamaliel Tellez on 3/30/16.
 //
 //
 

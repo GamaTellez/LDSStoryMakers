@@ -47,8 +47,9 @@ class ManagedObjectsController: NSObject {
         }
         
         if let breakoutIDDict = arrayWithInfoDictionaries[4] as? NSDictionary {
-            if let breakId = breakoutIDDict.objectForKey("f") as? String {
-                newBreakout.setValue(breakId, forKey: "id")
+            print(breakoutIDDict)
+            if let breakId = breakoutIDDict.objectForKey("v") as? Int {
+                newBreakout.setValue(NSNumber(integer:breakId), forKey: "id")
             }
         }
         
@@ -98,7 +99,7 @@ class ManagedObjectsController: NSObject {
         return exists
     }
     
-    //SCHEDULE
+    //SCHEDULE item
     func createAndSaveScheduleItemObjectFromArray(arrayWithInfoDicts:NSArray) {
         let scheduleAlreadyExist = self.checkIfScheduleExistsAlready(from: arrayWithInfoDicts)
         if scheduleAlreadyExist == true {
@@ -107,7 +108,7 @@ class ManagedObjectsController: NSObject {
         let newItemSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ScheduleItem", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let scheduleIdDictionary = arrayWithInfoDicts[0] as? NSDictionary {
             if let schID = scheduleIdDictionary.objectForKey("v") as? Int {
-                newItemSchedule.setValue(NSNumber(integerLiteral: schID), forKey: "scheduleId")
+                newItemSchedule.setValue(NSNumber(integer: schID), forKey: "scheduleId")
             }
         }
         if let itemPresentationTitleDict = arrayWithInfoDicts[1] as? NSDictionary {
@@ -165,21 +166,25 @@ class ManagedObjectsController: NSObject {
                 if let itemID = item.valueForKey("presentationTitle") as? String {
                     if let scheduleIdDictionary = arrayWithObjects[1] as? NSDictionary {
                         if let schID = scheduleIdDictionary.objectForKey("v") as? String {
-                            if itemID == schID {
-                                exists = true
-                                return exists
+                            if let scheduleBreakoutDictionary = arrayWithObjects[3] as? NSDictionary {
+                                if let schedItemBreakout = scheduleBreakoutDictionary.objectForKey("v") as? Int {
+                                    if (itemID == schID  && item.valueForKey("breakout") as? Int == schedItemBreakout) {
+                                        exists = true
+                                        return exists
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-        }
         return exists
     }
     
     //SPEAKERS
     func createAndSaveSpeakerManagedObjectFromArray(arrayWithInfoDicts:NSArray) {
-        print(arrayWithInfoDicts)
+       // print(arrayWithInfoDicts)
         let speakerExistAlready = self.checkIfSpeakerExistsAlready(from: arrayWithInfoDicts)
         if speakerExistAlready == true {
             print("speaker already Exists")
@@ -350,7 +355,6 @@ class ManagedObjectsController: NSObject {
             })
     }
     //FETC REQUESTS
-    
     func getAllScheduledClasses() -> [AnyObject] {
         let allScheduledClassesRequest = NSFetchRequest(entityName: "ClassScheduled")
         allScheduledClassesRequest.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]

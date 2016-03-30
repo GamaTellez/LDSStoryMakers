@@ -2,7 +2,7 @@
 //  Speaker+CoreDataProperties.swift
 //  
 //
-//  Created by Gamaliel Tellez on 3/28/16.
+//  Created by Gamaliel Tellez on 3/30/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,10 +14,10 @@ import CoreData
 
 extension Speaker {
 
+    @NSManaged var imageName: String?
     @NSManaged var speakerBio: String?
     @NSManaged var speakerId: NSNumber?
     @NSManaged var speakerName: String?
-    @NSManaged var imageName: String?
     @NSManaged var classScheduled: ClassScheduled?
 
 }

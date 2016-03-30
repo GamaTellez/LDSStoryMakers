@@ -104,11 +104,22 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     
     func getAllScheduleItemsForSelectedBreakout(selectedBreakout:Breakout) -> [ScheduleItem] {
         var allScheduleItems:[ScheduleItem] = []
-        let breakoutId = selectedBreakout.breakoutID
+        if let breakoutId = selectedBreakout.valueForKey("id") as? Int {
+           // print(breakoutId, "breakoutSelected")
         if let itemsSchedule = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
             for item in itemsSchedule {
-                if item.breakout?.stringValue == breakoutId {
-                    allScheduleItems.append(item)
+                print(item.presentationTitle)
+                if let isPresentation = item.valueForKey("isPresentation") as? Bool {
+                    print(isPresentation)
+                    if isPresentation {
+                    if let itemBreakout = item.valueForKey("breakout") as? Int {
+                        print(itemBreakout, "item breakout")
+                        if itemBreakout == breakoutId {
+                                allScheduleItems.append(item)
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -124,27 +135,27 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
             classObject.inSchedule = false
            
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
-                if let itemBreakoutId = item.breakout {
+                if let itemBreakoutId = item.valueForKey("breakout") as? Int {
                     for breakt in allBreakouts {
-                        if itemBreakoutId.stringValue == breakt.id {
+                        if itemBreakoutId == breakt.valueForKey("id") as? Int {
                             classObject.breakout = breakt
                         }
                     }
                 }
             }
             if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
-                if let presentationId = item.presentationId {
+                if let presentationId = item.valueForKey("presentationId") as? Int {
                     for pres in allPresentations {
-                        if presentationId.integerValue == pres.id?.integerValue {
+                        if presentationId == pres.valueForKey("id") as? Int {
                             classObject.presentation = pres
                         }
                     }
                 }
             }
             if let allSpeakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData() as? [Speaker] {
-                if let speakerId = classObject.presentation?.speakerId {
+                if let speakerId = classObject.presentation?.valueForKey("speakerId") as? Int {
                     for speak in allSpeakers {
-                        if speakerId.integerValue == speak.speakerId?.integerValue {
+                        if speakerId == speak.valueForKey("speakerId") as? Int {
                             classObject.speaker = speak
                         }
                     }
@@ -170,9 +181,10 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.fridayBreakouts[sectionBreakout]
+                            print(selectedBreakout.id)
                             let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
-                            if let startDate = selectedBreakout.startTime {
-                                if let endDate = selectedBreakout.endTime {
+                            if let startDate = selectedBreakout.valueForKey("startTime") as? NSDate {
+                                if let endDate = selectedBreakout.valueForKey("endTime") as? NSDate {
                                     breakoutDetailVC.stringForLabelBreakoutTime = String(format:"%@ - %@",NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .
                                         ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
                                     breakoutDetailVC.title = String(format:"Breakout %@",selectedBreakout.breakoutID!)
@@ -181,17 +193,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                            let allClasesToSchedule = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
                             breakoutDetailVC.classesInBreakout = allClasesToSchedule
-//                            let personalSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
-//                            for clsToSched in allClasesToSchedule {
-//                                let isAlreadyInSchedule = self.isClassScheduled(clsToSched, from: personalSchedule!)
-//                                if isAlreadyInSchedule == true {
-//                                    clsToSched.inSchedule = true
-//                                } else {
-//                                    clsToSched.inSchedule = false
-//                                }
-//                            }
-//                             breakoutDetailVC.classesInBreakout = allClasesToSchedule
-//                        }
                         }
                     }
                     if daySelected == 1 {
@@ -208,15 +209,15 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                             let allClasesToSchedule = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
-                            let personalSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
-                            for clsToSched in allClasesToSchedule {
-                                let isAlreadyInSchedule = self.isClassScheduled(clsToSched, from: personalSchedule!)
-                                if isAlreadyInSchedule == true {
-                                    clsToSched.inSchedule = true
-                                } else {
-                                    clsToSched.inSchedule = false
-                                }
-                            }
+                          //  let personalSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
+//                            for clsToSched in allClasesToSchedule {
+//                                let isAlreadyInSchedule = self.isClassScheduled(clsToSched, from: personalSchedule!)
+//                                if isAlreadyInSchedule == true {
+//                                    clsToSched.inSchedule = true
+//                                } else {
+//                                    clsToSched.inSchedule = false
+//                                }
+//                            }
                             breakoutDetailVC.classesInBreakout = allClasesToSchedule
                         }
                     }
