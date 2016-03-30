@@ -89,11 +89,10 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
         ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete) { (succedeed) in
             if (succedeed == true) {
                 NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-                dispatch_async(dispatch_get_main_queue()) {
                     let path = NSIndexPath(forRow: row, inSection:0);
+                    print(path)
                     self.classesScheduled.removeAtIndex(row)
                     table.deleteRowsAtIndexPaths([path], withRowAnimation: .Fade)
-                }
                     } else {
                 print("failed to delete class from personal schedule")
             }
