@@ -84,7 +84,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
                 }
             break
         default:
-            if let classSelectedBreakout = classSelected.breakout?.valueForKey("breakoutID") as? String {
+            if let classSelectedBreakout = classSelected.breakout?.valueForKey("id") as? Int {
                 let canSave = self.isBreakoutAvailable(classSelectedBreakout, allClasses: currentlySavedClasses)
                 if canSave {
                     ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected, completion: { (succeeded) in
@@ -105,10 +105,12 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
       }
     }
     
-    func isBreakoutAvailable(newClassBreakout:String, allClasses:[ClassScheduled]) -> Bool {
+    func isBreakoutAvailable(newClassBreakout:Int, allClasses:[ClassScheduled]) -> Bool {
         for possibleClass in allClasses {
-            if possibleClass.breakOut?.valueForKey("id") as? String == newClassBreakout {
-                return false
+            if let possibleClassBreakout = possibleClass.breakOut?.valueForKey("id") as? Int {
+                 if possibleClassBreakout == newClassBreakout {
+                    return false
+                }
             }
         }
     return true

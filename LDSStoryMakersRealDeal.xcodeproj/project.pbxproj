@@ -202,6 +202,7 @@
 		8792D0E21C7C22110029E532 /* DetailBreakoutView */ = {
 			isa = PBXGroup;
 			children = (
+				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
 				8792D0E71C7CDD500029E532 /* DetailBreakoutVC.swift */,
 				8792D0E91C7CDDF00029E532 /* DetailBreakoutDataSource.swift */,
 				8792D0EB1C7CE2010029E532 /* PresentationCell.swift */,
@@ -227,7 +228,6 @@
 				878E2ECA1C8274D30050D934 /* NextClassCell.swift */,
 				878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */,
 				87D35D541C88D4500009EFF1 /* ViewFullScheduleCell.swift */,
-				87D35D581C88D99D0009EFF1 /* FullPersonalSchedule */,
 			);
 			name = HomeVC;
 			sourceTree = "<group>";
@@ -238,6 +238,7 @@
 				87B070371C78251600014DD1 /* FullScheduleViewController.swift */,
 				87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */,
 				87F1D39F1C7A988100D6AA87 /* BreakoutCell.swift */,
+				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
 			);
 			name = FullConferenceScheduleVC;
 			sourceTree = "<group>";
@@ -285,9 +286,8 @@
 				8738111F1C76645C00F4A2D1 /* Controllers */,
 				878153911C6C0D380042F4EB /* DataModel */,
 				87D257FC1C79959E000368FC /* HomeVC */,
+				87D35D581C88D99D0009EFF1 /* FullPersonalSchedule */,
 				87D257FD1C7995AA000368FC /* FullConferenceScheduleVC */,
-				8792D0E21C7C22110029E532 /* DetailBreakoutView */,
-				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
 				87BACC2F1C9A524C003E917C /* Settings */,
 				87F0AB291C9A4B370074D3C0 /* Launch Screen.storyboard */,
 				875D55F01C92830E00EEF930 /* Assets.xcassets */,

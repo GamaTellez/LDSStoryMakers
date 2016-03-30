@@ -19,7 +19,6 @@ class PersonalScheduleCell: UITableViewCell {
     @IBOutlet var extraBackGRoundView: UIView!
     
     var delegate:ClassScheduledDeletedDelegate?
-
     override func awakeFromNib() {
         super.awakeFromNib()
         self.removeClassButton.layer.cornerRadius = self.removeClassButton.bounds.width/2

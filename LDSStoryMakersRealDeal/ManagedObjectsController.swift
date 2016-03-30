@@ -359,7 +359,6 @@ class ManagedObjectsController: NSObject {
         let allScheduledClassesRequest = NSFetchRequest(entityName: "ClassScheduled")
         allScheduledClassesRequest.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true)]
        return self.fetchRequestExecuter(allScheduledClassesRequest)
-        
     }
     
     func getAllBreakoutsFromCoreDataByDate() -> [AnyObject] {

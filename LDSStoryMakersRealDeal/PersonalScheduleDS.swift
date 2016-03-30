@@ -93,5 +93,4 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
             }
         }
     }
-    
 }
