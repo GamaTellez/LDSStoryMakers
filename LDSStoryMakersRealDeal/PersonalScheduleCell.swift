@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ClassScheduledDeletedDelegate {
-    func indexOfClassDeletedInTableView(row:Int)
+    func indexOfClassDeletedInTableView(row:Int, table:UITableView)
 }
 
 class PersonalScheduleCell: UITableViewCell {
@@ -19,6 +19,7 @@ class PersonalScheduleCell: UITableViewCell {
     @IBOutlet var extraBackGRoundView: UIView!
     
     var delegate:ClassScheduledDeletedDelegate?
+    var tableView:UITableView?
     override func awakeFromNib() {
         super.awakeFromNib()
         self.removeClassButton.layer.cornerRadius = self.removeClassButton.bounds.width/2
@@ -42,7 +43,7 @@ class PersonalScheduleCell: UITableViewCell {
     
     @IBAction func removeClassButtonTapped(sender: AddRemoveClass) {
         if let row = sender.section {
-        self.delegate?.indexOfClassDeletedInTableView(row)
+        self.delegate?.indexOfClassDeletedInTableView(row, table: self.tableView!)
         }
     }
 }

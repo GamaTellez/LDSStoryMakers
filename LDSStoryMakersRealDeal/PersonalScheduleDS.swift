@@ -50,6 +50,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
             let cell = tableView.dequeueReusableCellWithIdentifier(cellID) as! PersonalScheduleCell
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = .None
+            cell.tableView = tableView
             cell.delegate = self
             cell.removeClassButton.section = indexPath.row
             var startTimeString = ""
@@ -83,12 +84,17 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.classesScheduled.count
     }
-    func indexOfClassDeletedInTableView(row: Int) {
+    func indexOfClassDeletedInTableView(row:Int, table:UITableView) {
          let classToDelete = self.classesScheduled[row]
         ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete) { (succedeed) in
             if (succedeed == true) {
                 NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let path = NSIndexPath(forRow: row, inSection:0);
+                    self.classesScheduled.removeAtIndex(row)
+                    table.deleteRowsAtIndexPaths([path], withRowAnimation: .Fade)
+                }
+                    } else {
                 print("failed to delete class from personal schedule")
             }
         }

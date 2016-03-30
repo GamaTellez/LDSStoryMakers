@@ -202,11 +202,11 @@
 		8792D0E21C7C22110029E532 /* DetailBreakoutView */ = {
 			isa = PBXGroup;
 			children = (
-				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
 				8792D0E71C7CDD500029E532 /* DetailBreakoutVC.swift */,
 				8792D0E91C7CDDF00029E532 /* DetailBreakoutDataSource.swift */,
 				8792D0EB1C7CE2010029E532 /* PresentationCell.swift */,
 				87C416751C7F915E00D99E17 /* AddRemoveClass.swift */,
+				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
 			);
 			name = DetailBreakoutView;
 			sourceTree = "<group>";

@@ -181,7 +181,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                         let indexpathOfSelectedBreakout = self.tableView.indexPathForSelectedRow
                         if let sectionBreakout = indexpathOfSelectedBreakout?.section {
                             let selectedBreakout = self.fridayBreakouts[sectionBreakout]
-                            print(selectedBreakout.id)
+                           // print(selectedBreakout.id)
                             let breakoutDetailVC = segue.destinationViewController as! DetailBreakoutVC
                             if let startDate = selectedBreakout.valueForKey("startTime") as? NSDate {
                                 if let endDate = selectedBreakout.valueForKey("endTime") as? NSDate {
