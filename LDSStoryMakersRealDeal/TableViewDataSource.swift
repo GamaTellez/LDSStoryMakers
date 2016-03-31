@@ -22,12 +22,13 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             let scheduledClass = self.classesInSchedule[indexPath.row]
             let cell = tableView.dequeueReusableCellWithIdentifier(self.kNextClassCellID, forIndexPath: indexPath) as! NextClassCell
             cell.backgroundColor = UIColor.clearColor()
+            cell.classDescription.setContentOffset(CGPointZero, animated: true)
             cell.speakerBioButton.tag = indexPath.section
             cell.delegate = self
             cell.selectionStyle = .None
             if scheduledClass.valueForKey("speaker") == nil {
                 cell.speakerBioButton.alpha = 0.4
-                cell.speakerBioButton.hidden = true
+                cell.speakerBioButton.enabled = false
             }
             
             if let start = scheduledClass.breakOut?.valueForKey("startTime") as? NSDate {

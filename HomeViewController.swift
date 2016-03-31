@@ -39,7 +39,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         } else {
             self.presentWaitingLoadingView(with: "Welcome To LDStorymakers 2016")
             self.enableAndDisableTabBarItems(false)
-            
         }
         self.setUpLabelsApperance()
         self.setBackgroundImageView()
@@ -138,13 +137,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
     }
     
-    func updatePersonalSchedule(notification:NSNotification) {
-       // print("we are receiving the notifixation")
-            if let classObject = notification.userInfo!["classSelected"] as? ClassToSchedule {
-                   print(classObject)
-            }
-    }
-    
     func updateTableViewData(from arrayOfClasses:[ClassScheduled]) {
         self.tableViewDataSource.updateArrayForDataSource(arrayOfClasses)
         self.tableView.reloadData()
@@ -185,8 +177,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 210
-        
+            return 248
         default:
             if indexPath.row == 3 {
             return 40

@@ -25,9 +25,14 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.setBackgroundImageView()
         self.setViewsAppearance()
         self.setUpViewsContent()
-        
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let desiredOffset = CGPoint(x: 0, y: -self.classDescriptionTextView.contentInset.top)
+            self.classDescriptionTextView.setContentOffset(desiredOffset, animated: false)
+        })
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,9 +66,8 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.feecBackButtom.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
         self.classLocationLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
         self.classDescriptionTextView.backgroundColor = UIColor.clearColor()
-        
-        
     }
+    
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         return false
     }

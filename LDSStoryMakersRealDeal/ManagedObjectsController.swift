@@ -47,7 +47,7 @@ class ManagedObjectsController: NSObject {
         }
         
         if let breakoutIDDict = arrayWithInfoDictionaries[4] as? NSDictionary {
-            print(breakoutIDDict)
+            //print(breakoutIDDict)
             if let breakId = breakoutIDDict.objectForKey("v") as? Int {
                 newBreakout.setValue(NSNumber(integer:breakId), forKey: "id")
             }

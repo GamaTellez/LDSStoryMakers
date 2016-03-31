@@ -37,6 +37,11 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
         self.speakerBioButton.layer.cornerRadius = 10
         self.speakerBioButton.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.speakerBioButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        dispatch_async(dispatch_get_main_queue(), {
+            let desiredOffset = CGPoint(x: 0, y: -self.classDescription.contentInset.top)
+            self.classDescription.setContentOffset(desiredOffset, animated: false)
+        })
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
