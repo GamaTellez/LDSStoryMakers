@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeletedDelegate {
+class PersonalScheduleDS: NSObject, UITableViewDataSource {
     var classesScheduled:[ClassScheduled] = []
     let cellID = "classCell"
     let mandatoryClassCell = "mandatoryClassCell"
@@ -51,8 +51,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = .None
             cell.tableView = tableView
-            cell.delegate = self
-            cell.removeClassButton.section = indexPath.row
+            //cell.removeClassButton.tag = indexPath.row
             var startTimeString = ""
             var endTimeString = ""
             var location = ""
@@ -84,18 +83,19 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource, ClassScheduledDeleted
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.classesScheduled.count
     }
-    func indexOfClassDeletedInTableView(row:Int, table:UITableView) {
-         let classToDelete = self.classesScheduled[row]
-        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete) { (succedeed) in
-            if (succedeed == true) {
-                NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-                    let path = NSIndexPath(forRow: row, inSection:0);
-                    print(path)
-                    self.classesScheduled.removeAtIndex(row)
-                    table.deleteRowsAtIndexPaths([path], withRowAnimation: .Fade)
-                    } else {
-                print("failed to delete class from personal schedule")
-            }
-        }
-    }
+//    func indexOfClassDeletedInTableView(row:Int, table:UITableView) {
+//         let classToDelete = self.classesScheduled[row]
+//        ManagedObjectsController.sharedInstance.deleteScheduledClass(classToDelete) { (succedeed) in
+//            if (succedeed == true) {
+//                NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+//                    let path = NSIndexPath(forRow: row, inSection:0);
+//                    print(path)
+//                    self.classesScheduled.removeAtIndex(row)
+//                    self.updateDataSource(self.classesScheduled)
+//                    table.deleteRowsAtIndexPaths([path], withRowAnimation: .Fade)
+//                    } else {
+//                print("failed to delete class from personal schedule")
+//            }
+//        }
+//    }
 }

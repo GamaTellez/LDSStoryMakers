@@ -35,7 +35,6 @@
 		87B0703A1C78C9BD00014DD1 /* ManagedObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */; };
 		87BACC2E1C9A523A003E917C /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BACC2D1C9A523A003E917C /* SettingsVC.swift */; };
 		87C416741C7F6B1F00D99E17 /* SpeakerBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */; };
-		87C416761C7F915E00D99E17 /* AddRemoveClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416751C7F915E00D99E17 /* AddRemoveClass.swift */; };
 		87C416A81C7FAAEA00D99E17 /* ClassToSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */; };
 		87D257FF1C79A2C1000368FC /* BreakoutsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */; };
 		87D35D551C88D4500009EFF1 /* ViewFullScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D35D541C88D4500009EFF1 /* ViewFullScheduleCell.swift */; };
@@ -100,7 +99,6 @@
 		87B070391C78C9BD00014DD1 /* ManagedObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsController.swift; sourceTree = "<group>"; };
 		87BACC2D1C9A523A003E917C /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		87C416731C7F6B1F00D99E17 /* SpeakerBioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerBioView.swift; sourceTree = "<group>"; };
-		87C416751C7F915E00D99E17 /* AddRemoveClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRemoveClass.swift; sourceTree = "<group>"; };
 		87C416A71C7FAAEA00D99E17 /* ClassToSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassToSchedule.swift; path = ../ClassToSchedule.swift; sourceTree = "<group>"; };
 		87D257FE1C79A2C1000368FC /* BreakoutsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutsDataSource.swift; sourceTree = "<group>"; };
 		87D35D541C88D4500009EFF1 /* ViewFullScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFullScheduleCell.swift; sourceTree = "<group>"; };
@@ -122,7 +120,7 @@
 		87F21A2A1C69360300C2EAA4 /* LDSStoryMakersRealDealUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDSStoryMakersRealDealUITests.swift; sourceTree = "<group>"; };
 		87F21A2C1C69360300C2EAA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87F21A381C69380A00C2EAA4 /* NSURLSessionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionController.swift; sourceTree = "<group>"; };
-		87F330F01CA22771004E90BD /* WAActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WAActivityIndicatorView; sourceTree = "<group>"; };
+		87F330F01CA22771004E90BD /* WAActivityIndicatorView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WAActivityIndicatorView; path = LDSStoryMakersRealDeal/WAActivityIndicatorView; sourceTree = "<group>"; };
 		87F330F21CA23ECA004E90BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A0E924C83E9CB8454AFE5EE7 /* Pods-LDSStoryMakersRealDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LDSStoryMakersRealDeal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LDSStoryMakersRealDeal/Pods-LDSStoryMakersRealDeal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,7 +203,6 @@
 				8792D0E71C7CDD500029E532 /* DetailBreakoutVC.swift */,
 				8792D0E91C7CDDF00029E532 /* DetailBreakoutDataSource.swift */,
 				8792D0EB1C7CE2010029E532 /* PresentationCell.swift */,
-				87C416751C7F915E00D99E17 /* AddRemoveClass.swift */,
 				8741B1E41C7E2BD500EFAA8B /* ClassDetailView */,
 			);
 			name = DetailBreakoutView;
@@ -214,7 +211,6 @@
 		87BACC2F1C9A524C003E917C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				87F330F01CA22771004E90BD /* WAActivityIndicatorView */,
 				87BACC2D1C9A523A003E917C /* SettingsVC.swift */,
 			);
 			name = Settings;
@@ -258,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				87F21A061C69360300C2EAA4 /* LDSStoryMakersRealDeal */,
+				87F330F01CA22771004E90BD /* WAActivityIndicatorView */,
 				87F21A1E1C69360300C2EAA4 /* LDSStoryMakersRealDealTests */,
 				87F21A291C69360300C2EAA4 /* LDSStoryMakersRealDealUITests */,
 				87F21A051C69360200C2EAA4 /* Products */,
@@ -551,7 +548,6 @@
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,
 				87616FCD1CAC26A6007A996A /* ClassScheduled.swift in Sources */,
-				87C416761C7F915E00D99E17 /* AddRemoveClass.swift in Sources */,
 				87616FC51CAC26A6007A996A /* ScheduleItem.swift in Sources */,
 				878E2ECB1C8274D30050D934 /* NextClassCell.swift in Sources */,
 			);

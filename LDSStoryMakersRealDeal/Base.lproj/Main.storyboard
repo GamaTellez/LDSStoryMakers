@@ -283,55 +283,57 @@
                                                     <rect key="frame" x="14" y="8" width="573" height="103"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsw-Ex-qCo">
-                                                            <rect key="frame" x="114" y="0.0" width="451" height="41"/>
+                                                            <rect key="frame" x="8" y="0.0" width="557" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqc-qF-2yJ">
-                                                            <rect key="frame" x="114" y="49" width="451" height="36"/>
+                                                            <rect key="frame" x="8" y="49" width="557" height="36"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="36" id="hxe-iK-PQA"/>
+                                                                <constraint firstAttribute="height" constant="36" id="JgI-Qn-Mee"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ori-h8-tEs" customClass="AddRemoveClass" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ori-h8-tEs">
                                                             <rect key="frame" x="14" y="13" width="69" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="69" id="vJF-3Z-68W"/>
                                                             </constraints>
-                                                            <connections>
-                                                                <action selector="removeClassButtonTapped:" destination="mnS-xn-tci" eventType="touchUpInside" id="nnu-MN-duY"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="mqc-qF-2yJ" secondAttribute="leading" id="3XI-Qj-LaY"/>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="qOC-u3-YzT" secondAttribute="trailingMargin" id="7hT-7A-xK5"/>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" id="LMQ-Rk-KgV"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="qOC-u3-YzT" secondAttribute="trailingMargin" id="CJb-wS-0S0"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="mqc-qF-2yJ" secondAttribute="leading" id="FJW-Rc-H7w"/>
+                                                        <constraint firstAttribute="bottom" secondItem="mqc-qF-2yJ" secondAttribute="bottom" constant="18" id="HKt-GR-ZcG"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="qOC-u3-YzT" secondAttribute="leadingMargin" id="I3s-pf-JgA"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="mqc-qF-2yJ" secondAttribute="trailing" id="KsC-8N-n4Z"/>
                                                         <constraint firstAttribute="bottom" secondItem="Ori-h8-tEs" secondAttribute="bottom" constant="10" id="SIW-FC-RiJ"/>
                                                         <constraint firstItem="Ori-h8-tEs" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" constant="13" id="aKu-70-Anf"/>
-                                                        <constraint firstItem="mqc-qF-2yJ" firstAttribute="top" secondItem="bsw-Ex-qCo" secondAttribute="bottom" constant="8" symbolic="YES" id="hXs-QO-ij1"/>
-                                                        <constraint firstAttribute="bottom" secondItem="mqc-qF-2yJ" secondAttribute="bottom" constant="18" id="kzs-DK-0Tk"/>
+                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="top" secondItem="qOC-u3-YzT" secondAttribute="top" id="jxA-CU-hdR"/>
                                                         <constraint firstItem="Ori-h8-tEs" firstAttribute="leading" secondItem="qOC-u3-YzT" secondAttribute="leading" constant="14" id="qN0-pM-lmg"/>
-                                                        <constraint firstItem="bsw-Ex-qCo" firstAttribute="trailing" secondItem="mqc-qF-2yJ" secondAttribute="trailing" id="sSq-pe-59g"/>
+                                                        <constraint firstItem="mqc-qF-2yJ" firstAttribute="top" secondItem="bsw-Ex-qCo" secondAttribute="bottom" constant="8" symbolic="YES" id="upP-01-qgj"/>
                                                         <constraint firstItem="bsw-Ex-qCo" firstAttribute="leading" secondItem="Ori-h8-tEs" secondAttribute="trailing" constant="31" id="yVd-1P-yGG"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="subviews">
+                                                            <exclude reference="Ori-h8-tEs"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="centerX" secondItem="5Je-YB-1sV" secondAttribute="centerX" id="3Ef-Ac-7ep"/>
-                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="top" secondItem="5Je-YB-1sV" secondAttribute="topMargin" id="E9A-Kc-ed3"/>
-                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="leading" secondItem="5Je-YB-1sV" secondAttribute="leadingMargin" constant="6" id="rgw-RZ-XZc"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="qOC-u3-YzT" secondAttribute="bottom" constant="12" id="wfn-Em-eI9"/>
+                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="leading" secondItem="5Je-YB-1sV" secondAttribute="leadingMargin" constant="6" id="THT-pm-Zgb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qOC-u3-YzT" secondAttribute="bottom" constant="12" id="XUq-1F-qq6"/>
+                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="top" secondItem="5Je-YB-1sV" secondAttribute="topMargin" id="gh8-p0-pQM"/>
+                                                <constraint firstItem="qOC-u3-YzT" firstAttribute="centerX" secondItem="5Je-YB-1sV" secondAttribute="centerX" id="p7h-mk-vXl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="classAndSpeakerLabel" destination="mqc-qF-2yJ" id="rH8-DC-aY9"/>
                                             <outlet property="extraBackGRoundView" destination="qOC-u3-YzT" id="BAH-Zv-z3k"/>
-                                            <outlet property="removeClassButton" destination="Ori-h8-tEs" id="fbs-6h-zj3"/>
                                             <outlet property="timeAndLocationLabel" destination="bsw-Ex-qCo" id="OKe-mZ-46b"/>
                                             <segue destination="lgg-gX-Cpn" kind="show" identifier="scheduledClassDetail" id="4w5-2e-V1N"/>
                                         </connections>
@@ -995,6 +997,6 @@
         <image name="rsz_calendaradd" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MKO-8W-aej"/>
+        <segue reference="4w5-2e-V1N"/>
     </inferredMetricsTieBreakers>
 </document>

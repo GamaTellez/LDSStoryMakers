@@ -35,8 +35,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesfullySaved, object: nil)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesFullyDeleted, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataFromPersonalVC), name: self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesFullyDeleted, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataFromPersonalVC), name: self.itemSuccesFullyDeletedFromPersonalView, object: nil)
     }
 
     func setUpViews() {
@@ -117,9 +117,40 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 119
     }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    
+        let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
+            if self.segmentedController.selectedSegmentIndex == 0 {
+                let classSelected = self.friday[indexPath.row]
+                print(classSelected.presentation?.valueForKey("title"))
+                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
+                    if (succedeed) {
+                        self.friday.removeAtIndex(indexPath.row)
+                        self.dataSource.updateDataSource(self.friday)
+                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+                    }
+                })
+            } else {
+                let classSelected = self.saturday[indexPath.row]
+                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
+                    if (succedeed) {
+                        self.saturday.removeAtIndex(indexPath.row)
+                        self.dataSource.updateDataSource(self.saturday)
+                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+                    }
+                })
+            }
+        }
+            return [deleteClassRowAction];
+    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segueId = segue.identifier {
