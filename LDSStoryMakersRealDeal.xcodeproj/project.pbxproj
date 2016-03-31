@@ -25,6 +25,7 @@
 		87616FCB1CAC26A6007A996A /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87616FBF1CAC26A6007A996A /* Presentation.swift */; };
 		87616FCC1CAC26A6007A996A /* ClassScheduled+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87616FC01CAC26A6007A996A /* ClassScheduled+CoreDataProperties.swift */; };
 		87616FCD1CAC26A6007A996A /* ClassScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87616FC11CAC26A6007A996A /* ClassScheduled.swift */; };
+		87616FD11CACC0FD007A996A /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87616FD01CACC0FD007A996A /* SettingsDataSource.swift */; };
 		8774D89C1C976B3600136514 /* MandatoryClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8774D89B1C976B3600136514 /* MandatoryClassCell.swift */; };
 		878E2ECB1C8274D30050D934 /* NextClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECA1C8274D30050D934 /* NextClassCell.swift */; };
 		878E2ECF1C8285600050D934 /* UpcomingClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */; };
@@ -89,6 +90,7 @@
 		87616FBF1CAC26A6007A996A /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		87616FC01CAC26A6007A996A /* ClassScheduled+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClassScheduled+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		87616FC11CAC26A6007A996A /* ClassScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassScheduled.swift; sourceTree = "<group>"; };
+		87616FD01CACC0FD007A996A /* SettingsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		8774D89B1C976B3600136514 /* MandatoryClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MandatoryClassCell.swift; sourceTree = "<group>"; };
 		878E2ECA1C8274D30050D934 /* NextClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NextClassCell.swift; path = ../NextClassCell.swift; sourceTree = "<group>"; };
 		878E2ECE1C8285600050D934 /* UpcomingClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpcomingClassCell.swift; path = ../UpcomingClassCell.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				87BACC2D1C9A523A003E917C /* SettingsVC.swift */,
+				87616FD01CACC0FD007A996A /* SettingsDataSource.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				87D35D5C1C88E0CF0009EFF1 /* PersonalScheduleCell.swift in Sources */,
 				87616FC61CAC26A6007A996A /* Speaker+CoreDataProperties.swift in Sources */,
 				8741B1E11C7E117800EFAA8B /* AppAppearance.swift in Sources */,
+				87616FD11CACC0FD007A996A /* SettingsDataSource.swift in Sources */,
 				8741B1E31C7E2BCF00EFAA8B /* ClassDetailView.swift in Sources */,
 				87F21A101C69360300C2EAA4 /* LDSStoryMakersRealDeal.xcdatamodeld in Sources */,
 				87F21A391C69380A00C2EAA4 /* NSURLSessionController.swift in Sources */,

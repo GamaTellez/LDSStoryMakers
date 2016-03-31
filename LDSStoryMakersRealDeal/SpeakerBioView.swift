@@ -27,10 +27,17 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         self.setUpViews()
         self.setViewContent()
         self.setBackgroundImageView()
-        self.registerForNotifications()
+//        self.registerForNotifications()
     }
     override func viewWillDisappear(animated: Bool) {
         self.removeObserverFromNotifications()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let desiredOffset = CGPoint(x: 0, y: -self.bioTextView.contentInset.top)
+            self.bioTextView.setContentOffset(desiredOffset, animated: false)
+        })
     }
     
     func setUpViews() {
@@ -71,9 +78,9 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         }
     }
     
-    func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SpeakerBioView.imageFetchFailAlert), name: failedToFetchTheSpeakerImage, object: nil)
-    }
+//    func registerForNotifications() {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SpeakerBioView.imageFetchFailAlert), name: failedToFetchTheSpeakerImage, object: nil)
+//    }
     
     func imageFetchFailAlert() {
         let imageFailedAlert  = UIAlertController(title: "Error", message: "We apologize, there is no image available", preferredStyle: UIAlertControllerStyle.Alert)
