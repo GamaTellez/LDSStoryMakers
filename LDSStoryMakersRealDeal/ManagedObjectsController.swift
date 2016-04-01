@@ -16,9 +16,7 @@ class ManagedObjectsController: NSObject {
 
     let classFromPersonalScheduleDeleted = "classFromPersonalScheduleDeleted"
     lazy var userDefaults = NSUserDefaults.standardUserDefaults()
-    
 //    let privateManagedContext:NSManagedObjectContext
-    
     override init() {
         self.managedContext = ((UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext)!        
     }
@@ -287,7 +285,7 @@ class ManagedObjectsController: NSObject {
         }
         self.saveToCoreData { (succesful) in
             
-        }
+            }
         }
     }
     
@@ -311,9 +309,6 @@ class ManagedObjectsController: NSObject {
         
         return exists
     }
-
-    
-    
     
     //NOTIFICATIONS
     func createAndSaveNotificationsFromArray(arrayWithInfoDict:NSArray) {

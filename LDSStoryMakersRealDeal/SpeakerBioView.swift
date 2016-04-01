@@ -60,6 +60,10 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
                 self.speakerNameLabel.text = spakerName
             }
             if let speakerBio = currentSpeaker.speakerBio {
+                let style = NSMutableParagraphStyle()
+                style.lineSpacing = 20
+                style.alignment = NSTextAlignment.Justified
+                self.classDescriptionTextView.attributedText = NSAttributedString(string: speakerBio, attributes: [NSParagraphStyleAttributeName: style])
                 self.bioTextView.text = speakerBio
             }
         }

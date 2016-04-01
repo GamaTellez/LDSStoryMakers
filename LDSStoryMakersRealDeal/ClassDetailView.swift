@@ -33,6 +33,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
             self.classDescriptionTextView.setContentOffset(desiredOffset, animated: false)
         })
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -91,7 +92,10 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
             }
             
             if let classDescription = currentClass.presentation?.presentationDescription {
-                self.classDescriptionTextView.text = classDescription
+                let style = NSMutableParagraphStyle()
+                style.lineSpacing = 20
+                style.alignment = NSTextAlignment.Justified
+                self.classDescriptionTextView.attributedText = NSAttributedString(string: classDescription, attributes: [NSParagraphStyleAttributeName: style])
             }
             if let speakerName = currentClass.presentation?.speakerName {
                 self.speakerButton.setTitle(speakerName, forState: .Normal)

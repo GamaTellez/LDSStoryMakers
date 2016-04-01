@@ -22,7 +22,7 @@ class BreakoutsDataSource: NSObject, UITableViewDataSource {
         let breakoutAtIndex = self.breakoutsByDay[indexPath.section]
         if let startDate = breakoutAtIndex.valueForKey("startTime") as? NSDate {
             if let endDate = breakoutAtIndex.valueForKey("endTime") as? NSDate {
-                cell?.breakoutLabel.text = String(format:"Breakout %@ \n  %@ to %@", breakoutAtIndex.breakoutID!,NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                cell?.breakoutLabel.text = String(format:"Breakout %@ \n  %@ - %@", breakoutAtIndex.breakoutID!,NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle),NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
             }
         }
         
