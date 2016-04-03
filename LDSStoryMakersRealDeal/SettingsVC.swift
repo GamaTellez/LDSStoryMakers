@@ -24,8 +24,10 @@ class SettingsVC: UIViewController, UITableViewDelegate, NotificationsToggledDel
     }
     
     func setBackgroundImageView() {
-        self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
-        self.view.backgroundColor = UIColor.clearColor()
+       // self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
+        //self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
+
     }
 
     func setUpStatusBarBackground() {

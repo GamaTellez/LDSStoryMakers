@@ -45,13 +45,15 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         self.speakerNameLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.speakerNameLabel.textColor = UIColor.whiteColor()
         self.bioTextView.backgroundColor = UIColor.clearColor()
+        self.bioTextView.font = UIFont(name: "AmericanTypewriter", size: 18)
         self.activityIndicator.startAnimating()
         self.activityIndicator.alpha = 1
     }
     
     func setBackgroundImageView() {
-        self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
-        self.view.backgroundColor = UIColor.clearColor()
+      //  self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
+        //self.view.backgroundColor = UIColor.clearColor()
+
     }
     
     func setViewContent() {
@@ -60,11 +62,14 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
                 self.speakerNameLabel.text = spakerName
             }
             if let speakerBio = currentSpeaker.speakerBio {
-                let style = NSMutableParagraphStyle()
-                style.lineSpacing = 20
-                style.alignment = NSTextAlignment.Justified
-                self.classDescriptionTextView.attributedText = NSAttributedString(string: speakerBio, attributes: [NSParagraphStyleAttributeName: style])
+//                let style = NSMutableParagraphStyle()
+//                style.lineSpacing = 20
+//                style.alignment = NSTextAlignment.Justified
+//                self.bioTextView.attributedText = NSAttributedString(string: speakerBio, attributes: [NSParagraphStyleAttributeName: style])
+                self.bioTextView.font = UIFont(name: "AmericanTypewriter", size: 18)
+                self.bioTextView.textAlignment = NSTextAlignment.Center
                 self.bioTextView.text = speakerBio
+                //font size 18
             }
         }
         if let speakerName = self.speakerSelected?.valueForKey("imageName") as? String {

@@ -21,6 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        let permissionDenied = notificationSettings.types
+        print(permissionDenied)
+        if notificationSettings.types != UIUserNotificationType.None {
+            print("local notifications were accepted")
+            ManagedObjectsController.sharedInstance.createdFeedBackNotifications()
+            
+        } else {
+            print("local notifiations were not accepted")
+        }
+1    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

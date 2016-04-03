@@ -582,6 +582,27 @@ class ManagedObjectsController: NSObject {
             print(error.localizedDescription)
         }
     }
+    func requestPermissionForNotification() {
+        let notificationSettings = UIApplication.sharedApplication().currentUserNotificationSettings()
+        if notificationSettings?.types == UIUserNotificationType.None {
+            if UIApplication.instancesRespondToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
+                UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes:[ .Alert, .Sound, .Badge], categories: nil))
+            }
+        }
+    }
+    
+    func createdFeedBackNotifications() {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let fridayNotification = UILocalNotification()
+        fridayNotification.alertBody = "Had a good day today? We would like to hear what you think"
+        fridayNotification.alertAction = "Open feedBack Link"
+        fridayNotification.soundName = UILocalNotificationDefaultSoundName
+        fridayNotification.fireDate = dateFormatter.dateFromString("04-02-2016 12:24")
+        fridayNotification.applicationIconBadgeNumber = 1
+        UIApplication.sharedApplication().scheduleLocalNotification(fridayNotification)
+
+    }
 }
 
 

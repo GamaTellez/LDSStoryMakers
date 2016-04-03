@@ -40,8 +40,9 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
     }
     
     func setBackgroundImageView() {
-        self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
-        self.view.backgroundColor = UIColor.clearColor()
+        //self.backGroundImage.image = UIImage(named: "white-paper-textureBackground")
+        //self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
     }
     
     func setViewsAppearance() {
@@ -90,12 +91,15 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
             } else {
                 self.classLocationLabel.text = "To be determined"
             }
-            
             if let classDescription = currentClass.presentation?.presentationDescription {
-                let style = NSMutableParagraphStyle()
-                style.lineSpacing = 20
-                style.alignment = NSTextAlignment.Justified
-                self.classDescriptionTextView.attributedText = NSAttributedString(string: classDescription, attributes: [NSParagraphStyleAttributeName: style])
+                //let style = NSMutableParagraphStyle()
+                //style.lineSpacing = 20
+                //style.alignment = NSTextAlignment.Justified
+                //self.classDescriptionTextView.attributedText = NSAttributedString(string: classDescription, attributes:[NSParagraphStyleAttributeName: style])
+                //set SanFranciscoDisplay-Thin as the font of the text
+                self.classDescriptionTextView.font = (UIFont(name: "AmericanTypewriter", size: 18))
+                self.classDescriptionTextView.text = classDescription
+                self.classDescriptionTextView.textAlignment = NSTextAlignment.Center
             }
             if let speakerName = currentClass.presentation?.speakerName {
                 self.speakerButton.setTitle(speakerName, forState: .Normal)

@@ -75,6 +75,7 @@ class SettingsDataSource: NSObject, UITableViewDataSource {
     }
     
     func checkIfNotificationSettingIsOn() -> Bool {
+
         if let localNotifications = self.defaults.valueForKey("localNotifications") as? Bool {
             if localNotifications {
                 return true

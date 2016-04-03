@@ -18,7 +18,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var addClassButton: UIButton!
     @IBOutlet var labelTitle: UILabel!
     @IBOutlet var refreshButton: UIButton!
-    
     lazy var conteinerView = UIView()
     lazy var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -44,16 +43,17 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.setBackgroundImageView()
         self.setUpTablewView()
         self.registerForNotifications()
-        self.getAllClassesAndPassedToDataSource()
+        self.getAllClassesAndPassToDataSource()
         self.setUpButtons()
         self.setUpStatusBarBackground()
         self.getNewestNotification()
     }
     
+    
     func getNewestNotification(){
         NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Notifications") { (finished) -> Void in
-            if let newNot = ManagedObjectsController.sharedInstance.getNotification("mostRecent") as? [Notification] {
-                if let recentNot = newNot.first {
+            if let newNots = ManagedObjectsController.sharedInstance.getNotification("mostRecent") as? [Notification] {
+                if let recentNot = newNots.first {
                     self.newestNotification = recentNot
                     if let notificationMessage = self.newestNotification?.valueForKey("notificationInfo") as? String {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -96,13 +96,13 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                     }
                 })
             }
-        self.getAllClassesAndPassedToDataSource()
+        self.getAllClassesAndPassToDataSource()
         self.removeAndStopBlurryView()
         self.defaults.setBool(false, forKey: "firstLaunch")
         self.defaults.synchronize()
     }
     
-    func getAllClassesAndPassedToDataSource() {
+    func getAllClassesAndPassToDataSource() {
         if let allClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
             if allClasses.isEmpty {
                 print("have to wait until finshed downloading items")
@@ -111,6 +111,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                     self.tableView.alpha = 1
                 })
                 self.updateTableViewData(from: allClasses)
+                 ManagedObjectsController.sharedInstance.requestPermissionForNotification()
             }
         }
     }
@@ -120,8 +121,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
 
     func setBackgroundImageView() {
-        self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
-        self.view.backgroundColor = UIColor.clearColor()
+     //   self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
+        //self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
     }
     
     func setUpTablewView() {
@@ -150,7 +152,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Upcoming Class")
             break
         default:
-            viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Next Class")
+            viewForHeader = self.makeViewForTableViewHeaders(withTitle: "Next")
             break
         }        
         return viewForHeader

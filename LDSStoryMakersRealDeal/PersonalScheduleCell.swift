@@ -16,14 +16,14 @@ class PersonalScheduleCell: UITableViewCell {
     @IBOutlet var timeAndLocationLabel: UILabel!
     @IBOutlet var classAndSpeakerLabel: UILabel!
     //@IBOutlet var removeClassButton: UIButton!
-    @IBOutlet var extraBackGRoundView: UIView!
+  //  @IBOutlet var extraBackGRoundView: UIView!
     
     //var delegate:ClassScheduledDeletedDelegate?
     var tableView:UITableView?
     override func awakeFromNib() {
         super.awakeFromNib()
     //    self.removeClassButton.layer.cornerRadius = self.removeClassButton.bounds.width/2
-        self.extraBackGRoundView.backgroundColor = UIColor.whiteColor()
+    //    self.extraBackGRoundView.backgroundColor = UIColor.whiteColor()
         self.timeAndLocationLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
         self.timeAndLocationLabel.preferredMaxLayoutWidth = 30
         self.timeAndLocationLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail

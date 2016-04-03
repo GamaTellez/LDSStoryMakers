@@ -213,8 +213,8 @@
 		87BACC2F1C9A524C003E917C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				87BACC2D1C9A523A003E917C /* SettingsVC.swift */,
 				87616FD01CACC0FD007A996A /* SettingsDataSource.swift */,
+				87BACC2D1C9A523A003E917C /* SettingsVC.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";

@@ -21,11 +21,14 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
     var friday:[ClassScheduled] = []
     var saturday:[ClassScheduled] = []
+    var fridayBreakouts:[Breakout] = []
+    var saturdayBreakouts:[Breakout] = []
     let dataSource = PersonalScheduleDS()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAllClassesScheduled()
+        self.getbreakoutsByDay()
         self.setUpViews()
         self.setUpTableViewAndSegmentedController()
         self.registerForNotifications()
@@ -40,10 +43,11 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     }
 
     func setUpViews() {
-        self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
-            let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
-            statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
-            self.navigationController?.navigationBar.addSubview(statusBarView)
+       // self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
+        self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
+        let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
+        statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
+        self.navigationController?.navigationBar.addSubview(statusBarView)
         self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.segmentedController.tintColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
     }
@@ -53,17 +57,17 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
             formatter.dateFormat = "MM-dd-yyyy"
             let friday = formatter.dateFromString("5/6/2016")
             let calendarSorter = NSCalendar.currentCalendar()
-            for itemClass in allClasses {
-                if let start = itemClass.breakOut?.startTime {
+                for itemClass in allClasses {
+                    if let start = itemClass.breakOut?.valueForKey("startTime") as? NSDate {
                     let comparison = calendarSorter.compareDate(friday!, toDate: start, toUnitGranularity: .Day)
-                    if comparison == NSComparisonResult.OrderedSame {
-                        self.friday.append(itemClass)
-                    } else {
-                        self.saturday.append(itemClass)
+                        if comparison == NSComparisonResult.OrderedSame {
+                            self.friday.append(itemClass)
+                        } else {
+                            self.saturday.append(itemClass)
+                        }
                     }
                 }
             }
-        }
 //        print(self.friday.count)
 //        print(self.saturday.count)
     }
@@ -73,7 +77,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.segmentedController.backgroundColor = UIColor.clearColor()
         self.tableView.dataSource = self.dataSource
         self.segmentedController.selectedSegmentIndex = 0
-        self.dataSource.updateDataSource(self.friday)
+        self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
         self.tableView.reloadData()
     }
     
@@ -82,9 +86,9 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.saturday.removeAll()
         self.getAllClassesScheduled()
         if self.segmentedController.selectedSegmentIndex == 0 {
-            self.dataSource.updateDataSource(self.friday)
+            self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
         } else {
-            self.dataSource.updateDataSource(self.saturday)
+            self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
         }
         self.tableView.reloadData()
       }
@@ -94,9 +98,9 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.saturday.removeAll()
         self.getAllClassesScheduled()
         if self.segmentedController.selectedSegmentIndex == 0 {
-            self.dataSource.updateDataSource(self.friday)
+            self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
         } else {
-            self.dataSource.updateDataSource(self.saturday)
+            self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
         }
         self.tableView.reloadData()
     }
@@ -104,11 +108,11 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBAction func segmentedControllerTapped(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.dataSource.updateDataSource(self.friday)
+            self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
             self.tableView.reloadData()
             break
         default:
-            self.dataSource.updateDataSource(self.saturday)
+            self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
             self.tableView.reloadData()
             break
         }
@@ -117,9 +121,18 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+//    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 119
+//    }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 119
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+       let separatorView = UIView(frame: CGRect(x: 8, y: headerView.frame.size.height - 1, width: self.tableView.frame.size.width , height: 1))
+        separatorView.backgroundColor = UIColor.redColor()
+        headerView.addSubview(separatorView)
+        
+        return headerView
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -131,7 +144,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                 ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
                     if (succedeed) {
                         self.friday.removeAtIndex(indexPath.row)
-                        self.dataSource.updateDataSource(self.friday)
+                        self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
                         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                         NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
                     }
@@ -141,7 +154,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                 ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
                     if (succedeed) {
                         self.saturday.removeAtIndex(indexPath.row)
-                        self.dataSource.updateDataSource(self.saturday)
+                        self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
                         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                         NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
                     }
@@ -167,6 +180,27 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
             }
         }
     }
+    
+    func getbreakoutsByDay() {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        let friday = formatter.dateFromString("5/6/2016")
+        if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+            let order = NSCalendar.currentCalendar()
+            for timeBreakout in allBreakouts {
+                    if let dayDate = timeBreakout.valueForKey("startTime") as? NSDate {
+                        let comparison = order.compareDate(friday!, toDate: dayDate, toUnitGranularity: .Day)
+                        if comparison == NSComparisonResult.OrderedSame {
+                            self.fridayBreakouts.append(timeBreakout)
+                        } else {
+                            self.saturdayBreakouts.append(timeBreakout)
+                        }
+                    }
+                
+            }
+        }
+    }
+    
     
     func classToScheduleFromClassScheduled(scheduledClass: ClassScheduled) -> ClassToSchedule {
         let temporarelyClass = ClassToSchedule()

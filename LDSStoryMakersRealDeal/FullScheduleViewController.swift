@@ -63,8 +63,9 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.segmentedController.tintColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
     }
     func setViewControllerBackgroundImage() {
-        self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
-        self.view.backgroundColor = UIColor.clearColor()
+      //  self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
+        //self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
     }
     
     func setUpTableView(){
