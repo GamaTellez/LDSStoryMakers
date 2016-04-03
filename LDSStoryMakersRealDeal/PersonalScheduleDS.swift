@@ -52,13 +52,28 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
             for scheduledClass in self.classesScheduled {
                 if let scheduleClassBreakoutId = scheduledClass.breakOut?.valueForKey("id") as? Int {
                     if breakoutID == scheduleClassBreakoutId {
-                        let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell")
-                        return cell!
+                        if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
+                            var title = ""
+                            var speaker = ""
+                            var location = ""
+                            if let classTitle = scheduledClass.presentation?.valueForKey("title") as? String {
+                                title = classTitle
+                            }
+                            if let classSpeaker = scheduledClass.presentation?.valueForKey("speakerName") as? String {
+                                speaker = classSpeaker
+                            }
+                            if let classLocation = scheduledClass.scheduleItem?.valueForKey("location") as? String {
+                                location = classLocation
+                            }
+                            cell.labelCell.text = String(format:"%@\n%@\n%@", title, speaker, location)
+                            return cell
+                        }
                     }
                 }
             }
             let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
             cell?.textLabel?.text = "Browse Classes for breakout"
+            cell?.textLabel?.textAlignment = .Center
             return cell!
         }
         return UITableViewCell()
