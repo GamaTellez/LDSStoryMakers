@@ -15,15 +15,10 @@ import UIKit
 class PersonalScheduleCell: UITableViewCell {
     @IBOutlet var timeAndLocationLabel: UILabel!
     @IBOutlet var classAndSpeakerLabel: UILabel!
-    //@IBOutlet var removeClassButton: UIButton!
-  //  @IBOutlet var extraBackGRoundView: UIView!
     
-    //var delegate:ClassScheduledDeletedDelegate?
     var tableView:UITableView?
     override func awakeFromNib() {
         super.awakeFromNib()
-    //    self.removeClassButton.layer.cornerRadius = self.removeClassButton.bounds.width/2
-    //    self.extraBackGRoundView.backgroundColor = UIColor.whiteColor()
         self.timeAndLocationLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
         self.timeAndLocationLabel.preferredMaxLayoutWidth = 30
         self.timeAndLocationLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
@@ -32,18 +27,10 @@ class PersonalScheduleCell: UITableViewCell {
         self.classAndSpeakerLabel.preferredMaxLayoutWidth = 30
         self.classAndSpeakerLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.classAndSpeakerLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 15)
-      //  self.removeClassButton.setBackgroundImage(UIImage(named: "removeClass"), forState: .Normal)
-        //self.removeClassButton.backgroundColor = UIColor(red: 0.561, green: 0.008, blue: 0.020, alpha: 1.00)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }
-    
-//    @IBAction func removeClassButtonTapped(sender: AddRemoveClass) {
-//        if let row = sender.section {
-//        self.delegate?.indexOfClassDeletedInTableView(row, table: self.tableView!)
-//        }
-//    }
 }
