@@ -14,6 +14,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
     let cellID = "classCell"
     let mandatoryClassCell = "mandatoryClassCell"
     let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
+    lazy var scheduleItems = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
   
     func updateDataSource(withClasses:[ClassScheduled], breakouts:[Breakout]) {
         self.classesScheduled = withClasses
@@ -31,7 +32,11 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
             if let endDate = breakoutForSection.valueForKey("endTime") as? NSDate {
                 if let breakOutName = breakoutForSection.valueForKey("breakoutID") as? String {
                     if breakOutName.characters.count > 2 {
-                    breakOutString = String(format: "%@ \n%@ - %@ \nlocation", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                        var location = "No Available Location"
+                        if let idTimeBreakout = breakoutForSection.valueForKey("id") as? Int {
+                            location = self.findLocationForBreakout(from: idTimeBreakout)
+                        }
+                        breakOutString = String(format: "%@\n%@ - %@\n%@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), location)
                     } else {
                         breakOutString = String(format: "Breakout %@ \n%@ - %@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
                     }
@@ -42,7 +47,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         let classForCell = self.classesScheduled[indexPath.row]
+         //let classForCell = self.classesScheduled[indexPath.row]
         return UITableViewCell()
         }
 
@@ -55,5 +60,20 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
             }
         }
         return 1
+    }
+    func findLocationForBreakout(from idTimeBreakout:Int) -> String {
+       var location = "no location available"
+        if let allSchedules = self.scheduleItems as? [ScheduleItem] {
+            for itemSchedule  in allSchedules {
+                if let itemScheduleTimeId = itemSchedule.valueForKey("timeId") as? Int {
+                    if itemScheduleTimeId == idTimeBreakout {
+                        if let itemLocation = itemSchedule.valueForKey("location") as? String {
+                            location = itemLocation
+                        }
+                    }
+                }
+            }
+        }
+        return location
     }
 }

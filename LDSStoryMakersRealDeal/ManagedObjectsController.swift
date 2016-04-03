@@ -23,6 +23,7 @@ class ManagedObjectsController: NSObject {
     
     //BREAKOUT
     func createAndSaveBreakoutObjectFromInfoArray(arrayWithInfoDictionaries:NSArray) {
+        print(arrayWithInfoDictionaries)
        let breakoutAlreadyExist = self.checkIfBreakoutExistsAlready(from: arrayWithInfoDictionaries)
         if breakoutAlreadyExist == true {
             //print("breakout already exist")
@@ -101,8 +102,9 @@ class ManagedObjectsController: NSObject {
     func createAndSaveScheduleItemObjectFromArray(arrayWithInfoDicts:NSArray) {
         let scheduleAlreadyExist = self.checkIfScheduleExistsAlready(from: arrayWithInfoDicts)
         if scheduleAlreadyExist == true {
-            print("schedule already exists")
+            //print("schedule already exists")
         } else {
+           // print(arrayWithInfoDicts)
         let newItemSchedule = NSManagedObject(entity: NSEntityDescription.entityForName("ScheduleItem", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let scheduleIdDictionary = arrayWithInfoDicts[0] as? NSDictionary {
             if let schID = scheduleIdDictionary.objectForKey("v") as? Int {
@@ -121,8 +123,12 @@ class ManagedObjectsController: NSObject {
         }
         
         if let itemBreakoutIdDict = arrayWithInfoDicts[3] as? NSDictionary {
+            print(itemBreakoutIdDict)
             if let idNum = itemBreakoutIdDict.objectForKey("v") as? Int {
                 newItemSchedule.setValue(NSNumber(integer: idNum), forKey: "breakout")
+            }
+            if let idString = itemBreakoutIdDict.objectForKey("f") as? String {
+                newItemSchedule.setValue(idString, forKey: "breakoutID")
             }
         }
         
@@ -241,7 +247,7 @@ class ManagedObjectsController: NSObject {
     func createAndSavePresentationManagedObjectFromArrat(arrayWithInfoDicts:NSArray) {
         let presentationAlreadyExist = self.checkIfPresentationsrAlready(from: arrayWithInfoDicts)
         if presentationAlreadyExist == true {
-            print("presentation already exists")
+            //print("presentation already exists")
         } else {
         let newPresentation = NSManagedObject(entity: NSEntityDescription.entityForName("Presentation", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let idDictionary = arrayWithInfoDicts[0] as? NSDictionary {
