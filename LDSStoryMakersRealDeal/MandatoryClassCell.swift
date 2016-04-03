@@ -11,7 +11,6 @@ import UIKit
 class MandatoryClassCell: UITableViewCell {
 
     @IBOutlet var labelInfo: UILabel!
-    @IBOutlet var extraBackGroundView: UIView!
  
     
     override func awakeFromNib() {
@@ -20,7 +19,6 @@ class MandatoryClassCell: UITableViewCell {
         self.labelInfo.preferredMaxLayoutWidth = 30
         self.labelInfo.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.labelInfo.font = UIFont(name: "IowanOldStyle-Roman", size: 10)
-        self.extraBackGroundView.backgroundColor = UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00)
     }
 
     }

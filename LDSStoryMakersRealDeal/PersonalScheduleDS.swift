@@ -11,8 +11,8 @@ import UIKit
 class PersonalScheduleDS: NSObject, UITableViewDataSource {
     var classesScheduled:[ClassScheduled] = []
     var breakOutsForDay: [Breakout] = []
-    let cellID = "classCell"
-    let mandatoryClassCell = "mandatoryClassCell"
+    let addClassCell = "addClassCell"
+    let scheduledClassCell = "scheduledClassCell"
     let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
     lazy var scheduleItems = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
   
@@ -32,7 +32,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
             if let endDate = breakoutForSection.valueForKey("endTime") as? NSDate {
                 if let breakOutName = breakoutForSection.valueForKey("breakoutID") as? String {
                     if breakOutName.characters.count > 2 {
-                        var location = "No Available Location"
+                        var location = ""
                         if let idTimeBreakout = breakoutForSection.valueForKey("id") as? Int {
                             location = self.findLocationForBreakout(from: idTimeBreakout)
                         }
@@ -47,7 +47,19 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         //let classForCell = self.classesScheduled[indexPath.row]
+         let currentBreakout =  self.breakOutsForDay[indexPath.section]
+        if let breakoutID = currentBreakout.valueForKey("id") as? Int {
+            for scheduledClass in self.classesScheduled {
+                if let scheduleClassBreakoutId = scheduledClass.breakOut?.valueForKey("id") as? Int {
+                    if breakoutID == scheduleClassBreakoutId {
+                        let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell")
+                        return cell!
+                    }
+                }
+            }
+            let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
+            return cell!
+        }
         return UITableViewCell()
         }
 

@@ -129,7 +129,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let headerView = UITableViewHeaderFooterView()
        let separatorView = UIView(frame: CGRect(x: 8, y: headerView.frame.size.height - 1, width: self.tableView.frame.size.width , height: 1))
-        separatorView.backgroundColor = UIColor.redColor()
+        separatorView.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         headerView.addSubview(separatorView)
         
         return headerView
