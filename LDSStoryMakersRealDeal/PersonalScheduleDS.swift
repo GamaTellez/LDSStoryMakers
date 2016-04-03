@@ -58,6 +58,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
                 }
             }
             let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
+            cell?.textLabel?.text = "Browse Classes for breakout"
             return cell!
         }
         return UITableViewCell()

@@ -121,11 +121,11 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-//    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 119
-//    }
-    
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+    }
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let headerView = UITableViewHeaderFooterView()
        let separatorView = UIView(frame: CGRect(x: 8, y: headerView.frame.size.height - 1, width: self.tableView.frame.size.width , height: 1))
