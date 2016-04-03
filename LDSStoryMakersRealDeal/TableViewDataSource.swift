@@ -41,7 +41,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             if let className = scheduledClass.presentation?.valueForKey("title") as? String {
                 cell.speakerAndClassNameLabel.text = className
                 if let speakerName = scheduledClass.presentation?.valueForKey("speakerName") as? String {
-                   cell.speakerAndClassNameLabel.text = String(format: "@% , @%", className, speakerName)
+                   cell.speakerAndClassNameLabel.text = String(format: "%@ , %@", className, speakerName)
                 }
             } else {
                 if let breakoutName = scheduledClass.breakOut?.valueForKey("breakoutID") as? String {
