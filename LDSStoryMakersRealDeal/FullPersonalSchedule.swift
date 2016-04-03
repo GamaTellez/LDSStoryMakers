@@ -32,9 +32,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.setUpViews()
         self.setUpTableViewAndSegmentedController()
         self.registerForNotifications()
-       
     }
-
     
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesfullySaved, object: nil)
@@ -155,6 +153,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     
         let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
             if self.segmentedController.selectedSegmentIndex == 0 {
+                
                 let classSelected = self.friday[indexPath.row]
                 print(classSelected.presentation?.valueForKey("title"))
                 ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
@@ -239,12 +238,33 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-      
-        
-        
-        
-        return 100
+        if self.segmentedController.selectedSegmentIndex == 0 {
+            let breakoutAtIndex = self.fridayBreakouts[indexPath.section]
+            for schClass in self.friday {
+                if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
+                    if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
+                        if schClassId == breakoutAtIndexID {
+                            return 100
+                        }
+                    }
+                }
+            }
+            return 25
+        } else {
+                let breakoutAtIndex = self.saturdayBreakouts[indexPath.section]
+                for schClass in self.saturday {
+                    if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
+                        if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
+                            if schClassId == breakoutAtIndexID {
+                                return 100
+                            }
+                        }
+                    }
+                }
+            return 25
+        }
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segueId = segue.identifier {
             switch (segueId) {
