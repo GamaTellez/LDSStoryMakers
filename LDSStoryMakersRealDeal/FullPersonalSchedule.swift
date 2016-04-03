@@ -180,7 +180,64 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
             return [deleteClassRowAction];
     }
 
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let labelHeader = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 90))
+        labelHeader.numberOfLines = 0
+        if self.segmentedController.selectedSegmentIndex == 0 {
+            labelHeader.text = self.textForHeaderBreakoutLabel(self.fridayBreakouts, section: section, label: labelHeader)
+        } else {
+            labelHeader.text = self.textForHeaderBreakoutLabel(self.saturdayBreakouts, section: section, label: labelHeader)
+        }
+        return labelHeader
+    }
     
+    func textForHeaderBreakoutLabel(breakoutsOfDay:[Breakout], section:Int, label:UILabel) -> String {
+        var breakOutString = ""
+        let breakoutForSection = breakoutsOfDay[section]
+        if let startDate = breakoutForSection.valueForKey("startTime") as? NSDate {
+            if let endDate = breakoutForSection.valueForKey("endTime") as? NSDate {
+                if let breakOutName = breakoutForSection.valueForKey("breakoutID") as? String {
+                    if breakOutName.characters.count > 2 {
+                        label.textAlignment = NSTextAlignment.Center
+                        var location = ""
+                        if let idTimeBreakout = breakoutForSection.valueForKey("id") as? Int {
+                            location = self.dataSource.findLocationForBreakout(from: idTimeBreakout)
+                        }
+                        breakOutString = String(format: "%@\n%@ - %@\n%@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), location)
+                    } else {
+                        label.textAlignment = .Natural
+                        label.font = UIFont(name: "ArialHebrew", size: 15)
+                        label.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
+                        breakOutString = String(format: " Breakout %@ \n %@ - %@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
+                    }
+                }
+            }
+        }
+        return breakOutString
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.segmentedController.selectedSegmentIndex == 0 {
+            let currentBreakout = self.fridayBreakouts[section]
+            if let breakoutID = currentBreakout.valueForKey("breakoutID") as? String {
+                if breakoutID.characters.count > 2 {
+                    return 70
+                } else {
+                    return 35
+                }
+            }
+        } else {
+            let currentBreakout = self.saturdayBreakouts[section]
+            if let breakoutID = currentBreakout.valueForKey("breakoutID") as? String {
+                if breakoutID.characters.count > 2 {
+                        return 70
+                    } else {
+                        return 35
+                    }
+                }
+            }
+        return 70
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segueId = segue.identifier {
             switch (segueId) {
