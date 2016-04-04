@@ -149,36 +149,34 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return headerView
     }
     
-//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//    
-//        let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
-//            if self.segmentedController.selectedSegmentIndex == 0 {
-//                
-//                //let classSelected = self.friday[indexPath.row]
-//                //print(classSelected.presentation?.valueForKey("title"))
-//                //ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
-//                    if (succedeed) {
-//                        self.friday.removeAtIndex(indexPath.row)
-//                        self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
-//                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-//                    }
-//                })
-//            } else {
-//                //let classSelected = self.saturday[indexPath.row]
-//                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
-//                    if (succedeed) {
-//                        self.saturday.removeAtIndex(indexPath.row)
-//                        self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
-//                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-//                    }
-//                })
-//            }
-//        }
-//            return [deleteClassRowAction];
-//    }
-
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+   
+        let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
+            if self.segmentedController.selectedSegmentIndex == 0 {
+                let breakoutInsection = self.fridayBreakouts[indexPath.section]
+                if let classesInBreakout = breakoutInsection.valueForKey("classesScheduled") {
+                    if var breakoutClasses = classesInBreakout.allObjects as? [ClassScheduled] {
+                        if !breakoutClasses.isEmpty {
+                            let classSelected = breakoutClasses[indexPath.row]
+                            ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
+                                if (succedeed) {
+                                    //self.tableView.reloadData()
+                                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                                    //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                                    NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+        }
+        return [deleteClassRowAction];
+    }
+    
+    
+    
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let labelHeader = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 90))
         labelHeader.numberOfLines = 0
@@ -237,33 +235,14 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return 70
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        if self.segmentedController.selectedSegmentIndex == 0 {
-//            let breakoutAtIndex = self.fridayBreakouts[indexPath.section]
-//                if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
-//                    if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
-//                        if schClassId == breakoutAtIndexID {
-//                            return 100
-//                        }
-//                    }
-//                }
-//            }
-//            return 25
-//        } else {
-//                let breakoutAtIndex = self.saturdayBreakouts[indexPath.section]
-//                for schClass in self.saturday {
-//                    if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
-//                        if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
-//                            if schClassId == breakoutAtIndexID {
-//                                return 100
-//                            }
-//                        }
-//                    }
-//                }
-//            return 25
-//        }
-//    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        if let segueId = segue.identifier {
 //            switch (segueId) {
@@ -281,6 +260,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
 //    }
     
     func getbreakoutsByDay() {
+        self.fridayBreakouts.removeAll()
+        self.saturdayBreakouts.removeAll()
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
         let friday = formatter.dateFromString("5/6/2016")
@@ -295,9 +276,10 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                             self.saturdayBreakouts.append(timeBreakout)
                         }
                     }
-                
             }
         }
+ //          print("saturday ",saturdayBreakouts.count)
+   //      print("friday ",fridayBreakouts.count)
     }
     
     
