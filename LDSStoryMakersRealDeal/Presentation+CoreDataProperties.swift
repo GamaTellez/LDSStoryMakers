@@ -2,7 +2,7 @@
 //  Presentation+CoreDataProperties.swift
 //  
 //
-//  Created by Gamaliel Tellez on 4/2/16.
+//  Created by Gamaliel Tellez on 4/3/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

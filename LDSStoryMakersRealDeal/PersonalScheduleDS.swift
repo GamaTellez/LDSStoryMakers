@@ -9,16 +9,16 @@
 import UIKit
 
 class PersonalScheduleDS: NSObject, UITableViewDataSource {
-    var classesScheduled:[ClassScheduled] = []
+  //  var classesScheduled:[ClassScheduled] = []
     var breakOutsForDay: [Breakout] = []
     let addClassCell = "addClassCell"
     let scheduledClassCell = "scheduledClassCell"
     let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
     lazy var scheduleItems = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData()
   
-    func updateDataSource(withClasses:[ClassScheduled], breakouts:[Breakout]) {
-        self.classesScheduled = withClasses
-        self.breakOutsForDay = breakouts
+    func updateDataSource(breakouts:[Breakout]) {
+    // self.classesScheduled = withClasses
+    self.breakOutsForDay = breakouts
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -48,47 +48,51 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let currentBreakout =  self.breakOutsForDay[indexPath.section]
-        if let breakoutID = currentBreakout.valueForKey("id") as? Int {
-            for scheduledClass in self.classesScheduled {
-                if let scheduleClassBreakoutId = scheduledClass.breakOut?.valueForKey("id") as? Int {
-                    if breakoutID == scheduleClassBreakoutId {
-                        if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
-                            var title = ""
-                            var speaker = ""
-                            var location = ""
-                            if let classTitle = scheduledClass.presentation?.valueForKey("title") as? String {
-                                title = classTitle
-                            }
-                            if let classSpeaker = scheduledClass.presentation?.valueForKey("speakerName") as? String {
-                                speaker = classSpeaker
-                            }
-                            if let classLocation = scheduledClass.scheduleItem?.valueForKey("location") as? String {
-                                location = classLocation
-                            }
-                            cell.labelCell.text = String(format:"%@\n%@\n%@", title, speaker, location)
-                            return cell
+        if let currentBreakoutID = currentBreakout.valueForKey("id") as? Int {
+            if currentBreakoutID < 13 {
+                if let classesInBreakout = currentBreakout.classesScheduled?.allObjects as? [ClassScheduled] {
+                    if classesInBreakout.count == 0 {
+                        let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
+                        cell?.textLabel?.text = "Browse Classes for breakout"
+                        cell?.textLabel?.textAlignment = .Center
+                        return cell!
+                    } else {
+                    let classInBreakout = classesInBreakout[indexPath.row]
+                    if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
+                        var title = ""
+                        var speaker = ""
+                        var location = ""
+                        if let classTitle = classInBreakout.presentation?.valueForKey("title") as? String {
+                            title = classTitle
+                        }
+                        if let classSpeaker = classInBreakout.presentation?.valueForKey("speakerName") as? String {
+                            speaker = classSpeaker
+                        }
+                        if let classLocation = classInBreakout.scheduleItem?.valueForKey("location") as? String {
+                            location = classLocation
+                        }
+                        cell.labelCell.text = String(format:"%@\n%@\n%@", title, speaker, location)
+                        return cell
                         }
                     }
                 }
             }
+        }
             let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
             cell?.textLabel?.text = "Browse Classes for breakout"
             cell?.textLabel?.textAlignment = .Center
             return cell!
-        }
-        return UITableViewCell()
-        }
+        
+    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.classesScheduled.count
-        let currentBreakout =  self.breakOutsForDay[section]
-        if let currentBreakoutID = currentBreakout.valueForKey("id") as? Int {
-            if currentBreakoutID > 12 {
-                return 0
-            }
-        }
+       let currentBreakoutForSection = self.breakOutsForDay[section]
+        if currentBreakoutForSection.classesScheduled?.count == 0 {
         return 1
+        }
+        return (currentBreakoutForSection.classesScheduled?.count)!
     }
+    
     func findLocationForBreakout(from idTimeBreakout:Int) -> String {
        var location = "no location available"
         if let allSchedules = self.scheduleItems as? [ScheduleItem] {

@@ -19,15 +19,15 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
-    var friday:[ClassScheduled] = []
-    var saturday:[ClassScheduled] = []
+    //var friday:[ClassScheduled] = []
+    //var saturday:[ClassScheduled] = []
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
     let dataSource = PersonalScheduleDS()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getAllClassesScheduled()
+       // self.getAllClassesScheduled()
         self.getbreakoutsByDay()
         self.setUpViews()
         self.setUpTableViewAndSegmentedController()
@@ -49,56 +49,56 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.segmentedController.tintColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
     }
-    func getAllClassesScheduled() {
-        if let allClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "MM-dd-yyyy"
-            let friday = formatter.dateFromString("5/6/2016")
-            let calendarSorter = NSCalendar.currentCalendar()
-                for itemClass in allClasses {
-                    if let start = itemClass.breakOut?.valueForKey("startTime") as? NSDate {
-                    let comparison = calendarSorter.compareDate(friday!, toDate: start, toUnitGranularity: .Day)
-                        if comparison == NSComparisonResult.OrderedSame {
-                            self.friday.append(itemClass)
-                        } else {
-                            self.saturday.append(itemClass)
-                        }
-                    }
-                }
-            }
-//        print(self.friday.count)
-//        print(self.saturday.count)
-    }
+//    func getAllClassesScheduled() {
+//        if let allClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
+//            let formatter = NSDateFormatter()
+//            formatter.dateFormat = "MM-dd-yyyy"
+//            let friday = formatter.dateFromString("5/6/2016")
+//            let calendarSorter = NSCalendar.currentCalendar()
+//                for itemClass in allClasses {
+//                    if let start = itemClass.breakOut?.valueForKey("startTime") as? NSDate {
+//                    let comparison = calendarSorter.compareDate(friday!, toDate: start, toUnitGranularity: .Day)
+//                        if comparison == NSComparisonResult.OrderedSame {
+//                            self.friday.append(itemClass)
+//                        } else {
+//                            self.saturday.append(itemClass)
+//                        }
+//                    }
+//                }
+//            }
+////        print(self.friday.count)
+////        print(self.saturday.count)
+//    }
 
     func setUpTableViewAndSegmentedController() {
         self.tableView.backgroundColor = UIColor.clearColor()
         self.segmentedController.backgroundColor = UIColor.clearColor()
         self.tableView.dataSource = self.dataSource
         self.segmentedController.selectedSegmentIndex = 0
-        self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
+        self.dataSource.updateDataSource(self.fridayBreakouts)
         self.tableView.reloadData()
     }
     
     func updateTableViewAndReloadDataUponNotification(){
-        self.friday.removeAll()
-        self.saturday.removeAll()
-        self.getAllClassesScheduled()
+        //self.friday.removeAll()
+        //self.saturday.removeAll()
+        //self.getAllClassesScheduled()
         if self.segmentedController.selectedSegmentIndex == 0 {
-            self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
+            self.dataSource.updateDataSource(self.fridayBreakouts)
         } else {
-            self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
+            self.dataSource.updateDataSource(self.saturdayBreakouts)
         }
         self.tableView.reloadData()
       }
     
     func updateTableViewAndReloadDataFromPersonalVC(){
-        self.friday.removeAll()
-        self.saturday.removeAll()
-        self.getAllClassesScheduled()
+        //self.friday.removeAll()
+        //self.saturday.removeAll()
+        //self.getAllClassesScheduled()
         if self.segmentedController.selectedSegmentIndex == 0 {
-            self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
+            self.dataSource.updateDataSource(self.fridayBreakouts)
         } else {
-            self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
+            self.dataSource.updateDataSource(self.saturdayBreakouts)
         }
         self.tableView.reloadData()
     }
@@ -106,11 +106,11 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBAction func segmentedControllerTapped(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
+            self.dataSource.updateDataSource(self.fridayBreakouts)
             self.tableView.reloadData()
             break
         default:
-            self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
+            self.dataSource.updateDataSource(self.saturdayBreakouts)
             self.tableView.reloadData()
             break
         }
@@ -149,35 +149,35 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return headerView
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-    
-        let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
-            if self.segmentedController.selectedSegmentIndex == 0 {
-                
-                let classSelected = self.friday[indexPath.row]
-                print(classSelected.presentation?.valueForKey("title"))
-                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
-                    if (succedeed) {
-                        self.friday.removeAtIndex(indexPath.row)
-                        self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
-                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-                    }
-                })
-            } else {
-                let classSelected = self.saturday[indexPath.row]
-                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
-                    if (succedeed) {
-                        self.saturday.removeAtIndex(indexPath.row)
-                        self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
-                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
-                    }
-                })
-            }
-        }
-            return [deleteClassRowAction];
-    }
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//    
+//        let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
+//            if self.segmentedController.selectedSegmentIndex == 0 {
+//                
+//                //let classSelected = self.friday[indexPath.row]
+//                //print(classSelected.presentation?.valueForKey("title"))
+//                //ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
+//                    if (succedeed) {
+//                        self.friday.removeAtIndex(indexPath.row)
+//                        self.dataSource.updateDataSource(self.friday, breakouts: self.fridayBreakouts)
+//                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+//                    }
+//                })
+//            } else {
+//                //let classSelected = self.saturday[indexPath.row]
+//                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
+//                    if (succedeed) {
+//                        self.saturday.removeAtIndex(indexPath.row)
+//                        self.dataSource.updateDataSource(self.saturday, breakouts: self.saturdayBreakouts)
+//                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+//                    }
+//                })
+//            }
+//        }
+//            return [deleteClassRowAction];
+//    }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let labelHeader = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 90))
@@ -237,49 +237,49 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return 70
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if self.segmentedController.selectedSegmentIndex == 0 {
-            let breakoutAtIndex = self.fridayBreakouts[indexPath.section]
-            for schClass in self.friday {
-                if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
-                    if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
-                        if schClassId == breakoutAtIndexID {
-                            return 100
-                        }
-                    }
-                }
-            }
-            return 25
-        } else {
-                let breakoutAtIndex = self.saturdayBreakouts[indexPath.section]
-                for schClass in self.saturday {
-                    if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
-                        if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
-                            if schClassId == breakoutAtIndexID {
-                                return 100
-                            }
-                        }
-                    }
-                }
-            return 25
-        }
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if self.segmentedController.selectedSegmentIndex == 0 {
+//            let breakoutAtIndex = self.fridayBreakouts[indexPath.section]
+//            for schClass in self.friday {
+//                if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
+//                    if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
+//                        if schClassId == breakoutAtIndexID {
+//                            return 100
+//                        }
+//                    }
+//                }
+//            }
+//            return 25
+//        } else {
+//                let breakoutAtIndex = self.saturdayBreakouts[indexPath.section]
+//                for schClass in self.saturday {
+//                    if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
+//                        if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
+//                            if schClassId == breakoutAtIndexID {
+//                                return 100
+//                            }
+//                        }
+//                    }
+//                }
+//            return 25
+//        }
+//    }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segueId = segue.identifier {
-            switch (segueId) {
-            default:
-                let detailView = segue.destinationViewController as! ClassDetailView
-                if segmentedController.selectedSegmentIndex == 0 {
-                    if let rowSelected = self.tableView.indexPathForSelectedRow?.row {
-                      let classScheduledSelected = self.friday[rowSelected]
-                        detailView.classSelected = self.classToScheduleFromClassScheduled(classScheduledSelected)
-                    }
-                }
-            break
-            }
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if let segueId = segue.identifier {
+//            switch (segueId) {
+//            default:
+//                let detailView = segue.destinationViewController as! ClassDetailView
+//                if segmentedController.selectedSegmentIndex == 0 {
+//                    if let rowSelected = self.tableView.indexPathForSelectedRow?.row {
+//                      let classScheduledSelected = self.friday[rowSelected]
+//                        detailView.classSelected = self.classToScheduleFromClassScheduled(classScheduledSelected)
+//                    }
+//                }
+//            break
+//            }
+//        }
+//    }
     
     func getbreakoutsByDay() {
         let formatter = NSDateFormatter()

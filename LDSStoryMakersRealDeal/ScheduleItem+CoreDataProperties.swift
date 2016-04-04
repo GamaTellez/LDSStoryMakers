@@ -2,7 +2,7 @@
 //  ScheduleItem+CoreDataProperties.swift
 //  
 //
-//  Created by Gamaliel Tellez on 4/2/16.
+//  Created by Gamaliel Tellez on 4/3/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,6 +15,7 @@ import CoreData
 extension ScheduleItem {
 
     @NSManaged var breakout: NSNumber?
+    @NSManaged var breakoutID: String?
     @NSManaged var isPresentation: NSNumber?
     @NSManaged var location: String?
     @NSManaged var presentationId: NSNumber?
@@ -22,7 +23,6 @@ extension ScheduleItem {
     @NSManaged var scheduleId: NSNumber?
     @NSManaged var section: NSNumber?
     @NSManaged var timeId: NSNumber?
-    @NSManaged var breakoutID: String?
     @NSManaged var classScheduled: ClassScheduled?
 
 }

@@ -23,7 +23,7 @@ class ManagedObjectsController: NSObject {
     
     //BREAKOUT
     func createAndSaveBreakoutObjectFromInfoArray(arrayWithInfoDictionaries:NSArray) {
-        print(arrayWithInfoDictionaries)
+        //print(arrayWithInfoDictionaries)
        let breakoutAlreadyExist = self.checkIfBreakoutExistsAlready(from: arrayWithInfoDictionaries)
         if breakoutAlreadyExist == true {
             //print("breakout already exist")
@@ -477,7 +477,6 @@ class ManagedObjectsController: NSObject {
         let newClassScheduled = NSManagedObject(entity: NSEntityDescription.entityForName("ClassScheduled", inManagedObjectContext: self.managedContext)!, insertIntoManagedObjectContext: self.managedContext)
         if let breakoutForClass = clsToSchedule.breakout {
             newClassScheduled.setValue(breakoutForClass, forKey: "breakOut")
-            breakoutForClass.setValue(newClassScheduled, forKey: "classScheduled")
             if let breakoutId = breakoutForClass.valueForKey("breakoutID") as? String {
                 if breakoutId.characters.count > 2 {
                     newClassScheduled.setValue(NSNumber(bool: true), forKey: "isMandatory")
@@ -576,7 +575,7 @@ class ManagedObjectsController: NSObject {
         let allBreakoutsRequest = NSFetchRequest(entityName: "Breakout")
         if let breakouts = self.fetchRequestExecuter(allBreakoutsRequest) as? [Breakout] {
             for item in breakouts {
-                if item.classScheduled == nil {
+                if item.classesScheduled == nil {
                     self.managedContext.deleteObject(item)
                 }
             }

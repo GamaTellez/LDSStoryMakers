@@ -5,12 +5,12 @@
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="classScheduled" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClassScheduled" inverseName="breakOut" inverseEntity="ClassScheduled" syncable="YES"/>
+        <relationship name="classesScheduled" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ClassScheduled" inverseName="breakOut" inverseEntity="ClassScheduled" syncable="YES"/>
     </entity>
     <entity name="ClassScheduled" representedClassName=".ClassScheduled" syncable="YES">
         <attribute name="isMandatory" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="breakOut" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Breakout" inverseName="classScheduled" inverseEntity="Breakout" syncable="YES"/>
+        <relationship name="breakOut" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Breakout" inverseName="classesScheduled" inverseEntity="Breakout" syncable="YES"/>
         <relationship name="presentation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Presentation" inverseName="classedScheduled" inverseEntity="Presentation" syncable="YES"/>
         <relationship name="scheduleItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScheduleItem" inverseName="classScheduled" inverseEntity="ScheduleItem" syncable="YES"/>
         <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Speaker" inverseName="classScheduled" inverseEntity="Speaker" syncable="YES"/>
