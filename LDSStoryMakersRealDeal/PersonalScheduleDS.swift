@@ -87,8 +87,18 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        let currentBreakoutForSection = self.breakOutsForDay[section]
-        if currentBreakoutForSection.classesScheduled?.count == 0 {
-        return 1
+        if let id = currentBreakoutForSection.valueForKey("id") as? Int {
+            if id > 12 {
+                return 0
+            } else {
+                if let classesInBreakout = currentBreakoutForSection.classesScheduled?.allObjects as? [ClassScheduled] {
+                    if classesInBreakout.count == 0 {
+                        return 1
+                    } else {
+                        return classesInBreakout.count
+                    }
+                }
+            }
         }
         return (currentBreakoutForSection.classesScheduled?.count)!
     }

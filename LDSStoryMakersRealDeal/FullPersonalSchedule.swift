@@ -240,7 +240,6 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
 //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        if self.segmentedController.selectedSegmentIndex == 0 {
 //            let breakoutAtIndex = self.fridayBreakouts[indexPath.section]
-//            for schClass in self.friday {
 //                if let schClassId = schClass.breakOut?.valueForKey("id") as? Int {
 //                    if let breakoutAtIndexID = breakoutAtIndex.valueForKey("id") as? Int {
 //                        if schClassId == breakoutAtIndexID {
