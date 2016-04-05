@@ -261,10 +261,21 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                     }
                 break
             default:
+                let detailBreakout  = segue.destinationViewController as! DetailBreakoutVC
+                if let selectedIndex = self.tableView.indexPathForSelectedRow {
+                    if self.segmentedController.selectedSegmentIndex == 0 {
+                        let selectedBreakoutScheduleItems = self.getAllScheduleItemsForSelectedBreakout(self.fridayBreakouts[selectedIndex.section])
+                        detailBreakout.classesInBreakout = self.createClassObjectsReadyToSave(from: selectedBreakoutScheduleItems)
+                    } else {
+                        let selectedBreakoutScheduleItems = self.getAllScheduleItemsForSelectedBreakout(self.fridayBreakouts[selectedIndex.section])
+                        detailBreakout.classesInBreakout = self.createClassObjectsReadyToSave(from: selectedBreakoutScheduleItems)
+                    }
+                }
             break
             }
         }
     }
+    
     
     func findClassSelected(segmentedSelected:Int, and tableView:UITableView, segue:UIStoryboardSegue) -> ClassToSchedule {
         switch (segmentedSelected) {
@@ -339,4 +350,82 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return temporarelyClass
     }
     
+    func getAllScheduleItemsForSelectedBreakout(selectedBreakout:Breakout) -> [ScheduleItem] {
+        var allScheduleItems:[ScheduleItem] = []
+        if let breakoutId = selectedBreakout.valueForKey("id") as? Int {
+            // print(breakoutId, "breakoutSelected")
+            if let itemsSchedule = ManagedObjectsController.sharedInstance.getAllSchedulesFRomCoreData() as? [ScheduleItem] {
+                for item in itemsSchedule {
+                    //print(item.presentationTitle)
+                    if let isPresentation = item.valueForKey("isPresentation") as? Bool {
+                        //  print(isPresentation)
+                        if isPresentation {
+                            if let itemBreakout = item.valueForKey("breakout") as? Int {
+                                //    print(itemBreakout, "item breakout")
+                                if itemBreakout == breakoutId {
+                                    allScheduleItems.append(item)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return allScheduleItems
+    }
+    
+    func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [ClassToSchedule] {
+        var allClasses:[ClassToSchedule] = []
+        let allClassesStored = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
+        for item in itemsSchedule {
+            let classObject = ClassToSchedule()
+            classObject.scheduleItem = item
+            classObject.inSchedule = false
+            
+            if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
+                if let itemBreakoutId = item.valueForKey("breakout") as? Int {
+                    for breakt in allBreakouts {
+                        if itemBreakoutId == breakt.valueForKey("id") as? Int {
+                            classObject.breakout = breakt
+                        }
+                    }
+                }
+            }
+            if let allPresentations = ManagedObjectsController.sharedInstance.getAllPresentationsFromCoreData() as? [Presentation] {
+                if let presentationId = item.valueForKey("presentationId") as? Int {
+                    for pres in allPresentations {
+                        if presentationId == pres.valueForKey("id") as? Int {
+                            classObject.presentation = pres
+                        }
+                    }
+                }
+            }
+            if let allSpeakers = ManagedObjectsController.sharedInstance.getAllSpeakersFromCoreData() as? [Speaker] {
+                if let speakerId = classObject.presentation?.valueForKey("speakerId") as? Int {
+                    for speak in allSpeakers {
+                        if speakerId == speak.valueForKey("speakerId") as? Int {
+                            classObject.speaker = speak
+                        }
+                    }
+                }
+            }
+            if let allClassesInScheduled = allClassesStored {
+                let scheduled = self.isClassScheduled(classObject, from: allClassesInScheduled)
+                if scheduled {
+                    classObject.inSchedule = true
+                }
+            }
+            allClasses.append(classObject)
+        }
+        return allClasses
+    }
+    
+    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
+        for possibleClass in classesInSchedule {
+            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
+                return true
+            }
+        }
+        return false
+    }
 }
