@@ -200,7 +200,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
             if let endDate = breakoutForSection.valueForKey("endTime") as? NSDate {
                 if let breakOutName = breakoutForSection.valueForKey("breakoutID") as? String {
                     if breakOutName.characters.count > 2 {
-                        label.textAlignment = NSTextAlignment.Center
+                        label.font = UIFont(name: "ArialHebrew", size: 15)
                         var location = ""
                         if let idTimeBreakout = breakoutForSection.valueForKey("id") as? Int {
                             location = self.dataSource.findLocationForBreakout(from: idTimeBreakout)
@@ -264,10 +264,29 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                 let detailBreakout  = segue.destinationViewController as! DetailBreakoutVC
                 if let selectedIndex = self.tableView.indexPathForSelectedRow {
                     if self.segmentedController.selectedSegmentIndex == 0 {
-                        let selectedBreakoutScheduleItems = self.getAllScheduleItemsForSelectedBreakout(self.fridayBreakouts[selectedIndex.section])
+                        let selectedBreakout = self.fridayBreakouts[selectedIndex.section]
+                        if let title = selectedBreakout.valueForKey("breakoutID") as? String {
+                            detailBreakout.title = String(format: "Breakout %@",title)
+                        }
+                        if let startTime = selectedBreakout.valueForKey("startTime") as? NSDate {
+                            if let endTime = selectedBreakout.valueForKey("endTime") as? NSDate {
+                                detailBreakout.stringForLabelBreakoutTime = String(format:"%@ - %@", NSDateFormatter.localizedStringFromDate(startTime, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle), NSDateFormatter.localizedStringFromDate(endTime, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
+                            }
+                        }
+                        let selectedBreakoutScheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                         detailBreakout.classesInBreakout = self.createClassObjectsReadyToSave(from: selectedBreakoutScheduleItems)
+                        
                     } else {
-                        let selectedBreakoutScheduleItems = self.getAllScheduleItemsForSelectedBreakout(self.fridayBreakouts[selectedIndex.section])
+                        let selectedBreakout = self.saturdayBreakouts[selectedIndex.section]
+                        if let title = selectedBreakout.valueForKey("breakoutID") as? String {
+                            detailBreakout.title = String(format: "Breakout %@",title)
+                        }
+                        if let startTime = selectedBreakout.valueForKey("startTime") as? NSDate {
+                            if let endTime = selectedBreakout.valueForKey("endTime") as? NSDate {
+                                detailBreakout.stringForLabelBreakoutTime = String(format:"%@ - %@", NSDateFormatter.localizedStringFromDate(startTime, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle), NSDateFormatter.localizedStringFromDate(endTime, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle))
+                            }
+                        }
+                        let selectedBreakoutScheduleItems = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
                         detailBreakout.classesInBreakout = self.createClassObjectsReadyToSave(from: selectedBreakoutScheduleItems)
                     }
                 }

@@ -59,7 +59,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
                     } else {
                     let classInBreakout = classesInBreakout[indexPath.row]
                     if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
-                        cell.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
+                        cell.backgroundColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
                         var title = ""
                         var speaker = ""
                         var location = ""
@@ -72,7 +72,9 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
                         if let classLocation = classInBreakout.scheduleItem?.valueForKey("location") as? String {
                             location = classLocation
                         }
-                        cell.labelCell.text = String(format:"%@\n%@\n%@", title, speaker, location)
+                        cell.titleLabel.text = title
+                        cell.speakerLabel.text = speaker
+                        cell.locationLabel.text = location
                         return cell
                         }
                     }

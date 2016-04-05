@@ -13,21 +13,16 @@ import UIKit
 //}
 
 class PersonalScheduleCell: UITableViewCell {
-    @IBOutlet var labelCell: UILabel!
-   // @IBOutlet var classAndSpeakerLabel: UILabel!
+
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var speakerLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
     
     var tableView:UITableView?
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.labelCell.font = UIFont(name: "IowanOldStyle-Roman", size: 20)
-
-        self.labelCell.preferredMaxLayoutWidth = 30
-        self.labelCell.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        self.labelCell.numberOfLines = 0
-      //  self.classAndSpeakerLabel.numberOfLines = 0
-       // self.classAndSpeakerLabel.preferredMaxLayoutWidth = 30
-        //self.classAndSpeakerLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        //self.classAndSpeakerLabel.font = UIFont(name: "IowanOldStyle-Roman", size: 15)
+        self.titleLabel.numberOfLines = 0
+        self.titleLabel.font = UIFont(name: "AlNile-Bold", size: 15)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
