@@ -123,7 +123,7 @@ class ManagedObjectsController: NSObject {
         }
         
         if let itemBreakoutIdDict = arrayWithInfoDicts[3] as? NSDictionary {
-            print(itemBreakoutIdDict)
+           // print(itemBreakoutIdDict)
             if let idNum = itemBreakoutIdDict.objectForKey("v") as? Int {
                 newItemSchedule.setValue(NSNumber(integer: idNum), forKey: "breakout")
             }

@@ -62,7 +62,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
     }
     
     func itemSavedAlert() {
-        let classSavedAlert = UIAlertController(title: "Class Saved", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let classSavedAlert = UIAlertController(title: "Class Saved", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         classSavedAlert.popoverPresentationController?.sourceView = self.view
         classSavedAlert.popoverPresentationController?.sourceRect = self.view.bounds
         self.navigationController?.presentViewController(classSavedAlert, animated: true, completion: { () -> Void in
@@ -70,12 +70,13 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
                 self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.popViewControllerAnimated(true)
             }
         })
     }
     
     func itemDeletedAlert() {
-        let classDeletedAlert = UIAlertController(title: "Class Deleted", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let classDeletedAlert = UIAlertController(title: "Class Deleted", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         classDeletedAlert.popoverPresentationController?.sourceView = self.view
         classDeletedAlert.popoverPresentationController?.sourceRect = self.view.bounds
         // this is the center of the screen currently but it can be any point in the vi
