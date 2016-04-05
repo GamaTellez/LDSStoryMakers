@@ -315,6 +315,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="xCN-b4-jXF" kind="show" identifier="breakoutDetail" id="GBx-Sm-OHF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -928,5 +931,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ezh-6J-SEj"/>
+        <segue reference="GBx-Sm-OHF"/>
     </inferredMetricsTieBreakers>
 </document>

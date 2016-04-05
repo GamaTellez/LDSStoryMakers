@@ -49,27 +49,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.segmentedController.tintColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
     }
-//    func getAllClassesScheduled() {
-//        if let allClasses = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
-//            let formatter = NSDateFormatter()
-//            formatter.dateFormat = "MM-dd-yyyy"
-//            let friday = formatter.dateFromString("5/6/2016")
-//            let calendarSorter = NSCalendar.currentCalendar()
-//                for itemClass in allClasses {
-//                    if let start = itemClass.breakOut?.valueForKey("startTime") as? NSDate {
-//                    let comparison = calendarSorter.compareDate(friday!, toDate: start, toUnitGranularity: .Day)
-//                        if comparison == NSComparisonResult.OrderedSame {
-//                            self.friday.append(itemClass)
-//                        } else {
-//                            self.saturday.append(itemClass)
-//                        }
-//                    }
-//                }
-//            }
-////        print(self.friday.count)
-////        print(self.saturday.count)
-//    }
-
+    
     func setUpTableViewAndSegmentedController() {
         self.tableView.backgroundColor = UIColor.clearColor()
         self.segmentedController.backgroundColor = UIColor.clearColor()
@@ -249,36 +229,51 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         if let segueId = segue.identifier {
             switch (segueId) {
                 case "toClassDetail":
-                    let classDetailView = segue.destinationViewController as! ClassDetailView
-                        if let indexSelected = self.tableView.indexPathForSelectedRow {
-                            if self.segmentedController.selectedSegmentIndex == 0 {
-                                let breakoutSelected = self.fridayBreakouts[indexSelected.section]
-                                if let classesInBreakout = breakoutSelected.valueForKey("classesScheduled") {
-                                    if let classesInBreakoutArray = classesInBreakout.allObjects as? [ClassScheduled] {
-                                        if !classesInBreakoutArray.isEmpty {
-                                             let classSelected = classesInBreakoutArray[indexSelected.row]
-                                            classDetailView.classSelected = self.classToScheduleFromClassScheduled(classSelected)
-                                        }
-
-                                    }
-                                }
-                                    } else {
-                                }
-                        }
+                     let classDetailView = segue.destinationViewController as! ClassDetailView
+                    if self.segmentedController.selectedSegmentIndex == 0 {
+                        classDetailView.classSelected = self.findClassSelected(0, and: self.tableView, segue: segue)
+                    } else {
+                        classDetailView.classSelected = self.findClassSelected(1, and: self.tableView, segue: segue)
+                    }
                 break
             default:
-//                let detailView = segue.destinationViewController as! ClassDetailView
-//                if segmentedController.selectedSegmentIndex == 0 {
-//                    if let rowSelected = self.tableView.indexPathForSelectedRow?.row {
-//                      //let classScheduledSelected = self.friday[rowSelected]
-//                        //detailView.classSelected = self.classToScheduleFromClassScheduled(classScheduledSelected)
-//                    }
-//                }
             break
             }
         }
     }
     
+    func findClassSelected(segmentedSelected:Int, and tableView:UITableView, segue:UIStoryboardSegue) -> ClassToSchedule {
+        switch (segmentedSelected) {
+        case 0:
+            if let indexSelected = self.tableView.indexPathForSelectedRow {
+            let breakoutSelected = self.fridayBreakouts[indexSelected.section]
+            if let classesInBreakout = breakoutSelected.valueForKey("classesScheduled") {
+                if let classesInBreakoutArray = classesInBreakout.allObjects as? [ClassScheduled] {
+                    if !classesInBreakoutArray.isEmpty {
+                        let classSelected = classesInBreakoutArray[indexSelected.row]
+                        return self.classToScheduleFromClassScheduled(classSelected)
+                        }
+                    }
+                }
+            }
+            break
+        default:
+            if let indexSelected = tableView.indexPathForSelectedRow {
+            let breakoutSelected = self.saturdayBreakouts[indexSelected.section]
+            if let classesInBreakout = breakoutSelected.valueForKey("classesScheduled") {
+                if let classesInBreakoutArray = classesInBreakout.allObjects as? [ClassScheduled] {
+                    if !classesInBreakoutArray.isEmpty {
+                        let classSelected = classesInBreakoutArray[indexSelected.row]
+                             return self.classToScheduleFromClassScheduled(classSelected)
+                        }
+                    }
+                }
+            }
+            break
+        }
+        return ClassToSchedule()
+    }
+
     func getbreakoutsByDay() {
         self.fridayBreakouts.removeAll()
         self.saturdayBreakouts.removeAll()
