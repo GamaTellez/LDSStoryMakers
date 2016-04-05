@@ -130,31 +130,55 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-   
+        var rowActions:[UITableViewRowAction] = []
+        if self.segmentedController.selectedSegmentIndex == 0 {
+           rowActions.append(self.createDeleteClassRowAction(0, tableView: tableView))
+        } else {
+            rowActions.append(self.createDeleteClassRowAction(1, tableView: tableView))
+        }
+        return rowActions;
+    }
+    
+    func createDeleteClassRowAction(segmentedSelected:Int, tableView:UITableView) -> UITableViewRowAction {
         let deleteClassRowAction = UITableViewRowAction(style: .Default, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) in
-            if self.segmentedController.selectedSegmentIndex == 0 {
-                let breakoutInsection = self.fridayBreakouts[indexPath.section]
+            switch (segmentedSelected) {
+                case 0:
+                    let breakoutInsection = self.fridayBreakouts[indexPath.section]
+                    if let classesInBreakout = breakoutInsection.valueForKey("classesScheduled") {
+                        if var breakoutClasses = classesInBreakout.allObjects as? [ClassScheduled] {
+                            if !breakoutClasses.isEmpty {
+                                let classSelected = breakoutClasses[indexPath.row]
+                                ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
+                                    if (succedeed) {
+                                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                                        NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
+                                    }
+                                })
+                            }
+                        }
+                    }
+                break
+            default:
+                let breakoutInsection = self.saturdayBreakouts[indexPath.section]
                 if let classesInBreakout = breakoutInsection.valueForKey("classesScheduled") {
                     if var breakoutClasses = classesInBreakout.allObjects as? [ClassScheduled] {
                         if !breakoutClasses.isEmpty {
                             let classSelected = breakoutClasses[indexPath.row]
                             ManagedObjectsController.sharedInstance.deleteScheduledClass(classSelected, completion: { (succedeed) in
                                 if (succedeed) {
-                                    //self.tableView.reloadData()
                                     tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                                    //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                                     NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesFullyDeletedFromPersonalView, object: nil)
                                 }
                             })
                         }
                     }
                 }
+
+                break
             }
         }
-        return [deleteClassRowAction];
+        return deleteClassRowAction
     }
-    
-    
     
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
