@@ -24,27 +24,6 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
            return self.breakOutsForDay.count
     }
-//    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        var breakOutString = ""
-//        let breakoutForSection = self.breakOutsForDay[section]
-//        if let startDate = breakoutForSection.valueForKey("startTime") as? NSDate {
-//            if let endDate = breakoutForSection.valueForKey("endTime") as? NSDate {
-//                if let breakOutName = breakoutForSection.valueForKey("breakoutID") as? String {
-//                    if breakOutName.characters.count > 2 {
-//                        var location = ""
-//                        if let idTimeBreakout = breakoutForSection.valueForKey("id") as? Int {
-//                            location = self.findLocationForBreakout(from: idTimeBreakout)
-//                        }
-//                        breakOutString = String(format: "%@\n%@ - %@\n%@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), location)
-//                    } else {
-//                        breakOutString = String(format: "Breakout %@ \n%@ - %@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
-//                    }
-//                }
-//            }
-//        }
-//        return breakOutString
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let currentBreakout =  self.breakOutsForDay[indexPath.section]
@@ -59,7 +38,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
                     } else {
                     let classInBreakout = classesInBreakout[indexPath.row]
                     if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
-                        cell.backgroundColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
+                        cell.backgroundColor = UIColor.whiteColor()
                         var title = ""
                         var speaker = ""
                         var location = ""

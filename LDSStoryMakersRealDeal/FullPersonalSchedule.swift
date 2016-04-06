@@ -19,15 +19,12 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     let itemSuccesfullySaved = "itemSuccesfullySaved"
     let itemSuccesFullyDeleted = "itemSuccesFullyDeleted"
     let itemSuccesFullyDeletedFromPersonalView = "itemSuccesFullyDeletedFromPersonalView"
-    //var friday:[ClassScheduled] = []
-    //var saturday:[ClassScheduled] = []
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
     let dataSource = PersonalScheduleDS()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.getAllClassesScheduled()
         self.getbreakoutsByDay()
         self.setUpViews()
         self.setUpTableViewAndSegmentedController()
@@ -37,11 +34,9 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesfullySaved, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataUponNotification), name: itemSuccesFullyDeleted, object: nil)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FullPersonalSchedule.updateTableViewAndReloadDataFromPersonalVC), name: self.itemSuccesFullyDeletedFromPersonalView, object: nil)
     }
 
     func setUpViews() {
-       // self.backGroundImageView.image = UIImage(named: "white-paper-textureBackground")
         self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
         let statusBarView = UIView(frame: CGRect(x: 0, y: -20, width: self.view.frame.width, height: 22))
         statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
@@ -60,9 +55,6 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     }
     
     func updateTableViewAndReloadDataUponNotification(){
-        //self.friday.removeAll()
-        //self.saturday.removeAll()
-        //self.getAllClassesScheduled()
         if self.segmentedController.selectedSegmentIndex == 0 {
             self.dataSource.updateDataSource(self.fridayBreakouts)
         } else {
@@ -72,9 +64,6 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
       }
     
     func updateTableViewAndReloadDataFromPersonalVC(){
-        //self.friday.removeAll()
-        //self.saturday.removeAll()
-        //self.getAllClassesScheduled()
         if self.segmentedController.selectedSegmentIndex == 0 {
             self.dataSource.updateDataSource(self.fridayBreakouts)
         } else {
@@ -104,29 +93,27 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let headerView = UITableViewHeaderFooterView()
-        let separatorView = UIView(frame: CGRect(x: 40, y: headerView.frame.size.height - 1, width: self.tableView.frame.size.width - 80 , height: 1))
-        separatorView.backgroundColor = UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00)
-        headerView.addSubview(separatorView)
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         
         if self.segmentedController.selectedSegmentIndex == 0 {
-            let breakoutInsection = self.fridayBreakouts[section]
-                if let breakoutID = breakoutInsection.valueForKey("id") as? Int {
-                    if breakoutID >= 12 {
-                        return headerView
+                        let selectedBreakout = self.fridayBreakouts[indexPath.section]
+                        if let classesInBreakout = selectedBreakout.classesScheduled?.allObjects as? [ClassScheduled] {
+                            if classesInBreakout.isEmpty  {
+                                    return UITableViewCellEditingStyle.None
+                            }
+                        }
+                    } else {
+                        if self.segmentedController.selectedSegmentIndex == 1 {
+                            let selectedBreakout = self.saturdayBreakouts[indexPath.section]
+                            if let classesInBreakout = selectedBreakout.classesScheduled?.allObjects as? [ClassScheduled] {
+                                if classesInBreakout.isEmpty {
+                                        return UITableViewCellEditingStyle.None
+                                    }
+                                }
+                        }
                     }
-              }
-        } else {
-            let breakoutInsection =  self.saturdayBreakouts[section]
-                if let breakoutInsectionID = breakoutInsection.valueForKey("id") as? Int {
-                    if breakoutInsectionID >= 12 {
-                        return headerView
-                }
-            }
-        }
-        separatorView.backgroundColor = UIColor.clearColor()
-        return headerView
+        return UITableViewCellEditingStyle.Delete
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -180,6 +167,31 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return deleteClassRowAction
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+        let separatorView = UIView(frame: CGRect(x: 40, y: headerView.frame.size.height - 1, width: self.tableView.frame.size.width - 80 , height: 1))
+        separatorView.backgroundColor = UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00)
+        headerView.addSubview(separatorView)
+        
+        if self.segmentedController.selectedSegmentIndex == 0 {
+            let breakoutInsection = self.fridayBreakouts[section]
+            if let breakoutID = breakoutInsection.valueForKey("id") as? Int {
+                if breakoutID >= 12 {
+                    return headerView
+                }
+            }
+        } else {
+            let breakoutInsection =  self.saturdayBreakouts[section]
+            if let breakoutInsectionID = breakoutInsection.valueForKey("id") as? Int {
+                if breakoutInsectionID >= 12 {
+                    return headerView
+                }
+            }
+        }
+        separatorView.backgroundColor = UIColor.clearColor()
+        return headerView
+    }
+    
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let labelHeader = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 90))
@@ -225,7 +237,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                 if breakoutID.characters.count > 2 {
                     return 70
                 } else {
-                    return 15
+                    return 20
                 }
             }
         } else {
@@ -245,10 +257,6 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         return 100
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segueId = segue.identifier {
             switch (segueId) {
