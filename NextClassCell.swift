@@ -28,13 +28,17 @@ class NextClassCell: UITableViewCell, UITextViewDelegate {
         super.awakeFromNib()
         self.speakerAndClassNameLabel.backgroundColor = UIColor.clearColor()
         self.speakerAndClassNameLabel.textColor = UIColor.whiteColor()
+        self.speakerAndClassNameLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.timeLabel.backgroundColor = UIColor.clearColor()
         self.timeLabel.textColor = UIColor.whiteColor()
+        self.timeLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.classDescription.backgroundColor = UIColor.whiteColor()
         self.classDescription.textColor = UIColor.blackColor()
         self.classDescription.delegate = self
+        self.classDescription.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.backGroundVieew.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.speakerBioButton.layer.cornerRadius = 10
+        self.speakerBioButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.speakerBioButton.backgroundColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)
         self.speakerBioButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         dispatch_async(dispatch_get_main_queue(), {

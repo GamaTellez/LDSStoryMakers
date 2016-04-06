@@ -34,6 +34,7 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
                         let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
                         cell?.textLabel?.text = "Browse Classes for breakout"
                         cell?.textLabel?.textAlignment = .Center
+                        cell?.textLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
                         return cell!
                     } else {
                     let classInBreakout = classesInBreakout[indexPath.row]

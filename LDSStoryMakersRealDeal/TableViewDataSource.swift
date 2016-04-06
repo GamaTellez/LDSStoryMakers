@@ -40,9 +40,6 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
             }
             if let className = scheduledClass.presentation?.valueForKey("title") as? String {
                 cell.speakerAndClassNameLabel.text = className
-                if let speakerName = scheduledClass.presentation?.valueForKey("speakerName") as? String {
-                   cell.speakerAndClassNameLabel.text = String(format: "%@ , %@", className, speakerName)
-                }
             } else {
                 if let breakoutName = scheduledClass.breakOut?.valueForKey("breakoutID") as? String {
                     cell.speakerAndClassNameLabel.text = breakoutName
@@ -71,9 +68,11 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
                 
             if let start = scheduledClass.breakOut?.startTime {
                 if let end = scheduledClass.breakOut?.endTime {
+                    if let location = scheduledClass.scheduleItem?.valueForKey("location") as? String {
                     let startTime = NSDateFormatter.localizedStringFromDate(start, dateStyle: .NoStyle, timeStyle: .ShortStyle)
                      let endTime = NSDateFormatter.localizedStringFromDate(end, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-                    cell.classLocationAndTime.text = String(format: "%@ - %@", startTime, endTime)
+                    cell.classLocationAndTime.text = String(format: "%@ - %@\n%@", startTime, endTime, location)
+                    }
                 }
             }
             if let className = scheduledClass.presentation?.title {

@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     let tableViewDataSource = TableViewDataSource()
     let kclassSelectedNotification = "kClassSelectedNotification"
     let kallObjectsFromGoogleSpreadSheetsInCoreData = "allObjectsFromGoogleSpreadSheetsInCoreData"
-      let finishedRedownLoadingData = "finishedRedownLoadingData"
+    let finishedRedownLoadingData = "finishedRedownLoadingData"
     var newestNotification:Notification?
     
     
@@ -135,7 +135,9 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func setUpLabelsApperance() {
         self.labelTitle.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.labelTitle.numberOfLines = 2
+        self.labelTitle.textColor = UIColor.whiteColor()
         self.labelTitle.text = "\n LDS Storymakers Conference 2016"
+        self.labelTitle.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
     }
     
@@ -167,6 +169,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: headerSectionView.frame.width, height: headerSectionView.frame.height))
         headerLabel.textAlignment = NSTextAlignment.Center
         headerLabel.attributedText = underLinedAttributedString
+        headerLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         headerLabel.textColor = UIColor(red: 0.310, green: 0.431, blue: 0.435, alpha: 1.00)
         headerSectionView.addSubview(headerLabel)
            return headerSectionView

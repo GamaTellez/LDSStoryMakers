@@ -197,6 +197,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         let labelHeader = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 90))
         labelHeader.numberOfLines = 0
         labelHeader.textAlignment = .Center
+        labelHeader.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         if self.segmentedController.selectedSegmentIndex == 0 {
             labelHeader.text = self.textForHeaderBreakoutLabel(self.fridayBreakouts, section: section, label: labelHeader)
         } else {
@@ -212,7 +213,6 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
             if let endDate = breakoutForSection.valueForKey("endTime") as? NSDate {
                 if let breakOutName = breakoutForSection.valueForKey("breakoutID") as? String {
                     if breakOutName.characters.count > 2 {
-                        label.font = UIFont(name: "ArialHebrew", size: 15)
                         var location = ""
                         if let idTimeBreakout = breakoutForSection.valueForKey("id") as? Int {
                             location = self.dataSource.findLocationForBreakout(from: idTimeBreakout)
@@ -220,7 +220,6 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
                         breakOutString = String(format: "%@\n%@ - %@\n%@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), location)
                     } else {
                         label.textAlignment = NSTextAlignment.Left
-                        label.font = UIFont(name: "ArialHebrew", size: 15)
                         label.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
                         breakOutString = String(format: " Breakout %@,%@ - %@", breakOutName, NSDateFormatter.localizedStringFromDate(startDate, dateStyle: .NoStyle, timeStyle: .ShortStyle), NSDateFormatter.localizedStringFromDate(endDate, dateStyle: .NoStyle, timeStyle: .ShortStyle))
                     }
@@ -254,7 +253,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 74
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
