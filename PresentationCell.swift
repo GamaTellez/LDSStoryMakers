@@ -26,6 +26,7 @@ class PresentationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addRemoveButton.layer.cornerRadius = self.addRemoveButton.bounds.width/2
+        self.speakerAndLocationLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
         self.addRemoveButton.tintColor = UIColor.clearColor()
         self.addRemoveButton.setBackgroundImage(UIImage(named: "homeAddClas"), forState: .Normal)
         self.addRemoveButton.setBackgroundImage(UIImage(named: "removeClass"), forState: .Selected)
@@ -33,14 +34,13 @@ class PresentationCell: UITableViewCell {
         self.titleLabel.preferredMaxLayoutWidth = 35
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.titleLabel.backgroundColor = UIColor.grayColor()
-        self.titleLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 20)
+        self.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
         self.titleLabel.textColor = UIColor.whiteColor()
         self.descriptionLabel.preferredMaxLayoutWidth = 35
+        self.descriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
-        self.descriptionLabel.font = UIFont(name: "SanFranciscoText-Light", size: 18)
         self.descriptionLabel.numberOfLines = 3
-        self.speakerAndLocationLabel.font = UIFont(name: "SanFranciscoText-Semibold", size: 15)
-        
+        self.descriptionLabel.textAlignment = .Justified
     }
         @IBAction func addRemoveButtonTapped(sender: UIButton) {
             self.delegate?.indexOfClassSelectedWithButton(sender.tag, and: sender)

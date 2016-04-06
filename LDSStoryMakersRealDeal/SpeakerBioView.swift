@@ -44,10 +44,13 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.speakerNameLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.speakerNameLabel.textColor = UIColor.whiteColor()
+        self.speakerNameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         self.bioTextView.backgroundColor = UIColor.clearColor()
-        self.bioTextView.font = UIFont(name: "AmericanTypewriter", size: 18)
+        self.bioTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.bioTextView.textAlignment = NSTextAlignment.Center
         self.activityIndicator.startAnimating()
         self.activityIndicator.alpha = 1
+        self.view.backgroundColor = UIColor(red: 0.922, green: 0.922, blue: 0.922, alpha: 1.00)
     }
     
     func setBackgroundImageView() {
@@ -66,8 +69,6 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
 //                style.lineSpacing = 20
 //                style.alignment = NSTextAlignment.Justified
 //                self.bioTextView.attributedText = NSAttributedString(string: speakerBio, attributes: [NSParagraphStyleAttributeName: style])
-                self.bioTextView.font = UIFont(name: "AmericanTypewriter", size: 18)
-                self.bioTextView.textAlignment = NSTextAlignment.Center
                 self.bioTextView.text = speakerBio
                 //font size 18
             }

@@ -50,11 +50,15 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.classTitleLabel.preferredMaxLayoutWidth = self.classTitleLabel.frame.width
         self.classTitleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.classTitleLabel.numberOfLines = 0
+        self.classTitleLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         self.classTimeLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.classTimeLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
         self.classTimeLabel.backgroundColor = UIColor.clearColor()
+        self.classTimeLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.classDescriptionTextView.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
-        self.classDescriptionTextView.textAlignment = NSTextAlignment.Justified
+        self.classDescriptionTextView.textAlignment = NSTextAlignment.Center
+        self.classDescriptionTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.classDescriptionTextView.backgroundColor = UIColor.clearColor()
         self.speakerButton.titleLabel?.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.speakerButton.layer.cornerRadius = 5
         self.speakerButton.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
@@ -62,12 +66,14 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.speakerButton.titleLabel?.preferredMaxLayoutWidth = self.speakerButton.frame.width
         self.speakerButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.speakerButton.titleLabel?.numberOfLines = 2
+        self.speakerButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         self.feecBackButtom.layer.cornerRadius = 5
         self.feecBackButtom.titleLabel?.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.feecBackButtom.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.feecBackButtom.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
         self.classLocationLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
-        self.classDescriptionTextView.backgroundColor = UIColor.clearColor()
+        self.classLocationLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        
     }
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
@@ -92,14 +98,7 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
                 self.classLocationLabel.text = "To be determined"
             }
             if let classDescription = currentClass.presentation?.presentationDescription {
-                //let style = NSMutableParagraphStyle()
-                //style.lineSpacing = 20
-                //style.alignment = NSTextAlignment.Justified
-                //self.classDescriptionTextView.attributedText = NSAttributedString(string: classDescription, attributes:[NSParagraphStyleAttributeName: style])
-                //set SanFranciscoDisplay-Thin as the font of the text
-                self.classDescriptionTextView.font = (UIFont(name: "AmericanTypewriter", size: 18))
                 self.classDescriptionTextView.text = classDescription
-                self.classDescriptionTextView.textAlignment = NSTextAlignment.Center
             }
             if let speakerName = currentClass.presentation?.speakerName {
                 self.speakerButton.setTitle(speakerName, forState: .Normal)

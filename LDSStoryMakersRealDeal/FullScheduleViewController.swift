@@ -20,6 +20,8 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     let tableViewDataSoruce:BreakoutsDataSource = BreakoutsDataSource()
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!]
         self.getbreakoutsByDay()
         self.setViewControllerBackgroundImage()
         self.setUpTableView()
@@ -58,6 +60,10 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     }
     
     func segmentedControllerAppearance() {
+        self.segmentedController.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+                                                        NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Regular", size: 15)!], forState: UIControlState.Normal)
+        self.segmentedController.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Regular", size: 20)!], forState: UIControlState.Selected)
         self.segmentedController.backgroundColor = UIColor.clearColor()
         self.segmentedController.selectedSegmentIndex = 0
         self.segmentedController.tintColor = UIColor(red: 0.094, green: 0.498, blue: 0.494, alpha: 1.00)

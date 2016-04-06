@@ -29,7 +29,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         self.setBackgroundImageView()
         self.setUpTableView()
         self.loadTableViewWithBreakouts(self.classesInBreakout)
-        self.setUpLabel()
+        self.setUpViews()
 
     }
     
@@ -94,9 +94,12 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
             self.navigationController?.presentViewController(timeConflictAlert, animated: true, completion: nil)
         }
     
-    func setUpLabel() {
+    func setUpViews() {
         self.labelBreakoutTime.text = self.stringForLabelBreakoutTime
+        self.labelBreakoutTime.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         self.labelBreakoutTime.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!]
     }
     
     func setBackgroundImageView() {

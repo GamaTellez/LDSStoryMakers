@@ -17,5 +17,7 @@ class AppAppearance: NSObject {
         UITabBar.appearance().barTintColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         UITabBar.appearance().tintColor = UIColor.whiteColor()
        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clearColor()], forState: UIControlState.Normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clearColor()], forState: UIControlState.Highlighted)
     }
 }

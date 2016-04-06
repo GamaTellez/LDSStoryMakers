@@ -30,7 +30,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         if let scheduled = classAttend.inSchedule {
             if scheduled == true {
                 cell.addRemoveButton.selected = true
-                cell.addRemoveButton.backgroundColor = UIColor(red: 0.561, green: 0.008, blue: 0.020, alpha: 1.00)
+                cell.addRemoveButton.backgroundColor = UIColor(red: 1.000, green: 0.197, blue: 0.224, alpha: 1.00)
                 
             } else {
                 cell.addRemoveButton.selected = false
@@ -41,11 +41,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
             cell.titleLabel.text = title
         }
         if let spakerName = classAttend.speaker?.speakerName {
-            if let location = classAttend.scheduleItem?.location {
-                cell.speakerAndLocationLabel.text = String(format: "%@ at %@",spakerName, location)
-            } else {
                 cell.speakerAndLocationLabel.text = spakerName
-            }
         }
         if let shortDescription = classAttend.presentation?.presentationDescription {
             cell.descriptionLabel.text = shortDescription
@@ -90,7 +86,7 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
                     ManagedObjectsController.sharedInstance.createScheduledClass(from: classSelected, completion: { (succeeded) in
                         if (succeeded == true) {
                             button.selected = true
-                            button.backgroundColor = UIColor(red: 0.561, green: 0.008, blue: 0.020, alpha: 1.00)
+                            button.backgroundColor = UIColor(red: 1.000, green: 0.197, blue: 0.224, alpha: 1.00)
                             classSelected.inSchedule = true
                             NSNotificationCenter.defaultCenter().postNotificationName(self.itemSuccesfullySaved, object: nil)
                         } else {
