@@ -44,6 +44,7 @@ class PresentationCell: UITableViewCell {
         self.descriptionLabel.textAlignment = .Justified
         self.fadedViewClassContent.alpha = 0.95
         self.fadedViewClassContent.hidden = true
+        self.isInBreakoutLabel.hidden = true
         
     }
         @IBAction func addRemoveButtonTapped(sender: UIButton) {
@@ -52,9 +53,13 @@ class PresentationCell: UITableViewCell {
     
     override func prepareForReuse() {
         //self.backgroundColor = UIColor.whiteColor()
+        self.fadedViewClassContent.hidden =  true
+        self.isInBreakoutLabel.hidden = true
     }
     
     func setInBreakoutLabel(breakoutID:Int) {
+        self.isInBreakoutLabel.hidden = false
+        self.fadedViewClassContent.hidden = false
         self.isInBreakoutLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         self.isInBreakoutLabel.text = String(format:"Saved in breakout %d", breakoutID)
     }

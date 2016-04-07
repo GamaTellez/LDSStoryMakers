@@ -39,7 +39,6 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         }
         if let inBreakout = classAttend.inBreakout {
             if inBreakout == false {
-                cell.fadedViewClassContent.hidden = false
                 cell.setInBreakoutLabel(2)
             }
         }
