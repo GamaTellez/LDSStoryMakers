@@ -53,7 +53,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, NotificationsToggledDel
             }
         }
     }
-  
+    
     func notificationsSwitchToggled(switchSelected: Bool) {
         self.setNotificationsSettings(switchSelected)
        self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 1)], withRowAnimation: .Fade)

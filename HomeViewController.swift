@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var addClassButton: UIButton!
   //  @IBOutlet var labelTitle: UILabel!
    // @IBOutlet var refreshButton: UIButton!
+    lazy var helpView = UIView()
     lazy var conteinerView = UIView()
     lazy var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -256,7 +257,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             }) { (done:Bool) -> Void in
                 self.conteinerView.hidden = true
                 self.enableAndDisableTabBarItems(true)
-        }        
+        }
+        self.conteinerView.removeFromSuperview()
     }
     func enableAndDisableTabBarItems(enable:Bool) {
         if let arrayOfTabBarItems = self.tabBarController?.tabBar.items as! AnyObject as? NSArray{
@@ -267,6 +269,42 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             }
         }
     }
+    
+    @IBAction func helpButtonTapped(sender: AnyObject) {
+    
+        self.helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
+        helpView.backgroundColor = UIColor.grayColor()
+        let refreshImage = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+        refreshImage.image = UIImage(named: "refresh")
+        
+        let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        dismissButton.setTitle("Dismiss", forState: .Normal)
+        dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        dismissButton.addTarget(self, action: #selector(HomeViewController.dismissHelpView), forControlEvents: .AllEvents)
+        dismissButton.backgroundColor = UIColor.whiteColor()
+        
+        helpView.addSubview(dismissButton)
+        
+        let refreshLabel = UILabel(frame: CGRect(x: refreshImage.frame.height + 15, y: 10, width: helpView.frame.width - 70, height: 40))
+        refreshLabel.backgroundColor = UIColor.whiteColor()
+        refreshLabel.numberOfLines = 2
+        refreshLabel.backgroundColor = UIColor.clearColor()
+        refreshLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        refreshLabel.text = "Tap the refresh button to get the updated schedule"
+        
+       // let labelInstructions = UILabel(frame: CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        
+        self.helpView.addSubview(refreshLabel)
+        self.helpView.addSubview(refreshImage)
+        
+        self.view.addSubview(helpView)
+    }
+    
+    func dismissHelpView() {
+        self.helpView.removeFromSuperview()
+    }
+  
     
 }
 
