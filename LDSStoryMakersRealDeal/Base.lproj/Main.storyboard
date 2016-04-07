@@ -915,7 +915,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feedback" image="ic_settings" id="6RT-N4-76D"/>
+                    <tabBarItem key="tabBarItem" title="Feedback" image="feedBack" id="6RT-N4-76D"/>
                     <connections>
                         <outlet property="backGroundImage" destination="F8U-cb-BlJ" id="Uus-lN-f7E"/>
                         <outlet property="tableView" destination="ZWJ-T0-Bxp" id="48j-pH-pk8"/>
@@ -947,8 +947,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feedBack" width="24" height="24"/>
         <image name="ic_home" width="24" height="24"/>
-        <image name="ic_settings" width="24" height="24"/>
         <image name="rsz_calendar" width="25" height="25"/>
         <image name="rsz_calendaradd" width="25" height="25"/>
     </resources>
