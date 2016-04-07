@@ -13,11 +13,14 @@ import DGActivityIndicatorView
 class HomeViewController: UIViewController, UITableViewDelegate {
     
   
+    @IBOutlet var helpButton: UIBarButtonItem!
+    @IBOutlet var navBar: UINavigationBar!
+    @IBOutlet var refreshButton: UIBarButtonItem!
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
-    @IBOutlet var labelTitle: UILabel!
-    @IBOutlet var refreshButton: UIButton!
+  //  @IBOutlet var labelTitle: UILabel!
+   // @IBOutlet var refreshButton: UIButton!
     lazy var conteinerView = UIView()
     lazy var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -39,7 +42,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
             self.presentWaitingLoadingView(with: "Welcome To LDStorymakers 2016")
             self.enableAndDisableTabBarItems(false)
         }
-        self.setUpLabelsApperance()
+        self.setUpViewsApperance()
         self.setBackgroundImageView()
         self.setUpTablewView()
         self.registerForNotifications()
@@ -72,13 +75,16 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
         self.addClassButton.setImage(UIImage(named: "homeAddClas"), forState: .Normal)
-        self.refreshButton.setImage(UIImage(named:"refresh"), forState: .Normal)
+       // self.refreshButton.setImage(UIImage(named:"refresh"), forState: .Normal)
+        self.refreshButton.image = UIImage(named: "refresh")
+        self.helpButton.image = UIImage(named: "help")
        
     }
     func setUpStatusBarBackground() {
         let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 22))
         statusBarView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
-        self.labelTitle.addSubview(statusBarView)
+       // self.labelTitle.addSubview(statusBarView)
+        self.view.addSubview(statusBarView)
     }
     func registerForNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeViewController.scheduleMandatoryClassesOnFirstLaunch), name:kallObjectsFromGoogleSpreadSheetsInCoreData, object: nil)
@@ -132,13 +138,10 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         self.tableView.dataSource = self.tableViewDataSource
     }
    
-    func setUpLabelsApperance() {
-        self.labelTitle.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.labelTitle.numberOfLines = 2
-        self.labelTitle.textColor = UIColor.whiteColor()
-        self.labelTitle.text = "\n LDS Storymakers Conference 2016"
-        self.labelTitle.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
+    func setUpViewsApperance() {
+        self.navBar.tintColor = UIColor.whiteColor()
+        self.navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName:  UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!]
+        self.navBar.topItem?.title = "LDStorymakers 2016"
     }
     
     func updateTableViewData(from arrayOfClasses:[ClassScheduled]) {
