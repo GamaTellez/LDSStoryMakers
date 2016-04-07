@@ -745,9 +745,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="IWb-Z0-UwO">
                                 <rect key="frame" x="20" y="335" width="560" height="214"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="214" id="IK2-8d-Xqu"/>
-                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -759,26 +756,27 @@
                                 <rect key="frame" x="290" y="171" width="20" height="20"/>
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OhA-hx-kXn">
-                                <rect key="frame" x="188" y="88" width="225" height="225"/>
+                                <rect key="frame" x="188" y="102" width="225" height="211"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="Idc-vN-ki6"/>
+                                    <constraint firstAttribute="height" constant="211" id="K6m-42-RZ3"/>
+                                    <constraint firstAttribute="width" constant="225" id="zjP-Fr-gKN"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XNT-Yi-RhV" firstAttribute="top" secondItem="hEK-Jv-Jpr" secondAttribute="top" id="B1f-Mh-3g8"/>
-                            <constraint firstItem="OhA-hx-kXn" firstAttribute="top" secondItem="Jkp-9M-mVC" secondAttribute="bottom" constant="24" id="BVz-vN-6TD"/>
-                            <constraint firstItem="IWb-Z0-UwO" firstAttribute="leading" secondItem="hEK-Jv-Jpr" secondAttribute="leadingMargin" id="ESR-qv-Avs"/>
-                            <constraint firstItem="bK1-AM-uSR" firstAttribute="top" secondItem="Jkp-9M-mVC" secondAttribute="bottom" constant="107" id="NaK-6E-CX7"/>
-                            <constraint firstItem="IWb-Z0-UwO" firstAttribute="top" secondItem="OhA-hx-kXn" secondAttribute="bottom" constant="22" id="NkM-G7-h0P"/>
-                            <constraint firstItem="XNT-Yi-RhV" firstAttribute="leading" secondItem="hEK-Jv-Jpr" secondAttribute="leading" id="WNH-HK-pII"/>
-                            <constraint firstItem="XNT-Yi-RhV" firstAttribute="centerX" secondItem="IWb-Z0-UwO" secondAttribute="centerX" id="cY7-p2-Mqf"/>
-                            <constraint firstAttribute="bottom" secondItem="XNT-Yi-RhV" secondAttribute="bottom" id="fiF-Ms-t0c"/>
-                            <constraint firstItem="bK1-AM-uSR" firstAttribute="centerX" secondItem="IWb-Z0-UwO" secondAttribute="centerX" id="lRl-wj-gU3"/>
-                            <constraint firstAttribute="trailing" secondItem="XNT-Yi-RhV" secondAttribute="trailing" id="t7s-WJ-8kg"/>
-                            <constraint firstItem="OhA-hx-kXn" firstAttribute="centerX" secondItem="bK1-AM-uSR" secondAttribute="centerX" id="vD6-Lh-4S8"/>
-                            <constraint firstItem="kSP-9F-aI4" firstAttribute="top" secondItem="IWb-Z0-UwO" secondAttribute="bottom" constant="2" id="yTD-we-X0p"/>
+                            <constraint firstItem="XNT-Yi-RhV" firstAttribute="top" secondItem="hEK-Jv-Jpr" secondAttribute="top" id="3pj-Es-qXr"/>
+                            <constraint firstItem="XNT-Yi-RhV" firstAttribute="leading" secondItem="hEK-Jv-Jpr" secondAttribute="leading" id="RJm-g1-5Vd"/>
+                            <constraint firstItem="XNT-Yi-RhV" firstAttribute="centerX" secondItem="OhA-hx-kXn" secondAttribute="centerX" id="al5-Rs-a0C"/>
+                            <constraint firstItem="bK1-AM-uSR" firstAttribute="top" secondItem="Jkp-9M-mVC" secondAttribute="bottom" constant="107" id="bHu-fN-gEl"/>
+                            <constraint firstItem="kSP-9F-aI4" firstAttribute="top" secondItem="IWb-Z0-UwO" secondAttribute="bottom" constant="2" id="dPI-dM-Obw"/>
+                            <constraint firstItem="OhA-hx-kXn" firstAttribute="centerX" secondItem="bK1-AM-uSR" secondAttribute="centerX" id="eCd-qU-g7k"/>
+                            <constraint firstItem="OhA-hx-kXn" firstAttribute="top" secondItem="Jkp-9M-mVC" secondAttribute="bottom" constant="38" id="mH9-MH-LLQ"/>
+                            <constraint firstAttribute="bottom" secondItem="XNT-Yi-RhV" secondAttribute="bottom" id="ol1-eb-yfM"/>
+                            <constraint firstItem="IWb-Z0-UwO" firstAttribute="leading" secondItem="hEK-Jv-Jpr" secondAttribute="leadingMargin" id="sXh-mK-MSp"/>
+                            <constraint firstItem="IWb-Z0-UwO" firstAttribute="top" secondItem="OhA-hx-kXn" secondAttribute="bottom" constant="22" id="uCB-Md-VxN"/>
+                            <constraint firstItem="bK1-AM-uSR" firstAttribute="centerX" secondItem="IWb-Z0-UwO" secondAttribute="centerX" id="x4h-dv-4ry"/>
+                            <constraint firstAttribute="trailing" secondItem="XNT-Yi-RhV" secondAttribute="trailing" id="zta-Ic-7kc"/>
                         </constraints>
                     </view>
                     <connections>
