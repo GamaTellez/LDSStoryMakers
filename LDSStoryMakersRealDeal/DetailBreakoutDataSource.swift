@@ -39,7 +39,8 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         }
         if let inBreakout = classAttend.inBreakout {
             if inBreakout == false {
-                cell.backgroundColor = UIColor(red: 0.310, green: 0.808, blue: 0.851, alpha: 1.00)
+                cell.fadedViewClassContent.hidden = false
+                cell.setInBreakoutLabel(2)
             }
         }
         if let title = classAttend.presentation?.title {

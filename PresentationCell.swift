@@ -14,6 +14,8 @@ protocol PresentationCellButtonDelegate {
 
 class PresentationCell: UITableViewCell {
     
+    @IBOutlet var isInBreakoutLabel: UILabel!
+    @IBOutlet var fadedViewClassContent: UIView!
     @IBOutlet var addRemoveButton: UIButton!
     @IBOutlet var speakerAndLocationLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -40,12 +42,20 @@ class PresentationCell: UITableViewCell {
         self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.descriptionLabel.numberOfLines = 3
         self.descriptionLabel.textAlignment = .Justified
+        self.fadedViewClassContent.alpha = 0.95
+        self.fadedViewClassContent.hidden = true
+        
     }
         @IBAction func addRemoveButtonTapped(sender: UIButton) {
             self.delegate?.indexOfClassSelectedWithButton(sender.tag, and: sender)
     }
     
     override func prepareForReuse() {
-        self.backgroundColor = UIColor.whiteColor()
+        //self.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func setInBreakoutLabel(breakoutID:Int) {
+        self.isInBreakoutLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+        self.isInBreakoutLabel.text = String(format:"Saved in breakout %d", breakoutID)
     }
 }

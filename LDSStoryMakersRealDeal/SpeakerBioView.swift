@@ -10,8 +10,6 @@ import UIKit
 
 class SpeakerBioView: UIViewController, UITextViewDelegate {
 
-    @IBOutlet var speakerNameLabel: UILabel!
-   // @IBOutlet var fillerLabel: UILabel!
     @IBOutlet var speakerImageView: UIImageView!
     @IBOutlet var bioTextView: UITextView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -27,7 +25,6 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
         self.setUpViews()
         self.setViewContent()
         self.setBackgroundImageView()
-//        self.registerForNotifications()
     }
     override func viewWillDisappear(animated: Bool) {
         self.removeObserverFromNotifications()
@@ -41,10 +38,6 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     }
     
     func setUpViews() {
-        //self.fillerLabel.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
-        self.speakerNameLabel.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
-        self.speakerNameLabel.textColor = UIColor.whiteColor()
-        self.speakerNameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         self.bioTextView.backgroundColor = UIColor.clearColor()
         self.bioTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         self.bioTextView.textAlignment = NSTextAlignment.Center
@@ -62,7 +55,7 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     func setViewContent() {
         if let currentSpeaker = self.speakerSelected {
             if let spakerName = currentSpeaker.speakerName {
-                self.speakerNameLabel.text = spakerName
+                self.title = spakerName
             }
             if let speakerBio = currentSpeaker.speakerBio {
 //                let style = NSMutableParagraphStyle()
@@ -108,10 +101,4 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
         return false
     }
-    
-    @IBAction func doneButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
 }
