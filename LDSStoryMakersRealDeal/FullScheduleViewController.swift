@@ -139,7 +139,6 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
             let classObject = ClassToSchedule()
             classObject.scheduleItem = item
             classObject.inSchedule = false
-            classObject.inBreakout = true
     
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
                 if let itemBreakoutId = item.valueForKey("breakout") as? Int {
@@ -229,7 +228,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                 if let selectedBreaoutId = inBreakout.valueForKey("id") as? Int {
                     if let possibleClassBreakoutId = possibleClass.breakOut?.valueForKey("id") as? Int {
                         if possibleClassBreakoutId != selectedBreaoutId {
-                            classForCell.inBreakout = false
+                            classForCell.inBreakout = possibleClassBreakoutId
                             }
                         }
                     }

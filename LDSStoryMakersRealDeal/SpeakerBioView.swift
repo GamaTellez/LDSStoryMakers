@@ -40,6 +40,7 @@ class SpeakerBioView: UIViewController, UITextViewDelegate {
     func setUpViews() {
         self.bioTextView.backgroundColor = UIColor.clearColor()
         self.bioTextView.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.bioTextView.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.bioTextView.textAlignment = NSTextAlignment.Center
         self.activityIndicator.startAnimating()
         self.activityIndicator.alpha = 1

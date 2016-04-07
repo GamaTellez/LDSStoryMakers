@@ -42,13 +42,16 @@ class PresentationCell: UITableViewCell {
         self.descriptionLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         self.descriptionLabel.numberOfLines = 3
         self.descriptionLabel.textAlignment = .Justified
-        self.fadedViewClassContent.alpha = 0.95
         self.fadedViewClassContent.hidden = true
+        self.fadedViewClassContent.alpha = 0.9
         self.isInBreakoutLabel.hidden = true
+        self.isInBreakoutLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         
     }
         @IBAction func addRemoveButtonTapped(sender: UIButton) {
             self.delegate?.indexOfClassSelectedWithButton(sender.tag, and: sender)
+            self.fadedViewClassContent.hidden = true
+            self.isInBreakoutLabel.hidden = true
     }
     
     override func prepareForReuse() {
@@ -60,7 +63,6 @@ class PresentationCell: UITableViewCell {
     func setInBreakoutLabel(breakoutID:Int) {
         self.isInBreakoutLabel.hidden = false
         self.fadedViewClassContent.hidden = false
-        self.isInBreakoutLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         self.isInBreakoutLabel.text = String(format:"Saved in breakout %d", breakoutID)
     }
 }

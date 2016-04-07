@@ -24,6 +24,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     let dataSource = PersonalScheduleDS()
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Bold", size: 20)!]
         super.viewDidLoad()
         self.getbreakoutsByDay()
         self.setUpViews()

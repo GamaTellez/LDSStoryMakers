@@ -74,6 +74,16 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.classLocationLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
         self.classLocationLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
         
+//        let navTitleLAbel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.classTitleLabel.frame.height))
+//        navTitleLAbel.numberOfLines = 0
+//        navTitleLAbel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+//        navTitleLAbel.textAlignment = .Center
+//        navTitleLAbel.preferredMaxLayoutWidth = 30
+//        navTitleLAbel.lineBreakMode = .ByWordWrapping
+//        navTitleLAbel.sizeToFit()
+//        navTitleLAbel.text = "fdsfdsfdsfdsfdsfdsfdsf sdfdsfd sdfdsf sdfdsf sdfd fsdf"
+//        navTitleLAbel.textColor = UIColor.whiteColor()
+//        self.navigationController?.navigationItem.titleView = navTitleLAbel
     }
     
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
