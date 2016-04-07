@@ -15,5 +15,6 @@ class ClassToSchedule: NSObject {
     var scheduleItem:ScheduleItem?
     var presentation:Presentation?
     var inSchedule:Bool?
+    var inBreakout:Bool?
 
 }

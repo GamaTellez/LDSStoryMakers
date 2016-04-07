@@ -36,7 +36,12 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
                 cell.addRemoveButton.selected = false
                 cell.addRemoveButton.backgroundColor = UIColor(red: 0.094, green: 0.588, blue: 0.251, alpha: 1.00)
             }
-        }        
+        }
+        if let inBreakout = classAttend.inBreakout {
+            if inBreakout == false {
+                cell.backgroundColor = UIColor(red: 0.310, green: 0.808, blue: 0.851, alpha: 1.00)
+            }
+        }
         if let title = classAttend.presentation?.title {
             cell.titleLabel.text = title
         }

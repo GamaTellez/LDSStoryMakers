@@ -133,14 +133,14 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         return allScheduleItems
     }
     
-    func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem]) -> [ClassToSchedule] {
+    func createClassObjectsReadyToSave(from itemsSchedule:[ScheduleItem], selectedBreakout:Breakout) -> [ClassToSchedule] {
         var allClasses:[ClassToSchedule] = []
-        let allClassesStored = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled]
-        for item in itemsSchedule {
+            for item in itemsSchedule {
             let classObject = ClassToSchedule()
             classObject.scheduleItem = item
             classObject.inSchedule = false
-           
+            classObject.inBreakout = true
+    
             if let allBreakouts = ManagedObjectsController.sharedInstance.getAllBreakoutsFromCoreDataByDate() as? [Breakout] {
                 if let itemBreakoutId = item.valueForKey("breakout") as? Int {
                     for breakt in allBreakouts {
@@ -168,11 +168,8 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                     }
                 }
             }
-            if let allClassesInScheduled = allClassesStored {
-                let scheduled = self.isClassScheduled(classObject, from: allClassesInScheduled)
-                if scheduled {
-                    classObject.inSchedule = true
-                }
+            if let allClassesInSchedule = ManagedObjectsController.sharedInstance.getAllScheduledClasses() as? [ClassScheduled] {
+                self.isClassScheduled(classObject, from: allClassesInSchedule, inBreakout: selectedBreakout)
             }
             allClasses.append(classObject)
         }
@@ -198,8 +195,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                                 }
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
-                            let allClasesToSchedule = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
-                            breakoutDetailVC.classesInBreakout = allClasesToSchedule
+                            breakoutDetailVC.classesInBreakout = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout, selectedBreakout: selectedBreakout)
                         }
                     }
                     if daySelected == 1 {
@@ -215,8 +211,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
                                 }
                             }
                             let scheduleItemsForSelectedBreakout = self.getAllScheduleItemsForSelectedBreakout(selectedBreakout)
-                            let allClasesToSchedule = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout)
-                            breakoutDetailVC.classesInBreakout = allClasesToSchedule
+                            breakoutDetailVC.classesInBreakout = self.createClassObjectsReadyToSave(from: scheduleItemsForSelectedBreakout, selectedBreakout: selectedBreakout)
                         }
                     }
                 break
@@ -227,13 +222,19 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     
     }
     
-    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled]) -> Bool {
+    func isClassScheduled(classForCell:ClassToSchedule, from classesInSchedule:[ClassScheduled], inBreakout:Breakout) {
         for possibleClass in classesInSchedule {
-            if  classForCell.presentation?.valueForKey("title") as? String == possibleClass.presentation?.valueForKey("title") as? String {
-                return true
+            if classForCell.presentation?.title == possibleClass.presentation?.valueForKey("title") as? String {
+                classForCell.inSchedule = true
+                if let selectedBreaoutId = inBreakout.valueForKey("id") as? Int {
+                    if let possibleClassBreakoutId = possibleClass.breakOut?.valueForKey("id") as? Int {
+                        if possibleClassBreakoutId != selectedBreaoutId {
+                            classForCell.inBreakout = false
+                            }
+                        }
+                    }
+                }
             }
-        }
-        return false
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
