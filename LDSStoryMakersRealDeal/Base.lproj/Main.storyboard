@@ -506,7 +506,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speaker and location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUX-AI-w1q">
                                                     <rect key="frame" x="91" y="52" width="490" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="Z8b-7k-Hbe"/>
+                                                        <constraint firstAttribute="height" constant="21" id="USL-MH-81w"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -521,8 +521,8 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdX-9D-eGL">
                                                     <rect key="frame" x="27" y="68" width="41" height="41"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="41" id="F7L-Lr-wQn"/>
-                                                        <constraint firstAttribute="height" constant="41" id="N6D-yK-vFA"/>
+                                                        <constraint firstAttribute="height" constant="41" id="0zw-kZ-sgx"/>
+                                                        <constraint firstAttribute="width" constant="41" id="yBV-xy-R0L"/>
                                                     </constraints>
                                                     <connections>
                                                         <action selector="addRemoveButtonTapped:" destination="gbx-Xx-Z0u" eventType="touchUpInside" id="bYd-hf-1wy"/>
@@ -530,19 +530,19 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="PPu-fg-pQM" secondAttribute="trailing" constant="-4" id="HFS-3I-C3A"/>
-                                                <constraint firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="Jig-Xc-Rz8"/>
-                                                <constraint firstItem="xdX-9D-eGL" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="19" id="Wyu-Dt-X1W"/>
-                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="ZbH-Hg-Bhw"/>
-                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="top" secondItem="c2w-Et-Xgj" secondAttribute="topMargin" constant="-9" id="c4v-wE-qcu"/>
-                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="xdX-9D-eGL" secondAttribute="trailing" constant="23" id="eI8-cF-GNZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xdX-9D-eGL" secondAttribute="bottom" constant="19.5" id="hat-jo-eyW"/>
-                                                <constraint firstItem="PPu-fg-pQM" firstAttribute="top" secondItem="OUX-AI-w1q" secondAttribute="bottom" constant="2" id="iwC-mt-qji"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="PPu-fg-pQM" secondAttribute="bottom" constant="-0.5" id="kCj-KY-kh5"/>
-                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="PPu-fg-pQM" secondAttribute="leading" id="nhH-K6-2KZ"/>
-                                                <constraint firstItem="xdX-9D-eGL" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leadingMargin" constant="19" id="r7n-i1-bX5"/>
-                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leading" id="tlT-YN-ioK"/>
-                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="3" id="zGc-W2-GAH"/>
+                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="top" secondItem="c2w-Et-Xgj" secondAttribute="topMargin" constant="-9" id="7Ol-Sm-mbL"/>
+                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="IjK-Fd-9fZ"/>
+                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="PPu-fg-pQM" secondAttribute="leading" id="Kk3-zm-dcU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xdX-9D-eGL" secondAttribute="bottom" constant="19.5" id="Rq8-0V-Yzc"/>
+                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="3" id="THb-3v-Cqh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PPu-fg-pQM" secondAttribute="trailing" constant="-4" id="ZQp-W5-K6A"/>
+                                                <constraint firstItem="ESp-OT-dmL" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leading" id="mK6-g7-rRX"/>
+                                                <constraint firstItem="PPu-fg-pQM" firstAttribute="top" secondItem="OUX-AI-w1q" secondAttribute="bottom" constant="2" id="nA5-S2-1dY"/>
+                                                <constraint firstAttribute="trailing" secondItem="OUX-AI-w1q" secondAttribute="trailing" id="o7O-7O-RcP"/>
+                                                <constraint firstItem="xdX-9D-eGL" firstAttribute="top" secondItem="ESp-OT-dmL" secondAttribute="bottom" constant="19" id="ph8-jB-o7k"/>
+                                                <constraint firstItem="xdX-9D-eGL" firstAttribute="leading" secondItem="c2w-Et-Xgj" secondAttribute="leadingMargin" constant="19" id="r3P-tv-IHh"/>
+                                                <constraint firstItem="OUX-AI-w1q" firstAttribute="leading" secondItem="xdX-9D-eGL" secondAttribute="trailing" constant="23" id="w1y-mf-KWJ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PPu-fg-pQM" secondAttribute="bottom" constant="-0.5" id="xVx-jF-3Rv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

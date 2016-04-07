@@ -51,8 +51,11 @@ class DetailBreakoutDataSource: NSObject, UITableViewDataSource, PresentationCel
         if let shortDescription = classAttend.presentation?.presentationDescription {
             cell.descriptionLabel.text = shortDescription
         }
+        cell.contentView.setNeedsDisplay()
     return cell
     }
+    
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.classes.count

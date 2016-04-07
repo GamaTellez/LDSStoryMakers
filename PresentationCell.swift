@@ -14,7 +14,6 @@ protocol PresentationCellButtonDelegate {
 
 class PresentationCell: UITableViewCell {
     
- 
     @IBOutlet var addRemoveButton: UIButton!
     @IBOutlet var speakerAndLocationLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -44,5 +43,9 @@ class PresentationCell: UITableViewCell {
     }
         @IBAction func addRemoveButtonTapped(sender: UIButton) {
             self.delegate?.indexOfClassSelectedWithButton(sender.tag, and: sender)
+    }
+    
+    override func prepareForReuse() {
+        self.backgroundColor = UIColor.whiteColor()
     }
 }
