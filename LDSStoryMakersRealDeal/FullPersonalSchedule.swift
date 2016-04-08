@@ -14,6 +14,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var segmentedController: UISegmentedControl!
+    @IBOutlet var helpButton: UIBarButtonItem!
    
     
     let itemSuccesfullySaved = "itemSuccesfullySaved"
@@ -22,6 +23,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
     let dataSource = PersonalScheduleDS()
+    lazy var helpView = UIVisualEffectView()
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.titleTextAttributes =
@@ -45,6 +47,8 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         self.navigationController?.navigationBar.addSubview(statusBarView)
         self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
         self.segmentedController.tintColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
+        self.helpButton.image = UIImage(named: "help")
+        self.helpButton.tintColor = UIColor.whiteColor()
     }
     
     func setUpTableViewAndSegmentedController() {
@@ -456,4 +460,31 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         }
         return false
     }
+    @IBAction func helpButtonTapped(sender: AnyObject) {
+        let blurryEffect = UIBlurEffect(style: .Light)
+        helpView.effect = blurryEffect
+        helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
+        
+        let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        dismissButton.setTitle("Dismiss", forState: .Normal)
+        dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        dismissButton.addTarget(self, action: #selector(FullPersonalSchedule.dismissHelpView), forControlEvents: .AllEvents)
+        dismissButton.backgroundColor = UIColor.clearColor()
+        helpView.addSubview(dismissButton)
+        
+        let tipsLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.self.helpView.frame.width - 20, height: 200))
+        tipsLabel.backgroundColor = UIColor.clearColor()
+        tipsLabel.numberOfLines = 0
+        tipsLabel.text = "Tap on \"Friday\" or \"Saturday\" to update the schedule to the respective day.\n\nTap on \"Find Class\" to find a class for the respective breakout.\n\nTap on a class to find more information about it."
+        tipsLabel.textAlignment = .Justified
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        helpView.addSubview(tipsLabel)
+        self.view.addSubview(helpView)
+    }
+
+    func dismissHelpView() {
+        self.helpView.removeFromSuperview()
+    }
+    
 }

@@ -14,10 +14,12 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
   
+    @IBOutlet var helpButton: UIBarButtonItem!
     let finishedRedownLoadingData = "finishedRedownLoadingData"
     var fridayBreakouts:[Breakout] = []
     var saturdayBreakouts:[Breakout] = []
     let tableViewDataSoruce:BreakoutsDataSource = BreakoutsDataSource()
+    lazy var helpView = UIVisualEffectView()
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.titleTextAttributes =
@@ -28,6 +30,8 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         self.segmentedControllerAppearance()
         self.setUpStatusBarBackground()
         self.unregiterFromNotifications()
+        self.helpButton.image = UIImage(named: "help")
+        self.helpButton.tintColor = UIColor.whiteColor()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -263,5 +267,32 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         default:
             break
         }
+    }
+    
+    @IBAction func helpButtonTapped(sender: AnyObject) {
+        let blurryEffect = UIBlurEffect(style: .Light)
+        helpView.effect = blurryEffect
+        helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
+        
+        let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        dismissButton.setTitle("Dismiss", forState: .Normal)
+        dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        dismissButton.addTarget(self, action: #selector(FullPersonalSchedule.dismissHelpView), forControlEvents: .AllEvents)
+        dismissButton.backgroundColor = UIColor.clearColor()
+        helpView.addSubview(dismissButton)
+        
+        let tipsLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.self.helpView.frame.width - 20, height: 200))
+        tipsLabel.backgroundColor = UIColor.clearColor()
+        tipsLabel.numberOfLines = 0
+        tipsLabel.text = ""
+        tipsLabel.textAlignment = .Justified
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        helpView.addSubview(tipsLabel)
+        self.view.addSubview(helpView)
+    }
+    
+    func dismissHelpView() {
+        self.helpView.removeFromSuperview()
     }
 }

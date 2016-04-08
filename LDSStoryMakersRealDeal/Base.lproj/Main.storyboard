@@ -26,7 +26,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nextClassCell" rowHeight="246" id="j0c-uo-twm" customClass="NextClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="246"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j0c-uo-twm" id="XwJ-D5-wKN">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="246"/>
@@ -101,7 +101,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="upcomingClass" rowHeight="85" id="lAl-kr-bYo" customClass="UpcomingClassCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="295.5" width="600" height="85"/>
+                                        <rect key="frame" x="0.0" y="296" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAl-kr-bYo" id="24X-BZ-SH2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
@@ -152,7 +152,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fullSchedule" rowHeight="32" id="vyz-HI-Fja" customClass="ViewFullScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="380.5" width="600" height="32"/>
+                                        <rect key="frame" x="0.0" y="381" width="600" height="32"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vyz-HI-Fja" id="nha-vD-FHI">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="32"/>
@@ -283,10 +283,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scheduledClassCell" rowHeight="74" id="gMo-Ao-gQK" customClass="PersonalScheduleCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="74"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gMo-Ao-gQK" id="tEs-7z-gss">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="73.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2s-93-cAM">
@@ -333,10 +333,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addClassCell" id="JD5-Ag-xx4">
-                                        <rect key="frame" x="0.0" y="123.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="124" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JD5-Ag-xx4" id="idS-AP-PpF">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -367,9 +367,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Schedule" id="5gq-tb-BtR">
                         <barButtonItem key="backBarButtonItem" title=" " id="Udf-EW-q6o"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="bOd-qt-ix7">
+                            <connections>
+                                <action selector="helpButtonTapped:" destination="J04-ai-fx7" id="KWm-Eh-vlD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backGroundImageView" destination="KRY-OW-rXa" id="2Em-ew-vWk"/>
+                        <outlet property="helpButton" destination="bOd-qt-ix7" id="81Z-qD-H5u"/>
                         <outlet property="segmentedController" destination="eh3-oi-Ie0" id="GQu-kF-Pm1"/>
                         <outlet property="tableView" destination="Eoo-5s-1vI" id="Fns-7F-fP4"/>
                     </connections>
@@ -399,7 +405,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="breakoutCellID" rowHeight="116" id="6gQ-2O-V5U" userLabel="Breakoutcell" customClass="BreakoutCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="116"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gQ-2O-V5U" id="Rca-S6-MsT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="116"/>
@@ -458,9 +464,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Conference Schedule" id="n6l-9n-MH7">
                         <barButtonItem key="backBarButtonItem" title=" " id="6aG-Lw-Lnp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="s5d-Tk-BWi">
+                            <connections>
+                                <action selector="helpButtonTapped:" destination="Zry-hZ-XlH" id="26H-Ee-ZjK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backGroundImageView" destination="NN7-Er-hFn" id="ONq-4L-VfE"/>
+                        <outlet property="helpButton" destination="s5d-Tk-BWi" id="gH1-VX-Xnn"/>
                         <outlet property="segmentedController" destination="f9t-vX-H7Y" id="1uI-Xh-mQH"/>
                         <outlet property="tableView" destination="6lU-XK-5ie" id="iV3-4C-Pqf"/>
                     </connections>
@@ -490,10 +502,10 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailPresentation" rowHeight="137" id="gbx-Xx-Z0u" customClass="PresentationCell" customModule="LDSStoryMakersRealDeal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="137"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbx-Xx-Z0u" id="c2w-Et-Xgj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="136.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESp-OT-dmL">
@@ -587,7 +599,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITm-Kq-99V">
                                 <rect key="frame" x="0.0" y="64" width="600" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="UzR-EB-SGg"/>
+                                    <constraint firstAttribute="height" constant="31" id="hxu-3k-uQg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -596,21 +608,33 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iAg-CE-YP4" firstAttribute="trailing" secondItem="ITm-Kq-99V" secondAttribute="trailing" id="Dph-Dj-2Vg"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="iAg-CE-YP4" secondAttribute="bottom" constant="8" id="LeM-2b-qXn"/>
-                            <constraint firstItem="ITm-Kq-99V" firstAttribute="top" secondItem="wC0-Hm-41G" secondAttribute="bottom" id="aTg-YF-cnr"/>
-                            <constraint firstItem="ITm-Kq-99V" firstAttribute="leading" secondItem="vpI-2V-HqF" secondAttribute="leading" id="cuo-3u-jTH"/>
-                            <constraint firstItem="iAg-CE-YP4" firstAttribute="leading" secondItem="uj9-b7-2tY" secondAttribute="leading" id="dIm-RH-5Ok"/>
-                            <constraint firstItem="vpI-2V-HqF" firstAttribute="bottom" secondItem="pcI-JA-0Nc" secondAttribute="top" id="j4K-xy-d19"/>
-                            <constraint firstItem="vpI-2V-HqF" firstAttribute="top" secondItem="ITm-Kq-99V" secondAttribute="bottom" constant="8" symbolic="YES" id="kAL-OP-GyL"/>
-                            <constraint firstItem="iAg-CE-YP4" firstAttribute="top" secondItem="uj9-b7-2tY" secondAttribute="top" id="pUO-5R-SjG"/>
-                            <constraint firstItem="iAg-CE-YP4" firstAttribute="leading" secondItem="vpI-2V-HqF" secondAttribute="leading" id="sUb-7y-D1N"/>
-                            <constraint firstItem="ITm-Kq-99V" firstAttribute="trailing" secondItem="vpI-2V-HqF" secondAttribute="trailing" id="sec-6m-CBx"/>
-                            <constraint firstAttribute="trailing" secondItem="iAg-CE-YP4" secondAttribute="trailing" id="uuY-dm-Y06"/>
+                            <constraint firstItem="iAg-CE-YP4" firstAttribute="top" secondItem="uj9-b7-2tY" secondAttribute="top" id="9eB-Ez-Jr7"/>
+                            <constraint firstItem="ITm-Kq-99V" firstAttribute="trailing" secondItem="vpI-2V-HqF" secondAttribute="trailing" id="Hrq-jt-0Ji"/>
+                            <constraint firstItem="iAg-CE-YP4" firstAttribute="leading" secondItem="vpI-2V-HqF" secondAttribute="leading" id="Oew-XF-97C"/>
+                            <constraint firstItem="iAg-CE-YP4" firstAttribute="leading" secondItem="uj9-b7-2tY" secondAttribute="leading" id="QV0-eL-lKJ"/>
+                            <constraint firstItem="ITm-Kq-99V" firstAttribute="top" secondItem="wC0-Hm-41G" secondAttribute="bottom" id="Qz2-8r-2MF"/>
+                            <constraint firstItem="pcI-JA-0Nc" firstAttribute="top" secondItem="vpI-2V-HqF" secondAttribute="bottom" constant="5" id="c5U-Hi-77P"/>
+                            <constraint firstItem="ITm-Kq-99V" firstAttribute="leading" secondItem="vpI-2V-HqF" secondAttribute="leading" id="iWk-d8-GKz"/>
+                            <constraint firstItem="vpI-2V-HqF" firstAttribute="top" secondItem="ITm-Kq-99V" secondAttribute="bottom" constant="8" symbolic="YES" id="pd3-u9-0fZ"/>
+                            <constraint firstAttribute="trailing" secondItem="iAg-CE-YP4" secondAttribute="trailing" id="qDx-X5-4EP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iAg-CE-YP4" secondAttribute="bottom" constant="8" id="shu-CM-Lfa"/>
+                            <constraint firstItem="iAg-CE-YP4" firstAttribute="trailing" secondItem="ITm-Kq-99V" secondAttribute="trailing" id="w7H-NV-8RB"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="9te-fX-oe8"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="23X-Mt-Lll">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="fpZ-Mi-t6r">
+                            <connections>
+                                <action selector="helpButtonTapped:" destination="xCN-b4-jXF" id="tQE-1A-VU9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backGroundImage" destination="iAg-CE-YP4" id="hAB-Gb-r7k"/>
+                        <outlet property="helpButton" destination="fpZ-Mi-t6r" id="z9X-Ns-1EE"/>
                         <outlet property="labelBreakoutTime" destination="ITm-Kq-99V" id="zjw-i3-HUD"/>
                         <outlet property="tableView" destination="vpI-2V-HqF" id="uri-jX-NdU"/>
                     </connections>
@@ -862,15 +886,15 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedBackCell" id="9q7-Sw-XLm">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9q7-Sw-XLm" id="oBa-yM-UY6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationsCell" textLabel="gID-cE-2PB" detailTextLabel="bIY-DH-zoE" style="IBUITableViewCellStyleSubtitle" id="VfS-Og-5gZ">
-                                        <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VfS-Og-5gZ" id="Hae-M3-1hD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>

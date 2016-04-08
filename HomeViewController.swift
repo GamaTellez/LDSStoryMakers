@@ -19,9 +19,8 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var backGroundImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addClassButton: UIButton!
-  //  @IBOutlet var labelTitle: UILabel!
-   // @IBOutlet var refreshButton: UIButton!
-    lazy var helpView = UIView()
+
+    lazy var helpView = UIVisualEffectView()
     lazy var conteinerView = UIView()
     lazy var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -75,6 +74,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     func setUpButtons() {
         self.addClassButton.layer.cornerRadius = self.addClassButton.frame.width / 2
         self.addClassButton.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 0.8)
+        self.addClassButton.tintColor = UIColor.whiteColor()
         self.addClassButton.setImage(UIImage(named: "homeAddClas"), forState: .Normal)
        // self.refreshButton.setImage(UIImage(named:"refresh"), forState: .Normal)
         self.refreshButton.image = UIImage(named: "refresh")
@@ -271,33 +271,50 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func helpButtonTapped(sender: AnyObject) {
+        let blurryEffect = UIBlurEffect(style: .Light)
+        helpView.effect = blurryEffect
+        helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
     
-        self.helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
-        helpView.backgroundColor = UIColor.grayColor()
-        let refreshImage = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
-        refreshImage.image = UIImage(named: "refresh")
-        
         let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
-        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
         dismissButton.setTitle("Dismiss", forState: .Normal)
         dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         dismissButton.addTarget(self, action: #selector(HomeViewController.dismissHelpView), forControlEvents: .AllEvents)
-        dismissButton.backgroundColor = UIColor.whiteColor()
-        
+        dismissButton.backgroundColor = UIColor.clearColor()
         helpView.addSubview(dismissButton)
         
-        let refreshLabel = UILabel(frame: CGRect(x: refreshImage.frame.height + 15, y: 10, width: helpView.frame.width - 70, height: 40))
-        refreshLabel.backgroundColor = UIColor.whiteColor()
-        refreshLabel.numberOfLines = 2
-        refreshLabel.backgroundColor = UIColor.clearColor()
-        refreshLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        refreshLabel.text = "Tap the refresh button to get the updated schedule"
+        let refreshImage = UIImageView(frame: CGRect(x: 10, y: 20, width: 30, height: 30))
+        refreshImage.image = UIImage(named: "refresh")
+        helpView.addSubview(refreshImage)
         
-       // let labelInstructions = UILabel(frame: CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        let refreshButtonDescriptionLabel = UILabel(frame: CGRect(x: refreshImage.frame.width + 20, y: 20, width: helpView.frame.width - 70, height: 40))
+        refreshButtonDescriptionLabel.backgroundColor = UIColor.whiteColor()
+        refreshButtonDescriptionLabel.numberOfLines = 2
+        refreshButtonDescriptionLabel.backgroundColor = UIColor.clearColor()
+        refreshButtonDescriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        refreshButtonDescriptionLabel.text = "Updates the conference schudule to match any changes from Storymakers."
+        helpView.addSubview(refreshButtonDescriptionLabel)
         
-        self.helpView.addSubview(refreshLabel)
-        self.helpView.addSubview(refreshImage)
+        let addButtonImage = UIImageView(frame: CGRect(x: 10, y: refreshImage.frame.width + 40, width: 30, height: 30))
+        addButtonImage.layer.cornerRadius = addButtonImage.frame.width / 2
+        addButtonImage.image = UIImage(named: "homeAddClas")
+        addButtonImage.backgroundColor = UIColor(red: 0.196, green: 0.812, blue: 0.780, alpha: 1.00)
+        helpView.addSubview(addButtonImage)
         
+        let addButtonDescriptionLabel = UILabel(frame: CGRect(x: addButtonImage.frame.width + 20, y: refreshButtonDescriptionLabel.frame.height + 25, width: helpView.frame.width - 70, height: 40))
+        addButtonDescriptionLabel.backgroundColor = UIColor.clearColor()
+        addButtonDescriptionLabel.numberOfLines = 2
+        addButtonDescriptionLabel.text = "Tapp to add classes to your schedule"
+        addButtonDescriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        
+        helpView.addSubview(addButtonDescriptionLabel)
+        let tipsLabel = UILabel(frame: CGRect(x: 10, y: addButtonImage.frame.height + refreshImage.frame.height + 50, width: helpView.frame.width - 20, height: 150))
+        tipsLabel.backgroundColor = UIColor.clearColor()
+        tipsLabel.numberOfLines = 0
+        tipsLabel.text = "The \"Next\" section tells you which event is coming up next in your schedule.\n\nThe \"Upcoming\" sections tells you what events are coming up next.\n\n To view your schedule in more detail tap the button Personal at the bottom of the view"
+        tipsLabel.textAlignment = .Justified
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        helpView.addSubview(tipsLabel)
         self.view.addSubview(helpView)
     }
     

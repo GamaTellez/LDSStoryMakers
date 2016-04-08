@@ -30,7 +30,6 @@ class TableViewDataSource: NSObject, UITableViewDataSource, SpeakerInfoButtonTap
                 cell.speakerBioButton.alpha = 0.4
                 cell.speakerBioButton.enabled = false
             }
-            
             if let start = scheduledClass.breakOut?.valueForKey("startTime") as? NSDate {
                 if let end = scheduledClass.breakOut?.valueForKey("endTime") as? NSDate {
                     let startTime = NSDateFormatter.localizedStringFromDate(start, dateStyle: .NoStyle, timeStyle: .ShortStyle)
