@@ -18,7 +18,7 @@ let breakoutCellID = "breakoutCell"
         self.breakoutLabel.layer.borderColor = UIColor.blackColor().CGColor
         self.breakoutLabel.backgroundColor = UIColor.whiteColor()
         self.breakoutLabel.numberOfLines = 2
-        self.breakoutLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        self.breakoutLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

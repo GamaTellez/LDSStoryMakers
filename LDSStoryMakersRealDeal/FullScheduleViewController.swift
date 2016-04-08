@@ -65,7 +65,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
     
     func segmentedControllerAppearance() {
         self.segmentedController.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
-                                                        NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Regular", size: 15)!], forState: UIControlState.Normal)
+                                                        NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Regular", size: 18)!], forState: UIControlState.Normal)
         self.segmentedController.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor(),
             NSFontAttributeName: UIFont(name: "AppleSDGothicNeo-Regular", size: 20)!], forState: UIControlState.Selected)
         self.segmentedController.backgroundColor = UIColor.clearColor()
@@ -275,7 +275,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
         
         let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
-        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         dismissButton.setTitle("Dismiss", forState: .Normal)
         dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         dismissButton.addTarget(self, action: #selector(FullPersonalSchedule.dismissHelpView), forControlEvents: .AllEvents)
@@ -287,7 +287,7 @@ class FullScheduleViewController: UIViewController, UITableViewDelegate {
         tipsLabel.numberOfLines = 0
         tipsLabel.text = ""
         tipsLabel.textAlignment = .Justified
-        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         helpView.addSubview(tipsLabel)
         self.view.addSubview(helpView)
     }

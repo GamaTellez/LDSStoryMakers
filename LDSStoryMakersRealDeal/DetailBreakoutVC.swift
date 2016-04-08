@@ -159,7 +159,7 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
         
         let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
-        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         dismissButton.setTitle("Dismiss", forState: .Normal)
         dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         dismissButton.addTarget(self, action: #selector(FullPersonalSchedule.dismissHelpView), forControlEvents: .AllEvents)
@@ -169,9 +169,9 @@ class DetailBreakoutVC: UIViewController, UITableViewDelegate{
         let tipsLabel = UILabel(frame: CGRect(x: 10, y: 10, width: self.self.helpView.frame.width - 20, height: 200))
         tipsLabel.backgroundColor = UIColor.clearColor()
         tipsLabel.numberOfLines = 0
-        tipsLabel.text = ""
+        tipsLabel.text = "Press the add button to add the class to your schedule, or press on the class to see the full description"
         tipsLabel.textAlignment = .Justified
-        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         helpView.addSubview(tipsLabel)
         self.view.addSubview(helpView)
     }

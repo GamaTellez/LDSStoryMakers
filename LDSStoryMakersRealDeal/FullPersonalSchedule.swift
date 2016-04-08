@@ -203,7 +203,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         let labelHeader = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 90))
         labelHeader.numberOfLines = 0
         labelHeader.textAlignment = .Center
-        labelHeader.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        labelHeader.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         if self.segmentedController.selectedSegmentIndex == 0 {
             labelHeader.text = self.textForHeaderBreakoutLabel(self.fridayBreakouts, section: section, label: labelHeader)
         } else {
@@ -466,7 +466,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
         
         let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
-        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         dismissButton.setTitle("Dismiss", forState: .Normal)
         dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         dismissButton.addTarget(self, action: #selector(FullPersonalSchedule.dismissHelpView), forControlEvents: .AllEvents)
@@ -478,7 +478,7 @@ class FullPersonalSchedule: UIViewController, UITableViewDelegate {
         tipsLabel.numberOfLines = 0
         tipsLabel.text = "Tap on \"Friday\" or \"Saturday\" to update the schedule to the respective day.\n\nTap on \"Find Class\" to find a class for the respective breakout.\n\nTap on a class to find more information about it."
         tipsLabel.textAlignment = .Justified
-        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         helpView.addSubview(tipsLabel)
         self.view.addSubview(helpView)
     }

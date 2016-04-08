@@ -16,9 +16,9 @@ class UpcomingClassCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.classLocationAndTime.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        self.classLocationAndTime.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         self.classLocationAndTime.numberOfLines = 2
-        self.className.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        self.className.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         self.backGroundView.backgroundColor = UIColor.whiteColor()
     }
     override func setSelected(selected: Bool, animated: Bool) {

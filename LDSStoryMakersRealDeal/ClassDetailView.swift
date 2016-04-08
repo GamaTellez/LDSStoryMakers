@@ -66,13 +66,13 @@ class ClassDetailView: UIViewController, UITextViewDelegate {
         self.speakerButton.titleLabel?.preferredMaxLayoutWidth = self.speakerButton.frame.width
         self.speakerButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.speakerButton.titleLabel?.numberOfLines = 2
-        self.speakerButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        self.speakerButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         self.feecBackButtom.layer.cornerRadius = 5
         self.feecBackButtom.titleLabel?.textColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.feecBackButtom.backgroundColor = UIColor(red: 0.365, green: 0.365, blue: 0.365, alpha: 1.00)
         self.feecBackButtom.setTitleColor(UIColor(red: 0.831, green: 0.831, blue: 0.831, alpha: 1.00), forState: .Normal)
         self.classLocationLabel.textColor = UIColor(red: 0.445, green: 0.445, blue: 0.455, alpha: 1.00)
-        self.classLocationLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        self.classLocationLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         
 //        let navTitleLAbel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.classTitleLabel.frame.height))
 //        navTitleLAbel.numberOfLines = 0

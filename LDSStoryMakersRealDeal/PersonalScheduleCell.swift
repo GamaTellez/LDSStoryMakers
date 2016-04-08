@@ -21,9 +21,9 @@ class PersonalScheduleCell: UITableViewCell {
     var tableView:UITableView?
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        self.speakerLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        self.locationLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        self.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.speakerLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        self.locationLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -34,15 +34,15 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
                         let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
                         cell?.textLabel?.text = "Browse Classes for breakout"
                         cell?.textLabel?.textAlignment = .Center
-                        cell?.textLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+                        cell?.textLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
                         return cell!
                     } else {
-                    let classInBreakout = classesInBreakout[indexPath.row]
-                    if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
-                        cell.backgroundColor = UIColor.whiteColor()
-                        var title = ""
-                        var speaker = ""
-                        var location = ""
+                        let classInBreakout = classesInBreakout[indexPath.row]
+                            if let cell = tableView.dequeueReusableCellWithIdentifier("scheduledClassCell") as? PersonalScheduleCell {
+                                cell.backgroundColor = UIColor.whiteColor()
+                                var title = ""
+                                var speaker = ""
+                                var location = ""
                         if let classTitle = classInBreakout.presentation?.valueForKey("title") as? String {
                             title = classTitle
                         }
@@ -62,7 +62,8 @@ class PersonalScheduleDS: NSObject, UITableViewDataSource {
             }
         }
             let cell = tableView.dequeueReusableCellWithIdentifier("addClassCell")
-            cell?.textLabel?.text = "Browse Classes for breakout"
+            cell?.textLabel?.text = "Add class"
+            cell?.textLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
             cell?.textLabel?.textAlignment = .Center
             return cell!
         

@@ -62,6 +62,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                               let banner = Banner(title: "", subtitle: notificationMessage, image: nil, backgroundColor: UIColor.whiteColor(), didTapBlock: { () -> () in
                               })
+                                banner.sizeToFit()
                                 banner.dismissesOnTap = true
                                 banner.show()
                       })
@@ -173,7 +174,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: headerSectionView.frame.width, height: headerSectionView.frame.height))
         headerLabel.textAlignment = NSTextAlignment.Center
         headerLabel.attributedText = underLinedAttributedString
-        headerLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        headerLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 20)
         headerLabel.textColor = UIColor(red: 0.310, green: 0.431, blue: 0.435, alpha: 1.00)
         headerSectionView.addSubview(headerLabel)
            return headerSectionView
@@ -241,7 +242,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
                                     NSURLSessionController.sharedInstance.createManagedObjectsFromSpreadSheetData("Breakouts", completion: { (finished) in
                                         dispatch_async(dispatch_get_main_queue(), { 
                                                 self.removeAndStopBlurryView()
-                                                NSNotificationCenter.defaultCenter().postNotificationName(self.finishedRedownLoadingData, object: nil)
+                                            NSNotificationCenter.defaultCenter().postNotificationName(self.finishedRedownLoadingData, object: nil)
                                         })
                                     })
                                 })
@@ -276,7 +277,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         helpView.frame = CGRect(x: 30, y: 60, width: self.view.frame.width - 60, height: self.view.frame.height - 150)
     
         let dismissButton = UIButton(frame: CGRect(x: 10, y: helpView.frame.height - 40, width: helpView.frame.width - 20, height: 30))
-        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        dismissButton.titleLabel?.font =  UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         dismissButton.setTitle("Dismiss", forState: .Normal)
         dismissButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         dismissButton.addTarget(self, action: #selector(HomeViewController.dismissHelpView), forControlEvents: .AllEvents)
@@ -291,7 +292,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         refreshButtonDescriptionLabel.backgroundColor = UIColor.whiteColor()
         refreshButtonDescriptionLabel.numberOfLines = 2
         refreshButtonDescriptionLabel.backgroundColor = UIColor.clearColor()
-        refreshButtonDescriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        refreshButtonDescriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         refreshButtonDescriptionLabel.text = "Updates the conference schudule to match any changes from Storymakers."
         helpView.addSubview(refreshButtonDescriptionLabel)
         
@@ -305,7 +306,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         addButtonDescriptionLabel.backgroundColor = UIColor.clearColor()
         addButtonDescriptionLabel.numberOfLines = 2
         addButtonDescriptionLabel.text = "Tapp to add classes to your schedule"
-        addButtonDescriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        addButtonDescriptionLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         
         helpView.addSubview(addButtonDescriptionLabel)
         let tipsLabel = UILabel(frame: CGRect(x: 10, y: addButtonImage.frame.height + refreshImage.frame.height + 50, width: helpView.frame.width - 20, height: 150))
@@ -313,7 +314,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
         tipsLabel.numberOfLines = 0
         tipsLabel.text = "The \"Next\" section tells you which event is coming up next in your schedule.\n\nThe \"Upcoming\" sections tells you what events are coming up next.\n\n To view your schedule in more detail tap the button Personal at the bottom of the view"
         tipsLabel.textAlignment = .Justified
-        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        tipsLabel.font =  UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         helpView.addSubview(tipsLabel)
         self.view.addSubview(helpView)
     }

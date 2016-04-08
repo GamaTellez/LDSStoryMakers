@@ -20,9 +20,8 @@ class ViewFullScheduleCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.backView.backgroundColor = UIColor(red: 0.125, green: 0.337, blue: 0.353, alpha: 1.00)
-        self.viewFullScheduleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
-        
-
+        self.viewFullScheduleLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+        self.viewFullScheduleLabel.textColor = UIColor.whiteColor()
         // Configure the view for the selected state
     }
 
